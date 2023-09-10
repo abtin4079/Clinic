@@ -1,0 +1,23 @@
+[
+  {
+    "id":0,
+    "tech":"رضا امیری",
+    "zibajo" :"محمد حسین کمالی", 
+    "situation":"completed",
+    "number_of_hairs":3000
+  },
+  {
+    "id": 1,
+    "tech": "رضا امیری",
+    "zibajo": "آبتین حسن نژاد ",
+    "situation": "Expectation",
+    "number_of_hairs": 2000
+  },
+  {
+    "id":2,
+    "tech":"رضا امیری",
+    "zibajo" :"آبتین حسن نژاد ",
+    "situation":"processing",
+    "number_of_hairs":2000
+  }
+]
