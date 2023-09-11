@@ -21,3 +21,7 @@ const grayColorHome = Color(0xFF777777);
 const processColor = Color(0xFFFF9211);
 
 const backgroundHome = Color(0xFFFAFAFA);
+
+const lightwhite = Color(0xFFF6F6F6);
+
+const graycoloranjamnashode = Color(0xFFEEEEEE);

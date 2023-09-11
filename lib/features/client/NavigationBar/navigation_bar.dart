@@ -238,7 +238,7 @@ class _ClientPageState extends State<ClientPage> {
                             ),
                           ),
                           GradientText(
-                            "تنظیمات",
+                            "تکنسین ها",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
@@ -308,7 +308,7 @@ class _ClientPageState extends State<ClientPage> {
                             ),
                           ),
                           GradientText(
-                            "تنظیمات",
+                            "خانه",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

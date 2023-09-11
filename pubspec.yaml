@@ -69,6 +69,8 @@ flutter:
     - lib/features/client/NavigationBar/images/nobat_dehi.png
     - lib/features/client/Home/domain/fake_database.json
     - lib/features/client/Home/presentation/images/gol.png
+    - lib/features/client/Home/presentation/images/gol_squre.png
+    - lib/features/client/Home/presentation/images/information-line.png
     - lib/features/client/Home/presentation/images/copy.png
     - lib/features/client/Home/presentation/images/calender.png
     - lib/features/client/Home/presentation/images/date.png

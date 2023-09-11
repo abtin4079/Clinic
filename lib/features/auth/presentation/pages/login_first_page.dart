@@ -61,7 +61,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                   children: [
                     Container(
                       width: screenwidth,
-                      height: screenheight / height_figma * 683 ,
+                      height: screenheight / height_figma * 683,
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.only(topLeft: Radius.circular(100)),
@@ -108,8 +108,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                           textAlign: TextAlign.right,
                           controller: numbercontroller,
                           decoration: InputDecoration(
-                            hintText:
-                                '0917.......',
+                            hintText: '0917.......',
                             hintStyle: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
@@ -183,23 +182,21 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                                 padding: EdgeInsets.zero,
                               ),
                               onPressed: () {},
-                              child:  GradientText(
-                                "شرایط و قوانین",
-                                style: TextStyle(
+                              child: GradientText("شرایط و قوانین",
+                                  style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 14,
-                                    ),
-                                colors:[
-                                  rediligal,
-                                  whiteiligal,
-                                  rediligal,
-                                ]
-                              ),
+                                  ),
+                                  colors: [
+                                    rediligal,
+                                    whiteiligal,
+                                    rediligal,
+                                  ]),
                             )),
-                        Container(
-                          margin: EdgeInsets.only(
+                        Padding(
+                          padding: EdgeInsets.only(
                               right: screenwidth / width_figma * 24,
-                              top: screenheight / height_figma * 457),
+                              top: screenheight / height_figma * 457.0),
                           child: const Text(
                             "با ورود/ثبت نام",
                             style: TextStyle(
