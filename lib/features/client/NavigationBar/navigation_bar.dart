@@ -1,9 +1,9 @@
-import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Home/presentation/pages/home.dart';
+import '../Technicians/presentation/pages/tech1.dart';
 import 'Icons/navigation_bar_icons.dart';
 
 class ClientPage extends StatefulWidget {
@@ -17,6 +17,7 @@ class _ClientPageState extends State<ClientPage> {
   int currenttab = 0;
   List<Widget> screens = [
     Home(),
+    Tech1(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -213,7 +214,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Tech1();
                           currenttab = 2;
                         });
                       },
@@ -254,7 +255,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Tech1();
                           currenttab = 2;
                         });
                       },

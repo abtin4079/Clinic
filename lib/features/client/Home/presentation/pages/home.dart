@@ -23,6 +23,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: backgroundHome,
       appBar: AppBar(
+        backgroundColor: backgroundHome,
         elevation: 0,
         centerTitle: true,
         title: Text(

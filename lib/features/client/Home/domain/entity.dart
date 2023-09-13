@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart' as rootBundle;
-import 'package:flutter/material.dart';
 class EntityHome {
   int? id;
   String? tech;
