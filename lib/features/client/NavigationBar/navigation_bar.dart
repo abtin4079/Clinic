@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Home/presentation/pages/home.dart';
+import '../Setting/presentation/pages/setting.dart';
 import '../Technicians/presentation/pages/tech1.dart';
 import 'Icons/navigation_bar_icons.dart';
 
@@ -18,10 +19,11 @@ class _ClientPageState extends State<ClientPage> {
   List<Widget> screens = [
     Home(),
     Tech1(),
+    Setting(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentscreen = Home();
+  Widget currentscreen = Setting();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Setting();
                           currenttab = 0;
                         });
                       },
@@ -104,7 +106,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Setting();
                           currenttab = 0;
                         });
                       },

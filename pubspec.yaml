@@ -75,6 +75,8 @@ flutter:
     - lib/features/client/Home/presentation/images/copy.png
     - lib/features/client/Home/presentation/images/calender.png
     - lib/features/client/Home/presentation/images/date.png
+    - lib/features/client/Technicians/presentation/images/edit_pencil.png
+    - lib/features/client/Setting/presentation/Images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

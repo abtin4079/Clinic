@@ -1,5 +1,3 @@
-import 'package:clinic/features/client/Technicians/presentation/pages/activity_history.dart';
-import 'package:clinic/features/client/Technicians/presentation/pages/payment_history.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/salary_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,16 +6,17 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../../../../themes/colors.dart';
 import '../../../Home/domain/entity.dart';
 
-class TechProfile extends StatefulWidget {
-  const TechProfile({Key? key}) : super(key: key);
+class PaymentHistory extends StatefulWidget {
+  const PaymentHistory({Key? key}) : super(key: key);
 
   @override
-  State<TechProfile> createState() => _TechProfileState();
+  State<PaymentHistory> createState() => _PaymentHistoryState();
 }
 
-class _TechProfileState extends State<TechProfile> {
+class _PaymentHistoryState extends State<PaymentHistory> {
   @override
   Widget build(BuildContext context) {
+
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -126,7 +125,7 @@ class _TechProfileState extends State<TechProfile> {
                                 height: screenheight / height_figma * 24,
                               ),
                               Text(
-                                items2[3].toString(),
+                                items2[2].toString(),
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -206,312 +205,15 @@ class _TechProfileState extends State<TechProfile> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "تاریخچه فعالیت ها",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: fontcolor),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          Get.to(ActivityHistory(),
-                          arguments: [items2[0] , items2[1] , items2[2] , items2[3]]
-                          );
-                        },
-                        child: Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: Row(
-                            children: [
-                              Text(
-                                "مشاهده همه فعالیت ها",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: grayColorHome),
-                              ),
-                              SizedBox(
-                                width: screenwidth / width_figma * 8,
-                              ),
-                              Icon(
-                                Icons.arrow_back_ios_rounded,
-                                textDirection: TextDirection.ltr,
-                                size: 12,
-                                color: grayColorHome,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )),
-            SizedBox(
-              height: screenheight / height_figma * 21,
-            ),
-            FutureBuilder(
-              future: ReadJsonData(),
-              builder: (context, data) {
-                if (data.hasError) {
-                  return Text("${data.error}");
-                } else if (data.hasData) {
-                  var items = data.data as List<EntityHome>;
-                  return ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: items == null ? 0 : items.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Center(
-                          child: Card(
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: screenheight / height_figma * 152,
-                              padding: EdgeInsets.only(
-                                right: screenwidth / width_figma * 19,
-                                left: screenwidth / width_figma * 19,
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Colors.white
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                  right: screenwidth / width_figma * 12,
-                                  left: screenwidth / width_figma * 12,
-                                  top: screenheight / height_figma * 14,
-                                  bottom: screenheight / height_figma * 14,
-                                ),
-                                child: Directionality(
-                                  textDirection: TextDirection.rtl,
-                                  child: Row(
-                                    children: [
-                                      Image.asset(
-                                          "lib/features/client/Home/presentation/images/gol.png"),
-                                      SizedBox(
-                                        width: screenwidth / width_figma * 10,
-                                      ),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "کاشت مو",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 6,
-                                          ),
-                                          Text(
-                                            "تاریخ:",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: grayColorHome),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 4,
-                                          ),
-                                          Text(
-                                            "سه شنبه 13 آذر",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color:fontcolor),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 6,
-                                          ),
-                                          Text(
-                                            "زیباجو:",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: grayColorHome),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 4,
-                                          ),
-                                          Container(
-                                            width: screenwidth / width_figma * 110,
-                                            child: Text(
-                                              items[index].zibajo.toString(),
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: grayColorHome),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        width: screenwidth / width_figma * 53,
-                                      ),
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height: screenheight / height_figma * 27,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              "تعداد تار مو:",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 4,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              items[index].number_of_hairs.toString(),
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: fontcolor,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 8 ,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              "وضعیت:",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: screenheight / height_figma * 4,
-                                          ),
-                                          Container(
-                                            width: screenwidth / width_figma * 97,
-                                            height: screenheight / height_figma * 21,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(16),
-                                                color: items[index].situation ==
-                                                    "completed"
-                                                    ? LightBlue
-                                                    : items[index].situation ==
-                                                    "Expectation"
-                                                    ? processColor
-                                                    : rediligal),
-                                            child: items[index].situation == "completed"
-                                                ? Center(
-                                                child: Text(
-                                                  "تایید شده",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 14,
-                                                    color: Colors.white,
-                                                  ),
-                                                ))
-                                                : items[index].situation ==
-                                                "Expectation"
-                                                ? Center(
-                                                child: Text(
-                                                  "در انتظار تایید",
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w800,
-                                                    color: Colors.white,
-                                                  ),
-                                                ))
-                                                : Center(
-                                                child: Text(
-                                                  "در حال انجام",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 14,
-                                                    color: Colors.white,
-                                                  ),
-                                                )),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-            SizedBox(
-              height: screenheight / height_figma * 40,
-            ),
-            Directionality(
-                textDirection: TextDirection.rtl,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: screenwidth / width_figma * 22,
-                    right: screenwidth / width_figma * 31,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
                         "تاریخچه پرداخت ها",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                             color: fontcolor),
                       ),
-                      MaterialButton(
-                        onPressed: () {
-                          Get.to(PaymentHistory(),
-                          arguments: [items2[0] , items2[1] , items2[2] , items2[3]]
-                          );
-                        },
-                        child: Directionality(
-                          textDirection: TextDirection.rtl,
-                          child: Row(
-                            children: [
-                              Text(
-                                "مشاهده همه پرداخت ها",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: grayColorHome),
-                              ),
-                              SizedBox(
-                                width: screenwidth / width_figma * 8,
-                              ),
-                              Icon(
-                                Icons.arrow_back_ios_rounded,
-                                textDirection: TextDirection.ltr,
-                                size: 12,
-                                color: grayColorHome,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 )),
-            SizedBox(
-              height: screenheight / height_figma * 21,
-            ),
             FutureBuilder(
               future: ReadJsonData(),
               builder: (context, data) {
@@ -536,8 +238,8 @@ class _TechProfileState extends State<TechProfile> {
                                 right: screenwidth / width_figma * 19,
                               ),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Colors.white
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.white
                               ),
                               child: Directionality(
                                 textDirection: TextDirection.rtl,
@@ -550,9 +252,9 @@ class _TechProfileState extends State<TechProfile> {
                                         right: screenwidth / width_figma * 170,
                                       ),
                                       child: Text("15000000 ریال", style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                        color: fontcolor
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16,
+                                          color: fontcolor
                                       ),),
                                     ),
                                     Padding(
