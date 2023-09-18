@@ -26,3 +26,12 @@ class NavigationBarIcons {
   static const IconData notif = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData khane = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
+
+class Search {
+  Search._();
+
+  static const _kFontFam = 'Search';
+  static const String? _kFontPkg = null;
+
+  static const IconData search = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+}

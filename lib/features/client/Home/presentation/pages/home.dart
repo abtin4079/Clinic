@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../../NavigationBar/Icons/navigation_bar_icons.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -47,9 +49,7 @@ class _HomeState extends State<Home> {
             child: TextField(
               textAlign: TextAlign.right,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(
-                    vertical: screenwidth / width_figma * 10),
-                suffixIcon: Icon(Icons.search),
+                suffixIcon: Icon(Search.search, size: 24,color: phonecolor,),
                 hintText: " جستجو در بین نوبت ها",
                 hintStyle: TextStyle(
                   fontWeight: FontWeight.w500,

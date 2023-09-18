@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 import '../../../../../themes/colors.dart';
 
@@ -10,12 +11,17 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+
+  bool switchValue = false;
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
+
+
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -543,16 +549,26 @@ class _SettingState extends State<Setting> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 175,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: Container(
+                                  width: screenwidth / width_figma * 32,
+                                  height: screenheight / height_figma * 14,
+                                  child: FlutterSwitch(
+                                    width: 32,
+                                    height: 15,
+                                    toggleSize: 10,
+
+                                    showOnOff: false,
+                                    inactiveColor: toggleColor,
+                                    value: switchValue,
+                                    onToggle: (value) {
+                                      setState(() {
+                                        switchValue = value;
+                                      });
+                                    },
                                   ),
                                 ),
                               ),

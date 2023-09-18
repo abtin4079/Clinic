@@ -1,5 +1,11 @@
+import 'package:clinic/features/client/Notifications/presentation/pages/notification.dart';
+import 'package:clinic/features/client/Turn%20ratings/New_Client/presentation/pages/new_client_page_1.dart';
+import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_1.dart';
+import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_2.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Home/presentation/pages/home.dart';
@@ -20,6 +26,7 @@ class _ClientPageState extends State<ClientPage> {
     Home(),
     Tech1(),
     Setting(),
+    Notif(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
@@ -44,7 +51,9 @@ class _ClientPageState extends State<ClientPage> {
         ),
         backgroundColor: floatingActionColor,
         shape: CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Get.to(NewClientPage1());
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -136,7 +145,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Notif();
                           currenttab = 1;
                         });
                       },
@@ -177,7 +186,7 @@ class _ClientPageState extends State<ClientPage> {
                       minWidth: screenwidth / width_figma * 40,
                       onPressed: () {
                         setState(() {
-                          currentscreen = Home();
+                          currentscreen = Notif();
                           currenttab = 1;
                         });
                       },
@@ -267,6 +276,7 @@ class _ClientPageState extends State<ClientPage> {
                           Icon(
                             NavigationBarIcons.tech,
                             color: currenttab == 2 ? Colors.blue : Colors.grey,
+                            size: 22,
                           ),
                           Text(
                             "تکنسین ها",
@@ -337,6 +347,7 @@ class _ClientPageState extends State<ClientPage> {
                           Icon(
                             NavigationBarIcons.khane,
                             color: currenttab == 3 ? Colors.blue : Colors.grey,
+                            size: 22,
                           ),
                           Text(
                             "خانه",
