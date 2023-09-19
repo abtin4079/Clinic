@@ -80,6 +80,8 @@ flutter:
     - lib/features/client/Technicians/presentation/images/edit_pencil.png
     - lib/features/client/Setting/presentation/Images/
     - lib/features/client/Turn ratings/Images/
+    - lib/features/technicians/Profile/presentation/Images/
+    - lib/features/technicians/ZibajoyanMan/Images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -99,3 +101,7 @@ flutter:
     - family:  Search
       fonts:
        - asset: lib\features\client\NavigationBar\Icons\fonts\Search.ttf
+
+    - family: TechNavigation
+      fonts:
+       - asset: lib\features\technicians/NavigationBar\Icons\fonts\Tech_navigation.ttf

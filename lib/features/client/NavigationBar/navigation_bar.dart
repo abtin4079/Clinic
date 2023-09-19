@@ -1,7 +1,5 @@
 import 'package:clinic/features/client/Notifications/presentation/pages/notification.dart';
 import 'package:clinic/features/client/Turn%20ratings/New_Client/presentation/pages/new_client_page_1.dart';
-import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_1.dart';
-import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_2.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -122,9 +120,13 @@ class _ClientPageState extends State<ClientPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            NavigationBarIcons.setting,
-                            color: currenttab == 0 ? Colors.blue : Colors.grey,
+                          Container(
+                            width: 36,
+                            height: 36,
+                            child: Icon(
+                              NavigationBarIcons.setting,
+                              color: currenttab == 0 ? Colors.blue : Colors.grey,
+                            ),
                           ),
                           Text(
                             "تنظیمات",
@@ -193,9 +195,13 @@ class _ClientPageState extends State<ClientPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            NavigationBarIcons.notif,
-                            color: currenttab == 1 ? Colors.blue : Colors.grey,
+                          Container(
+                            width: 36,
+                            height: 36,
+                            child: Icon(
+                              NavigationBarIcons.notif,
+                              color: currenttab == 1 ? Colors.blue : Colors.grey,
+                            ),
                           ),
                           Text(
                             "اعلانات",
@@ -273,10 +279,14 @@ class _ClientPageState extends State<ClientPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            NavigationBarIcons.tech,
-                            color: currenttab == 2 ? Colors.blue : Colors.grey,
-                            size: 22,
+                          Container(
+                            width: 36,
+                            height: 36,
+                            child: Icon(
+                              NavigationBarIcons.tech,
+                              color: currenttab == 2 ? Colors.blue : Colors.grey,
+                              size: 22,
+                            ),
                           ),
                           Text(
                             "تکنسین ها",
@@ -344,10 +354,14 @@ class _ClientPageState extends State<ClientPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            NavigationBarIcons.khane,
-                            color: currenttab == 3 ? Colors.blue : Colors.grey,
-                            size: 22,
+                          Container(
+                            width: 36,
+                            height: 36,
+                            child: Icon(
+                              NavigationBarIcons.khane,
+                              color: currenttab == 3 ? Colors.blue : Colors.grey,
+                              size: 22,
+                            ),
                           ),
                           Text(
                             "خانه",

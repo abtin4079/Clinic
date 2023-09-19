@@ -3,14 +3,14 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 import '../../../../../themes/colors.dart';
 
-class Setting extends StatefulWidget {
-  const Setting({Key? key}) : super(key: key);
+class ProfileForTech extends StatefulWidget {
+  const ProfileForTech({Key? key}) : super(key: key);
 
   @override
-  State<Setting> createState() => _SettingState();
+  State<ProfileForTech> createState() => _ProfileForTechState();
 }
 
-class _SettingState extends State<Setting> {
+class _ProfileForTechState extends State<ProfileForTech> {
 
   bool switchValue = false;
 
@@ -30,7 +30,7 @@ class _SettingState extends State<Setting> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "تنظیمات",
+          "پروفایل من",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -47,7 +47,7 @@ class _SettingState extends State<Setting> {
             Center(
               child: Container(
                 width: screenwidth / width_figma * 396,
-                height: screenheight / height_figma * 359,
+                height: screenheight / height_figma * 304,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
                     color: Colors.white),
@@ -88,7 +88,7 @@ class _SettingState extends State<Setting> {
                       ),
                       child: Center(
                         child: Text(
-                          "سوپروایزر کلینیک",
+                          "تکنسین کاشت مو و ابرو",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
@@ -112,29 +112,6 @@ class _SettingState extends State<Setting> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: grayColorHome,
-                                    size: 13,
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth / width_figma * 16,
-                                  ),
-                                  Text(
-                                    "کلینیک تست 1",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: grayColorHome,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: screenheight / height_figma * 24,
-                              ),
                               Row(
                                 children: [
                                   Icon(
@@ -187,17 +164,6 @@ class _SettingState extends State<Setting> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "نام کلینیک",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: screenheight / height_figma * 24,
-                                ),
-                                Text(
                                   "شماره تماس:",
                                   style: TextStyle(
                                     fontSize: 14,
@@ -231,106 +197,7 @@ class _SettingState extends State<Setting> {
             ),
             Container(
               width: screenwidth / width_figma * 393,
-              height: screenheight / height_figma * 224,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32), color: Colors.white),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: screenheight / height_figma * 18,
-                        right: screenwidth / width_figma * 8,
-                      ),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                              "lib/features/client/Setting/presentation/Images/wallet_info.png"),
-                          Text(
-                            "اطلاعات کیف پول",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: screenheight / height_figma * 24,
-                        right: screenwidth / width_figma * 40,
-                      ),
-                      child: Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: screenwidth / width_figma * 105,
-                              height: screenheight / height_figma * 30,
-                              child: Center(
-                                child: Text(
-                                  "اعتبار:",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: grayColorHome),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: screenwidth / width_figma * 10,
-                            ),
-                            Text(
-                              "15،000،000،000 ریال",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 25,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            width: screenwidth / width_figma * 328,
-                            height: screenheight / height_figma * 48,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: LightBlue,
-                            ),
-                            child: Center(
-                              child: Text(
-                                "افزایش اعتبار کیف پول",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: lightwhite),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: screenheight / height_figma * 11,
-            ),
-            Container(
-              width: screenwidth / width_figma * 393,
-              height: screenheight / height_figma * 501,
+              height: screenheight / height_figma * 564,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32), color: Colors.white),
               child: Directionality(
@@ -344,6 +211,51 @@ class _SettingState extends State<Setting> {
                       Padding(
                         padding: EdgeInsets.only(
                           top: screenheight / height_figma * 24,
+                        ),
+                        child: Container(
+                          width: screenwidth / width_figma * 356,
+                          height: screenheight / height_figma * 40,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: backgroundHome),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                  "lib/features/technicians/Profile/presentation/Images/acount_info.png"),
+                              SizedBox(
+                                width: screenwidth / width_figma * 6,
+                              ),
+                              Container(
+                                width: screenwidth / width_figma * 100,
+                                child: Text(
+                                  "اطلاعات حساب",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              SizedBox(
+                                width: screenwidth / width_figma * 177,
+                              ),
+                              Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.arrow_back_ios_rounded,
+                                    size: 12,
+                                    color: phonecolor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: screenheight / height_figma * 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
