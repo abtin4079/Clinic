@@ -1,5 +1,3 @@
-import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
-import 'package:clinic/features/technicians/ZibajoyanMan/presentation/pages/zibajo_page_1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -11,18 +9,18 @@ import '../../../Home/presentation/pages/home_for_tech.dart';
 import '../../../NavigationBar/Icons/tech_navigation_icons.dart';
 import '../../../NavigationBar/navigation_bar_for_tech.dart';
 import '../../../Profile/presentation/pages/profile_for_tech.dart';
-import '../../../Shoroefarayand/presentation/pages/shoroe_farayand_page_1.dart';
+import '../../../ZibajoyanMan/presentation/pages/zibajo_page_1.dart';
 
-class ZibajoPage2 extends StatefulWidget {
-  const ZibajoPage2({Key? key}) : super(key: key);
+class NobatDehyPage2 extends StatefulWidget {
+  const NobatDehyPage2({Key? key}) : super(key: key);
 
   @override
-  State<ZibajoPage2> createState() => _ZibajoPage2State();
+  State<NobatDehyPage2> createState() => _NobatDehyPage2State();
 }
 
-class _ZibajoPage2State extends State<ZibajoPage2> {
+class _NobatDehyPage2State extends State<NobatDehyPage2> {
 
-  int currenttab = 2;
+  int currenttab = 1;
   List<Widget> screens = [
     HomeForTech(),
     ProfileForTech(),
@@ -30,11 +28,11 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentscreen = ZibajoPage2();
-
+  Widget currentscreen = NobatDehyPage2();
 
   @override
   Widget build(BuildContext context) {
+
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -47,7 +45,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "زیباجویان من",
+          "نوبت دهی",
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -82,7 +80,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                   ),
                   Center(
                     child: Image.asset(
-                        "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
+                        "lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
                   ),
                   SizedBox(
                     height: screenheight / height_figma * 8,
@@ -349,32 +347,310 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                   SizedBox(
                     height: screenheight / height_figma * 32,
                   ),
-                  GestureDetector(
-                    onTap: (){
-                      Get.to(ShoroyeFarayandPage1());
-                    },
-                    child: Container(
-                      width: screenwidth / width_figma * 364,
-                      height: screenheight / height_figma * 36,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(48),
-                        gradient:
-                            LinearGradient(
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: screenwidth / width_figma * 8,
+                      ),
+                      GestureDetector(
+                        onTap: (){
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              child: Container(
+                                width: screenwidth / width_figma * 356,
+                                height: screenheight / height_figma * 232,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(32),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding:  EdgeInsets.only(
+                                    right: screenwidth / width_figma * 24,
+                                    left: screenwidth / width_figma * 24,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height: screenheight / height_figma * 40,
+                                      ),
+                                      Image.asset("lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                      SizedBox(
+                                        height: screenheight / height_figma * 8,
+                                      ),
+                                      Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Center(
+                                          child: Text(
+                                            "نوبت کاشت مو با موفقیت به لیست زیباجویان شما",
+                                            style: TextStyle(
+                                              color: fontcolor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Center(
+                                          child: Text(
+                                            "اضافه شد",
+                                            style: TextStyle(
+                                              color: fontcolor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: screenheight / height_figma * 24,
+                                      ),
+                                      Center(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  currenttab = 2;
+                                                  Get.to(Techpages(),
+                                                  arguments: currenttab,
+                                                  );
+                                                });
+                                              },
+                                              child: Container(
+                                                height: screenheight / height_figma * 36,
+                                                width: screenwidth / width_figma * 142,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius.circular(48),
+                                                    gradient: LinearGradient(
+                                                        begin: Alignment.topRight,
+                                                        end: Alignment.bottomLeft,
+                                                        colors: [
+                                                          rediligal,
+                                                          whiteiligal
+                                                        ])),
+                                                child: Center(
+                                                  child: Text(
+                                                    "مشاهده زیباجویان من",
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 14,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: screenwidth / width_figma * 8,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                Get.back(result: true);
+                                              },
+                                              child: Container(
+                                                height: screenheight / height_figma * 36,
+                                                width: screenwidth / width_figma * 152,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                    BorderRadius.circular(48),
+                                                    gradient: LinearGradient(
+                                                        begin: Alignment.topRight,
+                                                        end: Alignment.bottomLeft,
+                                                        colors: [LightBlue, White])),
+                                                child: Center(
+                                                  child: Text(
+                                                    "!متوجه شدم",
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w700,
+                                                      fontSize: 14,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: screenwidth / width_figma * 213,
+                          height: screenheight / height_figma * 36,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(48),
+                            gradient: LinearGradient(
                                 begin: Alignment.topRight,
                                 end: Alignment.bottomLeft,
-                                colors: [rediligal, whiteiligal]),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "شروع فرایند کاشت",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14,
-                            color: Colors.white,
+                                colors: [
+                                  LightBlue,
+                                  White
+                                ]
+                            ),
+                          ),
+                          child: Center(
+                            child: Text("قبول نوبت", style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),),
                           ),
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        width: screenwidth / width_figma * 50,
+                      ),
+                      MaterialButton(
+                        onPressed: (){
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              child: Container(
+                                width: screenwidth / width_figma * 356,
+                                height:
+                                screenheight / height_figma * 170,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                  BorderRadius.circular(28),
+                                  color: Colors.white,
+                                ),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: screenheight /
+                                          height_figma *
+                                          41,
+                                    ),
+                                    Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Center(
+                                        child: Text(
+                                          "آیا از رد نوبت کاشت مو مطمعن هستید؟",
+                                          style: TextStyle(
+                                            color: fontcolor,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: screenheight /
+                                          height_figma *
+                                          39,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back(result: false);
+                                          },
+                                          child: Container(
+                                            height: screenheight /
+                                                height_figma *
+                                                36,
+                                            width: screenwidth /
+                                                width_figma *
+                                                100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius
+                                                    .circular(48),
+                                                gradient:
+                                                LinearGradient(
+                                                    begin: Alignment
+                                                        .topRight,
+                                                    end: Alignment
+                                                        .bottomLeft,
+                                                    colors: [
+                                                      rediligal,
+                                                      whiteiligal
+                                                    ])),
+                                            child: Center(
+                                              child: Text(
+                                                "رد نوبت",
+                                                style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: screenwidth /
+                                              width_figma *
+                                              8,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back(result: true);
+                                          },
+                                          child: Container(
+                                            height: screenheight /
+                                                height_figma *
+                                                36,
+                                            width: screenwidth /
+                                                width_figma *
+                                                100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius
+                                                    .circular(48),
+                                                gradient:
+                                                LinearGradient(
+                                                    begin: Alignment
+                                                        .topRight,
+                                                    end: Alignment
+                                                        .bottomLeft,
+                                                    colors: [
+                                                      LightBlue,
+                                                      White
+                                                    ])),
+                                            child: Center(
+                                              child: Text(
+                                                "انصراف",
+                                                style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text("رد نوبت", style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                            color: germeztiz
+                        ),),
+                      )
+                    ],
                   ),
                 ],
               ),
@@ -402,7 +678,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                         currentscreen = ProfileForTech();
                         currenttab = 0;
                         Get.to(Techpages(),
-                        arguments: currenttab,
+                          arguments: currenttab,
                         );
                       });
                     },

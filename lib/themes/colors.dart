@@ -33,3 +33,5 @@ const meshki = Color(0xFF1D1D1D);
 const toggleColor = Color(0xFFD9D9D9);
 
 const dashlineColor = Color(0xFF3E80E2);
+
+const germeztiz = Color(0xFFFF3B3B);
