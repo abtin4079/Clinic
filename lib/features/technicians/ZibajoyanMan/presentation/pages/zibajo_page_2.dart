@@ -1,9 +1,16 @@
 import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
+import 'package:clinic/features/technicians/ZibajoyanMan/presentation/pages/zibajo_page_1.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../../../../themes/colors.dart';
+import '../../../../client/NavigationBar/Icons/navigation_bar_icons.dart';
+import '../../../Home/presentation/pages/home_for_tech.dart';
+import '../../../NavigationBar/Icons/tech_navigation_icons.dart';
 import '../../../NavigationBar/navigation_bar_for_tech.dart';
+import '../../../Profile/presentation/pages/profile_for_tech.dart';
 
 class ZibajoPage2 extends StatefulWidget {
   const ZibajoPage2({Key? key}) : super(key: key);
@@ -13,6 +20,18 @@ class ZibajoPage2 extends StatefulWidget {
 }
 
 class _ZibajoPage2State extends State<ZibajoPage2> {
+
+  int currenttab = 2;
+  List<Widget> screens = [
+    HomeForTech(),
+    ProfileForTech(),
+    ZibajoPage1(),
+  ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
+  Widget currentscreen = ZibajoPage2();
+
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -46,7 +65,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
           ),
           child: Container(
             width: screenwidth / width_figma * 396,
-            height: screenheight / height_figma * 585,
+            height: screenheight / height_figma * 600,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16), color: Colors.white),
             child: Padding(
@@ -57,6 +76,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: screenheight / height_figma * 16,
+                  ),
                   Center(
                     child: Image.asset(
                         "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
@@ -346,6 +368,335 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                           color: Colors.white,
                         ),
                       ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: screenheight / height_figma * 96,
+          child: Center(
+            child: Padding(
+              padding:  EdgeInsets.only(
+                left: screenwidth / width_figma * 24,
+                right: screenwidth / width_figma * 23,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  currenttab == 0 ? MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = ProfileForTech();
+                        currenttab = 0;
+                        Get.to(Techpages(),
+                        arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [LightBlue, White],
+                            ),
+                          ),
+                          child: Icon(
+                            TechNavigation.profile,
+                            color: currenttab == 0 ? Colors.white : phonecolor,
+                            size: 22,
+                          ),
+                        ),
+                        GradientText(
+                          "پروفایل من",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          colors: [
+                            LightBlue,
+                            White,
+                          ],
+                        )
+                      ],
+                    ),
+                  ):MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = ProfileForTech();
+                        currenttab = 0;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          child: Icon(
+                            TechNavigation.profile,
+                            color: currenttab == 0 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          "پروفایل من",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: currenttab == 0 ? Colors.blue : Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  currenttab ==1 ?  MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = HomeForTech();
+                        currenttab = 1;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [LightBlue, White],
+                            ),
+                          ),
+                          child: Icon(
+                            TechNavigation.nobat_dehi,
+                            color: currenttab == 1 ? Colors.white : phonecolor,
+                            size: 22,
+                          ),
+                        ),
+                        GradientText(
+                          "نوبت دهی",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          colors: [
+                            LightBlue,
+                            White,
+                          ],
+                        )
+                      ],
+                    ),
+                  ):MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = HomeForTech();
+                        currenttab = 1;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          child: Icon(
+                            TechNavigation.nobat_dehi,
+                            color: currenttab == 1 ? Colors.blue : Colors.grey,
+                          ),
+                        ),
+                        Text(
+                          "نوبت دهی",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: currenttab == 1 ? Colors.blue : Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  currenttab == 2 ?  MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = ZibajoPage1();
+                        currenttab = 2;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [LightBlue, White],
+                            ),
+                          ),
+                          child: Icon(
+                            NavigationBarIcons.tech,
+                            color: currenttab == 2 ? Colors.white : phonecolor,
+                            size: 22,
+                          ),
+                        ),
+                        GradientText(
+                          "زیباجویان من",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          colors: [
+                            LightBlue,
+                            White,
+                          ],
+                        )
+                      ],
+                    ),
+                  ):MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = ZibajoPage1();
+                        currenttab = 2;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          child: Icon(
+                            NavigationBarIcons.tech,
+                            color: currenttab == 2 ? Colors.blue : Colors.grey,
+                            size: 22,
+                          ),
+                        ),
+                        Text(
+                          "زیباجویان من",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: currenttab == 2 ? Colors.blue : Colors.grey,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  currenttab == 3 ?  MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = HomeForTech();
+                        currenttab = 3;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [LightBlue, White],
+                            ),
+                          ),
+                          child: Icon(
+                            NavigationBarIcons.khane,
+                            color: currenttab == 3 ? Colors.white : phonecolor,
+                            size: 22,
+                          ),
+                        ),
+                        GradientText(
+                          "خانه",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          colors: [
+                            LightBlue,
+                            White,
+                          ],
+                        )
+                      ],
+                    ),
+                  ):MaterialButton(
+                    minWidth: screenwidth / width_figma * 40,
+                    onPressed: () {
+                      setState(() {
+                        currentscreen = HomeForTech();
+                        currenttab = 3;
+                        Get.to(Techpages(),
+                          arguments: currenttab,
+                        );
+                      });
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          child: Icon(
+                            NavigationBarIcons.khane,
+                            color: currenttab == 3 ? Colors.blue : Colors.grey,
+                            size: 22,
+                          ),
+                        ),
+                        Text(
+                          "خانه",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: currenttab == 3 ? Colors.blue : Colors.grey,
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],

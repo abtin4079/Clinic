@@ -1,7 +1,10 @@
 import 'package:clinic/features/client/Home/presentation/pages/home.dart';
 import 'package:clinic/features/technicians/Home/presentation/pages/home_for_tech.dart';
 import 'package:clinic/features/technicians/NavigationBar/Icons/tech_navigation_icons.dart';
+import 'package:clinic/features/technicians/NobatDehy/presentation/pages/nobat_dehy_page_1.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../../themes/colors.dart';
@@ -18,15 +21,16 @@ class Techpages extends StatefulWidget {
 
 class _TechpagesState extends State<Techpages> {
 
-  int currenttab = 3;
+  int currenttab = Get.arguments == null ? 3 : Get.arguments;
   List<Widget> screens = [
-    HomeForTech(),
     ProfileForTech(),
+    NobatDehyPage1(),
     ZibajoPage1(),
+    HomeForTech(),
   ];
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentscreen = HomeForTech();
+//  Widget currentscreen = currenttab == 0 ? ProfileForTech() : HomeForTech();
 
 
   @override
@@ -39,7 +43,7 @@ class _TechpagesState extends State<Techpages> {
 
     return Scaffold(
       body: PageStorage(
-        child: currentscreen,
+        child: currenttab == 0 ? ProfileForTech() : currenttab == 1 ? NobatDehyPage1() : currenttab == 2 ? ZibajoPage1() : HomeForTech(),
         bucket: bucket,
       ),
       bottomNavigationBar: BottomAppBar(
@@ -59,7 +63,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = ProfileForTech();
+                     //   currentscreen = ProfileForTech();
                         currenttab = 0;
                       });
                     },
@@ -100,7 +104,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = ProfileForTech();
+                     //   currentscreen = ProfileForTech();
                         currenttab = 0;
                       });
                     },
@@ -130,7 +134,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = HomeForTech();
+                      //  currentscreen = NobatDehyPage1();
                         currenttab = 1;
                       });
                     },
@@ -171,7 +175,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = HomeForTech();
+                    //    currentscreen = NobatDehyPage1();
                         currenttab = 1;
                       });
                     },
@@ -201,7 +205,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = ZibajoPage1();
+                     //   currentscreen = ZibajoPage1();
                         currenttab = 2;
                       });
                     },
@@ -242,7 +246,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = ZibajoPage1();
+                     //   currentscreen = ZibajoPage1();
                         currenttab = 2;
                       });
                     },
@@ -273,7 +277,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = Home();
+                    //    currentscreen = HomeForTech();
                         currenttab = 3;
                       });
                     },
@@ -314,7 +318,7 @@ class _TechpagesState extends State<Techpages> {
                     minWidth: screenwidth / width_figma * 40,
                     onPressed: () {
                       setState(() {
-                        currentscreen = Home();
+                    //    currentscreen = HomeForTech();
                         currenttab = 3;
                       });
                     },
