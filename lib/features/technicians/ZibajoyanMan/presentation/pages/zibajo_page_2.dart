@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
 import 'package:clinic/features/technicians/ZibajoyanMan/presentation/pages/zibajo_page_1.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +95,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: fontcolor),
+                          color: fontcolor,
+                          fontFeatures: [FontFeature('ss01', 1),]
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -166,7 +170,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: fontcolor),
+                                color: fontcolor,
+                                fontFeatures: [FontFeature('ss01', 1),]
+                            ),
                           ),
                           SizedBox(
                             height: screenheight / height_figma * 16,
@@ -187,7 +193,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: fontcolor),
+                                color: fontcolor,
+                                fontFeatures: [FontFeature('ss01', 1),]
+                            ),
                           ),
                           SizedBox(
                             height: screenheight / height_figma * 32,
@@ -204,7 +212,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                                 style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
-                                    color: phonecolor),
+                                    color: phonecolor,
+                                    fontFeatures: [FontFeature('ss01', 1),]
+                                ),
                               ),
                             ],
                           ),
@@ -227,7 +237,9 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                             style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: fontcolor),
+                                color: fontcolor,
+                                fontFeatures: [FontFeature('ss01', 1),]
+                            ),
                           ),
                           SizedBox(
                             height: screenheight / height_figma * 16,
@@ -238,6 +250,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               color: grayColorHome,
+                                fontFeatures: [FontFeature('ss01', 1),]
                             ),
                           ),
                           SizedBox(
@@ -288,6 +301,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               color: grayColorHome,
+                                fontFeatures: [FontFeature('ss01', 1),]
                             ),
                           ),
                           SizedBox(
@@ -330,6 +344,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               color: grayColorHome,
+                                fontFeatures: [FontFeature('ss01', 1),]
                             ),
                           ),
                           SizedBox(
@@ -371,6 +386,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                             fontWeight: FontWeight.w800,
                             fontSize: 14,
                             color: Colors.white,
+                              fontFeatures: [FontFeature('ss01', 1),]
                           ),
                         ),
                       ),

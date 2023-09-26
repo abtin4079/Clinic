@@ -105,3 +105,15 @@ flutter:
     - family: TechNavigation
       fonts:
        - asset: lib\features\technicians/NavigationBar\Icons\fonts\Tech_navigation.ttf
+
+    - family: peyda
+      fonts:
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Black.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Bold.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-ExtraBold.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-ExtraLight.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Light.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Medium.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Regular.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-SemiBold.ttf
+       - asset: lib\themes\Peyda\02-Farsi_Namerals\TTF\PeydaFaNum-Thin.ttf

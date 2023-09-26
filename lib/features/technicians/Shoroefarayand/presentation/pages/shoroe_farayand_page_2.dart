@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -89,7 +91,9 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: fontcolor),
+                          color: fontcolor,
+                          fontFeatures: [FontFeature('ss01', 1),]
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -108,7 +112,9 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
-                              color: fontcolor),
+                              color: fontcolor,
+                              fontFeatures: [FontFeature('ss01', 1),]
+                          ),
                         ),
                         SizedBox(
                           height: screenheight / height_figma * 16,
@@ -155,7 +161,9 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
-                              color: fontcolor),
+                              color: fontcolor,
+                              fontFeatures: [FontFeature('ss01', 1),]
+                          ),
                         ),
                         SizedBox(
                           height: screenheight / height_figma * 16,
@@ -205,7 +213,9 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: fontcolor),
+                        color: fontcolor,
+                        fontFeatures: [FontFeature('ss01', 1),]
+                    ),
                   ),
                   SizedBox(
                     height: screenheight / height_figma * 16,
@@ -215,7 +225,9 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: fontcolor),
+                        color: fontcolor,
+                        fontFeatures: [FontFeature('ss01', 1),]
+                    ),
                   ),
                   SizedBox(
                     height: screenheight / height_figma * 4,
@@ -233,6 +245,7 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                           color: phonecolor,
+                            fontFeatures: [FontFeature('ss01', 1),]
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -283,6 +296,7 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                                         color: fontcolor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
+                                          fontFeatures: [FontFeature('ss01', 1),]
                                       ),
                                     ),
                                   ),
@@ -378,6 +392,7 @@ class _ShoroyeFarayandPage2State extends State<ShoroyeFarayandPage2> {
                             fontWeight: FontWeight.w800,
                             fontSize: 14,
                             color: Colors.white,
+                              fontFeatures: [FontFeature('ss01', 1),]
                           ),
                         ),
                       ),

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
@@ -78,6 +80,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: fontcolor,
+                              fontFeatures: [FontFeature('ss01', 1),]
                           ),
                         ),
                       ),
@@ -93,6 +96,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: fontcolor,
+                              fontFeatures: [FontFeature('ss01', 1),]
                           ),
                         ),
                       ),
@@ -128,6 +132,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                       color: grayColorHome,
+                                        fontFeatures: [FontFeature('ss01', 1),]
                                     ),
                                   ),
                                 ],
@@ -151,6 +156,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                       color: grayColorHome,
+                                        fontFeatures: [FontFeature('ss01', 1),]
                                     ),
                                   ),
                                 ],
@@ -169,6 +175,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
                                     color: fontcolor,
+                                      fontFeatures: [FontFeature('ss01', 1),]
                                   ),
                                 ),
                                 SizedBox(
@@ -180,6 +187,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
                                     color: fontcolor,
+                                      fontFeatures: [FontFeature('ss01', 1),]
                                   ),
                                 ),
                               ],
@@ -277,7 +285,9 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFeatures: [FontFeature('ss01', 1),]
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -367,7 +377,9 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFeatures: [FontFeature('ss01', 1),]
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -412,7 +424,8 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFeatures: [FontFeature('ss01', 1),]),
                                 ),
                               ),
                               SizedBox(
@@ -457,7 +470,9 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFeatures: [FontFeature('ss01', 1),]
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -557,7 +572,9 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                   style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                                      color: Colors.black,
+                                      fontFeatures: [FontFeature('ss01', 1),]
+                                  ),
                                 ),
                               ),
                               SizedBox(
