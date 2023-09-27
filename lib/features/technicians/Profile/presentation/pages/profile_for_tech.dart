@@ -13,7 +13,6 @@ class ProfileForTech extends StatefulWidget {
 }
 
 class _ProfileForTechState extends State<ProfileForTech> {
-
   bool switchValue = false;
 
   @override
@@ -22,8 +21,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
-
-
+    final CoefficientHeight = screenheight / height_figma;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -34,7 +32,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
         title: Text(
           "پروفایل من",
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 24 * CoefficientHeight,
             fontWeight: FontWeight.w700,
             color: fontcolor,
           ),
@@ -61,8 +59,8 @@ class _ProfileForTechState extends State<ProfileForTech> {
                       ),
                       child: Center(
                         child: Container(
-                          width: 100,
-                          height: 100,
+                          width: 80 * screenheight / height_figma,
+                          height: 80 * screenheight / height_figma,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                               color: Colors.red),
@@ -77,11 +75,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                         child: Text(
                           "کیانا رضایی",
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: fontcolor,
-                              fontFeatures: [FontFeature('ss01', 1),]
-                          ),
+                              fontSize: 16 * CoefficientHeight,
+                              fontWeight: FontWeight.w700,
+                              color: fontcolor,
+                              fontFeatures: [
+                                FontFeature('ss01', 1),
+                              ]),
                         ),
                       ),
                     ),
@@ -93,11 +92,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                         child: Text(
                           "تکنسین کاشت مو و ابرو",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: fontcolor,
-                              fontFeatures: [FontFeature('ss01', 1),]
-                          ),
+                              fontSize: 14 * CoefficientHeight,
+                              fontWeight: FontWeight.w400,
+                              color: fontcolor,
+                              fontFeatures: [
+                                FontFeature('ss01', 1),
+                              ]),
                         ),
                       ),
                     ),
@@ -116,50 +116,62 @@ class _ProfileForTechState extends State<ProfileForTech> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: grayColorHome,
-                                    size: 13,
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth / width_figma * 16,
-                                  ),
-                                  Text(
-                                    "09999999999",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: grayColorHome,
-                                        fontFeatures: [FontFeature('ss01', 1),]
+                              Container(
+                                height: 24 * screenheight /  height_figma,
+                                child: Row(
+                                  children: [
+                                    FittedBox(
+                                      child: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        color: grayColorHome,
+                                        size: 13,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 16,
+                                    ),
+                                    Text(
+                                      "09999999999",
+                                      style: TextStyle(
+                                          fontSize: 14 * CoefficientHeight,
+                                          fontWeight: FontWeight.w500,
+                                          color: grayColorHome,
+                                          fontFeatures: [
+                                            FontFeature('ss01', 1),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
                               ),
                               SizedBox(
                                 height: screenheight / height_figma * 24,
                               ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    color: grayColorHome,
-                                    size: 13,
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth / width_figma * 16,
-                                  ),
-                                  Text(
-                                    "0015248568",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: grayColorHome,
-                                        fontFeatures: [FontFeature('ss01', 1),]
+                              Container(
+                                height: 24 * screenheight / height_figma,
+                                child: Row(
+                                  children: [
+                                    FittedBox(
+                                      child: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        color: grayColorHome,
+                                        size: 13,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 16,
+                                    ),
+                                    Text(
+                                      "0015248568",
+                                      style: TextStyle(
+                                          fontSize: 14 * CoefficientHeight,
+                                          fontWeight: FontWeight.w500,
+                                          color: grayColorHome,
+                                          fontFeatures: [
+                                            FontFeature('ss01', 1),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -172,11 +184,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 Text(
                                   "شماره تماس:",
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontSize: 14 * CoefficientHeight,
+                                      fontWeight: FontWeight.w400,
+                                      color: fontcolor,
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                                 SizedBox(
                                   height: screenheight / height_figma * 24,
@@ -184,11 +197,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 Text(
                                   "کد ملی:",
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontSize: 14 * CoefficientHeight,
+                                      fontWeight: FontWeight.w400,
+                                      color: fontcolor,
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ],
                             ),
@@ -238,7 +252,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "اطلاعات حساب",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black),
                                 ),
@@ -248,12 +262,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -283,11 +299,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "تاریخچه تراکنش ها",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ),
                               SizedBox(
@@ -295,12 +312,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -330,7 +349,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "قوانین و مقررات",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black),
                                 ),
@@ -340,12 +359,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -375,11 +396,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "زبان اپلیکیشن",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ),
                               SizedBox(
@@ -387,12 +409,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -422,10 +446,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "تنظیمات اعلانات",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontFeatures: [FontFeature('ss01', 1),]),
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ),
                               SizedBox(
@@ -433,12 +459,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -468,11 +496,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "حالت تاریک",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ),
                               SizedBox(
@@ -525,7 +554,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "خروج از حساب",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black),
                                 ),
@@ -535,12 +564,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -570,11 +601,12 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 child: Text(
                                   "درباره اپلیکیشن",
                                   style: TextStyle(
-                                      fontSize: 14,
+                                      fontSize: 14 * CoefficientHeight,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.black,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ),
                               SizedBox(
@@ -582,12 +614,14 @@ class _ProfileForTechState extends State<ProfileForTech> {
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_back_ios_rounded,
-                                    size: 12,
-                                    color: phonecolor,
+                                child: FittedBox(
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      size: 12,
+                                      color: phonecolor,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -606,12 +640,24 @@ class _ProfileForTechState extends State<ProfileForTech> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset("lib/features/client/Setting/presentation/Images/a-neur.png"),
-                              Text("طراحی و توسعه توسط a-neur انجام میشود", style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 12,
-                                color: fontcolor,
-                              ),)
+                              Container(
+                                width: 30 * screenwidth / width_figma,
+                                height: 41 * screenheight / height_figma,
+                                child: FittedBox(
+                                  child: Image.asset(
+                                      "lib/features/client/Setting/presentation/Images/a-neur.png"),
+                                ),
+                              ),
+                              FittedBox(
+                                child: Text(
+                                  "طراحی و توسعه توسط a-neur انجام میشود",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 12 * CoefficientHeight,
+                                    color: fontcolor,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),
