@@ -34,7 +34,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
         title: Text(
           "نوبت دهی",
           style: TextStyle(
-            fontSize: 24 * CoefficientHeight,
+            fontSize: 24,
             fontWeight: FontWeight.w700,
             color: fontcolor,
           ),
@@ -61,12 +61,12 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                       padding: EdgeInsets.only(
                         right: screenwidth / width_figma * 16,
                         left: screenwidth / width_figma * 16,
-                        top: screenheight / height_figma * 4,
-                        bottom: screenheight / height_figma * 4,
+                        top: 4,
+                        bottom: 4,
                       ),
                       child: Container(
                         width: screenwidth / width_figma * 396,
-                        height: screenheight / height_figma * 174,                                              // inja man as context estefade nakardam
+                        height: 174,                                              // inja man as context estefade nakardam
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
@@ -76,15 +76,15 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                             padding: EdgeInsets.only(
                               right: screenwidth / width_figma * 16,
                               left: screenwidth / width_figma * 16,
-                              top: screenheight / height_figma * 16,
-                              bottom: screenheight / height_figma * 16,
+                              top: 16,
+                              bottom: 16,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
                                   width: screenwidth / width_figma * 364,
-                                  height: screenheight /  height_figma * 85,
+                                  height: 85,
                                   child: Row(
                                     children: [
                                       Image.asset("lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
@@ -108,9 +108,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: screenheight /
-                                                  height_figma *
-                                                  16,
+                                              height: 16,
                                             ),
                                             Text(
                                               "زیباجو:",
@@ -121,9 +119,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: screenheight /
-                                                  height_figma *
-                                                  4,
+                                              height:  4,
                                             ),
                                             Text(
                                               items[index].zibajo.toString(),
@@ -144,7 +140,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                         children: [
                                           Container(
                                             width: screenwidth / width_figma * 100,
-                                            height: screenheight /height_figma * 24,
+                                            height: 24,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(16),
                                               color: processColor
@@ -159,9 +155,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: screenheight /
-                                                height_figma *
-                                                16,
+                                            height: 16,
                                           ),
                                           Text(
                                             "تاریخ:",
@@ -172,9 +166,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                             ),
                                           ),
                                           SizedBox(
-                                            height: screenheight /
-                                                height_figma *
-                                                4,
+                                            height: 4,
                                           ),
                                           Text(
                                             "دوشنبه 12 آذر",
@@ -189,7 +181,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: screenheight / height_figma * 16,
+                                  height:  16,
                                 ),
                                 Row(
                                   children: [
@@ -197,7 +189,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                       onTap: (){},
                                       child: Container(
                                         width: screenwidth / width_figma * 213,
-                                        height: screenheight / height_figma * 36,
+                                        height: 36,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(48),
                                           gradient: LinearGradient(

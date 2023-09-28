@@ -29,262 +29,264 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
     final width_figma = 428;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: screenheight / height_figma * 159,
-            width: screenwidth / width_figma * 428,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 159,
+              width: screenwidth / width_figma * 428,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+                color: darkBlue,
               ),
-              color: darkBlue,
-            ),
-            child: Directionality(
-              textDirection: TextDirection.rtl,
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: screenheight / height_figma * 10,
-                      right: screenwidth / width_figma * 25,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:  10,
+                        right: screenwidth / width_figma * 25,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ClientPage());
+                        },
+                        child: Image.asset(
+                            "lib/features/client/Turn ratings/Images/zab_dar.png"),
+                      ),
                     ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(ClientPage());
-                      },
-                      child: Image.asset(
-                          "lib/features/client/Turn ratings/Images/zab_dar.png"),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:  25,
+                        right: screenwidth / width_figma * 175,
+                      ),
+                      child: Text(
+                        "ثبت نوبت",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: graycoloranjamnashode),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: screenheight / height_figma * 25,
-                      right: screenwidth / width_figma * 175,
-                    ),
-                    child: Text(
-                      "ثبت نوبت",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                          color: graycoloranjamnashode),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: screenheight / height_figma * 75,
-                      right: screenwidth / width_figma * 80,
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: LightBlue),
-                          child: Center(
-                            child: Text(
-                              "1",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: screenwidth / width_figma * 5,
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: DottedLine(
-                              lineThickness: 2,
-                              dashGapLength: 9,
-                              dashColor: dashlineColor.withOpacity(0.31),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:  EdgeInsets.only(
-                            left: screenwidth / width_figma * 85,
-                            right: screenwidth / width_figma * 5,
-                          ),
-                          child: Container(
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top:  75,
+                        right: screenwidth / width_figma * 80,
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
-                                color: LightBlue.withOpacity(0.31)),
+                                color: LightBlue),
                             child: Center(
                               child: Text(
-                                "2",
+                                "1",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 16,
-                                  color: Colors.white.withOpacity(0.51),
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
                           ),
+                          SizedBox(
+                            width: screenwidth / width_figma * 5,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: DottedLine(
+                                lineThickness: 2,
+                                dashGapLength: 9,
+                                dashColor: dashlineColor.withOpacity(0.31),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:  EdgeInsets.only(
+                              left: screenwidth / width_figma * 85,
+                              right: screenwidth / width_figma * 5,
+                            ),
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: LightBlue.withOpacity(0.31)),
+                              child: Center(
+                                child: Text(
+                                  "2",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 16,
+                                    color: Colors.white.withOpacity(0.51),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(
+                        top:  120,
+                        right: screenwidth / width_figma * 49,
+                      ),
+                      child: Text(
+                        "انتخاب و ثبت مشتری",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:  EdgeInsets.only(
-                      top: screenheight / height_figma * 120,
-                      right: screenwidth / width_figma * 49,
-                    ),
-                    child: Text(
-                      "انتخاب و ثبت مشتری",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:  EdgeInsets.only(
-                      top: screenheight / height_figma * 120,
-                      right: screenwidth / width_figma * 290,
-                    ),
-                    child: Text(
-                      "انتخاب تکنسین",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: graycoloranjamnashode.withOpacity(0.6),
+                    Padding(
+                      padding:  EdgeInsets.only(
+                        top:  120,
+                        right: screenwidth / width_figma * 290,
+                      ),
+                      child: Text(
+                        "انتخاب تکنسین",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: graycoloranjamnashode.withOpacity(0.6),
+                        ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height:  50,
+            ),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: screenwidth / width_figma * 31,
+                  ),
+                  Text(
+                    "زیبا جو",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: meshki,
+                    ),
+                  ),
+                  SizedBox(
+                    width: screenwidth / width_figma * 186,
+                  ),
+                  Text(
+                    "ثبت زیبا جوی جدید ",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: meshki.withOpacity(0.9)),
+                  ),
+                  SizedBox(
+                    width: screenwidth / width_figma * 5,
+                  ),
+                  FlutterSwitch(
+                    width: 32,
+                    height: 15,
+                    toggleSize: 10,
+                    showOnOff: false,
+                    inactiveColor: toggleColor,
+                    activeColor: LightBlue,
+                    value: status,
+                    onToggle: (value) {
+                      setState(() {
+                        status = value;
+                      });
+                      Get.to(NewClientPage1());
+                    },
                   ),
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 50,
-          ),
-          Directionality(
-            textDirection: TextDirection.rtl,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: screenwidth / width_figma * 31,
-                ),
-                Text(
-                  "زیبا جو",
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: meshki,
-                  ),
-                ),
-                SizedBox(
-                  width: screenwidth / width_figma * 186,
-                ),
-                Text(
-                  "ثبت زیبا جوی جدید ",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: meshki.withOpacity(0.9)),
-                ),
-                SizedBox(
-                  width: screenwidth / width_figma * 5,
-                ),
-                FlutterSwitch(
-                  width: 32,
-                  height: 15,
-                  toggleSize: 10,
-                  showOnOff: false,
-                  inactiveColor: toggleColor,
-                  activeColor: LightBlue,
-                  value: status,
-                  onToggle: (value) {
-                    setState(() {
-                      status = value;
-                    });
-                    Get.to(NewClientPage1());
-                  },
-                ),
-              ],
+            SizedBox(
+              height:  26,
             ),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 26,
-          ),
-          Container(
-            width: screenwidth / width_figma * 396,
-            height: screenheight / height_figma * 48,
-            margin: EdgeInsets.only(
-              left: screenwidth / width_figma * 15,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: TextField(
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                suffixIcon: Icon(
-                  Search.search,
-                  color: phonecolor,
-                  size: 20,
-                ),
-                hintText: "جستجو در بین زیباجویان",
-                hintStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: phonecolor,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(32),
-                  borderSide: BorderSide(
-                    color: SendagainColorwhite,
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: outlineborder, width: 2),
-                  borderRadius: BorderRadius.circular(48),
-                ),
+            Container(
+              width: screenwidth / width_figma * 396,
+              height: 48,
+              margin: EdgeInsets.only(
+                left: screenwidth / width_figma * 15,
+                right: screenwidth / width_figma * 15,
               ),
-            ),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 550,
-          ),
-          Padding(
-            padding:  EdgeInsets.only(
-              right: screenwidth / width_figma * 212 ,
-            ),
-            child: GestureDetector(
-              onTap: (){
-
-              },
-              child: Container(
-                width: screenwidth / width_figma * 187,
-                height: screenheight / height_figma * 44,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: LightBlue
-                ),
-                child: Center(
-                  child: Text(
-                    "مرحله بعدی", style: TextStyle(
+              child: TextField(
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                  suffixIcon: Icon(
+                    Search.search,
+                    color: phonecolor,
+                    size: 20,
+                  ),
+                  hintText: "جستجو در بین زیباجویان",
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
                     fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: lightwhite,
+                    color: phonecolor,
                   ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide(
+                      color: SendagainColorwhite,
+                      width: 2,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: outlineborder, width: 2),
+                    borderRadius: BorderRadius.circular(48),
                   ),
                 ),
               ),
             ),
-          )
-        ],
+            SizedBox(
+              height:  550,
+            ),
+            Padding(
+              padding:  EdgeInsets.only(
+                right: screenwidth / width_figma * 212 ,
+              ),
+              child: GestureDetector(
+                onTap: (){
+
+                },
+                child: Container(
+                  width: screenwidth / width_figma * 187,
+                  height:  44,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: LightBlue
+                  ),
+                  child: Center(
+                    child: Text(
+                      "مرحله بعدی", style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: lightwhite,
+                    ),
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

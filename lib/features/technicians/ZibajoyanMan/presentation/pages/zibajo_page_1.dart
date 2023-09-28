@@ -46,7 +46,7 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
           children: [
             Container(
               width: screenwidth / width_figma * 396,
-              height: screenheight / height_figma * 48,
+              height: 48,
               margin: EdgeInsets.only(
                 left: screenwidth / width_figma * 15,
                 right: screenwidth / width_figma * 15,
@@ -80,7 +80,7 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 30,
+              height: 30,
             ),
             FutureBuilder(
               future: ReadJsonData(),
@@ -102,149 +102,141 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                           padding: EdgeInsets.only(
                             right: screenwidth / width_figma * 16,
                             left: screenwidth / width_figma * 16,
+                            top: 4,
+                            bottom: 4,
                           ),
-                          child: Card(
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: screenheight / height_figma * 156,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    right: screenwidth / width_figma * 16,
-                                    left: screenwidth / width_figma * 16,
-                                    top: screenheight / height_figma * 16,
-                                    bottom: screenheight / height_figma * 16,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                              "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
-                                          SizedBox(
-                                            width: screenwidth / width_figma * 10,
-                                          ),
-                                          Container(
-                                            width:
-                                                screenwidth / width_figma * 110,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "کاشت مو",
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w700,
-                                                      color: fontcolor,
-                                                      fontFeatures: [FontFeature('ss01', 1),]
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: screenheight /
-                                                      height_figma *
-                                                      8,
-                                                ),
-                                                Text(
-                                                  "زیباجو:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
-                                                      fontFeatures: [FontFeature('ss01', 1),]
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: screenheight /
-                                                      height_figma *
-                                                      4,
-                                                ),
-                                                Text(
-                                                  items[index].zibajo.toString(),
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: fontcolor,
-                                                      fontFeatures: [FontFeature('ss01', 1),]
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: screenwidth / width_figma * 95,
-                                          ),
-                                          Container(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  height: screenheight /
-                                                      height_figma *
-                                                      27,
-                                                ),
-                                                Text(
-                                                  "تعداد تار مو:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: screenheight /
-                                                      height_figma *
-                                                      4,
-                                                ),
-                                                Text(
-                                                  items[index]
-                                                      .number_of_hairs
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: fontcolor),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: screenheight / height_figma * 8,
-                                      ),
-                                      Container(
-                                        width: screenwidth / width_figma * 364,
-                                        height: screenheight / height_figma * 36,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(36),
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [LightBlue.withOpacity(0.1), White.withOpacity(0.1)]),
+                          child: Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 156,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white),
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  right: screenwidth / width_figma * 16,
+                                  left: screenwidth / width_figma * 16,
+                                  top: 16,
+                                  bottom: 16,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                            "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 10,
                                         ),
-                                        child: Center(
-                                          child: GradientText(
-                                            "دوشنبه 12 آذر 1402 ساعت 14:30",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 14
-                                            ),
-                                            colors: [
-                                              LightBlue,
-                                              LightBlue
+                                        Container(
+                                          width:
+                                              screenwidth / width_figma * 110,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "کاشت مو",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: fontcolor,
+                                                    fontFeatures: [FontFeature('ss01', 1),]
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8,
+                                              ),
+                                              Text(
+                                                "زیباجو:",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: grayColorHome,
+                                                    fontFeatures: [FontFeature('ss01', 1),]
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                items[index].zibajo.toString(),
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor,
+                                                    fontFeatures: [FontFeature('ss01', 1),]
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 95,
+                                        ),
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: 27,
+                                              ),
+                                              Text(
+                                                "تعداد تار مو:",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: grayColorHome,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                items[index]
+                                                    .number_of_hairs
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    Container(
+                                      width: screenwidth / width_figma * 364,
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(36),
+                                        gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [LightBlue.withOpacity(0.1), White.withOpacity(0.1)]),
                                       ),
-                                    ],
-                                  ),
+                                      child: Center(
+                                        child: GradientText(
+                                          "دوشنبه 12 آذر 1402 ساعت 14:30",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 14
+                                          ),
+                                          colors: [
+                                            LightBlue,
+                                            LightBlue
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
