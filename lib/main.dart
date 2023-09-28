@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'peyda',
 
       ),
-      home: Techpages(),
+      home: ClientPage(),
     );
   }
 }

@@ -47,7 +47,7 @@ class _SettingState extends State<Setting> {
             Center(
               child: Container(
                 width: screenwidth / width_figma * 396,
-                height: screenheight / height_figma * 359,
+                height: 359,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
                     color: Colors.white),
@@ -227,11 +227,11 @@ class _SettingState extends State<Setting> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 24,
+              height: 24,
             ),
             Container(
               width: screenwidth / width_figma * 393,
-              height: screenheight / height_figma * 224,
+              height: 224,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32), color: Colors.white),
               child: Directionality(
@@ -326,11 +326,11 @@ class _SettingState extends State<Setting> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 11,
+              height:  11,
             ),
             Container(
               width: screenwidth / width_figma * 393,
-              height: screenheight / height_figma * 501,
+              height: 501,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(32), color: Colors.white),
               child: Directionality(
@@ -343,11 +343,11 @@ class _SettingState extends State<Setting> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 24,
+                          top: 24,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -388,11 +388,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top: 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height:  40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -433,11 +433,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top:  16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height:  40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -478,11 +478,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top: 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height:  40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -523,11 +523,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top:  16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height:  40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -555,7 +555,7 @@ class _SettingState extends State<Setting> {
                                 textDirection: TextDirection.ltr,
                                 child: Container(
                                   width: screenwidth / width_figma * 32,
-                                  height: screenheight / height_figma * 14,
+                                  height:  14,
                                   child: FlutterSwitch(
                                     width: 32,
                                     height: 15,
@@ -578,11 +578,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top:  16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -623,11 +623,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
+                          top:  16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
+                          height:  40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -668,7 +668,7 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 31,
+                          top:  31,
                           right: screenwidth / width_figma * 73.34,
                           left: screenwidth / width_figma * 86,
                         ),
@@ -693,7 +693,7 @@ class _SettingState extends State<Setting> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 9,
+              height:  9,
             ),
           ],
         ),

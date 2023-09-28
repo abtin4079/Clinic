@@ -9,6 +9,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../themes/colors.dart';
 import '../../../Home/domain/entity.dart';
+import '../../../Home/presentation/pages/plant_info.dart';
 
 class TechProfile extends StatefulWidget {
   const TechProfile({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _TechProfileState extends State<TechProfile> {
         title: Text(
           "پروفایل تکنسین",
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 24 * screenheight / height_figma,
             fontWeight: FontWeight.w700,
             color: fontcolor,
           ),
@@ -63,8 +64,8 @@ class _TechProfileState extends State<TechProfile> {
                       ),
                       child: Center(
                         child: Container(
-                          width: 100,
-                          height: 100,
+                          width: 100 * screenheight / height_figma,
+                          height: 100 * screenheight / height_figma,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100),
                               color: Colors.red),
@@ -79,11 +80,12 @@ class _TechProfileState extends State<TechProfile> {
                         child: Text(
                           items2[1].toString(),
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: fontcolor,
-                              fontFeatures: [FontFeature('ss01', 1),]
-                          ),
+                              fontSize: 16 * screenheight / height_figma,
+                              fontWeight: FontWeight.w700,
+                              color: fontcolor,
+                              fontFeatures: [
+                                FontFeature('ss01', 1),
+                              ]),
                         ),
                       ),
                     ),
@@ -95,11 +97,12 @@ class _TechProfileState extends State<TechProfile> {
                         child: Text(
                           "تکنسین کاشت مو و ابرو",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: fontcolor,
-                              fontFeatures: [FontFeature('ss01', 1),]
-                          ),
+                              fontSize: 14 * screenheight / height_figma,
+                              fontWeight: FontWeight.w400,
+                              color: fontcolor,
+                              fontFeatures: [
+                                FontFeature('ss01', 1),
+                              ]),
                         ),
                       ),
                     ),
@@ -121,11 +124,12 @@ class _TechProfileState extends State<TechProfile> {
                               Text(
                                 items2[2].toString(),
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: fontcolor,
-                                    fontFeatures: [FontFeature('ss01', 1),]
-                                ),
+                                    fontSize: 14 * screenheight / height_figma,
+                                    fontWeight: FontWeight.w400,
+                                    color: fontcolor,
+                                    fontFeatures: [
+                                      FontFeature('ss01', 1),
+                                    ]),
                               ),
                               SizedBox(
                                 height: screenheight / height_figma * 24,
@@ -133,7 +137,7 @@ class _TechProfileState extends State<TechProfile> {
                               Text(
                                 items2[3].toString(),
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 14 * screenheight / height_figma,
                                   fontWeight: FontWeight.w400,
                                   color: fontcolor,
                                 ),
@@ -144,7 +148,7 @@ class _TechProfileState extends State<TechProfile> {
                               Text(
                                 "5875486599887548",
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 14 * screenheight / height_figma,
                                   fontWeight: FontWeight.w400,
                                   color: fontcolor,
                                 ),
@@ -160,7 +164,7 @@ class _TechProfileState extends State<TechProfile> {
                                 Text(
                                   "شماره تماس:",
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 14 * screenheight / height_figma,
                                     fontWeight: FontWeight.w400,
                                     color: fontcolor,
                                   ),
@@ -171,11 +175,13 @@ class _TechProfileState extends State<TechProfile> {
                                 Text(
                                   "کد ملی:",
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontSize:
+                                          14 * screenheight / height_figma,
+                                      fontWeight: FontWeight.w400,
+                                      color: fontcolor,
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                                 SizedBox(
                                   height: screenheight / height_figma * 24,
@@ -183,11 +189,13 @@ class _TechProfileState extends State<TechProfile> {
                                 Text(
                                   "شماره کارت:",
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                      fontFeatures: [FontFeature('ss01', 1),]
-                                  ),
+                                      fontSize:
+                                          14 * screenheight / height_figma,
+                                      fontWeight: FontWeight.w400,
+                                      color: fontcolor,
+                                      fontFeatures: [
+                                        FontFeature('ss01', 1),
+                                      ]),
                                 ),
                               ],
                             ),
@@ -271,38 +279,47 @@ class _TechProfileState extends State<TechProfile> {
                     itemCount: items == null ? 0 : items.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {},
-                        child: Center(
-                          child: Card(
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: screenheight / height_figma * 152,
-                              padding: EdgeInsets.only(
-                                right: screenwidth / width_figma * 19,
-                                left: screenwidth / width_figma * 19,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white),
+                        onTap: () {
+                          Get.to(PlantInfo(), arguments: [
+                            items[index].id,
+                            items[index].tech,
+                            items[index].zibajo,
+                            items[index].situation,
+                            items[index].number_of_hairs
+                          ]);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 10,
+                            right: screenwidth / width_figma * 19,
+                            left: screenwidth / width_figma * 19,
+                            bottom: screenheight / height_figma * 10,
+                          ),
+                          child: Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white),
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                  right: screenwidth / width_figma * 12,
-                                  left: screenwidth / width_figma * 12,
-                                  top: screenheight / height_figma * 14,
-                                  bottom: screenheight / height_figma * 14,
+                                  top: screenheight / height_figma * 17,
+                                  right: screenwidth / width_figma * 16,
+                                  left: screenwidth / width_figma * 16,
+                                  bottom: screenheight / height_figma * 17,
                                 ),
-                                child: Directionality(
-                                  textDirection: TextDirection.rtl,
-                                  child: Row(
-                                    children: [
-                                      Image.asset(
-                                          "lib/features/client/Home/presentation/images/gol.png"),
-                                      SizedBox(
-                                        width: screenwidth / width_figma * 10,
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                        "lib/features/client/Home/presentation/images/gol.png"),
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 10,
+                                    ),
+                                    Container(
+                                      width: screenwidth / width_figma * 110,
+                                      child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -311,26 +328,25 @@ class _TechProfileState extends State<TechProfile> {
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [FontFeature('ss01', 1),]),
+                                                color: fontcolor),
                                           ),
                                           SizedBox(
                                             height:
                                                 screenheight / height_figma * 6,
                                           ),
                                           Text(
-                                            "تاریخ:",
+                                            "تکنسین:",
                                             style: TextStyle(
-                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
+                                                fontSize: 14,
                                                 color: grayColorHome),
                                           ),
                                           SizedBox(
                                             height:
-                                                screenheight / height_figma * 4,
+                                                screenheight / height_figma * 3,
                                           ),
                                           Text(
-                                            "سه شنبه 13 آذر",
+                                            items[index].tech.toString(),
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w500,
@@ -343,137 +359,139 @@ class _TechProfileState extends State<TechProfile> {
                                           Text(
                                             "زیباجو:",
                                             style: TextStyle(
-                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
+                                                fontSize: 14,
                                                 color: grayColorHome),
                                           ),
                                           SizedBox(
                                             height:
-                                                screenheight / height_figma * 4,
+                                                screenheight / height_figma * 3,
                                           ),
-                                          Container(
-                                            width:
-                                                screenwidth / width_figma * 110,
-                                            child: Text(
-                                              items[index].zibajo.toString(),
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: grayColorHome,
-                                                  fontFeatures: [FontFeature('ss01', 1),]),
-                                            ),
+                                          Text(
+                                            items[index].zibajo.toString(),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                                color: fontcolor),
                                           ),
                                         ],
                                       ),
-                                      SizedBox(
-                                        width: screenwidth / width_figma * 53,
-                                      ),
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height: screenheight /
-                                                height_figma *
-                                                27,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              "تعداد تار مو:",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height:
-                                                screenheight / height_figma * 4,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              items[index]
-                                                  .number_of_hairs
-                                                  .toString(),
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: fontcolor,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height:
-                                                screenheight / height_figma * 8,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              "وضعیت:",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height:
-                                                screenheight / height_figma * 4,
-                                          ),
-                                          Container(
-                                            width:
-                                                screenwidth / width_figma * 97,
-                                            height: screenheight /
-                                                height_figma *
-                                                21,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(16),
-                                                color: items[index].situation ==
-                                                        "completed"
-                                                    ? LightBlue
-                                                    : items[index].situation ==
-                                                            "Expectation"
-                                                        ? processColor
-                                                        : rediligal),
-                                            child: items[index].situation ==
-                                                    "completed"
-                                                ? Center(
-                                                    child: Text(
-                                                    "تایید شده",
+                                    ),
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 53,
+                                    ),
+                                    Column(
+                                      children: [
+                                        SizedBox(
+                                          height:
+                                              screenheight / height_figma * 25,
+                                        ),
+                                        Text(
+                                          "تار مو:",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14,
+                                              color: grayColorHome),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              screenheight / height_figma * 3,
+                                        ),
+                                        Text(
+                                          items[index]
+                                              .number_of_hairs
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: fontcolor),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              screenheight / height_figma * 6,
+                                        ),
+                                        Text(
+                                          "وضعیت:",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14,
+                                              color: grayColorHome),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              screenheight / height_figma * 3,
+                                        ),
+                                        items[index].situation == "Expectation"
+                                            ? Container(
+                                                width: screenwidth /
+                                                    width_figma *
+                                                    97,
+                                                height: 24,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16),
+                                                    color: processColor),
+                                                child: Center(
+                                                  child: Text(
+                                                    "در انتظار تایید",
                                                     style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                      fontSize: 14,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ))
-                                                : items[index].situation ==
-                                                        "Expectation"
-                                                    ? Center(
-                                                        child: Text(
-                                                        "در انتظار تایید",
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        fontSize: 14,
+                                                        color: Colors.white),
+                                                  ),
+                                                ),
+                                              )
+                                            : items[index].situation ==
+                                                    "completed"
+                                                ? Container(
+                                                    width: screenwidth /
+                                                        width_figma *
+                                                        97,
+                                                    height: 24,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
+                                                        color: LightBlue),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "تایید شده",
                                                         style: TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w800,
-                                                          color: Colors.white,
-                                                        ),
-                                                      ))
-                                                    : Center(
-                                                        child: Text(
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            fontSize: 14,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container(
+                                                    width: screenwidth /
+                                                        width_figma *
+                                                        97,
+                                                    height: 24,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
+                                                        color: rediligal),
+                                                    child: Center(
+                                                      child: Text(
                                                         "در حال انجام",
                                                         style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w800,
-                                                          fontSize: 14,
-                                                          color: Colors.white,
-                                                        ),
-                                                      )),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            fontSize: 14,
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -562,165 +580,162 @@ class _TechProfileState extends State<TechProfile> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {},
-                        child: Center(
-                          child: Card(
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: screenheight / height_figma * 108,
-                              padding: EdgeInsets.only(
-                                left: screenwidth / width_figma * 19,
-                                right: screenwidth / width_figma * 19,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Stack(
-                                  alignment: Alignment.topRight,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 7,
-                                        right: screenwidth / width_figma * 170,
-                                      ),
-                                      child: Text(
-                                        "15000000 ریال",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16,
-                                            color: fontcolor),
-                                      ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 10,
+                            bottom: screenheight / height_figma * 10,
+                            left: screenwidth / width_figma * 10,
+                            right: screenwidth / width_figma * 10,
+                          ),
+                          child: Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 108,
+                            padding: EdgeInsets.only(
+                              top: screenheight / height_figma * 7,
+                              bottom: screenheight / height_figma * 7,
+                              left: screenwidth / width_figma * 18,
+                              right: screenwidth / width_figma * 16,
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white),
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      "15000000 ریال",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16,
+                                          color: fontcolor),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text(
-                                        "از تاریخ:",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: grayColorHome),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text(
-                                        "سه شنبه 13 آذر",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: fontcolor),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 144,
-                                      ),
-                                      child: Text(
-                                        "تا تاریخ:",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: grayColorHome),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right: screenwidth / width_figma * 144,
-                                      ),
-                                      child: Text(
-                                        "سه شنبه 13 آذر ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: fontcolor),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 272,
-                                      ),
-                                      child: Text(
-                                        "وضعیت:",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: grayColorHome),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text(
-                                        "از تاریخ:",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: grayColorHome),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right:
-                                            screenheight / height_figma * 330,
-                                      ),
-                                      child: Container(
-                                        width: screenwidth / width_figma * 97,
-                                        height:
-                                            screenheight / height_figma * 24,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                            color: LightBlue),
-                                        child: items[index].situation ==
-                                                "completed"
-                                            ? Center(
-                                                child: Text(
-                                                "پرداخت شده",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w800,
+                                  ),
+                                  SizedBox(
+                                    height: screenheight / height_figma * 15,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "از تاریخ:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                                screenheight / height_figma * 4,
+                                          ),
+                                          Container(
+                                            width: 100,
+                                            child: Text(
+                                              "سه شنبه 13 آذر",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
                                                   fontSize: 14,
-                                                  color: Colors.white,
-                                                ),
-                                              ))
-                                            : items[index].situation ==
-                                                    "Expectation"
+                                                  color: fontcolor),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 28,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "تا تاریخ:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                                screenheight / height_figma * 4,
+                                          ),
+                                          Container(
+                                            width: 100,
+                                            child: Text(
+                                              "سه شنبه 13 آذر",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: fontcolor),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 28,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "وضعیت:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome),
+                                          ),
+                                          Container(
+                                            width:
+                                                screenwidth / width_figma * 97,
+                                            height: 24,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(16),
+                                                color: LightBlue),
+                                            child: items[index].situation ==
+                                                    "completed"
                                                 ? Center(
                                                     child: Text(
                                                     "پرداخت شده",
                                                     style: TextStyle(
-                                                      fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w800,
+                                                      fontSize: 14,
                                                       color: Colors.white,
                                                     ),
                                                   ))
-                                                : Center(
-                                                    child: Text(
-                                                    "پرداخت نشده",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                      fontSize: 14,
-                                                      color: Colors.white,
-                                                    ),
-                                                  )),
+                                                : items[index].situation ==
+                                                        "Expectation"
+                                                    ? Center(
+                                                        child: Text(
+                                                        "پرداخت شده",
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ))
+                                                    : Center(
+                                                        child: Text(
+                                                        "پرداخت نشده",
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                          fontSize: 14,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )),
+                                          ),
+                                        ],
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -771,11 +786,12 @@ class _TechProfileState extends State<TechProfile> {
                                         "آیا از حذف تکنسین انتخاب شده مطمعن هستید؟"
                                         "\n         تمامی اطلاعات شخص پاک خواهد شد!",
                                         style: TextStyle(
-                                          color: fontcolor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                            fontFeatures: [FontFeature('ss01', 1),]
-                                        ),
+                                            color: fontcolor,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                            fontFeatures: [
+                                              FontFeature('ss01', 1),
+                                            ]),
                                       ),
                                     ),
                                   ),
@@ -857,7 +873,7 @@ class _TechProfileState extends State<TechProfile> {
                       },
                       child: Container(
                         width: screenwidth / width_figma * 120,
-                        height: screenheight / height_figma * 48,
+                        height: 48,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
@@ -891,7 +907,7 @@ class _TechProfileState extends State<TechProfile> {
                       },
                       child: Container(
                         width: screenwidth / width_figma * 120,
-                        height: screenheight / height_figma * 48,
+                        height: 48,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: LightBlue),

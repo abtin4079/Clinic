@@ -41,7 +41,7 @@ class _Tech1State extends State<Tech1> {
           children: [
             Container(
               width: screenwidth / width_figma * 396,
-              height: screenheight / height_figma * 48,
+              height: 48,
               margin: EdgeInsets.only(
                 left: screenwidth / width_figma * 15,
                 right: screenwidth / width_figma * 15,
@@ -91,101 +91,111 @@ class _Tech1State extends State<Tech1> {
                           arguments: [items2[index].id , items2[index].tech_name , items2[index].phone , items2[index].kodemelli]
                           );
                         },
-                        child: Card(
-                          child: Container(
-                            width: screenwidth / width_figma * 396,
-                            height: screenheight / height_figma * 126,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Colors.white),
-                            child: Stack(
-                              alignment: Alignment.topRight,
-                              children: [
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 13,
-                                    right: screenwidth / width_figma * 122.5,
-                                  ),
-                                  child: Text(
-                                    items2[index].tech_name.toString(),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: fontcolor,
-                                    ),
-                                  ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 10,
+                            bottom: 10,
+                            right: screenwidth / width_figma * 19,
+                            left: screenwidth / width_figma * 19,
+                          ),
+                          child: Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: Container(
+                              width: screenwidth / width_figma * 396,
+                              height: 126,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Colors.white),
+                              child: Padding(
+                                padding:  EdgeInsets.only(
+                                  top: screenheight / height_figma * 13,
+                                  bottom: screenheight / height_figma * 13,
+                                  right: screenwidth / width_figma * 16,
                                 ),
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 48,
-                                    right: screenwidth / width_figma * 122.5,
-                                  ),
-                                  child: Text(
-                                    ":شماره تماس",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: grayColorHome,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(100),
+                                          color: Colors.red
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 48,
-                                    right: screenwidth / width_figma * 232.5,
-                                  ),
-                                  child: Text(
-                                    items2[index].phone.toString(),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: fontcolor,
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 10,
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 81,
-                                    right: screenwidth / width_figma * 122.5,
-                                  ),
-                                  child: Text(
-                                    ":کد ملی",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: grayColorHome,
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          child: Text(
+                                            items2[index].tech_name.toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: fontcolor,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 16,
+                                        ),
+                                        Text(
+                                          "شماره تماس:",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: grayColorHome,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 16,
+                                        ),
+                                        Text(
+                                          "کد ملی:",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: grayColorHome,
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 81,
-                                    right: screenwidth / width_figma * 232.5,
-                                  ),
-                                  child: Text(
-                                    items2[index].kodemelli.toString(),
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      color: fontcolor,
+                                    Directionality(
+                                      textDirection: TextDirection.ltr,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            height: 35,
+                                          ),
+                                          Text(
+                                            items2[index].phone.toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: fontcolor,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 16,
+                                          ),
+                                          Text(
+                                            items2[index].kodemelli.toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: fontcolor,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding:  EdgeInsets.only(
-                                    top: screenheight / height_figma * 13,
-                                    right: screenwidth / width_figma * 12.5,
-                                  ),
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: Colors.red
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
@@ -208,7 +218,7 @@ class _Tech1State extends State<Tech1> {
               },
               child: Center(
                 child: Container(
-                  height: screenheight / height_figma * 50,
+                  height: 50,
                   width: screenwidth / width_figma * 364,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(48),

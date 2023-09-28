@@ -50,15 +50,15 @@ class _NotifState extends State<Notif> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 19,
-                          bottom: screenheight / height_figma * 19,
+                          top:  19,
+                          bottom:  19,
                           right: screenwidth / width_figma * 47,
                           left: screenwidth / width_figma * 47,
                         ),
                         child: Card(
                           child: Container(
                             width: screenwidth / width_figma * 396,
-                            height: screenheight / height_figma * 152,
+                            height:  152,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 border:
@@ -71,7 +71,7 @@ class _NotifState extends State<Notif> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.only(
-                                      top: screenheight / height_figma * 7,
+                                      top:  7,
                                       right: screenwidth / width_figma * 14,
                                     ),
                                     child: Text(
@@ -84,7 +84,7 @@ class _NotifState extends State<Notif> {
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(
-                                      top: screenheight / height_figma * 14,
+                                      top:  14,
                                       right: screenwidth / width_figma * 16,
                                       left: screenwidth / width_figma * 20,
                                     ),
@@ -105,13 +105,12 @@ class _NotifState extends State<Notif> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.only(
-                                          top: screenheight / height_figma * 12,
+                                          top:  12,
                                         ),
                                         child: Container(
                                           width:
                                               screenwidth / width_figma * 146,
-                                          height:
-                                              screenheight / height_figma * 33,
+                                          height: 33,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(4),
@@ -150,7 +149,7 @@ class _NotifState extends State<Notif> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 15,
+                          top:  15,
                           left: screenwidth / width_figma * 64,
                         ),
                         child: Container(

@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
           children: [
             Container(
               width: screenwidth / width_figma * 396,
-              height: screenheight / height_figma * 48,
+              height: 48,
               margin: EdgeInsets.only(
                 left: screenwidth / width_figma * 15,
                 right: screenwidth / width_figma * 15,
@@ -93,8 +93,8 @@ class _HomeState extends State<Home> {
                   margin: EdgeInsets.only(
                     right: screenwidth / width_figma * 20,
                   ),
-                  child: MaterialButton(
-                      onPressed: () {},
+                  child: GestureDetector(
+                      onTap: () {},
                       child: Image.asset(
                           "lib/features/client/Home/presentation/images/date.png")),
                 ),
@@ -130,19 +130,18 @@ class _HomeState extends State<Home> {
                       return GestureDetector(
                         onTap: () {
                           Get.to(PlantInfo(), arguments: [
-                            items[index].id,
                             items[index].tech,
                             items[index].zibajo,
                             items[index].situation,
-                            items[index].number_of_hairs
+                            items[index].number_of_hairs.toString(),
                           ]);
                         },
                         child: Padding(
                           padding: EdgeInsets.only(
-                            top: screenheight / height_figma * 10,
+                            top: 10,
                             right: screenwidth / width_figma * 19,
                             left: screenwidth / width_figma * 19,
-                            bottom: screenheight / height_figma * 10,
+                            bottom: 10,
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
@@ -243,17 +242,21 @@ class _HomeState extends State<Home> {
                                               color: grayColorHome),
                                         ),
                                         SizedBox(
-                                          height: screenheight / height_figma * 3,
+                                          height:
+                                              screenheight / height_figma * 3,
                                         ),
                                         Text(
-                                          items[index].number_of_hairs.toString(),
+                                          items[index]
+                                              .number_of_hairs
+                                              .toString(),
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
                                               color: fontcolor),
                                         ),
                                         SizedBox(
-                                          height: screenheight / height_figma * 6,
+                                          height:
+                                              screenheight / height_figma * 6,
                                         ),
                                         Text(
                                           "وضعیت:",
@@ -263,19 +266,19 @@ class _HomeState extends State<Home> {
                                               color: grayColorHome),
                                         ),
                                         SizedBox(
-                                          height: screenheight / height_figma * 3,
+                                          height:
+                                              screenheight / height_figma * 3,
                                         ),
                                         items[index].situation == "Expectation"
                                             ? Container(
                                                 width: screenwidth /
                                                     width_figma *
                                                     97,
-                                                height: screenheight /
-                                                    height_figma *
-                                                    24,
+                                                height: 24,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(16),
+                                                        BorderRadius.circular(
+                                                            16),
                                                     color: processColor),
                                                 child: Center(
                                                   child: Text(
@@ -294,13 +297,11 @@ class _HomeState extends State<Home> {
                                                     width: screenwidth /
                                                         width_figma *
                                                         97,
-                                                    height: screenheight /
-                                                        height_figma *
-                                                        24,
+                                                    height: 24,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                16),
+                                                            BorderRadius
+                                                                .circular(16),
                                                         color: LightBlue),
                                                     child: Center(
                                                       child: Text(
@@ -309,7 +310,8 @@ class _HomeState extends State<Home> {
                                                             fontWeight:
                                                                 FontWeight.w800,
                                                             fontSize: 14,
-                                                            color: Colors.white),
+                                                            color:
+                                                                Colors.white),
                                                       ),
                                                     ),
                                                   )
@@ -317,13 +319,11 @@ class _HomeState extends State<Home> {
                                                     width: screenwidth /
                                                         width_figma *
                                                         97,
-                                                    height: screenheight /
-                                                        height_figma *
-                                                        24,
+                                                    height: 24,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.circular(
-                                                                16),
+                                                            BorderRadius
+                                                                .circular(16),
                                                         color: rediligal),
                                                     child: Center(
                                                       child: Text(
@@ -332,7 +332,8 @@ class _HomeState extends State<Home> {
                                                             fontWeight:
                                                                 FontWeight.w800,
                                                             fontSize: 14,
-                                                            color: Colors.white),
+                                                            color:
+                                                                Colors.white),
                                                       ),
                                                     ),
                                                   ),

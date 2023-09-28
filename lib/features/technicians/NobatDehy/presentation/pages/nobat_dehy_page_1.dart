@@ -23,6 +23,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
+    final CoefficientHeight = screenheight / height_figma;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -33,7 +34,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
         title: Text(
           "نوبت دهی",
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 24 * CoefficientHeight,
             fontWeight: FontWeight.w700,
             color: fontcolor,
           ),
@@ -65,7 +66,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                       ),
                       child: Container(
                         width: screenwidth / width_figma * 396,
-                        height: 174,                                              // inja man as context estefade nakardam
+                        height: screenheight / height_figma * 174,                                              // inja man as context estefade nakardam
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
@@ -81,26 +82,80 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Row(
-                                  children: [
-                                    Image.asset("lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 8,
-                                    ),
-                                    Container(
-                                      width:
-                                      screenwidth / width_figma * 110,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                Container(
+                                  width: screenwidth / width_figma * 364,
+                                  height: screenheight /  height_figma * 85,
+                                  child: Row(
+                                    children: [
+                                      Image.asset("lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 8,
+                                      ),
+                                      Container(
+                                        width:
+                                        screenwidth / width_figma * 110,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "کاشت مو",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: fontcolor,
+                                                  fontFeatures: [FontFeature('ss01', 1),]
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: screenheight /
+                                                  height_figma *
+                                                  16,
+                                            ),
+                                            Text(
+                                              "زیباجو:",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: screenheight /
+                                                  height_figma *
+                                                  4,
+                                            ),
+                                            Text(
+                                              items[index].zibajo.toString(),
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: fontcolor,
+                                                  fontFeatures: [FontFeature('ss01', 1),]),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 64,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            "کاشت مو",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [FontFeature('ss01', 1),]
+                                          Container(
+                                            width: screenwidth / width_figma * 100,
+                                            height: screenheight /height_figma * 24,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(16),
+                                              color: processColor
+                                            ),
+                                            child: Center(
+                                              child: Text("در انتظار تایید", style: TextStyle(
+                                                fontWeight: FontWeight.w800,
+                                                fontSize: 14,
+                                                color: Colors.white,
+                                                  fontFeatures: [FontFeature('ss01', 1),]
+                                              ),),
                                             ),
                                           ),
                                           SizedBox(
@@ -109,7 +164,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                                 16,
                                           ),
                                           Text(
-                                            "زیباجو:",
+                                            "تاریخ:",
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 14,
@@ -122,66 +177,16 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                                 4,
                                           ),
                                           Text(
-                                            items[index].zibajo.toString(),
+                                            "دوشنبه 12 آذر",
                                             style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w500,
-                                                color: fontcolor,
-                                                fontFeatures: [FontFeature('ss01', 1),]),
+                                                color: fontcolor),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 64,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: screenwidth / width_figma * 100,
-                                          height: screenheight /height_figma * 24,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(16),
-                                            color: processColor
-                                          ),
-                                          child: Center(
-                                            child: Text("در انتظار تایید", style: TextStyle(
-                                              fontWeight: FontWeight.w800,
-                                              fontSize: 14,
-                                              color: Colors.white,
-                                                fontFeatures: [FontFeature('ss01', 1),]
-                                            ),),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight /
-                                              height_figma *
-                                              16,
-                                        ),
-                                        Text(
-                                          "تاریخ:",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: grayColorHome,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight /
-                                              height_figma *
-                                              4,
-                                        ),
-                                        Text(
-                                          "دوشنبه 12 آذر",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: fontcolor),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                                 SizedBox(
                                   height: screenheight / height_figma * 16,

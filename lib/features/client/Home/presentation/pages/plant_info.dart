@@ -22,7 +22,7 @@ class _PlantInfoState extends State<PlantInfo> {
     var items = Get.arguments;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: backgroundHome,
       appBar: AppBar(
         automaticallyImplyLeading: true,
         title: const Text(
@@ -74,7 +74,7 @@ class _PlantInfoState extends State<PlantInfo> {
                               top: screenheight / height_figma * 8,
                             ),
                             width: screenwidth / width_figma * 100,
-                            height: screenheight / height_figma * 24,
+                            height: 24,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 color: processColor),
@@ -649,7 +649,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                 },
                                 child: Container(
                                   width: screenwidth / width_figma * 120,
-                                  height: screenheight / height_figma * 48,
+                                  height: 48,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
@@ -801,7 +801,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                 },
                                 child: Container(
                                   width: screenwidth / width_figma * 120,
-                                  height: screenheight / height_figma * 48,
+                                  height: 48,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: LightBlue),
@@ -855,7 +855,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                   top: screenheight / height_figma * 8,
                                 ),
                                 width: screenwidth / width_figma * 100,
-                                height: screenheight / height_figma * 24,
+                                height: 24,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16),
                                     color: floatingActionColor),
@@ -1290,7 +1290,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                       top: screenheight / height_figma * 8,
                                     ),
                                     width: screenwidth / width_figma * 100,
-                                    height: screenheight / height_figma * 24,
+                                    height: 24,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: rediligal),
@@ -1637,7 +1637,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                       top: screenheight / height_figma * 8,
                                     ),
                                     width: screenwidth / width_figma * 100,
-                                    height: screenheight / height_figma * 24,
+                                    height: 24,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: graycoloranjamnashode),
