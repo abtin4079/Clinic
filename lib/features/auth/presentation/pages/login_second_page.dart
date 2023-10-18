@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:clinic/features/auth/controller/login_controller.dart';
 import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:clinic/themes/colors.dart';
@@ -36,11 +36,11 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
   }
 
 
-
+  final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
-    final numbercontroller = TextEditingController();
+    String userOtp = '' ;
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -129,6 +129,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                         child: Pinput(
                           length: 5,
                           crossAxisAlignment: CrossAxisAlignment.center,
+                          controller: loginController.otpcontroller,
                           defaultPinTheme: PinTheme(
                             height: 48,
                             width: 48,
@@ -150,6 +151,12 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        setState(() {
+                          userOtp = loginController.otpcontroller.text;
+                          print(userOtp);
+
+                          loginController.loginwithphone();
+                        });
                       },
                       child: Container(
                         margin: EdgeInsets.only(

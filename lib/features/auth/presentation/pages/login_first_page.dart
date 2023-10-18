@@ -1,3 +1,5 @@
+import 'package:clinic/features/auth/controller/login_controller.dart';
+import 'package:clinic/features/auth/controller/send_otp_controller.dart';
 import 'package:clinic/features/auth/presentation/pages/login_second_page.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,12 @@ class LoginFirstPage extends StatefulWidget {
 }
 
 class _LoginFirstPageState extends State<LoginFirstPage> {
+
+final SendOTPController sendOTPController = Get.put(SendOTPController());
+
   @override
   Widget build(BuildContext context) {
-    final numbercontroller = TextEditingController();
+    String userNumber = '';
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -62,7 +67,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                     Container(
                       width: screenwidth,
                       height: screenheight / height_figma * 683,
-                      decoration: BoxDecoration(
+                      decoration:const BoxDecoration(
                         borderRadius:
                             BorderRadius.only(topLeft: Radius.circular(100)),
                         color: Colors.white,
@@ -106,7 +111,7 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                         ),
                         child: TextField(
                           textAlign: TextAlign.right,
-                          controller: numbercontroller,
+                          controller: sendOTPController.phonenumberController,
                           decoration: InputDecoration(
                             hintText: '0917.......',
                             hintStyle: TextStyle(
@@ -130,7 +135,9 @@ class _LoginFirstPageState extends State<LoginFirstPage> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          Get.to(() => LoginSecondPage());
+                          userNumber = sendOTPController.phonenumberController.text;
+                          print(userNumber);
+                          sendOTPController.registerwithphone();
                         });
                       },
                       child: Container(
