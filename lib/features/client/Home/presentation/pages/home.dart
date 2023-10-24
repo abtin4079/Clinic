@@ -1,4 +1,4 @@
-import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
+import 'package:clinic/features/client/Home/Controller/process_controller.dart';
 import 'package:clinic/features/client/Home/domain/entity.dart';
 import 'package:clinic/features/client/Home/presentation/pages/plant_info.dart';
 import 'package:clinic/themes/colors.dart';
@@ -16,6 +16,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  final ProcessController processController = Get.put(ProcessController());
+
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -94,7 +98,9 @@ class _HomeState extends State<Home> {
                     right: screenwidth / width_figma * 20,
                   ),
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        processController.fetchprocesses();
+                      },
                       child: Image.asset(
                           "lib/features/client/Home/presentation/images/date.png")),
                 ),
@@ -125,7 +131,7 @@ class _HomeState extends State<Home> {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: items == null ? 0 : items.length,
+                    itemCount: items == null ? 0 : items.length, // fjdkfjdfkgdfgdfk;jgkgjdfklfdjk;jb;dfkfjd;fmd;klg
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -145,7 +151,7 @@ class _HomeState extends State<Home> {
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
-                            height: 160,
+                            height: 164,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 color: Colors.white),

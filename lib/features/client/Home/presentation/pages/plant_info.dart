@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../../../themes/colors.dart';
 
 class PlantInfo extends StatefulWidget {
@@ -25,6 +24,8 @@ class _PlantInfoState extends State<PlantInfo> {
       backgroundColor: backgroundHome,
       appBar: AppBar(
         automaticallyImplyLeading: true,
+
+        backgroundColor: backgroundHome,
         title: const Text(
           "اطلاعات کاشت",
           style: TextStyle(

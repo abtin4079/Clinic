@@ -48,7 +48,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
             Center(
               child: Container(
                 width: screenwidth / width_figma * 396,
-                height: screenheight / height_figma * 359,
+                height: 359,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
                     color: Colors.white),
@@ -228,146 +228,162 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {},
-                        child: Center(
-                          child: Card(
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: screenheight / height_figma * 108,
-                              padding: EdgeInsets.only(
-                                left: screenwidth / width_figma * 19,
-                                right: screenwidth / width_figma * 19,
-                              ),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white
-                              ),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Stack(
-                                  alignment: Alignment.topRight,
-                                  children: [
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 7,
-                                        right: screenwidth / width_figma * 170,
-                                      ),
-                                      child: Text("15000000 ریال", style: TextStyle(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 10,
+                            bottom: screenheight / height_figma * 10,
+                            left: screenwidth / width_figma * 10,
+                            right: screenwidth / width_figma * 10,
+                          ),
+                          child: Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 108,
+                            padding: EdgeInsets.only(
+                              top: screenheight / height_figma * 7,
+                              bottom: screenheight / height_figma * 7,
+                              left: screenwidth / width_figma * 18,
+                              right: screenwidth / width_figma * 16,
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                color: Colors.white),
+                            child: Directionality(
+                              textDirection: TextDirection.rtl,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      "15000000 ریال",
+                                      style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 16,
-                                          color: fontcolor
-                                      ),),
+                                          color: fontcolor),
                                     ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text("از تاریخ:", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: grayColorHome
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text("سه شنبه 13 آذر", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: fontcolor
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 144,
-                                      ),
-                                      child: Text("تا تاریخ:", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: grayColorHome
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right: screenwidth / width_figma * 144,
-                                      ),
-                                      child: Text("سه شنبه 13 آذر ", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: fontcolor
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 272,
-                                      ),
-                                      child: Text("وضعیت:", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: grayColorHome
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 41,
-                                        right: screenwidth / width_figma * 16,
-                                      ),
-                                      child: Text("از تاریخ:", style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: grayColorHome
-                                      ),),
-                                    ),
-                                    Padding(
-                                      padding:  EdgeInsets.only(
-                                        top: screenheight / height_figma * 62,
-                                        right: screenheight / height_figma * 330,
-                                      ),
-                                      child: Container(
-                                        width: screenwidth / width_figma * 97,
-                                        height: screenheight / height_figma * 24,
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(16),
-                                            color: LightBlue),
-                                        child: items[index].situation == "completed"
-                                            ? Center(
-                                            child: Text(
-                                              "پرداخت شده",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w800,
+                                  ),
+                                  SizedBox(
+                                    height: screenheight / height_figma * 15,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "از تاریخ:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
                                                 fontSize: 14,
-                                                color: Colors.white,
-                                              ),
-                                            ))
-                                            : items[index].situation ==
-                                            "Expectation"
-                                            ? Center(
+                                                color: grayColorHome),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                            screenheight / height_figma * 4,
+                                          ),
+                                          Container(
+                                            width: 100,
                                             child: Text(
-                                              "پرداخت شده",
+                                              "سه شنبه 13 آذر",
                                               style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w800,
-                                                color: Colors.white,
-                                              ),
-                                            ))
-                                            : Center(
-                                            child: Text(
-                                              "پرداخت نشده",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w800,
-                                                fontSize: 14,
-                                                color: Colors.white,
-                                              ),
-                                            )),
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: fontcolor),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    )
-                                  ],
-                                ),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 28,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "تا تاریخ:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                            screenheight / height_figma * 4,
+                                          ),
+                                          Container(
+                                            width: 100,
+                                            child: Text(
+                                              "سه شنبه 13 آذر",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: fontcolor),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: screenwidth / width_figma * 28,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "وضعیت:",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: grayColorHome),
+                                          ),
+                                          Container(
+                                            width:
+                                            screenwidth / width_figma * 97,
+                                            height: 24,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(16),
+                                                color: LightBlue),
+                                            child: items[index].situation ==
+                                                "completed"
+                                                ? Center(
+                                                child: Text(
+                                                  "پرداخت شده",
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.w800,
+                                                    fontSize: 14,
+                                                    color: Colors.white,
+                                                  ),
+                                                ))
+                                                : items[index].situation ==
+                                                "Expectation"
+                                                ? Center(
+                                                child: Text(
+                                                  "پرداخت شده",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                    FontWeight.w800,
+                                                    color: Colors.white,
+                                                  ),
+                                                ))
+                                                : Center(
+                                                child: Text(
+                                                  "پرداخت نشده",
+                                                  style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.w800,
+                                                    fontSize: 14,
+                                                    color: Colors.white,
+                                                  ),
+                                                )),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),

@@ -297,7 +297,7 @@ class _TechProfileState extends State<TechProfile> {
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
-                            height: 160,
+                            height: 164,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 color: Colors.white),

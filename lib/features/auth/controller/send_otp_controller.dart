@@ -16,10 +16,9 @@ class SendOTPController extends GetxController{
   Future<void> registerwithphone() async {
     try{
       var headers = {'Content-Type' : 'application/json'};
-     // var uri = Uri.https( 'http://185.221.237.51/auth', '/sendotp' );
+
       var uri = Uri.http('185.221.237.51', '/auth/sendotp');
-    //  Uri url = Uri.parse("http://185.221.237.51/auth/sendotp");
-    //  Uri url1 = Uri.parse("http://185.221.237.51/clinic/images/test.jpg");
+
 
       Map<dynamic, String> body = {
         'phone_number': phonenumberController.text,

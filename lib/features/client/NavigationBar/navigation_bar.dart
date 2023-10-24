@@ -57,7 +57,7 @@ class _ClientPageState extends State<ClientPage> {
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: Container(
-          height: screenheight / height_figma * 96,
+          height: 96,
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'package:clinic/features/auth/controller/refresh_token_controller.dart';
 import 'package:clinic/features/auth/controller/send_otp_controller.dart';
+import 'package:clinic/features/client/Home/Controller/remote_service.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/technicians/NavigationBar/navigation_bar_for_tech.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/api_endpoint.dart';
@@ -13,6 +16,7 @@ class LoginController extends GetxController {
 
   TextEditingController otpcontroller = TextEditingController();
   final SendOTPController sendOTPController = Get.put(SendOTPController());
+
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -36,13 +40,20 @@ class LoginController extends GetxController {
         var user = json['user'];
 
         print(user);
-        if(user == 'supervisor'){
+        if(user == 'Supervisor'){
           Get.off(ClientPage());
         } else {
           Get.off(Techpages());
         }
+
         final SharedPreferences ? prefs = await _prefs ;
-        await prefs ?.setString('user', user);
+
+        await prefs ?.setString('access_token', access_token);
+        await prefs ?.setString('refresh_token', refresh_token);
+
+        // testing that if the access_token and refresh_token is saved or not in the console
+        String? thhr = prefs?.getString('access_token');
+        print(thhr);
         otpcontroller.clear();
         sendOTPController.phonenumberController.clear();
       }
@@ -52,6 +63,7 @@ class LoginController extends GetxController {
 
     }catch (e){
       Get.back();
+      print(e.toString());
       showDialog(context: Get.context!, builder: (context){
         return SimpleDialog(
           title: Text('Error'),
