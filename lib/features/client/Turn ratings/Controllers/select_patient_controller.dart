@@ -1,17 +1,31 @@
-import 'package:clinic/features/auth/controller/login_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Models/list_of_process.dart';
+import '../Models/select_patient_model.dart';
 
-class RemoteService {
+class SelectPatientController extends GetxController {
+  TextEditingController searchController = TextEditingController();
+
+  RxList<Item> items = <Item>[].obs;
+
+  void fetchPatient() async {
+    var patient_feature =
+        await RemoteSerice1.fetchPatients(searchController.text);
+
+    print(patient_feature);
+    if (patient_feature != null) {
+      items.value = patient_feature as List<Item>;
+    }
+  }
+}
+
+class RemoteSerice1 {
   static var client = http.Client();
 
-  static Future<List<Item>?> fetchProcesses() async {
+  static Future<List<Item>?> fetchPatients(String search) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       // getting token from share preferences
@@ -23,36 +37,32 @@ class RemoteService {
         'Authorization': 'Bearer $accessToken'
       };
 
-      // initialized the query
       final queryParameters = {
-        'year': '1402',
-        'month': '10',
-        'day': '17',
+        'search': search,
         'page': '1',
         'per_page': '10',
       };
 
-      // creating out url
-      var uri = Uri.http('185.221.237.51',
-          '/clinic/supervisor_home_page/list_of_processes', queryParameters);
+      var uri = Uri.http('185.221.237.51', '/clinic/new_process/search_pationt',
+          queryParameters);
 
-      var response = await client.get(uri, headers: headers);
+      var response = await http.get(uri, headers: headers);
       print(response.body);
       if (response.statusCode == 200) {
         var jsonString = response.body;
-        final listOfProcess = listOfProcessFromJson(jsonString);
-        print(listOfProcess.items);
-        return listOfProcess.items;
+        final patientFeature = selectPatientModelFromJson(jsonString);
+        print(patientFeature.items);
+        return patientFeature.items;
       }
-      if (response == 400){
+      if (response == 400) {
         print(response.body);
         return null;
       }
-      if (response == 403){
+      if (response == 403) {
         print(response.body);
         return null;
       }
-      if (response == 500){
+      if (response == 500) {
         print(response.body);
         return null;
       }

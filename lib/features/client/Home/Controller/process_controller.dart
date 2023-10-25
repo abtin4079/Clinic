@@ -7,7 +7,6 @@ class ProcessController extends GetxController {
 
  // var ProcessList = List<Item>().obs;
   RxList<Item> items = <Item>[].obs;
-    final FlutterSecureStorage secureStorage = Get.put(FlutterSecureStorage());
 
     void fetchprocesses() async {
 

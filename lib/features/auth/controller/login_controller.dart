@@ -53,7 +53,7 @@ class LoginController extends GetxController {
 
         // testing that if the access_token and refresh_token is saved or not in the console
         String? thhr = prefs?.getString('access_token');
-        print(thhr);
+        print('aceess token is : ${thhr}');
         otpcontroller.clear();
         sendOTPController.phonenumberController.clear();
       }

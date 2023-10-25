@@ -1,48 +1,52 @@
-import 'package:clinic/features/auth/controller/login_controller.dart';
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Models/list_of_process.dart';
+import '../Select_Tech/presentation/pages/select_tech_page_1.dart';
 
-class RemoteService {
+class NewPatientController extends GetxController {
   static var client = http.Client();
 
-  static Future<List<Item>?> fetchProcesses() async {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController idController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
+
+  Future<void> registerNewPatient() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
-      // getting token from share preferences
       String? accessToken = prefs.getString('access_token');
 
-      // initialize the header
       var headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $accessToken'
       };
 
-      // initialized the query
-      final queryParameters = {
-        'year': '1402',
-        'month': '10',
-        'day': '17',
-        'page': '1',
-        'per_page': '10',
+      // creating the body
+
+      Map<dynamic, String> body = {
+        "full_name": nameController.text,
+        "national_code": idController.text,
+        "phone_number": phoneNumberController.text,
       };
 
       // creating out url
-      var uri = Uri.http('185.221.237.51',
-          '/clinic/supervisor_home_page/list_of_processes', queryParameters);
+      var uri =
+          Uri.http('185.221.237.51', '/clinic/new_process/create_new_pationt');
 
-      var response = await client.get(uri, headers: headers);
-      print(response.body);
-      if (response.statusCode == 200) {
-        var jsonString = response.body;
-        final listOfProcess = listOfProcessFromJson(jsonString);
-        print(listOfProcess.items);
-        return listOfProcess.items;
+      var response =
+          await http.post(uri, headers: headers, body: jsonEncode(body));
+      if(response.statusCode == 200){
+        print(response.body);
+
+        Get.off(SelectTechPage1());
+
+        nameController.clear();
+        idController.clear();
+        phoneNumberController.clear();
       }
       if (response == 400){
         print(response.body);
@@ -58,6 +62,7 @@ class RemoteService {
       }
     } catch (e) {
       Get.back();
+      print(e.toString());
       showDialog(
           context: Get.context!,
           builder: (context) {
@@ -68,6 +73,5 @@ class RemoteService {
             );
           });
     }
-    return null;
   }
 }

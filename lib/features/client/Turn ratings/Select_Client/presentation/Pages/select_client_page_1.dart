@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../NavigationBar/Icons/search_icons.dart';
+import '../../../Controllers/select_patient_controller.dart';
 
 class SelectClientPage1 extends StatefulWidget {
   const SelectClientPage1({Key? key}) : super(key: key);
@@ -19,7 +20,11 @@ class SelectClientPage1 extends StatefulWidget {
 }
 
 class _SelectClientPage1State extends State<SelectClientPage1> {
+
+  SelectPatientController selectPatientController = Get.put(SelectPatientController());
+
   bool status = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -227,30 +232,33 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                 left: screenwidth / width_figma * 15,
                 right: screenwidth / width_figma * 15,
               ),
-              child: TextField(
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                  suffixIcon: Icon(
-                    Search.search,
-                    color: phonecolor,
-                    size: 20,
-                  ),
-                  hintText: "جستجو در بین زیباجویان",
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: phonecolor,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(32),
-                    borderSide: BorderSide(
-                      color: SendagainColorwhite,
-                      width: 2,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: TextField(
+                  controller: selectPatientController.searchController,
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Search.search,
+                      color: phonecolor,
+                      size: 20,
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: outlineborder, width: 2),
-                    borderRadius: BorderRadius.circular(48),
+                    hintText: "جستجو در بین زیباجویان",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: phonecolor,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32),
+                      borderSide: BorderSide(
+                        color: SendagainColorwhite,
+                        width: 2,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: outlineborder, width: 2),
+                      borderRadius: BorderRadius.circular(48),
+                    ),
                   ),
                 ),
               ),
@@ -264,7 +272,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
               child: GestureDetector(
                 onTap: (){
-
+                  selectPatientController.fetchPatient();
                 },
                 child: Container(
                   width: screenwidth / width_figma * 187,

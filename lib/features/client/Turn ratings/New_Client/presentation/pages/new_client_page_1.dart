@@ -1,4 +1,5 @@
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/new_patient_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_1.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_1.dart';
 import 'package:dotted_line/dotted_line.dart';
@@ -17,6 +18,9 @@ class NewClientPage1 extends StatefulWidget {
 }
 
 class _NewClientPage1State extends State<NewClientPage1> {
+
+  final NewPatientController newPatientController = Get.put(NewPatientController());
+
   bool status = true;
 
   @override
@@ -246,6 +250,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                   right: screenwidth / width_figma * 15,
                 ),
                 child: TextField(
+                  controller: newPatientController.nameController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: "نام کامل زیباجو را وارد کنید",
@@ -295,6 +300,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                   right: screenwidth / width_figma * 15,
                 ),
                 child: TextField(
+                  controller: newPatientController.idController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: "کد ملی زیباجو را وارد کنید",
@@ -344,6 +350,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                   right: screenwidth / width_figma * 15,
                 ),
                 child: TextField(
+                  controller: newPatientController.phoneNumberController,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: "شماره تماس معتبر زیباجو را وارد کنید",
@@ -471,7 +478,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(SelectTechPage1());
+                    newPatientController.registerNewPatient();
                   },
                   child: Container(
                     width: screenwidth / width_figma * 187,
