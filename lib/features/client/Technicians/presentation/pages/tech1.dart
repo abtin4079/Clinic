@@ -1,4 +1,4 @@
-import 'package:clinic/features/client/Technicians/domain/entity.dart';
+import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/add_tech.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../../../../themes/colors.dart';
 import '../../../NavigationBar/Icons/navigation_bar_icons.dart';
+import '../domain/entity.dart';
 
 class Tech1 extends StatefulWidget {
   const Tech1({Key? key}) : super(key: key);
@@ -15,6 +16,9 @@ class Tech1 extends StatefulWidget {
 }
 
 class _Tech1State extends State<Tech1> {
+  final SearchTechController searchTechController =
+      Get.put(SearchTechController());
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -39,6 +43,9 @@ class _Tech1State extends State<Tech1> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            ElevatedButton(onPressed: (){
+              searchTechController.fetchPatient();
+            }, child: Text("get seach")),
             Container(
               width: screenwidth / width_figma * 396,
               height: 48,
@@ -47,9 +54,14 @@ class _Tech1State extends State<Tech1> {
                 right: screenwidth / width_figma * 15,
               ),
               child: TextField(
+                controller: searchTechController.searchController,
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
-                  suffixIcon: Icon(Search.search, size: 24,color: phonecolor,),
+                  suffixIcon: Icon(
+                    Search.search,
+                    size: 24,
+                    color: phonecolor,
+                  ),
                   hintText: "جستجو در بین تکنسین ها",
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -87,9 +99,12 @@ class _Tech1State extends State<Tech1> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.to(TechProfile(),
-                          arguments: [items2[index].id , items2[index].tech_name , items2[index].phone , items2[index].kodemelli]
-                          );
+                          Get.to(TechProfile(), arguments: [
+                            items2[index].id,
+                            items2[index].tech_name,
+                            items2[index].phone,
+                            items2[index].kodemelli
+                          ]);
                         },
                         child: Padding(
                           padding: EdgeInsets.only(
@@ -107,7 +122,7 @@ class _Tech1State extends State<Tech1> {
                                   borderRadius: BorderRadius.circular(16),
                                   color: Colors.white),
                               child: Padding(
-                                padding:  EdgeInsets.only(
+                                padding: EdgeInsets.only(
                                   top: screenheight / height_figma * 13,
                                   bottom: screenheight / height_figma * 13,
                                   right: screenwidth / width_figma * 16,
@@ -118,15 +133,16 @@ class _Tech1State extends State<Tech1> {
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(100),
-                                          color: Colors.red
-                                      ),
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: Colors.red),
                                     ),
                                     SizedBox(
                                       width: screenwidth / width_figma * 10,
                                     ),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                           width: 100,
@@ -166,7 +182,8 @@ class _Tech1State extends State<Tech1> {
                                     Directionality(
                                       textDirection: TextDirection.ltr,
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
                                             height: 35,
@@ -213,7 +230,7 @@ class _Tech1State extends State<Tech1> {
               height: screenheight / height_figma * 15,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.to(AddTech());
               },
               child: Center(
@@ -223,20 +240,18 @@ class _Tech1State extends State<Tech1> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(48),
                     gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        rediligal,
-                        whiteiligal
-                      ]
-                    ),
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [rediligal, whiteiligal]),
                   ),
                   child: Center(
-                    child: Text("افزودن تکنسین جدید", style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 14,
-                      color: Colors.white
-                    ),),
+                    child: Text(
+                      "افزودن تکنسین جدید",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 14,
+                          color: Colors.white),
+                    ),
                   ),
                 ),
               ),

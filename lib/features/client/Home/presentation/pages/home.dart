@@ -1,3 +1,4 @@
+import 'package:clinic/features/client/Home/Controller/home_page_search_controller.dart';
 import 'package:clinic/features/client/Home/Controller/process_controller.dart';
 import 'package:clinic/features/client/Home/domain/entity.dart';
 import 'package:clinic/features/client/Home/presentation/pages/plant_info.dart';
@@ -18,6 +19,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   final ProcessController processController = Get.put(ProcessController());
+  final HomePageSearchController homePageSearchController = Get.put(HomePageSearchController());
 
 
   @override
@@ -52,6 +54,7 @@ class _HomeState extends State<Home> {
                 right: screenwidth / width_figma * 15,
               ),
               child: TextField(
+                controller: homePageSearchController.searchController,
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
                   suffixIcon: Icon(
@@ -113,8 +116,13 @@ class _HomeState extends State<Home> {
                   margin: EdgeInsets.only(
                     right: screenwidth / width_figma * 16,
                   ),
-                  child: Image.asset(
-                      "lib/features/client/Home/presentation/images/copy.png"),
+                  child: GestureDetector(
+                    onTap: (){
+                      homePageSearchController.fetchPatient();
+                    },
+                    child: Image.asset(
+                        "lib/features/client/Home/presentation/images/copy.png"),
+                  ),
                 ),
               ],
             ),

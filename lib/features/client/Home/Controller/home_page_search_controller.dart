@@ -1,28 +1,28 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Models/select_patient_model.dart';
-
-class SelectPatientController extends GetxController {
+import '../Models/home_page_search_model.dart';
+class HomePageSearchController extends GetxController {
   TextEditingController searchController = TextEditingController();
 
   RxList<Item> items = <Item>[].obs;
 
   void fetchPatient() async {
-    var patient_feature =
-        await RemoteSerice1.fetchPatients(searchController.text);
-        searchController.clear();
+    var home_page_search_item =
+    await RemoteSerice2.fetchPatients(searchController.text);
+    searchController.clear();
 
-    print(patient_feature);
-    if (patient_feature != null) {
-      items.value = patient_feature as List<Item>;
+    print(home_page_search_item);
+    if (home_page_search_item != null) {
+      items.value = home_page_search_item as List<Item>;
     }
   }
+
+
 }
 
-class RemoteSerice1 {
+class RemoteSerice2 {
   static var client = http.Client();
 
   static Future<List<Item>?> fetchPatients(String search) async {
@@ -43,7 +43,7 @@ class RemoteSerice1 {
         'per_page': '1',
       };
 
-      var uri = Uri.http('185.221.237.51', '/clinic/new_process/search_pationt',
+      var uri = Uri.http('185.221.237.51', '/clinic/supervisor_home_page/search_processes',
           queryParameters);
 
       var response = await http.get(uri, headers: headers);
@@ -51,9 +51,9 @@ class RemoteSerice1 {
       if (response.statusCode == 200) {
         print(response.body);
         var jsonString = response.body;
-        final patientFeature = selectPatientModelFromJson(jsonString);
-        print(patientFeature.items);
-        return patientFeature.items;
+        final homePageSearchList = homePageSearchModelFromJson(jsonString);
+        print(homePageSearchList.items);
+        return homePageSearchList.items;
       }
       if (response == 400) {
         print(response.body);

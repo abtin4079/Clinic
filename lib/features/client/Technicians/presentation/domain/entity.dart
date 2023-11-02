@@ -10,9 +10,9 @@ class EntityTech {
   EntityTech(
       {
         this.id,
-    this.tech_name,
-    this.phone,
-    this.kodemelli
+        this.tech_name,
+        this.phone,
+        this.kodemelli
       });
 
   EntityTech.fromJson2(Map<String, dynamic> json)
@@ -28,7 +28,7 @@ class EntityTech {
 
 
 Future<List<EntityTech>>ReadJsonData2() async {
-  final   jsondata = await rootBundle.rootBundle.loadString("lib/features/client/Technicians/domain/fake_database_tech.json");
+  final   jsondata = await rootBundle.rootBundle.loadString("lib/features/client/Technicians/presentation/domain/fake_database_tech.json");
   final list = json.decode(jsondata) as List<dynamic>;
 
   return list.map((e) => EntityTech.fromJson2(e)).toList();

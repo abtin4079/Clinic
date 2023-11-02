@@ -1,10 +1,8 @@
 import 'dart:ui';
-
 import 'package:clinic/features/technicians/NobatDehy/presentation/pages/nobat_dehy_page_2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../../../themes/colors.dart';
 import '../../../../client/Home/domain/entity.dart';
 
@@ -66,7 +64,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                       ),
                       child: Container(
                         width: screenwidth / width_figma * 396,
-                        height: 174,                                              // inja man as context estefade nakardam
+                        height: 180,                                              // inja man as context estefade nakardam
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
@@ -84,7 +82,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                               children: [
                                 Container(
                                   width: screenwidth / width_figma * 364,
-                                  height: 85,
+                                  height: 100,
                                   child: Row(
                                     children: [
                                       Image.asset("lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
@@ -98,6 +96,9 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                           crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                           children: [
+                                            SizedBox(
+                                              height: 5,
+                                            ),
                                             Text(
                                               "کاشت مو",
                                               style: TextStyle(
@@ -181,7 +182,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height:  16,
+                                  height:  10,
                                 ),
                                 Row(
                                   children: [

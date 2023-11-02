@@ -1,5 +1,7 @@
+import 'package:clinic/features/client/Technicians/Controller/create_tech_controller.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../../../../themes/colors.dart';
 
 class AddTech extends StatefulWidget {
@@ -10,6 +12,9 @@ class AddTech extends StatefulWidget {
 }
 
 class _AddTechState extends State<AddTech> {
+
+  CreateTechController createTechController = Get.put(CreateTechController());
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -19,6 +24,7 @@ class _AddTechState extends State<AddTech> {
     return Scaffold(
       backgroundColor: backgroundHome,
       appBar: AppBar(
+        backgroundColor: backgroundHome,
         elevation: 0,
         centerTitle: true,
         title: Text(
@@ -56,6 +62,7 @@ class _AddTechState extends State<AddTech> {
               right: screenwidth / width_figma * 15,
             ),
             child: TextField(
+              controller: createTechController.nameController,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
                 hintText: " نام کامل تکنسین را وارد کنید ",
@@ -100,6 +107,7 @@ class _AddTechState extends State<AddTech> {
               right: screenwidth / width_figma * 15,
             ),
             child: TextField(
+              controller: createTechController.cardIdController,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
                 hintText: " کد ملی تکنسین را وارد کنید ",
@@ -144,6 +152,7 @@ class _AddTechState extends State<AddTech> {
               right: screenwidth / width_figma * 15,
             ),
             child: TextField(
+              controller: createTechController.phoneController,
               textAlign: TextAlign.right,
               decoration: InputDecoration(
                 hintText: " شماره تلفن معتبر تکنسین را وارد کنید ",
@@ -170,7 +179,9 @@ class _AddTechState extends State<AddTech> {
             height: screenheight / height_figma * 474,
           ),
           GestureDetector(
-            onTap: (){},
+            onTap: (){
+              createTechController.getNewTech();
+            },
             child: Center(
               child: Container(
                 width: screenwidth / width_figma * 330,

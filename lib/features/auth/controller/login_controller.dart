@@ -38,7 +38,7 @@ class LoginController extends GetxController {
         var access_token = json['access_token'];
         var refresh_token = json['refresh_token'];
         var user = json['user'];
-
+        print(response.body);
         print(user);
         if(user == 'Supervisor'){
           Get.off(ClientPage());

@@ -33,6 +33,9 @@ dependencies:
   simple_gradient_text: ^1.2.4
   flutter_switch: ^0.3.2
   dotted_line: ^3.2.2
+  table_calendar: ^3.0.9
+  jalali_table_calendar: ^1.2.0
+  shamsi_date: ^1.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -73,7 +76,7 @@ flutter:
     - lib/features/auth/presentation/images/refresh-white.png
     - lib/features/client/NavigationBar/images/nobat_dehi.png
     - lib/features/client/Home/domain/fake_database.json
-    - lib/features/client/Technicians/domain/fake_database_tech.json
+    - lib/features/client/Technicians/presentation/domain/fake_database_tech.json
     - lib/features/client/Home/presentation/images/gol.png
     - lib/features/client/Home/presentation/images/gol_squre.png
     - lib/features/client/Home/presentation/images/information-line.png
