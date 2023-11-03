@@ -1,31 +1,41 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Models/select_patient_model.dart';
 
-class SelectPatientController extends GetxController {
-  TextEditingController searchController = TextEditingController();
+import '../Models/get_tech_model.dart';
+class SelectTechByIdController extends GetxController {
 
-  RxList<Item> items = <Item>[].obs;
+  String full_name = '';
+  String ID = '';
+  String profileUri = '';
+
+  RxList<GetTechModel> tech_info = <GetTechModel>[].obs;
+
+  void fetchIdAndName(String name, String id, String profileuri) async {
+    full_name = name;
+    ID = id;
+    profileUri = profileuri ;
+  }
+
 
   void fetchPatient() async {
-    var patient_feature =
-        await RemoteSerice1.fetchPatients(searchController.text);
+    var tech_page_search_item = await RemoteSerice4.fetchPatients(ID);
 
-    print(patient_feature);
-    if (patient_feature != null) {
-      items.value = patient_feature as List<Item>;
-      update();
-    }
+    var castedTechList = tech_page_search_item as List<GetTechModel>;
+
+    tech_info.value = castedTechList ;
+    update();
   }
+
 }
 
-class RemoteSerice1 {
+class RemoteSerice4 {
   static var client = http.Client();
 
-  static Future<List<Item>?> fetchPatients(String search) async {
+  static Future<List<GetTechModel>?> fetchPatients(String ID) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       // getting token from share preferences
@@ -37,23 +47,20 @@ class RemoteSerice1 {
         'Authorization': 'Bearer $accessToken'
       };
 
-      final queryParameters = {
-        'search': search,
-        'page': '1',
-        'per_page': '1',
-      };
 
-      var uri = Uri.http('185.221.237.51', '/clinic/new_process/search_pationt',
-          queryParameters);
+      var uri = Uri.http('185.221.237.51', '/auth/technecian_by_id/$ID');
 
       var response = await http.get(uri, headers: headers);
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
         var jsonString = response.body;
-        final patientFeature = selectPatientModelFromJson(jsonString);
-        print(patientFeature.items);
-        return patientFeature.items;
+        if (jsonString == null) {
+          return <GetTechModel>[];
+        }
+        var searchTechModelList = convertJsonToList(jsonString);
+        print(searchTechModelList);
+        return searchTechModelList ;
       }
       if (response == 400) {
         print(response.body);

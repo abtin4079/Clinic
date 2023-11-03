@@ -1,6 +1,11 @@
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
+import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/select_tech_byid_controller.dart';
+import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_2.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -15,6 +20,11 @@ class SelectTechPage1 extends StatefulWidget {
 }
 
 class _SelectTechPage1State extends State<SelectTechPage1> {
+  final SearchTechController searchTechController = Get.put(SearchTechController());
+  final CreateNewProcessController createNewProcessController = Get.put(CreateNewProcessController());
+
+  bool status_of_page = false;
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -177,32 +187,58 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                   left: screenwidth / width_figma * 15,
                   right: screenwidth / width_figma * 15,
                 ),
-                child: TextField(
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      Search.search,
-                      color: phonecolor,
-                      size: 20,
-                    ),
-                    hintText: "جستجو در بین تکنسین ها",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: phonecolor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide: BorderSide(
-                        color: SendagainColorwhite,
-                        width: 2,
+                child: TypeAheadField(
+                  textFieldConfiguration: TextFieldConfiguration(
+                    controller: searchTechController.searchController,
+                    onSubmitted: (value) {
+                      if (searchTechController.searchController.text != '') {
+                        searchTechController.fetchPatient();
+                      }
+                    },
+                    textAlign: TextAlign.right,
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Search.search,
+                        color: phonecolor,
+                        size: 20,
+                      ),
+                      hintText: "جستجو در بین تکنسین ها",
+                      hintStyle: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: phonecolor,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        borderSide: BorderSide(
+                          color: SendagainColorwhite,
+                          width: 2,
+                        ),
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: outlineborder, width: 2),
-                      borderRadius: BorderRadius.circular(48),
-                    ),
                   ),
+                  suggestionsCallback: (pattern) async {
+                    return searchTechController.tech_list;
+                  },
+                  itemBuilder: (context, data) {
+                    return Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: ListTile(
+                          leading: Icon(
+                            Search.search,
+                            color: phonecolor,
+                            size: 20,
+                          ),
+                          title: Text(data.fullName.toString()),
+                      ),
+                    );
+                  },
+                  onSuggestionSelected: (data) {
+                    createNewProcessController.fetchTechIdAndName(data.fullName, data.id, data.profileUrl);
+                    setState(() {
+                      status_of_page = true;
+                    });
+                  },
                 ),
               ),
             ),
@@ -229,16 +265,22 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(SelectTechPage1());
+                    setState(() {
+                      if (status_of_page){
+                        Get.to(SelectTechPage2());
+                      }
+                      searchTechController.searchController.clear();
+                    });
                   },
                   child: Container(
                     width: screenwidth / width_figma * 187,
                     height: screenheight / height_figma * 44,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4), color: LightBlue),
+                        borderRadius: BorderRadius.circular(4),
+                        color: LightBlue),
                     child: Center(
                       child: Text(
-                        "ثبت نوبت",
+                        "مرحله بعدی",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,

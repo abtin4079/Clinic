@@ -55,12 +55,16 @@ class _HomeState extends State<Home> {
               ),
               child: TextField(
                 controller: homePageSearchController.searchController,
+                onSubmitted: (value) => homePageSearchController.fetchPatient(),
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
-                    Search.search,
-                    size: 24,
-                    color: phonecolor,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Search.search,
+                      size: 24,
+                      color: phonecolor,
+                    ),
+                    onPressed: () => homePageSearchController.fetchPatient(),
                   ),
                   hintText: " جستجو در بین نوبت ها",
                   hintStyle: TextStyle(
@@ -118,7 +122,6 @@ class _HomeState extends State<Home> {
                   ),
                   child: GestureDetector(
                     onTap: (){
-                      homePageSearchController.fetchPatient();
                     },
                     child: Image.asset(
                         "lib/features/client/Home/presentation/images/copy.png"),

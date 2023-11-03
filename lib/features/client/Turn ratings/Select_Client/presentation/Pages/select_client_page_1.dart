@@ -1,11 +1,13 @@
-import 'dart:async';
-
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/New_Client/presentation/pages/new_client_page_1.dart';
+import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_2.dart';
+import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_1.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -21,8 +23,9 @@ class SelectClientPage1 extends StatefulWidget {
 
 class _SelectClientPage1State extends State<SelectClientPage1> {
 
-  SelectPatientController selectPatientController = Get.put(SelectPatientController());
-
+  final SelectPatientController selectPatientController = Get.put(SelectPatientController());
+  final CreateNewProcessController createNewProcessController = Get.put(CreateNewProcessController());
+  bool status_of_page = false;
   bool status = false;
 
 
@@ -232,10 +235,15 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                 left: screenwidth / width_figma * 15,
                 right: screenwidth / width_figma * 15,
               ),
-              child: Directionality(
-                textDirection: TextDirection.rtl,
-                child: TextField(
+              child: TypeAheadField(
+                textFieldConfiguration: TextFieldConfiguration(
                   controller: selectPatientController.searchController,
+                  onSubmitted: (value) {
+                    if (selectPatientController.searchController.text != '') {
+                      selectPatientController.fetchPatient();
+                    }
+                  },
+                  textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     suffixIcon: Icon(
                       Search.search,
@@ -255,12 +263,30 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                         width: 2,
                       ),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: outlineborder, width: 2),
-                      borderRadius: BorderRadius.circular(48),
-                    ),
                   ),
                 ),
+                suggestionsCallback: (pattern) async {
+                  return selectPatientController.items;
+                },
+                itemBuilder: (context, data) {
+                  return Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ListTile(
+                      leading: Icon(
+                        Search.search,
+                        color: phonecolor,
+                        size: 20,
+                      ),
+                      title: Text(data.fullName.toString()),
+                    ),
+                  );
+                },
+                onSuggestionSelected: (data) {
+                  createNewProcessController.fetchPatiantIdAndName(data.fullName.toString(), data.id.toString());
+                  setState(() {
+                    status_of_page = true;
+                  });
+                },
               ),
             ),
             SizedBox(
@@ -272,7 +298,11 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
               child: GestureDetector(
                 onTap: (){
-                  selectPatientController.fetchPatient();
+                  setState(() {
+                    if (status_of_page == true) {
+                      Get.to(SelectClientPage2());
+                    }
+                  });
                 },
                 child: Container(
                   width: screenwidth / width_figma * 187,

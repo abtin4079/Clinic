@@ -43,9 +43,6 @@ class _Tech1State extends State<Tech1> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ElevatedButton(onPressed: (){
-              searchTechController.fetchPatient();
-            }, child: Text("get seach")),
             Container(
               width: screenwidth / width_figma * 396,
               height: 48,
@@ -56,11 +53,15 @@ class _Tech1State extends State<Tech1> {
               child: TextField(
                 controller: searchTechController.searchController,
                 textAlign: TextAlign.right,
+                onSubmitted: (value) => searchTechController.fetchPatient(),
                 decoration: InputDecoration(
-                  suffixIcon: Icon(
-                    Search.search,
-                    size: 24,
-                    color: phonecolor,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Search.search,
+                      size: 24,
+                      color: phonecolor,
+                    ),
+                    onPressed: () => searchTechController.fetchPatient(),
                   ),
                   hintText: "جستجو در بین تکنسین ها",
                   hintStyle: TextStyle(

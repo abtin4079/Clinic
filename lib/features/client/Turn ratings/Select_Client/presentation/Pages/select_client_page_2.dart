@@ -1,13 +1,14 @@
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/New_Client/presentation/pages/new_client_page_1.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../../../../../themes/colors.dart';
 import '../../../../NavigationBar/Icons/navigation_bar_icons.dart';
+import '../../../Select_Tech/presentation/pages/select_tech_page_1.dart';
 
 class SelectClientPage2 extends StatefulWidget {
   const SelectClientPage2({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class SelectClientPage2 extends StatefulWidget {
 
 class _SelectClientPage2State extends State<SelectClientPage2> {
   bool status = false;
+  final CreateNewProcessController createNewProcessController = Get.put(CreateNewProcessController());
 
   @override
   Widget build(BuildContext context) {
@@ -276,8 +278,7 @@ class _SelectClientPage2State extends State<SelectClientPage2> {
                               borderRadius: BorderRadius.circular(5),
                               color: LightBlue),
                           child: Center(
-                            child: Text(
-                              "پوریا تیموری",
+                            child: Text(createNewProcessController.full_name_pat.toString(),
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
@@ -373,7 +374,9 @@ class _SelectClientPage2State extends State<SelectClientPage2> {
                 right: screenwidth / width_figma * 212,
               ),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Get..to(SelectTechPage1());
+                },
                 child: Container(
                   width: screenwidth / width_figma * 187,
                   height: 44,
