@@ -1,11 +1,8 @@
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
-import 'package:clinic/features/client/Turn%20ratings/Controllers/select_tech_byid_controller.dart';
-import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_3.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -13,24 +10,29 @@ import 'package:numberpicker/numberpicker.dart';
 import '../../../../../../themes/colors.dart';
 import '../../../../NavigationBar/Icons/navigation_bar_icons.dart';
 
-class SelectTechPage2 extends StatefulWidget {
-  const SelectTechPage2({Key? key}) : super(key: key);
+class SelectTechPage3 extends StatefulWidget {
+  const SelectTechPage3({Key? key}) : super(key: key);
 
   @override
-  State<SelectTechPage2> createState() => _SelectTechPage2State();
+  State<SelectTechPage3> createState() => _SelectTechPage3State();
 }
 
-class _SelectTechPage2State extends State<SelectTechPage2> {
+class _SelectTechPage3State extends State<SelectTechPage3> {
   final SearchTechController searchTechController =
-      Get.put(SearchTechController());
+  Get.put(SearchTechController());
   final CreateNewProcessController createNewProcessController =
-      Get.put(CreateNewProcessController());
+  Get.put(CreateNewProcessController());
 
-  String? value;
+  String? value1;
+  String? value2;
 
   final items = ['برداشت مو', 'کاشت مو'];
-  var hour = 0;
-  var minute = 0;
+  var hour1 = 0;
+  var minute1 = 0;
+
+  var hour2 = 0;
+  var minute2 = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +125,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       lineThickness: 2,
                                       dashGapLength: 9,
                                       dashColor:
-                                          dashlineColor.withOpacity(0.31),
+                                      dashlineColor.withOpacity(0.31),
                                     ),
                                   ),
                                 ),
@@ -183,73 +185,6 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: screenheight / height_figma * 43,
-                  ),
-                  Directionality(
-                    textDirection: TextDirection.ltr,
-                    child: Container(
-                      width: screenwidth / width_figma * 396,
-                      height: screenheight / height_figma * 48,
-                      margin: EdgeInsets.only(
-                        left: screenwidth / width_figma * 15,
-                        right: screenwidth / width_figma * 15,
-                      ),
-                      child: TypeAheadField(
-                        textFieldConfiguration: TextFieldConfiguration(
-                          controller: searchTechController.searchController,
-                          onSubmitted: (value) {
-                            if (searchTechController.searchController.text != '') {
-                              searchTechController.fetchPatient();
-                            }
-                          },
-                          textAlign: TextAlign.right,
-                          decoration: InputDecoration(
-                            suffixIcon: Icon(
-                              Search.search,
-                              color: phonecolor,
-                              size: 20,
-                            ),
-                            hintText: "اضافه کردن تکنسین جدید",
-                            hintStyle: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14,
-                              color: phonecolor,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(32),
-                              borderSide: BorderSide(
-                                color: SendagainColorwhite,
-                                width: 2,
-                              ),
-                            ),
-                          ),
-                        ),
-                        suggestionsCallback: (pattern) async {
-                          return searchTechController.tech_list;
-                        },
-                        itemBuilder: (context, data) {
-                          return Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: ListTile(
-                              leading: Icon(
-                                Search.search,
-                                color: phonecolor,
-                                size: 20,
-                              ),
-                              title: Text(data.fullName.toString()),
-                            ),
-                          );
-                        },
-                        onSuggestionSelected: (data) {
-                          createNewProcessController.fetchTechIdAndName_tech2(
-                              data.fullName, data.id, data.profileUrl);
-                          Get.to(SelectTechPage3());
-                          searchTechController.searchController.clear();
-                        },
                       ),
                     ),
                   ),
@@ -314,7 +249,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
@@ -322,7 +257,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                               "lib/features/client/Turn ratings/Images/punk.png"),
                                           SizedBox(
                                             width:
-                                                screenwidth / width_figma * 11,
+                                            screenwidth / width_figma * 11,
                                           ),
                                           Text(
                                             "روز نوبت",
@@ -342,7 +277,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                               "lib/features/client/Turn ratings/Images/punk.png"),
                                           SizedBox(
                                             width:
-                                                screenwidth / width_figma * 11,
+                                            screenwidth / width_figma * 11,
                                           ),
                                           Text(
                                             "ساعت نوبت",
@@ -362,7 +297,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                               "lib/features/client/Turn ratings/Images/punk.png"),
                                           SizedBox(
                                             width:
-                                                screenwidth / width_figma * 11,
+                                            screenwidth / width_figma * 11,
                                           ),
                                           Text(
                                             "عملیات مورد نیاز",
@@ -382,7 +317,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                               "lib/features/client/Turn ratings/Images/punk.png"),
                                           SizedBox(
                                             width:
-                                                screenwidth / width_figma * 11,
+                                            screenwidth / width_figma * 11,
                                           ),
                                           Text(
                                             "تعداد تار مو",
@@ -401,17 +336,17 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       GestureDetector(
                                         onTap: () {},
                                         child: Container(
                                           height: 36,
                                           width:
-                                              screenwidth / width_figma * 161,
+                                          screenwidth / width_figma * 161,
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(48),
+                                            BorderRadius.circular(48),
                                             gradient: LinearGradient(
                                                 begin: Alignment.topRight,
                                                 end: Alignment.bottomLeft,
@@ -436,7 +371,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       ),
                                       Container(
                                           width:
-                                              screenwidth / width_figma * 146,
+                                          screenwidth / width_figma * 146,
                                           height: 49,
                                           decoration: BoxDecoration(
                                             border: Border.all(
@@ -444,52 +379,20 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                               width: 2,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
                                           child: Center(
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                              MainAxisAlignment.start,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                              CrossAxisAlignment.center,
                                               children: [
                                                 NumberPicker(
                                                     minValue: 0,
                                                     maxValue: 23,
-                                                    value: hour,
-                                                    zeroPad: true,
-                                                    infiniteLoop: true,
-                                                    itemWidth: 80,
-                                                    itemHeight: 15,
-                                                    selectedTextStyle:
-                                                        TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            color: fontcolor),
-                                                    textStyle: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w100,
-                                                        color: Colors.black),
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        hour = value;
-                                                      });
-                                                    }),
-                                                Text(
-                                                  ":",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontSize: 16,
-                                                      color: Colors.black),
-                                                ),
-                                                NumberPicker(
-                                                    minValue: 0,
-                                                    maxValue: 59,
-                                                    value: minute,
+                                                    value: hour1,
                                                     zeroPad: true,
                                                     infiniteLoop: true,
                                                     itemWidth: 80,
@@ -507,7 +410,39 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                                         color: Colors.black),
                                                     onChanged: (value) {
                                                       setState(() {
-                                                        minute = value;
+                                                        hour1 = value;
+                                                      });
+                                                    }),
+                                                Text(
+                                                  ":",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w700,
+                                                      fontSize: 16,
+                                                      color: Colors.black),
+                                                ),
+                                                NumberPicker(
+                                                    minValue: 0,
+                                                    maxValue: 59,
+                                                    value: minute1,
+                                                    zeroPad: true,
+                                                    infiniteLoop: true,
+                                                    itemWidth: 80,
+                                                    itemHeight: 15,
+                                                    selectedTextStyle:
+                                                    TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w700,
+                                                        color: fontcolor),
+                                                    textStyle: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w100,
+                                                        color: Colors.black),
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        minute1 = value;
                                                       });
                                                     }),
                                               ],
@@ -520,25 +455,25 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                         padding: EdgeInsets.only(
                                             left: 10,
                                             right:
-                                                screenwidth / width_figma * 70),
+                                            screenwidth / width_figma * 70),
                                         width: screenwidth / width_figma * 178,
                                         height: 38,
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                               color: PinputColor, width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(10),
+                                          BorderRadius.circular(10),
                                           color: backgroundHome,
                                         ),
                                         child: Directionality(
                                           textDirection: TextDirection.rtl,
                                           child: DropdownButtonHideUnderline(
                                             child: DropdownButton<String>(
-                                              value: value,
+                                              value: value1,
                                               onChanged: (value) =>
                                                   setState(() {
-                                                this.value = value;
-                                              }),
+                                                    this.value1 = value;
+                                                  }),
                                               items: items
                                                   .map(buildMenuItem)
                                                   .toList(),
@@ -551,11 +486,11 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       ),
                                       Container(
                                           width:
-                                              screenwidth / width_figma * 170,
+                                          screenwidth / width_figma * 170,
                                           height: 38,
                                           decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                            BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
                                           child: TextField(
@@ -571,14 +506,355 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                                 borderSide: BorderSide(
                                                     color: Colors.black),
                                                 borderRadius:
-                                                    BorderRadius.circular(10),
+                                                BorderRadius.circular(10),
                                               ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                     color: outlineborder,
                                                     width: 2),
                                                 borderRadius:
-                                                    BorderRadius.circular(10),
+                                                BorderRadius.circular(10),
+                                              ),
+                                              border: OutlineInputBorder(),
+                                            ),
+                                            keyboardType: TextInputType.number,
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Center(
+                    child: Container(
+                      height: 526,
+                      width: screenwidth / width_figma * 396,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(32),
+                        color: Colors.white,
+                      ),
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: Colors.blue),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              createNewProcessController.full_name_tech_2
+                                  .toString(),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: fontcolor,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text(
+                              "تکنسین کاشت مو و ابرو",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: fontcolor,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                              "lib/features/client/Turn ratings/Images/punk.png"),
+                                          SizedBox(
+                                            width:
+                                            screenwidth / width_figma * 11,
+                                          ),
+                                          Text(
+                                            "روز نوبت",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                                color: fontcolor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 48,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                              "lib/features/client/Turn ratings/Images/punk.png"),
+                                          SizedBox(
+                                            width:
+                                            screenwidth / width_figma * 11,
+                                          ),
+                                          Text(
+                                            "ساعت نوبت",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                                color: fontcolor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 48,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                              "lib/features/client/Turn ratings/Images/punk.png"),
+                                          SizedBox(
+                                            width:
+                                            screenwidth / width_figma * 11,
+                                          ),
+                                          Text(
+                                            "عملیات مورد نیاز",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                                color: fontcolor),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 48,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                              "lib/features/client/Turn ratings/Images/punk.png"),
+                                          SizedBox(
+                                            width:
+                                            screenwidth / width_figma * 11,
+                                          ),
+                                          Text(
+                                            "تعداد تار مو",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                                color: fontcolor),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: 36,
+                                          width:
+                                          screenwidth / width_figma * 161,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(48),
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topRight,
+                                                end: Alignment.bottomLeft,
+                                                colors: [
+                                                  rediligal,
+                                                  whiteiligal
+                                                ]),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "انتخاب تاریخ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 33,
+                                      ),
+                                      Container(
+                                          width:
+                                          screenwidth / width_figma * 146,
+                                          height: 49,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: outlineborder,
+                                              width: 2,
+                                            ),
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                            color: backgroundHome,
+                                          ),
+                                          child: Center(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                              children: [
+                                                NumberPicker(
+                                                    minValue: 0,
+                                                    maxValue: 23,
+                                                    value: hour2,
+                                                    zeroPad: true,
+                                                    infiniteLoop: true,
+                                                    itemWidth: 80,
+                                                    itemHeight: 15,
+                                                    selectedTextStyle:
+                                                    TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w700,
+                                                        color: fontcolor),
+                                                    textStyle: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w100,
+                                                        color: Colors.black),
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        hour2 = value;
+                                                      });
+                                                    }),
+                                                Text(
+                                                  ":",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w700,
+                                                      fontSize: 16,
+                                                      color: Colors.black),
+                                                ),
+                                                NumberPicker(
+                                                    minValue: 0,
+                                                    maxValue: 59,
+                                                    value: minute2,
+                                                    zeroPad: true,
+                                                    infiniteLoop: true,
+                                                    itemWidth: 80,
+                                                    itemHeight: 15,
+                                                    selectedTextStyle:
+                                                    TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w700,
+                                                        color: fontcolor),
+                                                    textStyle: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                        FontWeight.w100,
+                                                        color: Colors.black),
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        minute2 = value;
+                                                      });
+                                                    }),
+                                              ],
+                                            ),
+                                          )),
+                                      SizedBox(
+                                        height: 26,
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            left: 10,
+                                            right:
+                                            screenwidth / width_figma * 70),
+                                        width: screenwidth / width_figma * 178,
+                                        height: 38,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: PinputColor, width: 1),
+                                          borderRadius:
+                                          BorderRadius.circular(10),
+                                          color: backgroundHome,
+                                        ),
+                                        child: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: DropdownButtonHideUnderline(
+                                            child: DropdownButton<String>(
+                                              value: value2,
+                                              onChanged: (value) =>
+                                                  setState(() {
+                                                    this.value2 = value;
+                                                  }),
+                                              items: items
+                                                  .map(buildMenuItem)
+                                                  .toList(),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 33,
+                                      ),
+                                      Container(
+                                          width:
+                                          screenwidth / width_figma * 170,
+                                          height: 38,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                            color: backgroundHome,
+                                          ),
+                                          child: TextField(
+                                            textAlign: TextAlign.center,
+                                            decoration: InputDecoration(
+                                              hintText: 'تعداد تار مو',
+                                              hintStyle: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: phonecolor,
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.black),
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                              ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: outlineborder,
+                                                    width: 2),
+                                                borderRadius:
+                                                BorderRadius.circular(10),
                                               ),
                                               border: OutlineInputBorder(),
                                             ),
@@ -646,7 +922,20 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
             Padding(
               padding: EdgeInsets.only(
                 left: screenwidth / width_figma * 380,
-                top: 285,
+                top: 195,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Image.asset(
+                    "lib/features/client/Turn ratings/Images/zabdar_red.png"),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: screenwidth / width_figma * 380,
+                top: 745,
               ),
               child: GestureDetector(
                 onTap: () {
@@ -663,11 +952,11 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
   }
 
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.w500, fontSize: 16),
-        ),
-      );
+    value: item,
+    child: Text(
+      item,
+      style: TextStyle(
+          color: Colors.black, fontWeight: FontWeight.w500, fontSize: 16),
+    ),
+  );
 }

@@ -238,7 +238,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               child: TypeAheadField(
                 textFieldConfiguration: TextFieldConfiguration(
                   controller: selectPatientController.searchController,
-                  onSubmitted: (value) {
+                  onChanged: (value) {
                     if (selectPatientController.searchController.text != '') {
                       selectPatientController.fetchPatient();
                     }
@@ -301,6 +301,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                   setState(() {
                     if (status_of_page == true) {
                       Get.to(SelectClientPage2());
+                      selectPatientController.searchController.clear();
                     }
                   });
                 },

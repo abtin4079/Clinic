@@ -1,7 +1,6 @@
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
-import 'package:clinic/features/client/Turn%20ratings/Controllers/select_tech_byid_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_2.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
@@ -190,7 +189,7 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                 child: TypeAheadField(
                   textFieldConfiguration: TextFieldConfiguration(
                     controller: searchTechController.searchController,
-                    onSubmitted: (value) {
+                    onChanged: (value) {
                       if (searchTechController.searchController.text != '') {
                         searchTechController.fetchPatient();
                       }
@@ -268,8 +267,8 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                     setState(() {
                       if (status_of_page){
                         Get.to(SelectTechPage2());
+                        searchTechController.searchController.clear();
                       }
-                      searchTechController.searchController.clear();
                     });
                   },
                   child: Container(
