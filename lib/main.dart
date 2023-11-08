@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'package:clinic/features/Calender/calnerder.dart';
+import 'package:clinic/features/auth/controller/initial_check.dart';
 import 'package:clinic/features/auth/presentation/pages/login_second_page.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_2.dart';
@@ -16,11 +17,22 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
-
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    // Call super.initState() first.
+    super.initState();
+    initialCheck();
+    // Your one-time initialization code for the root widget goes here.
+    // This code will run when the app is first launched.
+  }
 
   @override
   Widget build(BuildContext context) {

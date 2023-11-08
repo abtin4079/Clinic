@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'package:clinic/features/auth/controller/refresh_token_controller.dart';
 import 'package:clinic/features/auth/controller/send_otp_controller.dart';
 import 'package:clinic/features/client/Home/Controller/remote_service.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/technicians/NavigationBar/navigation_bar_for_tech.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/api_endpoint.dart';
@@ -50,6 +48,7 @@ class LoginController extends GetxController {
 
         await prefs ?.setString('access_token', access_token);
         await prefs ?.setString('refresh_token', refresh_token);
+        await prefs ?.setString('user', user);
 
         // testing that if the access_token and refresh_token is saved or not in the console
         String? thhr = prefs?.getString('access_token');
