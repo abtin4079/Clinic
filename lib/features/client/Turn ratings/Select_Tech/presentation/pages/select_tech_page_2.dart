@@ -31,6 +31,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
   final items = ['برداشت مو', 'کاشت مو'];
   var hour = 0;
   var minute = 0;
+  String now = DateTime.now().toString();
 
   @override
   Widget build(BuildContext context) {
@@ -559,6 +560,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                             color: backgroundHome,
                                           ),
                                           child: TextField(
+                                            controller: createNewProcessController.tarmo1Controller,
                                             textAlign: TextAlign.center,
                                             decoration: InputDecoration(
                                               hintText: 'تعداد تار مو',
@@ -616,7 +618,10 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                         width: screenwidth / width_figma * 60,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          print(1);
+                          createNewProcessController.registerNewProcess1(now, value);
+                        },
                         child: Container(
                           width: screenwidth / width_figma * 187,
                           height: screenheight / height_figma * 44,

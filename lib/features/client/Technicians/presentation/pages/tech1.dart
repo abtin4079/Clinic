@@ -1,3 +1,4 @@
+import 'package:clinic/features/client/Technicians/Controller/get_tech_controller.dart';
 import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/add_tech.dart';
 import 'package:clinic/features/client/Technicians/presentation/pages/tech_profile.dart';
@@ -18,6 +19,16 @@ class Tech1 extends StatefulWidget {
 class _Tech1State extends State<Tech1> {
   final SearchTechController searchTechController =
       Get.put(SearchTechController());
+  final GetTechController getTechController = Get.put(GetTechController());
+
+  @override
+  void initState() {
+    // Call super.initState() first.
+    super.initState();
+    getTechController.fetchTech();
+    // Your one-time initialization code for the root widget goes here.
+    // This code will run when the app is first launched.
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,146 +98,136 @@ class _Tech1State extends State<Tech1> {
               height: screenheight / height_figma * 30,
             ),
             FutureBuilder(
-              future: ReadJsonData2(),
-              builder: (context, data) {
-                if (data.hasError) {
-                  return Text("${data.error}");
-                } else if (data.hasData) {
-                  var items2 = data.data as List<EntityTech>;
-                  return ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: items2 == null ? 0 : items2.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Get.to(TechProfile(), arguments: [
-                            items2[index].id,
-                            items2[index].tech_name,
-                            items2[index].phone,
-                            items2[index].kodemelli
-                          ]);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 10,
-                            bottom: 10,
-                            right: screenwidth / width_figma * 19,
-                            left: screenwidth / width_figma * 19,
-                          ),
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Container(
-                              width: screenwidth / width_figma * 396,
-                              height: 126,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white),
+                future: getTechController.fetchTech(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else {
+                    return Obx(() {
+                      return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: getTechController.get_tech_list.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {},
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                  top: screenheight / height_figma * 13,
-                                  bottom: screenheight / height_figma * 13,
-                                  right: screenwidth / width_figma * 16,
+                                  top: 10,
+                                  bottom: 10,
+                                  right: screenwidth / width_figma * 19,
+                                  left: screenwidth / width_figma * 19,
                                 ),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          color: Colors.red),
-                                    ),
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: 100,
-                                          child: Text(
-                                            items2[index].tech_name.toString(),
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: fontcolor,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        Text(
-                                          "شماره تماس:",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            color: grayColorHome,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        Text(
-                                          "کد ملی:",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            color: grayColorHome,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Directionality(
-                                      textDirection: TextDirection.ltr,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                child: Directionality(
+                                  textDirection: TextDirection.rtl,
+                                  child: Container(
+                                    width: screenwidth / width_figma * 396,
+                                    height: 126,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        color: Colors.white),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        top: screenheight / height_figma * 13,
+                                        bottom: screenheight / height_figma * 13,
+                                        right: screenwidth / width_figma * 16,
+                                      ),
+                                      child: Row(
                                         children: [
-                                          SizedBox(
-                                            height: 35,
-                                          ),
-                                          Text(
-                                            items2[index].phone.toString(),
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: fontcolor,
-                                            ),
+                                          Container(
+                                            width: 100,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(100),
+                                                color: Colors.red),
                                           ),
                                           SizedBox(
-                                            height: 16,
+                                            width: screenwidth / width_figma * 10,
                                           ),
-                                          Text(
-                                            items2[index].kodemelli.toString(),
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: fontcolor,
+                                          Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: 100,
+                                                child: Text(
+                                                  getTechController.get_tech_list[index].fullName.toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 16,
+                                              ),
+                                              Text(
+                                                "شماره تماس:",
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: grayColorHome,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 16,
+                                              ),
+                                              Text(
+                                                "کد ملی:",
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: grayColorHome,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Directionality(
+                                            textDirection: TextDirection.ltr,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 35,
+                                                ),
+                                                Text(
+                                                  getTechController.get_tech_list[index].phoneNumber.toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 16,
+                                                ),
+                                                Text(
+                                                  getTechController.get_tech_list[index].nationalCode.toString(),
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
+                            );
+                          });
+                    });
+                  }
+                }),
             SizedBox(
               height: screenheight / height_figma * 15,
             ),
