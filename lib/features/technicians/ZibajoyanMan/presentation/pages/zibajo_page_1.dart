@@ -9,6 +9,9 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../../../../themes/colors.dart';
 import '../../../../client/Home/domain/entity.dart';
 import '../../../../client/NavigationBar/Icons/navigation_bar_icons.dart';
+import 'package:clinic/features/technicians/ZibajoyanMan/controllers/zibajo_page_1_controller.dart';
+import 'package:clinic/features/technicians/ZibajoyanMan/models/approved_appointments.dart';
+import 'package:clinic/features/technicians/ZibajoyanMan/presentation/pages/zibajo_middle_page.dart';
 
 class ZibajoPage1 extends StatefulWidget {
   const ZibajoPage1({Key? key}) : super(key: key);
@@ -18,6 +21,8 @@ class ZibajoPage1 extends StatefulWidget {
 }
 
 class _ZibajoPage1State extends State<ZibajoPage1> {
+  ZibajoyanManFirstPage zibajoyanManFirstPage =
+      Get.put(ZibajoyanManFirstPage());
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -34,11 +39,12 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
         title: Text(
           "زیباجویان من",
           style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: fontcolor,
-              fontFeatures: [FontFeature('ss01', 1),]
-          ),
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              color: fontcolor,
+              fontFeatures: [
+                FontFeature('ss01', 1),
+              ]),
         ),
       ),
       body: SingleChildScrollView(
@@ -83,25 +89,29 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
               height: 30,
             ),
             FutureBuilder(
-              future: ReadJsonData(),
+              future: zibajoyanManFirstPage.getTechApprovedAppointments(),
               builder: (context, data) {
                 if (data.hasError) {
                   return Text("${data.error}");
                 } else if (data.hasData) {
-                  var items = data.data as List<EntityHome>;
+                  var items = data.data as List<ApprovedAppointment>;
                   return ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: items == null ? 0 : items.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.to(ZibajoPage2(),);
+                          Get.to(
+                            MiddleZibajoPage(),
+                            arguments: items[index],
+                          );
                         },
                         child: Padding(
                           padding: EdgeInsets.only(
-                            right: screenwidth / width_figma * 16,
-                            left: screenwidth / width_figma * 16,
+                            // right: screenwidth / width_figma * 16,
+                            // left: screenwidth / width_figma * 16,
                             top: 4,
                             bottom: 4,
                           ),
@@ -138,13 +148,14 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                "کاشت مو",
+                                                items[index].operation!,
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w700,
                                                     color: fontcolor,
-                                                    fontFeatures: [FontFeature('ss01', 1),]
-                                                ),
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
                                               ),
                                               SizedBox(
                                                 height: 8,
@@ -152,23 +163,25 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                                               Text(
                                                 "زیباجو:",
                                                 style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14,
-                                                  color: grayColorHome,
-                                                    fontFeatures: [FontFeature('ss01', 1),]
-                                                ),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 14,
+                                                    color: grayColorHome,
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
                                               ),
                                               SizedBox(
                                                 height: 4,
                                               ),
                                               Text(
-                                                items[index].zibajo.toString(),
+                                                items[index].pationt_name!,
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w500,
                                                     color: fontcolor,
-                                                    fontFeatures: [FontFeature('ss01', 1),]
-                                                ),
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
                                               ),
                                             ],
                                           ),
@@ -196,9 +209,8 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                                                 height: 4,
                                               ),
                                               Text(
-                                                items[index]
-                                                    .number_of_hairs
-                                                    .toString(),
+                                                items[index].hair_count! +
+                                                    " تارمو",
                                                 style: TextStyle(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w500,
@@ -220,19 +232,18 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                                         gradient: LinearGradient(
                                             begin: Alignment.topCenter,
                                             end: Alignment.bottomCenter,
-                                            colors: [LightBlue.withOpacity(0.1), White.withOpacity(0.1)]),
+                                            colors: [
+                                              LightBlue.withOpacity(0.1),
+                                              White.withOpacity(0.1)
+                                            ]),
                                       ),
                                       child: Center(
                                         child: GradientText(
-                                          "دوشنبه 12 آذر 1402 ساعت 14:30",
+                                          items[index].visit_date!,
                                           style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 14
-                                          ),
-                                          colors: [
-                                            LightBlue,
-                                            LightBlue
-                                          ],
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14),
+                                          colors: [LightBlue, LightBlue],
                                         ),
                                       ),
                                     ),

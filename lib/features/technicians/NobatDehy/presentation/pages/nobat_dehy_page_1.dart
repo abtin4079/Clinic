@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../../../../themes/colors.dart';
 import '../../../../client/Home/domain/entity.dart';
+import 'package:clinic/features/technicians/NobatDehy/Controllers/nobat_dehy_main_controller.dart';
+import 'package:clinic/features/technicians/NobatDehy/Models/nobat_tech.dart';
 
 class NobatDehyPage1 extends StatefulWidget {
   const NobatDehyPage1({Key? key}) : super(key: key);
@@ -14,9 +16,10 @@ class NobatDehyPage1 extends StatefulWidget {
 }
 
 class _NobatDehyPage1State extends State<NobatDehyPage1> {
+  NobatDehiMainController listOfAppointmentController =
+      Get.put(NobatDehiMainController());
   @override
   Widget build(BuildContext context) {
-
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -38,81 +41,151 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: FutureBuilder(
-          future: ReadJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Text("${data.error}");
-            } else if (data.hasData) {
-              var items = data.data as List<EntityHome>;
+      body:
+          // SingleChildScrollView(
+          // child:
+          FutureBuilder(
+        future: listOfAppointmentController.getTechAppointments(),
+        builder: (context, data) {
+          if (data.hasError) {
+            return Text("${data.error}");
+          } else if (data.hasData) {
+            var items = data.data as List<NobatTech>;
+            if (items.length == 0) {
+              return Center(
+                child: Text("نوبتی در حال حاضر وجود ندارد"),
+              );
+            } else {
               return ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemCount: items == null ? 0 : items.length,
                 itemBuilder: (context, index) {
+                  NobatTech nobat = items[index];
                   return GestureDetector(
                     onTap: () {
-                      Get.to(NobatDehyPage2());
+                      Get.to(
+                        NobatDehyPage2(),
+                        arguments: nobat,
+                      );
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
-                        right: screenwidth / width_figma * 16,
-                        left: screenwidth / width_figma * 16,
+                        // right: screenwidth / width_figma * 16,
+                        // left: screenwidth / width_figma * 16,
                         top: 4,
                         bottom: 4,
                       ),
                       child: Container(
                         width: screenwidth / width_figma * 396,
-                        height: 180,                                              // inja man as context estefade nakardam
+                        height: 180, // inja man as context estefade nakardam
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
                         child: Directionality(
                           textDirection: TextDirection.rtl,
                           child: Padding(
-                            padding: EdgeInsets.only(
-                              right: screenwidth / width_figma * 16,
-                              left: screenwidth / width_figma * 16,
-                              top: 16,
-                              bottom: 16,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: screenwidth / width_figma * 364,
-                                  height: 100,
-                                  child: Row(
-                                    children: [
-                                      Image.asset("lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
-                                      SizedBox(
-                                        width: screenwidth / width_figma * 8,
-                                      ),
-                                      Container(
-                                        width:
-                                        screenwidth / width_figma * 110,
-                                        child: Column(
+                              padding: EdgeInsets.only(
+                                right: screenwidth / width_figma * 16,
+                                left: screenwidth / width_figma * 16,
+                                top: 16,
+                                bottom: 16,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // width: screenwidth / width_figma * 364,
+                                    height: 100,
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                            "lib/features/technicians/ZibajoyanMan/Images/nobat.png"),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 8,
+                                        ),
+                                        Container(
+                                          width:
+                                              screenwidth / width_figma * 110,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                nobat.operation!,
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: fontcolor,
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
+                                              ),
+                                              SizedBox(
+                                                height: 16,
+                                              ),
+                                              Text(
+                                                "زیباجو:",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: grayColorHome,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 4,
+                                              ),
+                                              Text(
+                                                nobat.pationt_name!,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: fontcolor,
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 64,
+                                        ),
+                                        Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              "کاشت مو",
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: fontcolor,
-                                                  fontFeatures: [FontFeature('ss01', 1),]
+                                            Container(
+                                              width: screenwidth /
+                                                  width_figma *
+                                                  100,
+                                              height: 24,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(16),
+                                                  color: processColor),
+                                              child: Center(
+                                                child: Text(
+                                                  "در انتظار تایید",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w800,
+                                                      fontSize: 14,
+                                                      color: Colors.white,
+                                                      fontFeatures: [
+                                                        FontFeature('ss01', 1),
+                                                      ]),
+                                                ),
                                               ),
                                             ),
                                             SizedBox(
                                               height: 16,
                                             ),
                                             Text(
-                                              "زیباجو:",
+                                              "تاریخ:",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 14,
@@ -120,127 +193,86 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height:  4,
+                                              height: 4,
                                             ),
                                             Text(
-                                              items[index].zibajo.toString(),
+                                              nobat.visit_date!.substring(
+                                                  0,
+                                                  nobat.visit_date!.length -
+                                                      10),
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500,
-                                                  color: fontcolor,
-                                                  fontFeatures: [FontFeature('ss01', 1),]),
+                                                  color: fontcolor),
                                             ),
                                           ],
                                         ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      // height: 10,
+                                      ),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          width:
+                                              screenwidth / width_figma * 213,
+                                          height: 36,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(48),
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topRight,
+                                                end: Alignment.bottomLeft,
+                                                colors: [LightBlue, White]),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "قبول نوبت",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                       SizedBox(
-                                        width: screenwidth / width_figma * 64,
+                                        width: screenwidth / width_figma * 50,
                                       ),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: screenwidth / width_figma * 100,
-                                            height: 24,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(16),
-                                              color: processColor
-                                            ),
-                                            child: Center(
-                                              child: Text("در انتظار تایید", style: TextStyle(
-                                                fontWeight: FontWeight.w800,
-                                                fontSize: 14,
-                                                color: Colors.white,
-                                                  fontFeatures: [FontFeature('ss01', 1),]
-                                              ),),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 16,
-                                          ),
-                                          Text(
-                                            "تاریخ:",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
+                                      MaterialButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "رد نوبت",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w800,
                                               fontSize: 14,
-                                              color: grayColorHome,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 4,
-                                          ),
-                                          Text(
-                                            "دوشنبه 12 آذر",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: fontcolor),
-                                          ),
-                                        ],
-                                      ),
+                                              color: germeztiz),
+                                        ),
+                                      )
                                     ],
                                   ),
-                                ),
-                                SizedBox(
-                                  height:  10,
-                                ),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: (){},
-                                      child: Container(
-                                        width: screenwidth / width_figma * 213,
-                                        height: 36,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(48),
-                                          gradient: LinearGradient(
-                                            begin: Alignment.topRight,
-                                            end: Alignment.bottomLeft,
-                                            colors: [
-                                              LightBlue,
-                                              White
-                                            ]
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("قبول نوبت", style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.white,
-                                          ),),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 50,
-                                    ),
-                                    MaterialButton(
-                                      onPressed: (){},
-                                      child: Text("رد نوبت", style: TextStyle(
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 14,
-                                        color: germeztiz
-                                      ),),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            )
-                          ),
+                                ],
+                              )),
                         ),
                       ),
                     ),
                   );
                 },
               );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
             }
-          },
-        ),
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
+      // ),
     );
   }
 }
