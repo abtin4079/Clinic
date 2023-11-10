@@ -11,6 +11,7 @@ class PlantInfo extends StatefulWidget {
 }
 
 class _PlantInfoState extends State<PlantInfo> {
+  TextEditingController tarcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -176,7 +177,7 @@ class _PlantInfoState extends State<PlantInfo> {
                               ),
                             ),
                             SizedBox(
-                              width: screenwidth / width_figma * 113,
+                              width: screenwidth / width_figma * 40,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
@@ -200,7 +201,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: screenheight / height_figma * 16,
+                                    height: screenheight / height_figma * 10,
                                   ),
                                   Text(
                                     ":زیباجو",
@@ -234,7 +235,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: screenheight / height_figma * 16,
+                                    height: screenheight / height_figma * 12,
                                   ),
                                   Text(
                                     ":عملیات مورد نیاز",
@@ -455,7 +456,7 @@ class _PlantInfoState extends State<PlantInfo> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                "این یک متن تست برای توضیحات کاشت که توسط تکنسین نوشته میشود است",
+                                "",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
@@ -518,6 +519,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                                   color: backgroundHome,
                                                 ),
                                                 child: TextField(
+                                                  controller: tarcontroller,
                                                   textAlign: TextAlign.center,
                                                   decoration: InputDecoration(
                                                     hintText: 'تعداد تار مو',
@@ -961,7 +963,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: screenwidth / width_figma * 113,
+                                  width: screenwidth / width_figma * 40,
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
@@ -987,7 +989,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                       ),
                                       SizedBox(
                                         height:
-                                            screenheight / height_figma * 16,
+                                            screenheight / height_figma * 10,
                                       ),
                                       Text(
                                         ":زیباجو",
@@ -1024,7 +1026,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                       ),
                                       SizedBox(
                                         height:
-                                            screenheight / height_figma * 16,
+                                            screenheight / height_figma * 12,
                                       ),
                                       Text(
                                         ":عملیات مورد نیاز",
@@ -1247,7 +1249,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "این یک متن تست برای توضیحات کاشت که توسط تکنسین نوشته میشود است",
+                                    "",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14,
@@ -1257,7 +1259,7 @@ class _PlantInfoState extends State<PlantInfo> {
                               ),
                             ),
                             SizedBox(
-                              height: screenheight / height_figma * 15,
+                              height: screenheight / height_figma * 40,
                             ),
                           ],
                         )
@@ -1401,7 +1403,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: screenwidth / width_figma * 113,
+                                      width: screenwidth / width_figma * 40,
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(
@@ -1429,7 +1431,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                           SizedBox(
                                             height: screenheight /
                                                 height_figma *
-                                                16,
+                                                10,
                                           ),
                                           Text(
                                             ":زیباجو",
@@ -1468,7 +1470,7 @@ class _PlantInfoState extends State<PlantInfo> {
                                           SizedBox(
                                             height: screenheight /
                                                 height_figma *
-                                                16,
+                                                12,
                                           ),
                                           Text(
                                             ":عملیات مورد نیاز",

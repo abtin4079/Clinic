@@ -36,171 +36,176 @@ class _AddTechState extends State<AddTech> {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              top: screenheight / height_figma * 62,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: Text("نام کامل", style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: fontcolor
-            ),),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 9,
-          ),
-          Container(
-            width: screenwidth / width_figma * 396,
-            height: screenheight / height_figma * 48,
-            margin: EdgeInsets.only(
-              left: screenwidth / width_figma * 15,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: TextField(
-              controller: createTechController.nameController,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                hintText: " نام کامل تکنسین را وارد کنید ",
-                hintStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: phonecolor,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(32),
-                  borderSide: BorderSide(
-                    color: SendagainColorwhite,
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: outlineborder, width: 2),
-                  borderRadius: BorderRadius.circular(48),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: screenheight / height_figma * 62,
+                right: screenwidth / width_figma * 15,
               ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: screenheight / height_figma * 7,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: Text("کد ملی", style: TextStyle(
+              child: Text("نام کامل", style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: fontcolor
-            ),),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 9,
-          ),
-          Container(
-            width: screenwidth / width_figma * 396,
-            height: screenheight / height_figma * 48,
-            margin: EdgeInsets.only(
-              left: screenwidth / width_figma * 15,
-              right: screenwidth / width_figma * 15,
+              ),),
             ),
-            child: TextField(
-              controller: createTechController.cardIdController,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                hintText: " کد ملی تکنسین را وارد کنید ",
-                hintStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: phonecolor,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(32),
-                  borderSide: BorderSide(
-                    color: SendagainColorwhite,
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: outlineborder, width: 2),
-                  borderRadius: BorderRadius.circular(48),
-                ),
+            SizedBox(
+              height: screenheight / height_figma * 9,
+            ),
+            Container(
+              width: screenwidth / width_figma * 396,
+              height: screenheight / height_figma * 48,
+              margin: EdgeInsets.only(
+                left: screenwidth / width_figma * 15,
+                right: screenwidth / width_figma * 15,
               ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: screenheight / height_figma * 7,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: Text("شماره تماس", style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: fontcolor
-            ),),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 9,
-          ),
-          Container(
-            width: screenwidth / width_figma * 396,
-            height: screenheight / height_figma * 48,
-            margin: EdgeInsets.only(
-              left: screenwidth / width_figma * 15,
-              right: screenwidth / width_figma * 15,
-            ),
-            child: TextField(
-              controller: createTechController.phoneController,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                hintText: " شماره تلفن معتبر تکنسین را وارد کنید ",
-                hintStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: phonecolor,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(32),
-                  borderSide: BorderSide(
-                    color: SendagainColorwhite,
-                    width: 2,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: outlineborder, width: 2),
-                  borderRadius: BorderRadius.circular(48),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: screenheight / height_figma * 474,
-          ),
-          GestureDetector(
-            onTap: (){
-              createTechController.getNewTech();
-            },
-            child: Center(
-              child: Container(
-                width: screenwidth / width_figma * 330,
-                height: screenheight / height_figma * 48,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: LightBlue,
-                ),
-                child: Center(
-                  child: Text("ثبت تکنسین جدید", style: TextStyle(
+              child: TextField(
+                controller: createTechController.nameController,
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                  hintText: " نام کامل تکنسین را وارد کنید ",
+                  hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
-                    color: lightwhite
-                  ),),
+                    color: phonecolor,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide(
+                      color: SendagainColorwhite,
+                      width: 2,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: outlineborder, width: 2),
+                    borderRadius: BorderRadius.circular(48),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(
+                top: screenheight / height_figma * 7,
+                right: screenwidth / width_figma * 15,
+              ),
+              child: Text("کد ملی", style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: fontcolor
+              ),),
+            ),
+            SizedBox(
+              height: screenheight / height_figma * 9,
+            ),
+            Container(
+              width: screenwidth / width_figma * 396,
+              height: screenheight / height_figma * 48,
+              margin: EdgeInsets.only(
+                left: screenwidth / width_figma * 15,
+                right: screenwidth / width_figma * 15,
+              ),
+              child: TextField(
+                controller: createTechController.cardIdController,
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                  hintText: " کد ملی تکنسین را وارد کنید ",
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: phonecolor,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide(
+                      color: SendagainColorwhite,
+                      width: 2,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: outlineborder, width: 2),
+                    borderRadius: BorderRadius.circular(48),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: screenheight / height_figma * 7,
+                right: screenwidth / width_figma * 15,
+              ),
+              child: Text("شماره تماس", style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: fontcolor
+              ),),
+            ),
+            SizedBox(
+              height: screenheight / height_figma * 9,
+            ),
+            Container(
+              width: screenwidth / width_figma * 396,
+              height: screenheight / height_figma * 48,
+              margin: EdgeInsets.only(
+                left: screenwidth / width_figma * 15,
+                right: screenwidth / width_figma * 15,
+              ),
+              child: TextField(
+                controller: createTechController.phoneController,
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                  hintText: " شماره تلفن معتبر تکنسین را وارد کنید ",
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: phonecolor,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32),
+                    borderSide: BorderSide(
+                      color: SendagainColorwhite,
+                      width: 2,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: outlineborder, width: 2),
+                    borderRadius: BorderRadius.circular(48),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: screenheight / height_figma * 474,
+            ),
+            GestureDetector(
+              onTap: (){
+                createTechController.getNewTech();
+              },
+              child: Center(
+                child: Container(
+                  width: screenwidth / width_figma * 330,
+                  height: screenheight / height_figma * 48,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: LightBlue,
+                  ),
+                  child: Center(
+                    child: Text("ثبت تکنسین جدید", style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: lightwhite
+                    ),),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: screenheight / height_figma * 15,
+            ),
+          ],
+        ),
       ),
     );
   }

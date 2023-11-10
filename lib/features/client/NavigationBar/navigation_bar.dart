@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 import '../Home/presentation/pages/home.dart';
 import '../Setting/presentation/pages/setting.dart';
 import '../Technicians/presentation/pages/tech1.dart';
@@ -57,20 +56,18 @@ class _ClientPageState extends State<ClientPage> {
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: Container(
-          height: 96,
+          height: screenheight / height_figma * 96,
           child: Center(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Row(
-                //  crossAxisAlignment: CrossAxisAlignment.start,
+                 // crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: screenwidth / width_figma * 15,
-                    ),
-                    currenttab == 0 ? MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    currenttab == 0 ? GestureDetector(
+                      // Width: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Setting();
                           currenttab = 0;
@@ -109,9 +106,9 @@ class _ClientPageState extends State<ClientPage> {
                           )
                         ],
                       ),
-                    ):MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    ):GestureDetector(
+                     // minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Setting();
                           currenttab = 0;
@@ -143,9 +140,9 @@ class _ClientPageState extends State<ClientPage> {
                       width: screenwidth / width_figma * 40,
                     ),
 
-                    currenttab ==1 ?  MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    currenttab ==1 ?  GestureDetector(
+                    //  minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Notif();
                           currenttab = 1;
@@ -184,9 +181,9 @@ class _ClientPageState extends State<ClientPage> {
                           )
                         ],
                       ),
-                    ):MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    ):GestureDetector(
+                     // minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Notif();
                           currenttab = 1;
@@ -214,22 +211,23 @@ class _ClientPageState extends State<ClientPage> {
                         ],
                       ),
                     ),
-
-
+                    SizedBox(
+                      width: screenwidth / width_figma * 5,
+                    ),
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: screenheight / height_figma * 7),
+                  margin: EdgeInsets.only(top: screenheight / height_figma * 2),
                   child: Center(child: Text("ثبت نوبت ", style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: nobatdehicolor
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11,
+                      color: nobatdehicolor
                   ),),),),
                 Row(
                   children: [
-                    currenttab == 2 ?  MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    currenttab == 2 ?  GestureDetector(
+                     // minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Tech1();
                           currenttab = 2;
@@ -268,9 +266,9 @@ class _ClientPageState extends State<ClientPage> {
                           )
                         ],
                       ),
-                    ):MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    ):GestureDetector(
+                     // minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Tech1();
                           currenttab = 2;
@@ -302,9 +300,9 @@ class _ClientPageState extends State<ClientPage> {
                     SizedBox(
                       width: screenwidth / width_figma * 40,
                     ),
-                    currenttab == 3 ?  MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    currenttab == 3 ?  GestureDetector(
+                     // minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Home();
                           currenttab = 3;
@@ -343,9 +341,9 @@ class _ClientPageState extends State<ClientPage> {
                           )
                         ],
                       ),
-                    ):MaterialButton(
-                      minWidth: screenwidth / width_figma * 40,
-                      onPressed: () {
+                    ):GestureDetector(
+                    //  minWidth: screenwidth / width_figma * 40,
+                      onTap: () {
                         setState(() {
                           currentscreen = Home();
                           currenttab = 3;
@@ -374,9 +372,7 @@ class _ClientPageState extends State<ClientPage> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: screenwidth / width_figma * 15,
-                    ),
+
                   ],
                 ),
               ],

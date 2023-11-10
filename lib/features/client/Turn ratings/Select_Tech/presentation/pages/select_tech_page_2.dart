@@ -28,10 +28,10 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
 
   String? value;
 
-  final items = ['برداشت مو', 'کاشت مو'];
+  final items = ['برداشت مو', 'کاشت مو', 'تیغ مو', 'پانچ مو', 'کاشت ابرو', 'برداشت ابرو'];
   var hour = 0;
   var minute = 0;
-  String now = DateTime.now().toString();
+  final  visitDate = DateTime.now().toIso8601String();
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +202,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                       child: TypeAheadField(
                         textFieldConfiguration: TextFieldConfiguration(
                           controller: searchTechController.searchController,
-                          onSubmitted: (value) {
+                          onChanged: (value) {
                             if (searchTechController.searchController.text != '') {
                               searchTechController.fetchPatient();
                             }
@@ -437,7 +437,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       ),
                                       Container(
                                           width:
-                                              screenwidth / width_figma * 146,
+                                              screenwidth / width_figma * 190,
                                           height: 49,
                                           decoration: BoxDecoration(
                                             border: Border.all(
@@ -519,9 +519,9 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       ),
                                       Container(
                                         padding: EdgeInsets.only(
-                                            left: 10,
+                                            left: screenwidth / width_figma * 15,
                                             right:
-                                                screenwidth / width_figma * 70),
+                                                screenwidth / width_figma * 50),
                                         width: screenwidth / width_figma * 178,
                                         height: 38,
                                         decoration: BoxDecoration(
@@ -553,38 +553,41 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                                       Container(
                                           width:
                                               screenwidth / width_figma * 170,
-                                          height: 38,
+                                          height: screenheight / height_figma * 38,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
-                                          child: TextField(
-                                            controller: createNewProcessController.tarmo1Controller,
-                                            textAlign: TextAlign.center,
-                                            decoration: InputDecoration(
-                                              hintText: 'تعداد تار مو',
-                                              hintStyle: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: phonecolor,
+                                          child: Center(
+                                            child: TextField(
+                                              controller: createNewProcessController.tarmo1Controller,
+                                              textAlign: TextAlign.center,
+                                              textAlignVertical: TextAlignVertical(y: 0.5),
+                                              decoration: InputDecoration(
+                                                hintText: 'تعداد تار مو',
+                                                hintStyle: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: phonecolor,
+                                                ),
+                                                focusedBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.black),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                enabledBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: outlineborder,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                border: OutlineInputBorder(),
                                               ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: outlineborder,
-                                                    width: 2),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              border: OutlineInputBorder(),
+                                              keyboardType: TextInputType.number,
                                             ),
-                                            keyboardType: TextInputType.number,
                                           )),
                                     ],
                                   ),
@@ -620,7 +623,7 @@ class _SelectTechPage2State extends State<SelectTechPage2> {
                       GestureDetector(
                         onTap: () {
                           print(1);
-                          createNewProcessController.registerNewProcess1(now, value);
+                          createNewProcessController.registerNewProcess1(value);
                         },
                         child: Container(
                           width: screenwidth / width_figma * 187,

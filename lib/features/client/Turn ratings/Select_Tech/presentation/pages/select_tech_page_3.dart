@@ -26,7 +26,7 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
   String? value1;
   String? value2;
 
-  final items = ['برداشت مو', 'کاشت مو'];
+  final items = ['برداشت مو', 'کاشت مو', 'تیغ مو', 'پانچ مو', 'کاشت ابرو', 'برداشت ابرو'];
   var hour1 = 0;
   var minute1 = 0;
 
@@ -371,7 +371,7 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                       ),
                                       Container(
                                           width:
-                                          screenwidth / width_figma * 146,
+                                          screenwidth / width_figma * 190,
                                           height: 49,
                                           decoration: BoxDecoration(
                                             border: Border.all(
@@ -382,80 +382,78 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                             BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
-                                          child: Center(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                              children: [
-                                                NumberPicker(
-                                                    minValue: 0,
-                                                    maxValue: 23,
-                                                    value: hour1,
-                                                    zeroPad: true,
-                                                    infiniteLoop: true,
-                                                    itemWidth: 80,
-                                                    itemHeight: 15,
-                                                    selectedTextStyle:
-                                                    TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w700,
-                                                        color: fontcolor),
-                                                    textStyle: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w100,
-                                                        color: Colors.black),
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        hour1 = value;
-                                                      });
-                                                    }),
-                                                Text(
-                                                  ":",
-                                                  style: TextStyle(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              NumberPicker(
+                                                  minValue: 0,
+                                                  maxValue: 23,
+                                                  value: hour1,
+                                                  zeroPad: true,
+                                                  infiniteLoop: true,
+                                                  itemWidth: 80,
+                                                  itemHeight: 15,
+                                                  selectedTextStyle:
+                                                  TextStyle(
+                                                      fontSize: 16,
                                                       fontWeight:
                                                       FontWeight.w700,
+                                                      color: fontcolor),
+                                                  textStyle: TextStyle(
                                                       fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w100,
                                                       color: Colors.black),
-                                                ),
-                                                NumberPicker(
-                                                    minValue: 0,
-                                                    maxValue: 59,
-                                                    value: minute1,
-                                                    zeroPad: true,
-                                                    infiniteLoop: true,
-                                                    itemWidth: 80,
-                                                    itemHeight: 15,
-                                                    selectedTextStyle:
-                                                    TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w700,
-                                                        color: fontcolor),
-                                                    textStyle: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w100,
-                                                        color: Colors.black),
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        minute1 = value;
-                                                      });
-                                                    }),
-                                              ],
-                                            ),
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      hour1 = value;
+                                                    });
+                                                  }),
+                                              Text(
+                                                ":",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.w700,
+                                                    fontSize: 16,
+                                                    color: Colors.black),
+                                              ),
+                                              NumberPicker(
+                                                  minValue: 0,
+                                                  maxValue: 59,
+                                                  value: minute1,
+                                                  zeroPad: true,
+                                                  infiniteLoop: true,
+                                                  itemWidth: 80,
+                                                  itemHeight: 15,
+                                                  selectedTextStyle:
+                                                  TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w700,
+                                                      color: fontcolor),
+                                                  textStyle: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w100,
+                                                      color: Colors.black),
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      minute1 = value;
+                                                    });
+                                                  }),
+                                            ],
                                           )),
                                       SizedBox(
                                         height: 26,
                                       ),
                                       Container(
                                         padding: EdgeInsets.only(
-                                            left: 10,
+                                            left: screenwidth / width_figma * 15,
                                             right:
-                                            screenwidth / width_figma * 70),
+                                            screenwidth / width_figma * 50),
                                         width: screenwidth / width_figma * 178,
                                         height: 38,
                                         decoration: BoxDecoration(
@@ -494,7 +492,9 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                             color: backgroundHome,
                                           ),
                                           child: TextField(
+                                            controller: createNewProcessController.tarmo1Controller,
                                             textAlign: TextAlign.center,
+                                            textAlignVertical: TextAlignVertical(y: 0.5),
                                             decoration: InputDecoration(
                                               hintText: 'تعداد تار مو',
                                               hintStyle: TextStyle(
@@ -712,7 +712,7 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                       ),
                                       Container(
                                           width:
-                                          screenwidth / width_figma * 146,
+                                          screenwidth / width_figma * 190,
                                           height: 49,
                                           decoration: BoxDecoration(
                                             border: Border.all(
@@ -723,82 +723,80 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                             BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
-                                          child: Center(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                              children: [
-                                                NumberPicker(
-                                                    minValue: 0,
-                                                    maxValue: 23,
-                                                    value: hour2,
-                                                    zeroPad: true,
-                                                    infiniteLoop: true,
-                                                    itemWidth: 80,
-                                                    itemHeight: 15,
-                                                    selectedTextStyle:
-                                                    TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w700,
-                                                        color: fontcolor),
-                                                    textStyle: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w100,
-                                                        color: Colors.black),
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        hour2 = value;
-                                                      });
-                                                    }),
-                                                Text(
-                                                  ":",
-                                                  style: TextStyle(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              NumberPicker(
+                                                  minValue: 0,
+                                                  maxValue: 23,
+                                                  value: hour2,
+                                                  zeroPad: true,
+                                                  infiniteLoop: true,
+                                                  itemWidth: 80,
+                                                  itemHeight: 15,
+                                                  selectedTextStyle:
+                                                  TextStyle(
+                                                      fontSize: 16,
                                                       fontWeight:
                                                       FontWeight.w700,
+                                                      color: fontcolor),
+                                                  textStyle: TextStyle(
                                                       fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w100,
                                                       color: Colors.black),
-                                                ),
-                                                NumberPicker(
-                                                    minValue: 0,
-                                                    maxValue: 59,
-                                                    value: minute2,
-                                                    zeroPad: true,
-                                                    infiniteLoop: true,
-                                                    itemWidth: 80,
-                                                    itemHeight: 15,
-                                                    selectedTextStyle:
-                                                    TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w700,
-                                                        color: fontcolor),
-                                                    textStyle: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                        FontWeight.w100,
-                                                        color: Colors.black),
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        minute2 = value;
-                                                      });
-                                                    }),
-                                              ],
-                                            ),
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      hour2 = value;
+                                                    });
+                                                  }),
+                                              Text(
+                                                ":",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.w700,
+                                                    fontSize: 16,
+                                                    color: Colors.black),
+                                              ),
+                                              NumberPicker(
+                                                  minValue: 0,
+                                                  maxValue: 59,
+                                                  value: minute2,
+                                                  zeroPad: true,
+                                                  infiniteLoop: true,
+                                                  itemWidth: 80,
+                                                  itemHeight: 15,
+                                                  selectedTextStyle:
+                                                  TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w700,
+                                                      color: fontcolor),
+                                                  textStyle: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                      FontWeight.w100,
+                                                      color: Colors.black),
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      minute2 = value;
+                                                    });
+                                                  }),
+                                            ],
                                           )),
                                       SizedBox(
                                         height: 26,
                                       ),
                                       Container(
                                         padding: EdgeInsets.only(
-                                            left: 10,
+                                            left: screenwidth / width_figma * 15,
                                             right:
-                                            screenwidth / width_figma * 70),
+                                            screenwidth / width_figma * 50),
                                         width: screenwidth / width_figma * 178,
-                                        height: 38,
+                                        height: screenheight / height_figma * 38,
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                               color: PinputColor, width: 1),
@@ -828,14 +826,16 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                                       Container(
                                           width:
                                           screenwidth / width_figma * 170,
-                                          height: 38,
+                                          height: screenheight / height_figma * 38,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                             BorderRadius.circular(10),
                                             color: backgroundHome,
                                           ),
                                           child: TextField(
+                                            controller: createNewProcessController.tarmo2Controller,
                                             textAlign: TextAlign.center,
+                                            textAlignVertical: TextAlignVertical(y: 0.5),
                                             decoration: InputDecoration(
                                               hintText: 'تعداد تار مو',
                                               hintStyle: TextStyle(
@@ -892,7 +892,9 @@ class _SelectTechPage3State extends State<SelectTechPage3> {
                         width: screenwidth / width_figma * 60,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          createNewProcessController.registerNewProcess2(value1, value2);
+                        },
                         child: Container(
                           width: screenwidth / width_figma * 187,
                           height: screenheight / height_figma * 44,

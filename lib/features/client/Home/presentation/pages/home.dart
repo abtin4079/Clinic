@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
-                            height: 164,
+                            height: screenheight / height_figma * 164,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 color: Colors.white),
@@ -171,9 +171,9 @@ class _HomeState extends State<Home> {
                               child: Padding(
                                 padding: EdgeInsets.only(
                                   top: screenheight / height_figma * 17,
-                                  right: screenwidth / width_figma * 16,
-                                  left: screenwidth / width_figma * 16,
-                                  bottom: screenheight / height_figma * 17,
+                                  right: screenwidth / width_figma * 15,
+                                  left: screenwidth / width_figma * 15,
+                                  bottom: screenheight / height_figma * 9,
                                 ),
                                 child: Row(
                                   children: [

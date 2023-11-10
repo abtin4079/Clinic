@@ -110,13 +110,19 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                           color: Colors.white,
                         ),
                         child: TextField(
+                          onSubmitted: (value) {
+                            userNumber = sendOTPController.phonenumberController.text;
+                            print(userNumber);
+                            sendOTPController.registerwithphone();
+                          },
+                          textAlignVertical: TextAlignVertical(y: 0.5),
                           textAlign: TextAlign.right,
                           controller: sendOTPController.phonenumberController,
                           decoration: InputDecoration(
                             hintText: '0917.......',
                             hintStyle: TextStyle(
                               fontWeight: FontWeight.w500,
-                              fontSize: 14,
+                              fontSize: 16,
                               color: phonecolor,
                             ),
                             focusedBorder: OutlineInputBorder(
