@@ -18,15 +18,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
- // @override
-//  void initState() {
-    // Call super.initState() first.
-  //  Future.delayed(const Duration(seconds: 5), () {});
-  //  super.initState();
- //   initialCheck();
-    // Your one-time initialization code for the root widget goes here.
+  @override
+  void initState() {
+  //   Call super.initState() first.
+    Future.delayed(const Duration(seconds: 5), () {});
+    super.initState();
+    initialCheck();
+  // Your one-time initialization code for the root widget goes here.
     // This code will run when the app is first launched.
- // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'peyda',
 
       ),
-      home: StartingPage(),
+      home: LoginFirstPage(),
     );
   }
 }

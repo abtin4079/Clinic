@@ -299,6 +299,9 @@ class _Tech1State extends State<Tech1> {
                 ),
               ),
             ),
+            SizedBox(
+              height: screenheight / height_figma * 15,
+            ),
           ],
         ),
       ),

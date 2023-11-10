@@ -2,8 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../themes/colors.dart';
+import '../../../../auth/controller/shared_preference.dart';
+import '../../../../auth/presentation/pages/login_first_page.dart';
 
 class ProfileForTech extends StatefulWidget {
   const ProfileForTech({Key? key}) : super(key: key);
@@ -258,7 +262,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 160,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -295,7 +299,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 width: screenwidth / width_figma * 6,
                               ),
                               Container(
-                                width: screenwidth / width_figma * 100,
+                                width: screenwidth / width_figma * 110,
                                 child: Text(
                                   "تاریخچه تراکنش ها",
                                   style: TextStyle(
@@ -308,7 +312,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 150,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -355,7 +359,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 160,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -405,7 +409,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 160,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -455,7 +459,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 160,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -505,7 +509,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 175,
+                                width: screenwidth / width_figma * 165,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -532,50 +536,179 @@ class _ProfileForTechState extends State<ProfileForTech> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
-                        ),
-                        child: Container(
-                          width: screenwidth / width_figma * 356,
-                          height: screenheight / height_figma * 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: backgroundHome),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                  "lib/features/client/Setting/presentation/Images/on_off.png"),
-                              SizedBox(
-                                width: screenwidth / width_figma * 6,
-                              ),
-                              Container(
-                                width: screenwidth / width_figma * 100,
-                                child: Text(
-                                  "خروج از حساب",
-                                  style: TextStyle(
-                                      fontSize: 14 * CoefficientHeight,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black),
+                      GestureDetector(
+                        onTap: (){
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              child: Container(
+                                width: screenwidth / width_figma * 356,
+                                height:
+                                screenheight / height_figma * 170,
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                  BorderRadius.circular(28),
+                                  color: Colors.white,
+                                ),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: screenheight /
+                                          height_figma *
+                                          41,
+                                    ),
+                                    Text(
+                                      "آیا از خروج از حساب مطمعن هستید؟",
+                                      style: TextStyle(
+                                        color: fontcolor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: screenheight /
+                                          height_figma *
+                                          39,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back(result: false);
+                                          },
+                                          child: Container(
+                                            height: screenheight /
+                                                height_figma *
+                                                36,
+                                            width: screenwidth /
+                                                width_figma *
+                                                100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius
+                                                    .circular(48),
+                                                gradient:
+                                                LinearGradient(
+                                                    begin: Alignment
+                                                        .topRight,
+                                                    end: Alignment
+                                                        .bottomLeft,
+                                                    colors: [
+                                                      rediligal,
+                                                      whiteiligal
+                                                    ])),
+                                            child: Center(
+                                              child: Text(
+                                                "انصراف",
+                                                style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: screenwidth /
+                                              width_figma *
+                                              8,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            removeValues("access_token");
+                                            Get.to(LoginFirstPage());
+                                          },
+                                          child: Container(
+                                            height: screenheight /
+                                                height_figma *
+                                                36,
+                                            width: screenwidth /
+                                                width_figma *
+                                                100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius
+                                                    .circular(48),
+                                                gradient:
+                                                LinearGradient(
+                                                    begin: Alignment
+                                                        .topRight,
+                                                    end: Alignment
+                                                        .bottomLeft,
+                                                    colors: [
+                                                      LightBlue,
+                                                      White
+                                                    ])),
+                                            child: Center(
+                                              child: Text(
+                                                "تایید",
+                                                style: TextStyle(
+                                                  fontWeight:
+                                                  FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
-                              SizedBox(
-                                width: screenwidth / width_figma * 177,
-                              ),
-                              Directionality(
-                                textDirection: TextDirection.ltr,
-                                child: FittedBox(
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.arrow_back_ios_rounded,
-                                      size: 12,
-                                      color: phonecolor,
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 16,
+                          ),
+                          child: Container(
+                            width: screenwidth / width_figma * 356,
+                            height: screenheight / height_figma * 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: backgroundHome),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                    "lib/features/client/Setting/presentation/Images/on_off.png"),
+                                SizedBox(
+                                  width: screenwidth / width_figma * 6,
+                                ),
+                                Container(
+                                  width: screenwidth / width_figma * 100,
+                                  child: Text(
+                                    "خروج از حساب",
+                                    style: TextStyle(
+                                        fontSize: 14 * CoefficientHeight,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: screenwidth / width_figma * 160,
+                                ),
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: FittedBox(
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        size: 12,
+                                        color: phonecolor,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -610,7 +743,7 @@ class _ProfileForTechState extends State<ProfileForTech> {
                                 ),
                               ),
                               SizedBox(
-                                width: screenwidth / width_figma * 177,
+                                width: screenwidth / width_figma * 160,
                               ),
                               Directionality(
                                 textDirection: TextDirection.ltr,
@@ -632,34 +765,29 @@ class _ProfileForTechState extends State<ProfileForTech> {
                       Padding(
                         padding: EdgeInsets.only(
                           top: screenheight / height_figma * 31,
-                          right: screenwidth / width_figma * 73.34,
-                          left: screenwidth / width_figma * 86,
                         ),
-                        child: Container(
-                          width: screenwidth / width_figma * 236.66,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 30 * screenwidth / width_figma,
-                                height: 41 * screenheight / height_figma,
-                                child: FittedBox(
-                                  child: Image.asset(
-                                      "lib/features/client/Setting/presentation/Images/a-neur.png"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: 30 * screenwidth / width_figma,
+                              height: 41 * screenheight / height_figma,
+                              child: FittedBox(
+                                child: Image.asset(
+                                    "lib/features/client/Setting/presentation/Images/a-neur.png"),
+                              ),
+                            ),
+                            FittedBox(
+                              child: Text(
+                                "طراحی و توسعه توسط a-neur انجام میشود",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 12 * CoefficientHeight,
+                                  color: fontcolor,
                                 ),
                               ),
-                              FittedBox(
-                                child: Text(
-                                  "طراحی و توسعه توسط a-neur انجام میشود",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 12 * CoefficientHeight,
-                                    color: fontcolor,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                       ),
                     ],
