@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../themes/colors.dart';
 import '../../controller/initial_check.dart';
@@ -11,14 +16,18 @@ class StartingPage extends StatefulWidget {
 }
 
 class _StartingPageState extends State<StartingPage> {
+
+  int _delaySecond = 3;
+
   @override
   void initState() {
-    // Call super.initState() first.
-    Future.delayed(const Duration(seconds: 5), () {});
     super.initState();
-    initialCheck();
-    // Your one-time initialization code for the root widget goes here.
-    // This code will run when the app is first launched.
+    _delayPage();
+    // Simulating a 2-second delay before navigating to the main screen
+  }
+  _delayPage() async{
+    var _duration = Duration(seconds: _delaySecond);
+    return Timer(_duration, () => initialCheck());
   }
 
 

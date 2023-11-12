@@ -102,7 +102,7 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                     Container(
                         margin: EdgeInsets.only(
                             right: screenwidth / width_figma * 24,
-                            top: screenheight / height_figma * 300),
+                            top: screenheight / height_figma * 310),
                         width: screenwidth / width_figma * 380,
                         height: screenheight / height_figma * 48,
                         decoration: BoxDecoration(

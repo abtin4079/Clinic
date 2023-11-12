@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:clinic/features/auth/presentation/pages/login_second_page.dart';
+import 'package:clinic/features/auth/presentation/pages/sarting_page.dart';
 import 'package:clinic/features/auth/utils/api_endpoint.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class SendOTPController extends GetxController{
       }
 
     }catch (e){
-      Get.back();
+      Get.to(StartingPage());
       print(e.toString());
       showDialog(context: Get.context!, builder: (context){
         return SimpleDialog(
