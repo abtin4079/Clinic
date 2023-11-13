@@ -11,67 +11,66 @@ import '../utils/api_endpoint.dart';
 import 'package:http/http.dart' as http;
 
 class LoginController extends GetxController {
-
   TextEditingController otpcontroller = TextEditingController();
   final SendOTPController sendOTPController = Get.put(SendOTPController());
 
-
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  Future<void> loginwithphone() async {
-    try{
-      var headers = {'Content-Type' : 'application/json'};
+  Future<void> loginwithphone(data) async {
+    try {
+      var headers = {'Content-Type': 'application/json'};
 
       var uri = Uri.http('185.221.237.51', '/auth/login');
+      print("here");
+      print(data);
 
       Map<dynamic, String> body = {
         'phone_number': sendOTPController.phonenumberController.text,
         'otp': otpcontroller.text
       };
 
-      var response = await http.post(uri, body: jsonEncode(body), headers: headers);
+      var response =
+          await http.post(uri, body: jsonEncode(body), headers: headers);
 
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         var access_token = json['access_token'];
         var refresh_token = json['refresh_token'];
         var user = json['user'];
         print(response.body);
         print(user);
-        if(user == 'Supervisor'){
+        if (user == 'Supervisor') {
           Get.off(ClientPage());
         } else {
           Get.off(Techpages());
         }
 
-        final SharedPreferences ? prefs = await _prefs ;
+        final SharedPreferences? prefs = await _prefs;
 
-        await prefs ?.setString('access_token', access_token);
-        await prefs ?.setString('refresh_token', refresh_token);
-        await prefs ?.setString('user', user);
+        await prefs?.setString('access_token', access_token);
+        await prefs?.setString('refresh_token', refresh_token);
+        await prefs?.setString('user', user);
 
         // testing that if the access_token and refresh_token is saved or not in the console
         String? thhr = prefs?.getString('access_token');
         print('aceess token is : ${thhr}');
         otpcontroller.clear();
         sendOTPController.phonenumberController.clear();
+      } else {
+        throw jsonDecode(response.body)["detail"] ?? "unknown error occured";
       }
-      else{
-        throw jsonDecode(response.body)["detail"] ?? "unknown error occured" ;
-      }
-
-    }catch (e){
+    } catch (e) {
       Get.back();
       print(e.toString());
-      showDialog(context: Get.context!, builder: (context){
-        return SimpleDialog(
-          title: Text('Error'),
-          contentPadding: EdgeInsets.all(20),
-          children: [
-            Text(e.toString())
-          ],
-        );
-      });
+      showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return SimpleDialog(
+              title: Text('Error'),
+              contentPadding: EdgeInsets.all(20),
+              children: [Text(e.toString())],
+            );
+          });
     }
   }
 }

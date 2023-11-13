@@ -8,52 +8,46 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-class SendOTPController extends GetxController{
-
+class SendOTPController extends GetxController {
   TextEditingController phonenumberController = TextEditingController();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-
   Future<void> registerwithphone() async {
-    try{
-      var headers = {'Content-Type' : 'application/json'};
+    try {
+      var headers = {'Content-Type': 'application/json'};
 
       var uri = Uri.http('185.221.237.51', '/auth/sendotp');
-
 
       Map<dynamic, String> body = {
         'phone_number': phonenumberController.text,
       };
 
-      var response = await http.post(uri, body: jsonEncode(body), headers: headers);
+      var response =
+          await http.post(uri, body: jsonEncode(body), headers: headers);
 
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         var message = json['message'];
         print(message);
-        final SharedPreferences ? prefs = await _prefs ;
-        await prefs ?.setString('message', message);
-       // phonenumberController.clear();
-        Get.off(LoginSecondPage());
+        final SharedPreferences? prefs = await _prefs;
+        await prefs?.setString('message', message);
+        // phonenumberController.clear();
+        Get.to(LoginSecondPage(), arguments: phonenumberController.text);
+      } else {
+        throw jsonDecode(response.body)["detail"] ?? "unknown error occured";
       }
-      else{
-        throw jsonDecode(response.body)["detail"] ?? "unknown error occured" ;
-      }
-
-    }catch (e){
+    } catch (e) {
       Get.to(StartingPage());
       print(e.toString());
-      showDialog(context: Get.context!, builder: (context){
-        return SimpleDialog(
-          title: Text('Error'),
-          contentPadding: EdgeInsets.all(20),
-          children: [
-            Text(e.toString())
-          ],
-        );
-      });
+      showDialog(
+          context: Get.context!,
+          builder: (context) {
+            return SimpleDialog(
+              title: Text('Error'),
+              contentPadding: EdgeInsets.all(20),
+              children: [Text(e.toString())],
+            );
+          });
     }
   }
-
 }
-

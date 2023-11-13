@@ -19,28 +19,31 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
   int _counter = 10;
   late Timer _timer;
 
-  void startTimer(){
+  void startTimer() {
     _counter = 10;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if(_counter > 0){
-        setState(() {
-          _counter --;
-        });
-      }else{
-        setState(() {
-          ispressed = !ispressed;
-        });
-        _timer.cancel();
-      }
-    },);
+    _timer = Timer.periodic(
+      Duration(seconds: 1),
+      (timer) {
+        if (_counter > 0) {
+          setState(() {
+            _counter--;
+          });
+        } else {
+          setState(() {
+            ispressed = !ispressed;
+          });
+          _timer.cancel();
+        }
+      },
+    );
   }
-
 
   final LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
-    String userOtp = '' ;
+    var data = Get.arguments;
+    String userOtp = '';
     final screenheight = MediaQuery.of(context).size.height;
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
@@ -155,7 +158,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                           userOtp = loginController.otpcontroller.text;
                           print(userOtp);
 
-                          loginController.loginwithphone();
+                          loginController.loginwithphone(data);
                         });
                       },
                       child: Container(
@@ -192,17 +195,15 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          !ispressed
-                              ? Text("$_counter")
-                              : Container(),
+                          !ispressed ? Text("$_counter") : Container(),
                           SizedBox(
                             width: screenwidth / width_figma * 5,
                           ),
                           ispressed
                               ? TextButton(
-                                //  style: TextButton.styleFrom(
-                                //    padding: EdgeInsets.zero,
-                                 // ),
+                                  //  style: TextButton.styleFrom(
+                                  //    padding: EdgeInsets.zero,
+                                  // ),
                                   onPressed: () {
                                     startTimer();
                                     setState(() {
@@ -210,7 +211,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                                     });
                                   },
                                   child: Row(
-                                   // mainAxisAlignment: MainAxisAlignment.end,
+                                    // mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Text(
                                         "! ارسال مجدد کد تایید",
@@ -233,28 +234,28 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                                     ],
                                   ))
                               : Row(
-                           // mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "! ارسال مجدد کد تایید",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: SendagainColorwhite,
+                                  // mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      "! ارسال مجدد کد تایید",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: SendagainColorwhite,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 15,
+                                      height: 15,
+                                      child: ClipRRect(
+                                        child: Image.asset(
+                                          "lib/features/auth/presentation/images/refresh-white.png",
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Container(
-                                width: 15,
-                                height: 15,
-                                child: ClipRRect(
-                                  child: Image.asset(
-                                    "lib/features/auth/presentation/images/refresh-white.png",
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),

@@ -4,6 +4,7 @@ const LightBlue = Color(0xFF5B89E0);
 const White = Color(0xFF9DB8DE);
 const fontcolor = Color(0xFF222222);
 const phonecolor = Color(0xFF999999);
+const activites = Color(0xffF9F9F9);
 const outlineborder = Color(0xFFD7D7D7);
 const rediligal = Color(0xffF34363);
 const whiteiligal = Color(0xFFFFA3A3);
