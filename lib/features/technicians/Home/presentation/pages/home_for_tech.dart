@@ -108,7 +108,7 @@ class _HomeForTechState extends State<HomeForTech> {
                               width: screenwidth / width_figma * 8,
                             ),
                             Text(
-                              "فعالیت های اخبر",
+                              "فعالیت های اخیر",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w700,
@@ -122,17 +122,20 @@ class _HomeForTechState extends State<HomeForTech> {
                         height: screenheight / height_figma * 20,
                       ),
                       Container(
-                        height: 200,
-                        padding: EdgeInsets.all(10),
+                        height: screenheight / height_figma * 170,
+                        padding: EdgeInsets.only(
+                          right: screenwidth / width_figma * 24,
+                          left: screenwidth / width_figma * 28,
+                        ),
                         child: MasonryGridView.count(
                           itemCount: 6,
                           crossAxisCount: 4,
-                          mainAxisSpacing: 4,
-                          crossAxisSpacing: 4,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
                           itemBuilder: (context, index) {
                             return Container(
-                              // width: screenwidth / width_figma * 80,
-                              // height: screenheight / height_figma * 64,
+                              width: screenwidth / width_figma * 80,
+                              height: screenheight / height_figma * 69,
                               padding: EdgeInsets.only(top: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(13.91),
@@ -140,28 +143,98 @@ class _HomeForTechState extends State<HomeForTech> {
                               ),
                               child: Directionality(
                                 textDirection: TextDirection.rtl,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "2",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w800,
-                                          color: fontcolor),
-                                    ),
-                                    Text(
-                                      "کاشت مو",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w800,
-                                          color: fontcolor),
-                                    )
-                                  ],
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    right: screenwidth / width_figma * 8,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "2",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w800,
+                                            color: fontcolor),
+                                      ),
+                                      Text(
+                                        "برداشت مو",
+                                        style: TextStyle(
+                                            fontFeatures: [
+                                              FontFeature('ss01', 1),
+                                            ],
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w700,
+                                            color: blackwhite),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
                           },
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          bottom: screenheight / height_figma * 24,
+                          right: screenwidth / width_figma * 24,
+                        ),
+                        child: Container(
+                          width: screenwidth / width_figma * 339,
+                          height: screenheight / height_figma * 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              colors: [moneywhite, moneygreen],
+                            ),
+                          ),
+                          child: Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: screenwidth / width_figma * 39,
+                                ),
+                                Image.asset(
+                                    "lib/features/technicians/Home/image/money.png"),
+                                Text(
+                                  "مانده حساب شما:",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                      color: fontcolor),
+                                ),
+                                SizedBox(
+                                  width: screenwidth / width_figma * 10,
+                                ),
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: Text(
+                                    "12'000'000",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                        color: fontcolor),
+                                  ),
+                                ),
+                                 SizedBox(
+                                   width: screenwidth / width_figma * 5,
+                                 ),
+                                Text(
+                                  "تومان",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12,
+                                      color: grayColorHome),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ],

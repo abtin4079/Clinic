@@ -26,7 +26,7 @@ class _TechProfileState extends State<TechProfile> {
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
 
-    var items2 = Get.arguments;
+   // var items2 = Get.arguments;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -39,6 +39,9 @@ class _TechProfileState extends State<TechProfile> {
           style: TextStyle(
             fontSize: 24 * screenheight / height_figma,
             fontWeight: FontWeight.w700,
+            fontFeatures: [
+              FontFeature('ss01', 1),
+            ],
             color: fontcolor,
           ),
         ),
@@ -78,7 +81,7 @@ class _TechProfileState extends State<TechProfile> {
                       ),
                       child: Center(
                         child: Text(
-                          items2[1].toString(),
+                          "کیانا رضایی",
                           style: TextStyle(
                               fontSize: 16 * screenheight / height_figma,
                               fontWeight: FontWeight.w700,
@@ -122,7 +125,7 @@ class _TechProfileState extends State<TechProfile> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                items2[2].toString(),
+                                "0024158759",
                                 style: TextStyle(
                                     fontSize: 14 * screenheight / height_figma,
                                     fontWeight: FontWeight.w400,
@@ -135,7 +138,7 @@ class _TechProfileState extends State<TechProfile> {
                                 height: screenheight / height_figma * 24,
                               ),
                               Text(
-                                items2[3].toString(),
+                               "01248579554",
                                 style: TextStyle(
                                   fontSize: 14 * screenheight / height_figma,
                                   fontWeight: FontWeight.w400,
@@ -229,12 +232,7 @@ class _TechProfileState extends State<TechProfile> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          Get.to(ActivityHistory(), arguments: [
-                            items2[0],
-                            items2[1],
-                            items2[2],
-                            items2[3]
-                          ]);
+                          Get.to(ActivityHistory());
                         },
                         child: Directionality(
                           textDirection: TextDirection.rtl,
@@ -276,6 +274,7 @@ class _TechProfileState extends State<TechProfile> {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: items == null ? 0 : items.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
@@ -291,7 +290,7 @@ class _TechProfileState extends State<TechProfile> {
                         child: Padding(
                           padding: EdgeInsets.only(
                             top: screenheight / height_figma * 10,
-                            right: screenwidth / width_figma * 19,
+                            right: screenwidth / width_figma * 17,
                             left: screenwidth / width_figma * 19,
                             bottom: screenheight / height_figma * 10,
                           ),
@@ -384,7 +383,7 @@ class _TechProfileState extends State<TechProfile> {
                                       children: [
                                         SizedBox(
                                           height:
-                                              screenheight / height_figma * 25,
+                                              screenheight / height_figma * 32,
                                         ),
                                         Text(
                                           "تار مو:",
@@ -529,12 +528,7 @@ class _TechProfileState extends State<TechProfile> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          Get.to(PaymentHistory(), arguments: [
-                            items2[0],
-                            items2[1],
-                            items2[2],
-                            items2[3]
-                          ]);
+                          Get.to(PaymentHistory());
                         },
                         child: Directionality(
                           textDirection: TextDirection.rtl,
@@ -585,7 +579,7 @@ class _TechProfileState extends State<TechProfile> {
                             top: screenheight / height_figma * 10,
                             bottom: screenheight / height_figma * 10,
                             left: screenwidth / width_figma * 10,
-                            right: screenwidth / width_figma * 10,
+                            right: screenwidth / width_figma * 8,
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
@@ -751,7 +745,7 @@ class _TechProfileState extends State<TechProfile> {
               },
             ),
             SizedBox(
-              height: screenheight / height_figma * 39,
+              height: screenheight / height_figma * 25,
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -769,12 +763,14 @@ class _TechProfileState extends State<TechProfile> {
                           builder: (context) => Dialog(
                             child: Container(
                               width: screenwidth / width_figma * 356,
-                              height: screenheight / height_figma * 170,
+                              height: screenheight / height_figma * 200,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(28),
                                 color: Colors.white,
                               ),
                               child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   SizedBox(
                                     height: screenheight / height_figma * 41,
@@ -784,10 +780,10 @@ class _TechProfileState extends State<TechProfile> {
                                     child: Center(
                                       child: Text(
                                         "آیا از حذف تکنسین انتخاب شده مطمعن هستید؟"
-                                        "\n         تمامی اطلاعات شخص پاک خواهد شد!",
+                                        "\n               تمامی اطلاعات شخص پاک خواهد شد!",
                                         style: TextStyle(
                                             color: fontcolor,
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w700,
                                             fontFeatures: [
                                               FontFeature('ss01', 1),
@@ -796,7 +792,7 @@ class _TechProfileState extends State<TechProfile> {
                                     ),
                                   ),
                                   SizedBox(
-                                    height: screenheight / height_figma * 39,
+                                    height: screenheight / height_figma * 30,
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -898,12 +894,7 @@ class _TechProfileState extends State<TechProfile> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(SalaryPayment(), arguments: [
-                          items2[0],
-                          items2[1],
-                          items2[2],
-                          items2[3],
-                        ]);
+                        Get.to(SalaryPayment());
                       },
                       child: Container(
                         width: screenwidth / width_figma * 120,
@@ -928,7 +919,7 @@ class _TechProfileState extends State<TechProfile> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 33,
+              height: screenheight / height_figma * 40,
             ),
           ],
         ),

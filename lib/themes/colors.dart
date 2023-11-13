@@ -36,3 +36,8 @@ const toggleColor = Color(0xFFD9D9D9);
 const dashlineColor = Color(0xFF3E80E2);
 
 const germeztiz = Color(0xFFFF3B3B);
+
+const blackwhite = Color(0xFF444444);
+const moneygreen = Color(0xFFB9FFCD);
+const moneywhite = Color(0xFFA9D6FF);
+

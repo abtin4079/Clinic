@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:clinic/features/client/Technicians/presentation/pages/salary_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +24,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
 
-    var items2 = Get.arguments;
+  //  var items2 = Get.arguments;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -74,7 +76,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                       ),
                       child: Center(
                         child: Text(
-                          items2[1].toString(),
+                          "کیانا رضایی",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
@@ -114,7 +116,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                items2[2].toString(),
+                              "03521547859",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -125,7 +127,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                 height: screenheight / height_figma * 24,
                               ),
                               Text(
-                                items2[2].toString(),
+                               "2654857958",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -233,7 +235,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                             top: screenheight / height_figma * 10,
                             bottom: screenheight / height_figma * 10,
                             left: screenwidth / width_figma * 10,
-                            right: screenwidth / width_figma * 10,
+                            right: screenwidth / width_figma * 8,
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 396,
@@ -415,132 +417,110 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                         showDialog(
                             context: context,
                             builder: (context) => Dialog(
-                          child: Container(
-                            width: screenwidth / width_figma * 356,
-                            height:
-                            screenheight / height_figma * 170,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius.circular(28),
-                              color: Colors.white,
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: screenheight /
-                                      height_figma *
-                                      41,
+                              child: Container(
+                                width: screenwidth / width_figma * 356,
+                                height: screenheight / height_figma * 200,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(28),
+                                  color: Colors.white,
                                 ),
-                                Directionality(
-                                  textDirection: TextDirection.rtl,
-                                  child: Center(
-                                    child: Text(
-                                      "آیا از حذف تکنسین انتخاب شده مطمعن هستید؟"
-                                          "\n         تمامی اطلاعات شخص پاک خواهد شد!",
-                                      style: TextStyle(
-                                        color: fontcolor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: screenheight /
-                                      height_figma *
-                                      39,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.center,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.back(result: false);
-                                      },
-                                      child: Container(
-                                        height: screenheight /
-                                            height_figma *
-                                            36,
-                                        width: screenwidth /
-                                            width_figma *
-                                            100,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius
-                                                .circular(48),
-                                            gradient:
-                                            LinearGradient(
-                                                begin: Alignment
-                                                    .topRight,
-                                                end: Alignment
-                                                    .bottomLeft,
-                                                colors: [
-                                                  rediligal,
-                                                  whiteiligal
-                                                ])),
-                                        child: Center(
-                                          child: Text(
-                                            "انصراف",
-                                            style: TextStyle(
-                                              fontWeight:
-                                              FontWeight.w700,
+                                    SizedBox(
+                                      height: screenheight / height_figma * 41,
+                                    ),
+                                    Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Center(
+                                        child: Text(
+                                          "آیا از حذف تکنسین انتخاب شده مطمعن هستید؟"
+                                              "\n               تمامی اطلاعات شخص پاک خواهد شد!",
+                                          style: TextStyle(
+                                              color: fontcolor,
                                               fontSize: 14,
-                                              color: Colors.white,
-                                            ),
-                                          ),
+                                              fontWeight: FontWeight.w700,
+                                              fontFeatures: [
+                                                FontFeature('ss01', 1),
+                                              ]),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
-                                      width: screenwidth /
-                                          width_figma *
-                                          8,
+                                      height: screenheight / height_figma * 30,
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.back(result: true);
-                                      },
-                                      child: Container(
-                                        height: screenheight /
-                                            height_figma *
-                                            36,
-                                        width: screenwidth /
-                                            width_figma *
-                                            100,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                            BorderRadius
-                                                .circular(48),
-                                            gradient:
-                                            LinearGradient(
-                                                begin: Alignment
-                                                    .topRight,
-                                                end: Alignment
-                                                    .bottomLeft,
-                                                colors: [
-                                                  LightBlue,
-                                                  White
-                                                ])),
-                                        child: Center(
-                                          child: Text(
-                                            "تایید",
-                                            style: TextStyle(
-                                              fontWeight:
-                                              FontWeight.w700,
-                                              fontSize: 14,
-                                              color: Colors.white,
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back(result: false);
+                                          },
+                                          child: Container(
+                                            height:
+                                            screenheight / height_figma * 36,
+                                            width:
+                                            screenwidth / width_figma * 100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(48),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
+                                                    colors: [
+                                                      rediligal,
+                                                      whiteiligal
+                                                    ])),
+                                            child: Center(
+                                              child: Text(
+                                                "انصراف",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 8,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.back(result: true);
+                                          },
+                                          child: Container(
+                                            height:
+                                            screenheight / height_figma * 36,
+                                            width:
+                                            screenwidth / width_figma * 100,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(48),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
+                                                    colors: [LightBlue, White])),
+                                            child: Center(
+                                              child: Text(
+                                                "تایید",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 14,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
                         );
                       },
                       child: Container(
@@ -570,9 +550,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(SalaryPayment(),
-                            arguments: [items2[0] , items2[1] , items2[2] , items2[3] ,]
-                        );
+                        Get.to(SalaryPayment());
                       },
                       child: Container(
                         width: screenwidth / width_figma * 120,

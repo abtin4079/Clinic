@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -21,7 +23,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
 
     int _historyIndex = 0;
     int _paymentReady = 0;
-    var items2 = Get.arguments;
+    // var items2 = Get.arguments;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -47,7 +49,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
             Center(
               child: Container(
                 width: screenwidth / width_figma * 396,
-                height: screenheight / height_figma * 359,
+                height: screenheight / height_figma * 370,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32),
                     color: Colors.white),
@@ -73,11 +75,14 @@ class _SalaryPaymentState extends State<SalaryPayment> {
                       ),
                       child: Center(
                         child: Text(
-                          items2[1].toString(),
+                         "کیانا رضایی",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: fontcolor,
+                            fontFeatures: [
+                              FontFeature('ss01', 1),
+                            ],
                           ),
                         ),
                       ),
@@ -113,7 +118,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                items2[2].toString(),
+                               "09124587458",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -124,7 +129,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
                                 height: screenheight / height_figma * 24,
                               ),
                               Text(
-                                items2[2].toString(),
+                               "0025478549",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -203,7 +208,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
             ),
             Container(
               width: screenwidth / width_figma * 396,
-              height: screenheight / height_figma * 330,
+              height: screenheight / height_figma * 340,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16), color: Colors.white),
               child: Directionality(
@@ -213,7 +218,7 @@ class _SalaryPaymentState extends State<SalaryPayment> {
                     Padding(
                       padding: EdgeInsets.only(
                         top: screenheight / height_figma * 28,
-                        right: screenwidth / width_figma * 17.5,
+                        right: screenwidth / width_figma * 16,
                         left: screenheight / height_figma * 17.5,
                       ),
                       child: _historyIndex == 0
@@ -320,8 +325,8 @@ class _SalaryPaymentState extends State<SalaryPayment> {
                     Padding(
                       padding: EdgeInsets.only(
                         top: screenheight / height_figma * 30.5,
-                        right: screenwidth / width_figma * 17.5,
-                        left: screenheight / height_figma * 17.5,
+                        right: screenwidth / width_figma * 16,
+                        left: screenheight / height_figma * 14,
                       ),
                       child: _historyIndex == 1
                           ? Directionality(

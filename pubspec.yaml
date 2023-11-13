@@ -91,6 +91,7 @@ flutter:
     - lib/features/client/Turn ratings/Images/
     - lib/features/technicians/Profile/presentation/Images/
     - lib/features/technicians/ZibajoyanMan/Images/
+    - lib/features/technicians/Home/image/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

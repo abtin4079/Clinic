@@ -124,7 +124,9 @@ class _Tech1State extends State<Tech1> {
                               itemCount: getTechController.get_tech_list.length,
                               itemBuilder: (context, index) {
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(TechProfile());
+                                  },
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                       top: 10,
