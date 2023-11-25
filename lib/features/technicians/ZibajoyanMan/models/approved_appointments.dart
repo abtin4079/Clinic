@@ -29,10 +29,24 @@ List<ApprovedAppointment> convertJsonToList(String json) {
 
   // Create a list to store the converted JSON data.
   final listOf = <ApprovedAppointment>[];
-
   // Iterate over the decoded JSON data and add each element to the list.
   for (final item in decodedJson["items"]) {
     listOf.add(ApprovedAppointment.fromJson(item));
   }
+  return listOf;
+}
+
+List<ApprovedAppointment> convertJsonToList2(String json) {
+  // Decode the JSON string.
+  final decodedJson = jsonDecode(json);
+  // Create a list to store the converted JSON data.
+  final listOf = <ApprovedAppointment>[];
+  // Iterate over the decoded JSON data and add each element to the list.
+  if (decodedJson["items"] != null) {
+    for (final item in decodedJson["items"]) {
+      listOf.add(ApprovedAppointment.fromJson(item));
+    }
+  }
+
   return listOf;
 }

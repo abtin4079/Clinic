@@ -49,7 +49,7 @@ class ZibajoyanManFirstPage extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        print(response.body);
+        // print(response.body);
         return convertJsonToList(response.body);
       } else {
         showDialog(
@@ -74,5 +74,69 @@ class ZibajoyanManFirstPage extends GetxController {
             );
           });
     }
+  }
+
+  Future<List<ApprovedAppointment>?> getSearchResult(String search) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    return tokenCheckBeforeRequest().then((value) async {
+      try {
+        // getting token from share preferences
+
+        String? accessToken = pref.getString('access_token');
+
+        // initialize the header
+        var headers = {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $accessToken'
+        };
+        print("here");
+        print(search.trim());
+
+        final queryParameters = {
+          'page': '1',
+          'search': search.trim(),
+          'per_page': '10',
+        };
+
+        // creating out url
+        var uri = Uri.http(
+            '185.221.237.51',
+            '/clinic/technecian_approved_appointments/search_process',
+            queryParameters);
+
+        print(uri);
+
+        var response = await http.get(
+          uri,
+          headers: headers,
+        );
+
+        if (response.statusCode == 200) {
+          return convertJsonToList2(response.body);
+        } else {
+          showDialog(
+              context: Get.context!,
+              builder: (context) {
+                return SimpleDialog(
+                  title: Text('Error'),
+                  contentPadding: EdgeInsets.all(20),
+                  children: [Text(response.statusCode.toString())],
+                );
+              });
+        }
+      } catch (e) {
+        print("error");
+        // Get.back();
+        // showDialog(
+        //     context: Get.context!,
+        //     builder: (context) {
+        //       return SimpleDialog(
+        //         title: Text('Error'),
+        //         contentPadding: EdgeInsets.all(20),
+        //         children: [Text(e.toString())],
+        //       );
+        //     });
+      }
+    });
   }
 }

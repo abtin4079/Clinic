@@ -33,150 +33,148 @@ class _NotifState extends State<Notif> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: FutureBuilder(
-          future: ReadJsonData(),
-          builder: (context, data) {
-            if (data.hasError) {
-              return Text("${data.error}");
-            } else if (data.hasData) {
-              var items = data.data as List<EntityHome>;
-              return ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: items == null ? 0 : items.length,
-                itemBuilder: (context, index) {
-                  return Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top:  19,
-                          bottom:  19,
-                          right: screenwidth / width_figma * 47,
-                          left: screenwidth / width_figma * 47,
-                        ),
-                        child: Container(
-                          width: screenwidth / width_figma * 396,
-                          height:  152,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              border:
-                                  Border.all(width: 1, color: toggleColor),
-                              color: Colors.white),
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top:  7,
-                                    right: screenwidth / width_figma * 14,
-                                  ),
-                                  child: Text(
-                                    "نوبت شما رد شد",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: meshki),
-                                  ),
+      // body: SingleChildScrollView(
+      // physics: NeverScrollableScrollPhysics(),
+      body: FutureBuilder(
+        future: ReadJsonData(),
+        builder: (context, data) {
+          if (data.hasError) {
+            return Text("${data.error}");
+          } else if (data.hasData) {
+            var items = data.data as List<EntityHome>;
+            return ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: items == null ? 0 : items.length,
+              itemBuilder: (context, index) {
+                return Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 19,
+                        bottom: 19,
+                        right: screenwidth / width_figma * 47,
+                        left: screenwidth / width_figma * 47,
+                      ),
+                      child: Container(
+                        width: screenwidth / width_figma * 396,
+                        height: 152,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(width: 1, color: toggleColor),
+                            color: Colors.white),
+                        child: Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 7,
+                                  right: screenwidth / width_figma * 14,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top:  14,
-                                    right: screenwidth / width_figma * 16,
-                                    left: screenwidth / width_figma * 20,
-                                  ),
-                                  child: Text(
-                                    "نوبت کاشت مو برای ${items[index].zibajo.toString()} توسط ${items[index].tech.toString()} رد شد ",
-                                    style: TextStyle(
+                                child: Text(
+                                  "نوبت شما رد شد",
+                                  style: TextStyle(
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: meshki.withOpacity(0.8),
-                                    ),
+                                      color: meshki),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 14,
+                                  right: screenwidth / width_figma * 16,
+                                  left: screenwidth / width_figma * 20,
+                                ),
+                                child: Text(
+                                  "نوبت کاشت مو برای ${items[index].zibajo.toString()} توسط ${items[index].tech.toString()} رد شد ",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: meshki.withOpacity(0.8),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 88,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: screenwidth / width_figma * 88,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 12,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        top:  12,
+                                    child: Container(
+                                      width: screenwidth / width_figma * 146,
+                                      height: 33,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: LightBlue,
                                       ),
-                                      child: Container(
-                                        width:
-                                            screenwidth / width_figma * 146,
-                                        height: 33,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                          color: LightBlue,
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "چایگزین کردن تکنسین",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                              color: Colors.white,
-                                            ),
+                                      child: Center(
+                                        child: Text(
+                                          "چایگزین کردن تکنسین",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: screenwidth / width_figma * 12,
+                                  ),
+                                  SizedBox(
+                                    width: screenwidth / width_figma * 12,
+                                  ),
+                                  Text(
+                                    "12 آذر 1402",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: meshki.withOpacity(0.6),
                                     ),
-                                    Text(
-                                      "12 آذر 1402",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12,
-                                        color: meshki.withOpacity(0.6),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top:  15,
-                          left: screenwidth / width_figma * 64,
-                        ),
-                        child: Container(
-                          width: 17,
-                          height: 17,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: items[index].situation.toString() ==
-                                    "Expectation"
-                                ? processColor
-                                : items[index].situation.toString() ==
-                                        "processing"
-                                    ? rediligal
-                                    : LightBlue,
-                          ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 15,
+                        left: screenwidth / width_figma * 64,
+                      ),
+                      child: Container(
+                        width: 17,
+                        height: 17,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color:
+                              items[index].situation.toString() == "Expectation"
+                                  ? processColor
+                                  : items[index].situation.toString() ==
+                                          "processing"
+                                      ? rediligal
+                                      : LightBlue,
                         ),
                       ),
-                    ],
-                  );
-                },
-              );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
+      // ),
     );
   }
 }

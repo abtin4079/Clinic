@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 RefreshTokenController refreshTokenController =
     Get.put(RefreshTokenController());
-void tokenCheckBeforeRequest() {
+Future<bool> tokenCheckBeforeRequest() async {
   // checking access token is expired or not
   getStringValuesSF("access_token").then((token) {
     //checking if access_token is expired
@@ -23,4 +23,5 @@ void tokenCheckBeforeRequest() {
       });
     }
   });
+  return true;
 }

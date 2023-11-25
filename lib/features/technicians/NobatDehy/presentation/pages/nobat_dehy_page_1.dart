@@ -7,6 +7,8 @@ import '../../../../../themes/colors.dart';
 import '../../../../client/Home/domain/entity.dart';
 import 'package:clinic/features/technicians/NobatDehy/Controllers/nobat_dehy_main_controller.dart';
 import 'package:clinic/features/technicians/NobatDehy/Models/nobat_tech.dart';
+import 'package:clinic/features/technicians/NobatDehy/Controllers/nobat_dehy_page_2_controller.dart';
+import '../../../NavigationBar/navigation_bar_for_tech.dart';
 
 class NobatDehyPage1 extends StatefulWidget {
   const NobatDehyPage1({Key? key}) : super(key: key);
@@ -18,6 +20,9 @@ class NobatDehyPage1 extends StatefulWidget {
 class _NobatDehyPage1State extends State<NobatDehyPage1> {
   NobatDehiMainController listOfAppointmentController =
       Get.put(NobatDehiMainController());
+
+  NobatDehiSecondPageController eachAppointment =
+      Get.put(NobatDehiSecondPageController());
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -71,14 +76,14 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
-                        // right: screenwidth / width_figma * 16,
-                        // left: screenwidth / width_figma * 16,
+                        right: screenwidth / width_figma * 16,
+                        left: screenwidth / width_figma * 16,
                         top: 4,
                         bottom: 4,
                       ),
                       child: Container(
-                        width: screenwidth / width_figma * 396,
-                        height: 180, // inja man as context estefade nakardam
+                        // width: screenwidth / width_figma * 396,
+                        // height: 180, // inja man as context estefade nakardam
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
@@ -86,8 +91,8 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                           textDirection: TextDirection.rtl,
                           child: Padding(
                               padding: EdgeInsets.only(
-                                right: screenwidth / width_figma * 16,
-                                left: screenwidth / width_figma * 16,
+                                // right: screenwidth / width_figma * 16,
+                                // left: screenwidth / width_figma * 16,
                                 top: 16,
                                 bottom: 16,
                               ),
@@ -216,7 +221,200 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                   Row(
                                     children: [
                                       GestureDetector(
-                                        onTap: () {},
+                                        onTap: () {
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return FutureBuilder<bool>(
+                                                    future: eachAppointment
+                                                        .acceptOrRejectProcess(
+                                                            true,
+                                                            nobat.id
+                                                                .toString()),
+                                                    builder: (context, data) {
+                                                      if (data.connectionState ==
+                                                          ConnectionState
+                                                              .waiting) {
+                                                        // Display a loading indicator while waiting for the future to complete
+                                                        return Center(
+                                                          child:
+                                                              CircularProgressIndicator(),
+                                                        );
+                                                      } else if (data
+                                                          .hasError) {
+                                                        // Handle any errors that might occur during the asynchronous call
+                                                        return Dialog(
+                                                          child: Text(
+                                                              "مشکلی به وجود آمد: ${data.error}"),
+                                                        );
+                                                      } else {
+                                                        // Future has completed, check the result
+                                                        bool result =
+                                                            data.data!;
+                                                        if (result == false) {
+                                                          // Show the dialog if there is an issue
+                                                          return Dialog(
+                                                            child: Text(
+                                                                "مشکلی به وجود آمد"),
+                                                          );
+                                                        } else {
+                                                          // Return a custom designed Dialog if the result is true
+                                                          return Dialog(
+                                                            child: Container(
+                                                              width: screenwidth /
+                                                                  width_figma *
+                                                                  356,
+                                                              height: 232,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            50),
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .only(),
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      height:
+                                                                          40,
+                                                                    ),
+                                                                    Image.asset(
+                                                                        "lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                                                    SizedBox(
+                                                                      height: 8,
+                                                                    ),
+                                                                    Directionality(
+                                                                      textDirection:
+                                                                          TextDirection
+                                                                              .rtl,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          "نوبت کاشت مو با موفقیت به لیست زیباجویان شما اضافه شد",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                fontcolor,
+                                                                            fontSize:
+                                                                                16,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            fontFeatures: [
+                                                                              FontFeature('ss01', 1)
+                                                                            ],
+                                                                          ),
+                                                                          maxLines:
+                                                                              null,
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          24,
+                                                                    ),
+                                                                    Center(
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
+                                                                        children: [
+                                                                          GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                Get.to(
+                                                                                  Techpages(),
+                                                                                  arguments: 2,
+                                                                                );
+                                                                              });
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              height: 36,
+                                                                              width: screenwidth / width_figma * 142,
+                                                                              decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(
+                                                                                      48),
+                                                                                  gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                                    rediligal,
+                                                                                    whiteiligal
+                                                                                  ])),
+                                                                              child: Center(
+                                                                                child: Text(
+                                                                                  "مشاهده زیباجویان من",
+                                                                                  style: TextStyle(
+                                                                                    fontWeight: FontWeight.w700,
+                                                                                    fontSize: 12,
+                                                                                    color: Colors.white,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            width: screenwidth /
+                                                                                width_figma *
+                                                                                8,
+                                                                          ),
+                                                                          GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                items.removeAt(index);
+                                                                                Get.back(result: true);
+                                                                              });
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              height: 36,
+                                                                              width: screenwidth / width_figma * 152,
+                                                                              decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(
+                                                                                      48),
+                                                                                  gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                                    LightBlue,
+                                                                                    White
+                                                                                  ])),
+                                                                              child: Center(
+                                                                                child: Text(
+                                                                                  "!متوجه شدم",
+                                                                                  style: TextStyle(
+                                                                                    fontWeight: FontWeight.w700,
+                                                                                    fontSize: 12,
+                                                                                    color: Colors.white,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                      }
+                                                    });
+                                              });
+                                        },
                                         child: Container(
                                           width:
                                               screenwidth / width_figma * 213,
@@ -245,7 +443,268 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                         width: screenwidth / width_figma * 50,
                                       ),
                                       MaterialButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) => Dialog(
+                                              child: Container(
+                                                width: screenwidth /
+                                                    width_figma *
+                                                    356,
+                                                height: 170,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(28),
+                                                  color: Colors.white,
+                                                ),
+                                                child: Column(
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 41,
+                                                    ),
+                                                    Directionality(
+                                                      textDirection:
+                                                          TextDirection.rtl,
+                                                      child: Center(
+                                                        child: Text(
+                                                          "آیا از رد نوبت  مطمعن هستید؟",
+                                                          style: TextStyle(
+                                                              color: fontcolor,
+                                                              fontSize: 16,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              fontFeatures: [
+                                                                FontFeature(
+                                                                    'ss01', 1),
+                                                              ]),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 39,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            Get.back(
+                                                                result: false);
+                                                            showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (BuildContext
+                                                                        context) {
+                                                                  return FutureBuilder<
+                                                                          bool>(
+                                                                      future: eachAppointment.acceptOrRejectProcess(
+                                                                          false,
+                                                                          nobat
+                                                                              .id
+                                                                              .toString()),
+                                                                      builder:
+                                                                          (context,
+                                                                              data) {
+                                                                        if (data.connectionState ==
+                                                                            ConnectionState
+                                                                                .waiting) {
+                                                                          // Display a loading indicator while waiting for the future to complete
+                                                                          return Center(
+                                                                            child:
+                                                                                CircularProgressIndicator(),
+                                                                          );
+                                                                        } else if (data
+                                                                            .hasError) {
+                                                                          // Handle any errors that might occur during the asynchronous call
+                                                                          return Dialog(
+                                                                            child:
+                                                                                Text("مشکلی به وجود آمد: ${data.error}"),
+                                                                          );
+                                                                        } else {
+                                                                          // Future has completed, check the result
+                                                                          bool
+                                                                              result =
+                                                                              data.data!;
+                                                                          if (result ==
+                                                                              false) {
+                                                                            // Show the dialog if there is an issue
+                                                                            return Dialog(
+                                                                              child: Text("مشکلی به وجود آمد"),
+                                                                            );
+                                                                          } else {
+                                                                            // Return a custom designed Dialog if the result is true
+                                                                            return Dialog(
+                                                                              child: Container(
+                                                                                width: screenwidth / width_figma * 356,
+                                                                                height: 232,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(50),
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                                child: Padding(
+                                                                                  padding: EdgeInsets.only(),
+                                                                                  child: Column(
+                                                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                    children: [
+                                                                                      SizedBox(
+                                                                                        height: 40,
+                                                                                      ),
+                                                                                      Image.asset("lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                                                                      SizedBox(
+                                                                                        height: 8,
+                                                                                      ),
+                                                                                      Directionality(
+                                                                                        textDirection: TextDirection.rtl,
+                                                                                        child: Center(
+                                                                                          child: Text(
+                                                                                            "با موفقیت حذف شد",
+                                                                                            style: TextStyle(
+                                                                                              color: fontcolor,
+                                                                                              fontSize: 16,
+                                                                                              fontWeight: FontWeight.w500,
+                                                                                              fontFeatures: [
+                                                                                                FontFeature('ss01', 1)
+                                                                                              ],
+                                                                                            ),
+                                                                                            maxLines: null,
+                                                                                            textAlign: TextAlign.center,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                      SizedBox(
+                                                                                        height: 24,
+                                                                                      ),
+                                                                                      Center(
+                                                                                        child: Row(
+                                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                                          children: [
+                                                                                            GestureDetector(
+                                                                                              onTap: () {
+                                                                                                setState(() {
+                                                                                                  Get.back(result: false);
+                                                                                                  items.removeAt(index);
+                                                                                                });
+                                                                                              },
+                                                                                              child: Container(
+                                                                                                height: 36,
+                                                                                                width: screenwidth / width_figma * 142,
+                                                                                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(48), gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [rediligal, whiteiligal])),
+                                                                                                child: Center(
+                                                                                                  child: Text(
+                                                                                                    "باشه",
+                                                                                                    style: TextStyle(
+                                                                                                      fontWeight: FontWeight.w700,
+                                                                                                      fontSize: 12,
+                                                                                                      color: Colors.white,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          }
+                                                                        }
+                                                                      });
+                                                                });
+                                                          },
+                                                          child: Container(
+                                                            height: 36,
+                                                            width: screenwidth /
+                                                                width_figma *
+                                                                100,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            48),
+                                                                gradient: LinearGradient(
+                                                                    begin: Alignment
+                                                                        .topRight,
+                                                                    end: Alignment.bottomLeft,
+                                                                    colors: [
+                                                                      rediligal,
+                                                                      whiteiligal
+                                                                    ])),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "رد نوبت",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  fontSize: 14,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: screenwidth /
+                                                              width_figma *
+                                                              8,
+                                                        ),
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            Get.back(
+                                                                result: true);
+                                                          },
+                                                          child: Container(
+                                                            height: 36,
+                                                            width: screenwidth /
+                                                                width_figma *
+                                                                100,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            48),
+                                                                gradient: LinearGradient(
+                                                                    begin: Alignment
+                                                                        .topRight,
+                                                                    end: Alignment.bottomLeft,
+                                                                    colors: [
+                                                                      LightBlue,
+                                                                      White
+                                                                    ])),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "انصراف",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  fontSize: 14,
+                                                                  color: Colors
+                                                                      .white,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
                                         child: Text(
                                           "رد نوبت",
                                           style: TextStyle(

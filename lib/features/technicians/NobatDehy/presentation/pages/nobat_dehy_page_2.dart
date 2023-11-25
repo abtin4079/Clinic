@@ -552,9 +552,10 @@ class _NobatDehyPage2State extends State<NobatDehyPage2> {
                                                                     GestureDetector(
                                                                       onTap:
                                                                           () {
-                                                                        Get.back(
-                                                                            result:
-                                                                                true);
+                                                                        Get.to(
+                                                                            Techpages(),
+                                                                            arguments:
+                                                                                1);
                                                                       },
                                                                       child:
                                                                           Container(
@@ -714,8 +715,90 @@ class _NobatDehyPage2State extends State<NobatDehyPage2> {
                                                                     } else {
                                                                       // Return a custom designed Dialog if the result is true
                                                                       return Dialog(
-                                                                        child: Text(
-                                                                            "با موفقیت حذف شد"),
+                                                                        child:
+                                                                            Container(
+                                                                          width: screenwidth /
+                                                                              width_figma *
+                                                                              356,
+                                                                          height:
+                                                                              232,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(50),
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                EdgeInsets.only(),
+                                                                            child:
+                                                                                Column(
+                                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                                              mainAxisAlignment: MainAxisAlignment.center,
+                                                                              children: [
+                                                                                SizedBox(
+                                                                                  height: 40,
+                                                                                ),
+                                                                                Image.asset("lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                                                                SizedBox(
+                                                                                  height: 8,
+                                                                                ),
+                                                                                Directionality(
+                                                                                  textDirection: TextDirection.rtl,
+                                                                                  child: Center(
+                                                                                    child: Text(
+                                                                                      "با موفقیت حذف شد",
+                                                                                      style: TextStyle(
+                                                                                        color: fontcolor,
+                                                                                        fontSize: 16,
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        fontFeatures: [
+                                                                                          FontFeature('ss01', 1)
+                                                                                        ],
+                                                                                      ),
+                                                                                      maxLines: null,
+                                                                                      textAlign: TextAlign.center,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                                SizedBox(
+                                                                                  height: 24,
+                                                                                ),
+                                                                                Center(
+                                                                                  child: Row(
+                                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                                    children: [
+                                                                                      GestureDetector(
+                                                                                        onTap: () {
+                                                                                          setState(() {
+                                                                                            Get.to(Techpages(), arguments: 1);
+                                                                                          });
+                                                                                        },
+                                                                                        child: Container(
+                                                                                          height: 36,
+                                                                                          width: screenwidth / width_figma * 142,
+                                                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(48), gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [rediligal, whiteiligal])),
+                                                                                          child: Center(
+                                                                                            child: Text(
+                                                                                              "باشه",
+                                                                                              style: TextStyle(
+                                                                                                fontWeight: FontWeight.w700,
+                                                                                                fontSize: 12,
+                                                                                                color: Colors.white,
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
                                                                       );
                                                                     }
                                                                   }

@@ -282,7 +282,7 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
         ),
         PositionedDirectional(
           top: 0.0,
-          start: 60.0,
+          start: 50.0,
           child: Semantics(
             sortKey: MonthPickerSortKey.previousMonth,
             child: FadeTransition(
@@ -304,7 +304,7 @@ class _CalendarMonthPickerState extends State<CalendarMonthPicker>
         ),
         PositionedDirectional(
           top: 0.0,
-          end: 60.0,
+          end: 50.0,
           child: Semantics(
             sortKey: MonthPickerSortKey.nextMonth,
             child: FadeTransition(

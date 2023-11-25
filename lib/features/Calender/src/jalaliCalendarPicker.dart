@@ -9,6 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:jalali_table_calendar/src/persian_date.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:shamsi_date/shamsi_date.dart';
 
 /// Initial display mode of the date picker dialog.
 ///
@@ -1088,6 +1089,48 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     Navigator.pop(context);
   }
 
+  gregorianToJalali(int y, int m, int d, [String? separator]) {
+    var sumMonthDay = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+    var jY = 0;
+    if (y > 1600) {
+      jY = 979;
+      y -= 1600;
+    } else {
+      jY = 0;
+      y -= 621;
+    }
+    var gy = (m > 2) ? y + 1 : y;
+    var day = (365 * y) +
+        ((gy + 3) ~/ 4) -
+        ((gy + 99) ~/ 100) +
+        ((gy + 399) ~/ 400) -
+        80 +
+        d +
+        sumMonthDay[m - 1];
+    jY += 33 * (day.round() / 12053).floor();
+    day %= 12053;
+    jY += 4 * (day.round() / 1461).floor();
+    day %= 1461;
+    jY += ((day.round() - 1) / 365).floor();
+    if (day > 365) day = ((day - 1).round() % 365);
+    int jm;
+    var jd;
+    int days = day.toInt();
+    if (days < 186) {
+      jm = 1 + (days ~/ 31);
+      jd = 1 + (days % 31);
+    } else {
+      jm = 7 + ((days - 186) ~/ 30);
+      jd = 1 + (days - 186) % 30;
+    }
+    var persianDate;
+    if (separator == null)
+      persianDate = [jY, jm, jd];
+    else
+      persianDate = "$jY$separator$jm$separator$jd";
+    return persianDate;
+  }
+
   void _handleOk() async {
     String selectedFormat =
         widget.selectedFormat!.replaceAll("am", "").replaceAll("AM", "");
@@ -1118,6 +1161,8 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     var selectpDate = PersianDate.pDate(
         defualtFormat: widget.selectedFormat,
         gregorian: _selectedDate.toString());
+    List list = gregorianToJalali(
+        _selectedDate!.year, _selectedDate!.month, _selectedDate!.day);
 
     if (widget.convertToGregorian!) {
       selectedFormat = selectedFormat
@@ -1128,12 +1173,9 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
           .replaceAll("nn", "mm")
           .replaceAll("n", "m");
 
-      Navigator.pop(
-          context,
-          Jiffy.parseFromDateTime(_selectedDate!)
-              .format(pattern: selectedFormat));
+      Navigator.pop(context, list);
     } else {
-      Navigator.pop(context, selectpDate.getDate);
+      Navigator.pop(context, list);
     }
 
     // Navigator.pop(context, selectpDate.getDate);
@@ -1318,7 +1360,7 @@ typedef SelectableDayPredicate = bool Function(DateTime day);
 ///
 ///  * [showTimePicker]
 ///  * <https://material.google.com/components/pickers.html#pickers-date-pickers>
-Future<String?> jalaliCalendarPicker({
+Future<List?> jalaliCalendarPicker({
   required BuildContext context,
   SelectableDayPredicate? selectableDayPredicate,
   DatePickerMode initialDatePickerMode = DatePickerMode.day,
@@ -1371,7 +1413,7 @@ Future<String?> jalaliCalendarPicker({
     );
   }
 
-  return await showDialog<String>(
+  return await showDialog<List>(
     context: context,
     builder: (BuildContext context) => child,
   );

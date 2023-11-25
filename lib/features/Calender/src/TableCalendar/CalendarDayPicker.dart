@@ -141,7 +141,7 @@ class CalendarDayPicker extends StatelessWidget {
             child: Text(dayHeader,
                 style: TextStyle(
                     color: Color(0xff444444),
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: FontWeight.normal))),
       ));
     }
@@ -433,7 +433,8 @@ class CalendarDayPicker extends StatelessWidget {
                 SizedBox(
                   height: kDayPickerRowHeight,
                   child: Text(
-                    "${pDate.monthname}  ${numberFormatter(pDate.year.toString())}",
+                    // "${pDate.monthname}  ${numberFormatter(pDate.year.toString())}",
+                    "${pDate.monthname}",
                     style: TextStyle(
                         color: Color(0xff222222),
                         fontSize: 22,

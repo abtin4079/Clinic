@@ -15,6 +15,7 @@ import '../../../NavigationBar/navigation_bar_for_tech.dart';
 import '../../../Profile/presentation/pages/profile_for_tech.dart';
 import '../../../Shoroefarayand/presentation/pages/shoroe_farayand_page_1.dart';
 import 'package:clinic/features/technicians/ZibajoyanMan/models/each_approved_appointment.dart';
+import 'package:clinic/features/technicians/ZibajoyanMan/controllers/zibajo_page_2_controller.dart';
 
 class ZibajoPage2 extends StatefulWidget {
   const ZibajoPage2({Key? key}) : super(key: key);
@@ -24,6 +25,8 @@ class ZibajoPage2 extends StatefulWidget {
 }
 
 class _ZibajoPage2State extends State<ZibajoPage2> {
+  ZibajoyanManSecondPage zibajoyanManSecondPage =
+      Get.put(ZibajoyanManSecondPage());
   int currenttab = 2;
   List<Widget> screens = [
     HomeForTech(),
@@ -378,7 +381,8 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(ShoroyeFarayandPage1());
+                        zibajoyanManSecondPage
+                            .startTheProcess(approvedAppointment);
                       },
                       child: Container(
                         width: screenwidth / width_figma * 364,

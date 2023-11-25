@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:clinic/features/auth/controller/shared_preference.dart';
 
 import '../../../../../themes/colors.dart';
 import '../../../../auth/controller/shared_preference.dart';
@@ -15,7 +16,6 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-
   bool switchValue = false;
 
   @override
@@ -24,8 +24,6 @@ class _SettingState extends State<Setting> {
     final height_figma = 926;
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
-
-
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -330,7 +328,7 @@ class _SettingState extends State<Setting> {
               ),
             ),
             SizedBox(
-              height:  11,
+              height: 11,
             ),
             Container(
               width: screenwidth / width_figma * 393,
@@ -347,7 +345,7 @@ class _SettingState extends State<Setting> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          top:screenheight / height_figma * 24,
+                          top: screenheight / height_figma * 24,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
@@ -392,11 +390,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: screenheight / height_figma *16,
+                          top: screenheight / height_figma * 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height:  40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -441,7 +439,7 @@ class _SettingState extends State<Setting> {
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height:  40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -482,11 +480,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top:screenheight / height_figma * 16,
+                          top: screenheight / height_figma * 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height:  40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -531,7 +529,7 @@ class _SettingState extends State<Setting> {
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height:  40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -559,7 +557,7 @@ class _SettingState extends State<Setting> {
                                 textDirection: TextDirection.ltr,
                                 child: Container(
                                   width: screenwidth / width_figma * 32,
-                                  height:  14,
+                                  height: 14,
                                   child: FlutterSwitch(
                                     width: 32,
                                     height: 15,
@@ -587,19 +585,15 @@ class _SettingState extends State<Setting> {
                             builder: (context) => Dialog(
                               child: Container(
                                 width: screenwidth / width_figma * 356,
-                                height:
-                                screenheight / height_figma * 170,
+                                height: screenheight / height_figma * 170,
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(28),
+                                  borderRadius: BorderRadius.circular(28),
                                   color: Colors.white,
                                 ),
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: screenheight /
-                                          height_figma *
-                                          41,
+                                      height: screenheight / height_figma * 41,
                                     ),
                                     Text(
                                       "آیا از خروج از حساب مطمعن هستید؟",
@@ -610,35 +604,30 @@ class _SettingState extends State<Setting> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: screenheight /
-                                          height_figma *
-                                          39,
+                                      height: screenheight / height_figma * 39,
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                       children: [
                                         GestureDetector(
                                           onTap: () {
+                                            removeValues('access_token');
+                                            removeValues('refresh_token');
                                             Get.back(result: false);
                                           },
                                           child: Container(
                                             height: screenheight /
                                                 height_figma *
                                                 36,
-                                            width: screenwidth /
-                                                width_figma *
-                                                100,
+                                            width:
+                                                screenwidth / width_figma * 100,
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                BorderRadius
-                                                    .circular(48),
-                                                gradient:
-                                                LinearGradient(
-                                                    begin: Alignment
-                                                        .topRight,
-                                                    end: Alignment
-                                                        .bottomLeft,
+                                                    BorderRadius.circular(48),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
                                                     colors: [
                                                       rediligal,
                                                       whiteiligal
@@ -647,8 +636,7 @@ class _SettingState extends State<Setting> {
                                               child: Text(
                                                 "انصراف",
                                                 style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight.w700,
+                                                  fontWeight: FontWeight.w700,
                                                   fontSize: 14,
                                                   color: Colors.white,
                                                 ),
@@ -657,9 +645,7 @@ class _SettingState extends State<Setting> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: screenwidth /
-                                              width_figma *
-                                              8,
+                                          width: screenwidth / width_figma * 8,
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -670,19 +656,14 @@ class _SettingState extends State<Setting> {
                                             height: screenheight /
                                                 height_figma *
                                                 36,
-                                            width: screenwidth /
-                                                width_figma *
-                                                100,
+                                            width:
+                                                screenwidth / width_figma * 100,
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                BorderRadius
-                                                    .circular(48),
-                                                gradient:
-                                                LinearGradient(
-                                                    begin: Alignment
-                                                        .topRight,
-                                                    end: Alignment
-                                                        .bottomLeft,
+                                                    BorderRadius.circular(48),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
                                                     colors: [
                                                       LightBlue,
                                                       White
@@ -691,8 +672,7 @@ class _SettingState extends State<Setting> {
                                               child: Text(
                                                 "تایید",
                                                 style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight.w700,
+                                                  fontWeight: FontWeight.w700,
                                                   fontSize: 14,
                                                   color: Colors.white,
                                                 ),
@@ -710,7 +690,7 @@ class _SettingState extends State<Setting> {
                         },
                         child: Padding(
                           padding: EdgeInsets.only(
-                            top:  screenheight / height_figma * 16,
+                            top: screenheight / height_figma * 16,
                           ),
                           child: Container(
                             width: screenwidth / width_figma * 356,
@@ -756,11 +736,11 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top:  screenheight / height_figma * 16,
+                          top: screenheight / height_figma * 16,
                         ),
                         child: Container(
                           width: screenwidth / width_figma * 356,
-                          height:  40,
+                          height: 40,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               color: backgroundHome),
@@ -801,17 +781,21 @@ class _SettingState extends State<Setting> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top:  screenheight / height_figma * 31,
+                          top: screenheight / height_figma * 31,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset("lib/features/client/Setting/presentation/Images/a-neur.png"),
-                            Text("طراحی و توسعه توسط a-neur انجام میشود", style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12,
-                              color: fontcolor,
-                            ),)
+                            Image.asset(
+                                "lib/features/client/Setting/presentation/Images/a-neur.png"),
+                            Text(
+                              "طراحی و توسعه توسط a-neur انجام میشود",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 12,
+                                color: fontcolor,
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -821,7 +805,7 @@ class _SettingState extends State<Setting> {
               ),
             ),
             SizedBox(
-              height:  9,
+              height: 9,
             ),
           ],
         ),

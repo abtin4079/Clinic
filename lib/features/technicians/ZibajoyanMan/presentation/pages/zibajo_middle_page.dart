@@ -35,13 +35,13 @@ class _MiddleZibajoPage extends State<MiddleZibajoPage> {
       if (result != null) {
         switch (result.status) {
           case 'created':
-            Get.offAll(ZibajoPage2(), arguments: result);
+            Get.off(ZibajoPage2(), arguments: result);
             break;
           case 'started':
-            Get.offAll(ShoroyeFarayandPage1(), arguments: result);
+            Get.off(ShoroyeFarayandPage1(), arguments: result);
             break;
           case 'ended':
-            Get.offAll(ShoroyeFarayandPage2(), arguments: result);
+            Get.off(ShoroyeFarayandPage2(), arguments: result);
             break;
           default:
           // Handle other cases if needed

@@ -133,7 +133,7 @@ class _DatePickerCalendarState extends State<DatePickerCalendar> {
   Widget build(BuildContext context) {
     final Widget picker = SizedBox(
       //it's too dirty  i know!!! :)))
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery.of(context).size.height * 0.42,
       child: _buildWidget(),
     );
     final Widget calendar = OrientationBuilder(

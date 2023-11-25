@@ -23,6 +23,31 @@ class ZibajoPage1 extends StatefulWidget {
 class _ZibajoPage1State extends State<ZibajoPage1> {
   ZibajoyanManFirstPage zibajoyanManFirstPage =
       Get.put(ZibajoyanManFirstPage());
+  TextEditingController searchController = TextEditingController();
+  String search = '';
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  Future<List<ApprovedAppointment>?> _getFuture() async {
+    if (search.isEmpty) {
+      return await zibajoyanManFirstPage.getTechApprovedAppointments();
+    } else {
+      print("search for : $search");
+      return await zibajoyanManFirstPage.getSearchResult(search);
+    }
+  }
+
+  void _search(String searchText) {
+    setState(() {
+      search = searchText;
+    });
+    // _getFuture();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -59,6 +84,10 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
               ),
               child: TextField(
                 textAlign: TextAlign.right,
+                controller: searchController,
+                onSubmitted: (String searchText) {
+                  _search(searchText);
+                },
                 decoration: InputDecoration(
                   suffixIcon: Icon(
                     Search.search,
@@ -89,9 +118,10 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
               height: 30,
             ),
             FutureBuilder(
-              future: zibajoyanManFirstPage.getTechApprovedAppointments(),
+              future: _getFuture(),
               builder: (context, data) {
                 if (data.hasError) {
+                  print(data.error);
                   return Text("${data.error}");
                 } else if (data.hasData) {
                   var items = data.data as List<ApprovedAppointment>;
@@ -110,14 +140,14 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                         },
                         child: Padding(
                           padding: EdgeInsets.only(
-                            // right: screenwidth / width_figma * 16,
-                            // left: screenwidth / width_figma * 16,
+                            right: screenwidth / width_figma * 16,
+                            left: screenwidth / width_figma * 16,
                             top: 4,
                             bottom: 4,
                           ),
                           child: Container(
-                            width: screenwidth / width_figma * 396,
-                            height: 156,
+                            // width: screenwidth / width_figma * 396,
+                            // height: 156,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
                                 color: Colors.white),
@@ -125,8 +155,8 @@ class _ZibajoPage1State extends State<ZibajoPage1> {
                               textDirection: TextDirection.rtl,
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                  right: screenwidth / width_figma * 16,
-                                  left: screenwidth / width_figma * 16,
+                                  // right: screenwidth / width_figma * 16,
+                                  // left: screenwidth / width_figma * 16,
                                   top: 16,
                                   bottom: 16,
                                 ),
