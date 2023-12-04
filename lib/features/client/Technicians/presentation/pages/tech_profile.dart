@@ -278,13 +278,12 @@ class _TechProfileState extends State<TechProfile> {
                     itemCount: items == null ? 0 : items.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: (){
                           Get.to(PlantInfo(), arguments: [
-                            items[index].id,
                             items[index].tech,
                             items[index].zibajo,
                             items[index].situation,
-                            items[index].number_of_hairs
+                            items[index].number_of_hairs.toString(),
                           ]);
                         },
                         child: Padding(
