@@ -41,3 +41,5 @@ const blackwhite = Color(0xFF444444);
 const moneygreen = Color(0xFFB9FFCD);
 const moneywhite = Color(0xFFA9D6FF);
 
+const techaccept = Color(0xFF9DB8DE);
+

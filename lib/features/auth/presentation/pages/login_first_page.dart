@@ -115,7 +115,7 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                             print(userNumber);
                             sendOTPController.registerwithphone();
                           },
-                          textAlignVertical: TextAlignVertical(y: 0.5),
+                          textAlignVertical: TextAlignVertical(y: 0.9),
                           textAlign: TextAlign.right,
                           controller: sendOTPController.phonenumberController,
                           decoration: InputDecoration(
