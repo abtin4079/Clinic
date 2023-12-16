@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,10 +33,10 @@ class NewPatientController extends GetxController {
         "national_code": idController.text,
         "phone_number": phoneNumberController.text,
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
       var uri =
-          Uri.http('185.221.237.51', '/clinic/new_process/create_new_pationt');
+          Uri.http(host! , '/clinic/new_process/create_new_pationt');
 
       var response =
           await http.post(uri, headers: headers, body: jsonEncode(body));
@@ -48,15 +49,15 @@ class NewPatientController extends GetxController {
         idController.clear();
         phoneNumberController.clear();
       }
-      if (response == 400){
+      if (response.statusCode == 400){
         print(response.body);
         return null;
       }
-      if (response == 403){
+      if (response.statusCode == 403){
         print(response.body);
         return null;
       }
-      if (response == 500){
+      if (response.statusCode == 500){
         print(response.body);
         return null;
       }

@@ -192,6 +192,7 @@ class _PlantInfoState extends State<PlantInfo> {
     return Scaffold(
       backgroundColor: backgroundHome,
       appBar: AppBar(
+        elevation: 0,
         iconTheme: IconThemeData(color: phonecolor),
         automaticallyImplyLeading: true,
         backgroundColor: backgroundHome,

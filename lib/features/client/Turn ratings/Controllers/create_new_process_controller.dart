@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -85,10 +86,10 @@ class CreateNewProcessController extends GetxController {
         ]
       };
 
-
+      var host = dotenv.env['HOST'];
       // creating out url
       var uri =
-          Uri.http('185.221.237.51', '/clinic/new_process/create_new_process');
+          Uri.http(host! , '/clinic/new_process/create_new_process');
       print(3);
       var response =
           await http.post(uri, body: jsonEncode(databody), headers: headers);
@@ -102,17 +103,17 @@ class CreateNewProcessController extends GetxController {
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
-        Get.off(ClientPage());
+        Get.off(() => const ClientPage());
       }
-      if (response == 400) {
+      if (response.statusCode == 400) {
         print(response.body);
         return null;
       }
-      if (response == 403) {
+      if (response.statusCode == 403) {
         print(response.body);
         return null;
       }
-      if (response == 500) {
+      if (response.statusCode == 500) {
         print(response.body);
         return null;
       }

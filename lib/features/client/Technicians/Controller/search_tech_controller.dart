@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,6 +13,7 @@ class SearchTechController extends GetxController {
   void fetchPatient() async {
     // var tech_page_search_item = await RemoteSerice3.fetchPatients(searchController.text);
    RemoteSerice3.fetchPatients(searchController.text).then((value) {
+     print(value.toString());
      if(value == null){}
      else {
        var castedTechList = value as List<SearchTechModel>;
@@ -46,8 +48,8 @@ class RemoteSerice3 {
         'page': '1',
         'per_page': '10',
       };
-
-      var uri = Uri.http('185.221.237.51', '/clinic/new_process/search_technecian',
+      var host = dotenv.env['HOST'];
+      var uri = Uri.http(host! , '/clinic/new_process/search_technecian',
           queryParameters);
 
       var response = await http.get(uri, headers: headers);

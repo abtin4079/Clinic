@@ -109,164 +109,157 @@ class _Tech1State extends State<Tech1> {
             ),
             _isloading == false
                 ? FutureBuilder(
-                    future: getTechController.fetchTech(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return Center(child: Text('Error: ${snapshot.error}'));
-                      } else {
-                        return Obx(() {
-                          return ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: getTechController.get_tech_list.length,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Get.to(TechProfile());
-                                  },
+              future: getTechController.fetchTech(),
+              builder: (context, snapshot) {
+                try {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else {
+                    return Obx(() {
+                      return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: getTechController.get_tech_list.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(TechProfile());
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                top: 10,
+                                bottom: 10,
+                                right: screenwidth / width_figma * 19,
+                                left: screenwidth / width_figma * 19,
+                              ),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Container(
+                                  width: screenwidth / width_figma * 396,
+                                  height: 126,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.white,
+                                  ),
                                   child: Padding(
                                     padding: EdgeInsets.only(
-                                      top: 10,
-                                      bottom: 10,
-                                      right: screenwidth / width_figma * 19,
-                                      left: screenwidth / width_figma * 19,
+                                      top: screenheight / height_figma * 13,
+                                      bottom: screenheight / height_figma * 13,
+                                      right: screenwidth / width_figma * 16,
                                     ),
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Container(
-                                        width: screenwidth / width_figma * 396,
-                                        height: 126,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(16),
-                                            color: Colors.white),
-                                        child: Padding(
-                                          padding: EdgeInsets.only(
-                                            top: screenheight /
-                                                height_figma *
-                                                13,
-                                            bottom: screenheight /
-                                                height_figma *
-                                                13,
-                                            right:
-                                                screenwidth / width_figma * 16,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(100),
+                                            color: Colors.red,
                                           ),
-                                          child: Row(
+                                        ),
+                                        SizedBox(
+                                          width: screenwidth / width_figma * 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              child: Text(
+                                                getTechController
+                                                    .get_tech_list[index]
+                                                    .fullName
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: fontcolor,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 16,
+                                            ),
+                                            Text(
+                                              "شماره تماس:",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                                color: grayColorHome,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 16,
+                                            ),
+                                            Text(
+                                              "کد ملی:",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                                color: grayColorHome,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Directionality(
+                                          textDirection: TextDirection.ltr,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Container(
-                                                width: 100,
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            100),
-                                                    color: Colors.red),
+                                              SizedBox(
+                                                height: 35,
+                                              ),
+                                              Text(
+                                                getTechController
+                                                    .get_tech_list[index]
+                                                    .phoneNumber
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: fontcolor,
+                                                ),
                                               ),
                                               SizedBox(
-                                                width: screenwidth /
-                                                    width_figma *
-                                                    10,
+                                                height: 16,
                                               ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: 100,
-                                                    child: Text(
-                                                      getTechController
-                                                          .get_tech_list[index]
-                                                          .fullName
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: fontcolor,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 16,
-                                                  ),
-                                                  Text(
-                                                    "شماره تماس:",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: grayColorHome,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 16,
-                                                  ),
-                                                  Text(
-                                                    "کد ملی:",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: grayColorHome,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Directionality(
-                                                textDirection:
-                                                    TextDirection.ltr,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    SizedBox(
-                                                      height: 35,
-                                                    ),
-                                                    Text(
-                                                      getTechController
-                                                          .get_tech_list[index]
-                                                          .phoneNumber
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: fontcolor,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: 16,
-                                                    ),
-                                                    Text(
-                                                      getTechController
-                                                          .get_tech_list[index]
-                                                          .nationalCode
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: fontcolor,
-                                                      ),
-                                                    ),
-                                                  ],
+                                              Text(
+                                                getTechController
+                                                    .get_tech_list[index]
+                                                    .nationalCode
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: fontcolor,
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   ),
-                                );
-                              });
-                        });
-                      }
-                    })
-                : const Center(
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    });
+                  }
+                } catch (e) {
+                  print("Error in FutureBuilder: $e");
+                  // Handle the error as needed, such as showing a user-friendly message
+                  return Center(child: Text('مشکلی پیش آمده لطفا دوباره تلاش کنید'));
+                }
+              },
+            )
+
+            : const Center(
                     child: CircularProgressIndicator(
                       color: LightBlue,
                     ),

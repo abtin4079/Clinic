@@ -1,4 +1,5 @@
 import 'package:clinic/features/client/Technicians/Models/get_tech_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -42,9 +43,9 @@ class RemoteSericeGetTech {
         'page': '1',
         'per_page': '10',
       };
-
+      var host = dotenv.env['HOST'];
       var uri = Uri.http(
-          '185.221.237.51',
+          host! ,
           '/clinic/supervisor_technecian_page/get_list_of_technecians',
           queryParameters);
 

@@ -277,15 +277,26 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                         color: phonecolor,
                         size: 20,
                       ),
-                      title: Text(data.fullName.toString()),
+                      title: selectPatientController.items != [] ? Text(data.fullName.toString()) : Text("زیباوجویی یافت نشد!"),
                     ),
                   );
                 },
+
+
                 onSuggestionSelected: (data) {
                   createNewProcessController.fetchPatiantIdAndName(data.fullName.toString(), data.id.toString());
                   setState(() {
                     status_of_page = true;
                   });
+                },
+                errorBuilder: (context, error) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Error fetching suggestions: $error',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  );
                 },
               ),
             ),

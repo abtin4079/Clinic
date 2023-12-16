@@ -19,8 +19,10 @@ class SelectTechPage1 extends StatefulWidget {
 }
 
 class _SelectTechPage1State extends State<SelectTechPage1> {
-  final SearchTechController searchTechController = Get.put(SearchTechController());
-  final CreateNewProcessController createNewProcessController = Get.put(CreateNewProcessController());
+  final SearchTechController searchTechController =
+      Get.put(SearchTechController());
+  final CreateNewProcessController createNewProcessController =
+      Get.put(CreateNewProcessController());
 
   bool status_of_page = false;
 
@@ -188,10 +190,11 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                     right: screenwidth / width_figma * 15,
                   ),
                   child: TypeAheadField(
+
                     textFieldConfiguration: TextFieldConfiguration(
                       controller: searchTechController.searchController,
                       onChanged: (value) {
-                        if (searchTechController.searchController.text != '') {
+                        if (searchTechController.searchController.text.isNotEmpty) {
                           searchTechController.fetchPatient();
                         }
                       },
@@ -218,26 +221,55 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                       ),
                     ),
                     suggestionsCallback: (pattern) async {
-                      return searchTechController.tech_list;
+                      try {
+                        // Handle the case where an exception might occur during the fetching of suggestions
+                        return searchTechController.tech_list;
+                      } catch (e) {
+                        print("Error fetching suggestions: $e");
+                        return [];
+                      }
                     },
                     itemBuilder: (context, data) {
-                      return Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: ListTile(
+                      print("//////");
+
+                      print(searchTechController.tech_list);
+                      print("//////");
+                      if (searchTechController.tech_list.isNotEmpty)
+                        return Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: ListTile(
                             leading: Icon(
                               Search.search,
                               color: phonecolor,
                               size: 20,
                             ),
-                            title: Text(data.fullName.toString()),
-                        ),
-                      );
+                            title: Text(data.fullName.toString())
+                          ),
+                        );
+                      else
+                        return Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: ListTile(
+                            leading: Icon(
+                              Search.search,
+                              color: phonecolor,
+                              size: 20,
+                            ),
+                            title: Text("تکنسینی یافت نشد"),
+                          ),
+                        );
                     },
                     onSuggestionSelected: (data) {
-                      createNewProcessController.fetchTechIdAndName(data.fullName, data.id, data.profileUrl);
-                      setState(() {
-                        status_of_page = true;
-                      });
+                      try {
+                        createNewProcessController.fetchTechIdAndName(
+                            data.fullName, data.id, data.profileUrl);
+                        setState(() {
+                          status_of_page = true;
+                        });
+                      } catch (e) {
+                        print("Error selecting suggestion: $e");
+                        // Handle the error as needed, such as showing a user-friendly message
+                      }
                     },
                   ),
                 ),
@@ -266,7 +298,7 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (status_of_page){
+                        if (status_of_page) {
                           Get.to(SelectTechPage2());
                           searchTechController.searchController.clear();
                         }

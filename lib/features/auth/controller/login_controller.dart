@@ -5,6 +5,7 @@ import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/technicians/NavigationBar/navigation_bar_for_tech.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/api_endpoint.dart';
@@ -20,7 +21,8 @@ class LoginController extends GetxController {
     try {
       var headers = {'Content-Type': 'application/json'};
 
-      var uri = Uri.http('185.221.237.51', '/auth/login');
+      var host = dotenv.env['HOST'];
+      var uri = Uri.http(host!, '/auth/login');
       print("here");
       print(data);
 

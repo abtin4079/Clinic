@@ -43,3 +43,5 @@ const moneywhite = Color(0xFFA9D6FF);
 
 const techaccept = Color(0xFF9DB8DE);
 
+const whiteblue = Color(0xFFD9D9D9);
+

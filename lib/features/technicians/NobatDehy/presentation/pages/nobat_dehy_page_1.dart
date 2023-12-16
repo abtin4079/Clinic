@@ -23,6 +23,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
 
   NobatDehiSecondPageController eachAppointment =
       Get.put(NobatDehiSecondPageController());
+
   @override
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;

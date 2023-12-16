@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,8 +43,8 @@ class RemoteSerice2 {
         'page': '1',
         'per_page': '1',
       };
-
-      var uri = Uri.http('185.221.237.51', '/clinic/supervisor_home_page/search_processes',
+      var host = dotenv.env['HOST'];
+      var uri = Uri.http(host! , '/clinic/supervisor_home_page/search_processes',
           queryParameters);
 
       var response = await http.get(uri, headers: headers);

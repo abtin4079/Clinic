@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -34,10 +35,10 @@ class NobatDehiSecondPageController extends GetxController {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $accessToken'
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
       var uri = Uri.http(
-        '185.221.237.51',
+        host! ,
         '/clinic/technecian_appointments/get_process_by_id/$nobatId/',
       );
 
@@ -97,10 +98,10 @@ class NobatDehiSecondPageController extends GetxController {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $accessToken'
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
       var uri = Uri.http(
-        '185.221.237.51',
+        host!,
         '/clinic/technecian_appointments/approve_reject_process/$nobatId/$state_to_request/',
       );
 

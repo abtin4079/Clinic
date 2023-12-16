@@ -140,11 +140,10 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                         )),
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          userNumber = sendOTPController.phonenumberController.text;
-                          print(userNumber);
-                          sendOTPController.registerwithphone();
-                        });
+                        userNumber = sendOTPController.phonenumberController.text;
+                        print(userNumber);
+                        sendOTPController.registerwithphone();
+
                       },
                       child: Container(
                         margin: EdgeInsets.only(

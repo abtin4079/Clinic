@@ -429,6 +429,7 @@ class _ShoroyeFarayandPage1State extends State<ShoroyeFarayandPage1> {
                               onPressed: () =>
                                   _pickImage(isBeforeProcess: true),
                               style: ElevatedButton.styleFrom(
+                                elevation: 0,
                                 backgroundColor: Color(0xffEEEEEE),
                               ),
                               child: Text(
@@ -522,6 +523,7 @@ class _ShoroyeFarayandPage1State extends State<ShoroyeFarayandPage1> {
                               onPressed: () =>
                                   _pickImage_after(isBeforeProcess: false),
                               style: ElevatedButton.styleFrom(
+                                elevation: 0,
                                 backgroundColor: Color(0xffEEEEEE),
                               ),
                               child: Text(

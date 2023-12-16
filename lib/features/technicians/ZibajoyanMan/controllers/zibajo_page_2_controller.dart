@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:clinic/features/technicians/ZibajoyanMan/models/each_approved_appointment.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -23,8 +24,10 @@ class ZibajoyanManSecondPage extends GetxController {
       };
 
       var processId = approvedAppointment.id.toString();
+
+      var host = dotenv.env['HOST'];
       // creating out url
-      var uri = Uri.http('185.221.237.51',
+      var uri = Uri.http(host! ,
           '/clinic/technecian_approved_appointments/start_process/$processId/');
 
       var response = await http.put(

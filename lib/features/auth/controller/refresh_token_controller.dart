@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:clinic/features/auth/controller/shared_preference.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -19,9 +20,9 @@ class RefreshTokenController extends GetxController {
       final queryParameters = {
         'refresh_token': refreshToken,
       };
-
+      var host = dotenv.env['HOST'];
       var uri =
-          Uri.http('185.221.237.51', '/auth/refresh_token', queryParameters);
+          Uri.http(host! , '/auth/refresh_token', queryParameters);
 
       var response = await http.post(uri, headers: headers);
       print(response.statusCode);

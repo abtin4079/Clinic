@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -40,8 +41,9 @@ class ZibajoyanManMiddlePageController extends GetxController {
         'per_page': '10',
       };
 
+      var host = dotenv.env['HOST'];
       // creating out url
-      var uri = Uri.http('185.221.237.51',
+      var uri = Uri.http(host! ,
           '/clinic/technecian_approved_appointments/get_process_by_id/$processId/');
 
       var response = await http.get(

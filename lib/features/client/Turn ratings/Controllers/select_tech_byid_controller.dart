@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -47,30 +48,30 @@ class RemoteSerice4 {
         'Authorization': 'Bearer $accessToken'
       };
 
-
-      var uri = Uri.http('185.221.237.51', '/auth/technecian_by_id/$ID');
+      var host = dotenv.env['HOST'];
+      var uri = Uri.http(host! , '/auth/technecian_by_id/$ID');
 
       var response = await http.get(uri, headers: headers);
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
         var jsonString = response.body;
-        if (jsonString == null) {
+        if (jsonString == []) {
           return <GetTechModel>[];
         }
         var searchTechModelList = convertJsonToList(jsonString);
         print(searchTechModelList);
         return searchTechModelList ;
       }
-      if (response == 400) {
+      if (response.statusCode == 400) {
         print(response.body);
         return null;
       }
-      if (response == 403) {
+      if (response.statusCode == 403) {
         print(response.body);
         return null;
       }
-      if (response == 500) {
+      if (response.statusCode == 500) {
         print(response.body);
         return null;
       }

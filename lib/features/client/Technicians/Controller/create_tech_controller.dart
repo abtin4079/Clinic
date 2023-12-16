@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../../NavigationBar/navigation_bar.dart';
 import '../presentation/pages/tech1.dart';
 
 class CreateTechController extends GetxController {
@@ -17,15 +19,15 @@ class CreateTechController extends GetxController {
     try{
       // getting token from share preferences
       String? accessToken = pref.getString('access_token');
-
+      print(1);
       // initialize the header
       var headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $accessToken'
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
-      var uri = Uri.http('185.221.237.51',
+      var uri = Uri.http(host!,
           '/auth/supervisor_technecian_page/create_new_technecian');
 
       Map<dynamic, String> body = {
@@ -36,21 +38,21 @@ class CreateTechController extends GetxController {
       };
 
       var response = await http.post(uri, body: jsonEncode(body), headers: headers);
-
+      print(response.statusCode);
       if(response.statusCode == 200){
         print(response.body);
-        Get.off(Tech1());
+        Get.off(ClientPage());
         return null;
       }
-      if (response == 400){
+      if (response.statusCode == 400){
         print(response.body);
         return null;
       }
-      if (response == 403){
+      if (response.statusCode == 403){
         print(response.body);
         return null;
       }
-      if (response == 500){
+      if (response.statusCode == 500){
         print(response.body);
         return null;
       }

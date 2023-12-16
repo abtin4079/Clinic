@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -38,9 +39,9 @@ class ZibajoyanManFirstPage extends GetxController {
         'page': '1',
         'per_page': '10',
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
-      var uri = Uri.http('185.221.237.51',
+      var uri = Uri.http(host! ,
           '/clinic/technecian_approved_appointments', queryParameters);
 
       var response = await http.get(
@@ -97,10 +98,10 @@ class ZibajoyanManFirstPage extends GetxController {
           'search': search.trim(),
           'per_page': '10',
         };
-
+        var host = dotenv.env['HOST'];
         // creating out url
         var uri = Uri.http(
-            '185.221.237.51',
+            host! ,
             '/clinic/technecian_approved_appointments/search_process',
             queryParameters);
 

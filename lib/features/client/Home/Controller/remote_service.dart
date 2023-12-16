@@ -2,6 +2,7 @@ import 'package:clinic/features/auth/controller/login_controller.dart';
 import 'package:clinic/features/technicians/utils/token_check.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
@@ -33,9 +34,9 @@ class RemoteService extends GetxController {
         'page': '1',
         'per_page': '10',
       };
-
+      var host = dotenv.env['HOST'];
       // creating out url
-      var uri = Uri.http('185.221.237.51',
+      var uri = Uri.http(host! ,
           '/clinic/supervisor_home_page/list_of_processes', queryParameters);
 
       var response = await client.get(uri, headers: headers);

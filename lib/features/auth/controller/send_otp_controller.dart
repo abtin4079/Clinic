@@ -4,9 +4,12 @@ import 'package:clinic/features/auth/presentation/pages/sarting_page.dart';
 import 'package:clinic/features/auth/utils/api_endpoint.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../themes/colors.dart';
 
 class SendOTPController extends GetxController {
   TextEditingController phonenumberController = TextEditingController();
@@ -16,14 +19,14 @@ class SendOTPController extends GetxController {
     try {
       var headers = {'Content-Type': 'application/json'};
 
-      var uri = Uri.http('185.221.237.51', '/auth/sendotp');
+      var host = dotenv.env['HOST'];
+      var uri = Uri.http(host!, '/auth/sendotp');
 
       Map<dynamic, String> body = {
         'phone_number': phonenumberController.text,
       };
 
-      var response =
-          await http.post(uri, body: jsonEncode(body), headers: headers);
+      var response = await http.post(uri, body: jsonEncode(body), headers: headers);
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
@@ -42,10 +45,18 @@ class SendOTPController extends GetxController {
       showDialog(
           context: Get.context!,
           builder: (context) {
-            return SimpleDialog(
-              title: Text('Error'),
-              contentPadding: EdgeInsets.all(20),
-              children: [Text(e.toString())],
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: SimpleDialog(
+                title: Center(child: Text('خطا')),
+                contentPadding: EdgeInsets.all(20),
+                children: [
+                  Center(child: Text("شماره ی وارد شده موجود نمی باشد", style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.red
+                  ),))
+                ],
+              ),
             );
           });
     }
