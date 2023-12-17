@@ -10,6 +10,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../../../../themes/colors.dart';
 import '../../../Home/domain/entity.dart';
 import '../../../Home/presentation/pages/plant_info.dart';
+import '../domain/mission_model.dart';
 
 class TechProfile extends StatefulWidget {
   const TechProfile({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _TechProfileState extends State<TechProfile> {
   @override
   int road = 0;
   bool isvisible = false;
+  bool tar_mission = false;
 
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
@@ -64,7 +66,7 @@ class _TechProfileState extends State<TechProfile> {
               Center(
                 child: Container(
                   width: screenwidth / width_figma * 396,
-                  height: screenheight / height_figma * 359,
+                  height: screenheight / height_figma * 320,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(32),
                       color: Colors.white),
@@ -126,95 +128,73 @@ class _TechProfileState extends State<TechProfile> {
                           left: screenwidth / width_figma * 31,
                           right: screenwidth / width_figma * 31,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "0024158759",
-                                  style: TextStyle(
-                                      fontSize:
-                                          14 * screenheight / height_figma,
-                                      fontWeight: FontWeight.w400,
-                                      color: fontcolor,
-                                      fontFeatures: [
-                                        FontFeature('ss01', 1),
-                                      ]),
-                                ),
-                                SizedBox(
-                                  height: screenheight / height_figma * 24,
-                                ),
-                                Text(
-                                  "01248579554",
-                                  style: TextStyle(
-                                    fontSize: 14 * screenheight / height_figma,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: screenheight / height_figma * 24,
-                                ),
-                                Text(
-                                  "5875486599887548",
-                                  style: TextStyle(
-                                    fontSize: 14 * screenheight / height_figma,
-                                    fontWeight: FontWeight.w400,
-                                    color: fontcolor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                        child: Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "شماره تماس:",
+                                    "0024158759",
                                     style: TextStyle(
-                                      fontSize:
-                                          14 * screenheight / height_figma,
+                                        fontSize:
+                                            14 * screenheight / height_figma,
+                                        fontWeight: FontWeight.w400,
+                                        color: grayColorHome,
+                                        fontFeatures: [
+                                          FontFeature('ss01', 1),
+                                        ]),
+                                  ),
+                                  SizedBox(
+                                    height: screenheight / height_figma * 24,
+                                  ),
+                                  Text(
+                                    "01248579554",
+                                    style: TextStyle(
+                                      fontSize: 14 * screenheight / height_figma,
                                       fontWeight: FontWeight.w400,
-                                      color: fontcolor,
+                                      color: grayColorHome,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: screenheight / height_figma * 24,
-                                  ),
-                                  Text(
-                                    "کد ملی:",
-                                    style: TextStyle(
-                                        fontSize:
-                                            14 * screenheight / height_figma,
-                                        fontWeight: FontWeight.w400,
-                                        color: fontcolor,
-                                        fontFeatures: [
-                                          FontFeature('ss01', 1),
-                                        ]),
-                                  ),
-                                  SizedBox(
-                                    height: screenheight / height_figma * 24,
-                                  ),
-                                  Text(
-                                    "شماره کارت:",
-                                    style: TextStyle(
-                                        fontSize:
-                                            14 * screenheight / height_figma,
-                                        fontWeight: FontWeight.w400,
-                                        color: fontcolor,
-                                        fontFeatures: [
-                                          FontFeature('ss01', 1),
-                                        ]),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "شماره تماس:",
+                                      style: TextStyle(
+                                        fontSize:
+                                            14 * screenheight / height_figma,
+                                        fontWeight: FontWeight.w500,
+                                        color: fontcolor,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: screenheight / height_figma * 24,
+                                    ),
+                                    Text(
+                                      "کد ملی:",
+                                      style: TextStyle(
+                                          fontSize:
+                                              14 * screenheight / height_figma,
+                                          fontWeight: FontWeight.w500,
+                                          color: fontcolor,
+                                          fontFeatures: [
+                                            FontFeature('ss01', 1),
+                                          ]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -337,13 +317,13 @@ class _TechProfileState extends State<TechProfile> {
                   ? Center(
                       child: Container(
                         width: screenwidth / width_figma * 396,
-                        height: screenheight / height_figma * 1024,
+                     //  height: screenheight / height_figma * 1024,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: Colors.white),
                         child: Padding(
                           padding: EdgeInsets.only(
-                            right: screenwidth / width_figma * 34,
+                            //right: screenwidth / width_figma * 34,
                             top: screenheight / height_figma * 26,
                           ),
                           child: Column(
@@ -352,7 +332,7 @@ class _TechProfileState extends State<TechProfile> {
                               Row(
                                 children: [
                                   SizedBox(
-                                    width: screenwidth / width_figma * 10,
+                                    width: screenwidth / width_figma * 43,
                                   ),
                                   Image.asset(
                                       "lib/features/client/Technicians/presentation/images/information-line.png"),
@@ -371,11 +351,13 @@ class _TechProfileState extends State<TechProfile> {
                                   ),
                                   SizedBox(
                                     width: screenwidth / width_figma * 122,
-                                    child: Text("سه شنبه 13 آذر", style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: fontcolor
-                                    ),),
+                                    child: Text(
+                                      "سه شنبه 13 آذر",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: fontcolor),
+                                    ),
                                   )
                                 ],
                               ),
@@ -385,7 +367,7 @@ class _TechProfileState extends State<TechProfile> {
                               Row(
                                 children: [
                                   SizedBox(
-                                    width: screenwidth / width_figma * 10,
+                                    width: screenwidth / width_figma * 43,
                                   ),
                                   Image.asset(
                                       "lib/features/client/Technicians/presentation/images/information-line.png"),
@@ -404,23 +386,254 @@ class _TechProfileState extends State<TechProfile> {
                                   ),
                                   SizedBox(
                                     width: screenwidth / width_figma * 122,
-                                    child: Text("چهار شنبه 13 آذر", style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                        color: fontcolor
-                                    ),),
+                                    child: Text(
+                                      "چهار شنبه 13 آذر",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: fontcolor),
+                                    ),
                                   )
                                 ],
                               ),
                               SizedBox(
                                 height: screenheight / height_figma * 45,
                               ),
-                              Text(
-                                "عملیات ها",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: fontcolor),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: screenwidth / width_figma * 34,
+                                ),
+                                child: Text(
+                                  "عملیات ها",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: fontcolor),
+                                ),
+                              ),
+                              FutureBuilder(
+                                future: ReadMissionData(),
+                                builder: (context, data) {
+                                  if (data.hasError) {
+                                    return Center(child: Text("${data.error}"));
+                                  } else if (data.hasData) {
+                                    var items = data.data as List<MissionModel>;
+                                    return ListView.builder(
+                                        itemCount: items.length,
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        scrollDirection: Axis.vertical,
+                                        itemBuilder: (context, index){
+                                          return Padding(
+                                            padding: EdgeInsets.only(
+                                              top: screenheight / height_figma * 20,
+                                              bottom: screenheight / height_figma * 20,
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: screenheight / height_figma * 21,
+                                                ),
+                                                Center(
+                                                  child: Text(items[index].amaliat.toString(), style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                      fontFeatures: const [
+                                                        FontFeature('ss01', 1),
+                                                      ],
+                                                    color:fontcolor
+                                                  ),),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight / height_figma * 8,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:  EdgeInsets.only(
+                                                        right: screenwidth / width_figma * 47
+                                                      ),
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Text("تاریخ:", style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: grayColorHome,
+                                                          ),),
+                                                          SizedBox(
+                                                            height: screenheight / height_figma * 4,
+                                                          ),
+                                                          Text(items[index].date.toString(), style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: fontcolor,
+                                                          ),),
+                                                          SizedBox(
+                                                            height: screenheight / height_figma * 7.5,
+                                                          ),
+                                                          Text("زیباجو:", style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: grayColorHome,
+                                                          ),),
+                                                          SizedBox(
+                                                            height: screenheight / height_figma * 4,
+                                                          ),
+                                                          Text(items[index].zibajo.toString(), style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: fontcolor,
+                                                          ),),
+                                                          SizedBox(
+                                                            height: screenheight / height_figma * 7.5,
+                                                          ),
+                                                          Text("تعداد تار مو:", style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: grayColorHome,
+                                                          ),),
+                                                          SizedBox(
+                                                            height: screenheight / height_figma * 4,
+                                                          ),
+                                                          Text(items[index].tar_mo.toString(), style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: fontcolor,
+                                                          ),),
+
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: screenwidth / width_figma * 50,
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                                      children: [
+                                                        Row(
+                                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                          children: [
+                                                            GestureDetector(
+                                                              onTap: (){
+                                                                setState(() {
+                                                                  tar_mission = false;
+                                                                });
+                                                              },
+                                                              child: Container(
+                                                                width: screenwidth / width_figma * 80,
+                                                                height: screenheight / height_figma * 45,
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius: BorderRadius.only(
+                                                                      topRight: Radius.circular(20),
+                                                                      bottomRight: Radius.circular(20)),
+                                                                  color: tar_mission ? toggleColor : SendagainColorblue,
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text("به ازای تار مو", style: TextStyle(
+                                                                      fontSize: 12,
+                                                                      fontWeight: FontWeight.w700,
+                                                                      color: tar_mission ? fontcolor : Colors.white
+                                                                  ),),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              width: screenwidth / width_figma * 2,
+                                                            ),
+                                                            GestureDetector(
+                                                              onTap: (){
+                                                                setState(() {
+                                                                  tar_mission = true;
+                                                                });
+                                                              },
+                                                              child: Container(
+                                                                width: screenwidth / width_figma * 80,
+                                                                height: screenheight / height_figma * 45,
+                                                                decoration: BoxDecoration(
+                                                                  borderRadius: BorderRadius.only(
+                                                                      topLeft: Radius.circular(20),
+                                                                      bottomLeft: Radius.circular(20)),
+                                                                  color: !tar_mission ? toggleColor : SendagainColorblue,
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text("به ازای عملیات", style: TextStyle(
+                                                                    fontSize: 12,
+                                                                    fontWeight: FontWeight.w700,
+                                                                    color: tar_mission ? Colors.white : fontcolor
+                                                                  ),),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        SizedBox(
+                                                          height: screenheight / height_figma * 18,
+                                                        ),
+                                                        tar_mission ? Text("هزینه به ازای تار مو (ریال)", style: TextStyle(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontSize: 12,
+                                                          color: Colors.black
+                                                        ),) : Text("هزینه به ازای عملیات (ریال)", style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 12,
+                                                            color: Colors.black
+                                                        ),),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+
+                                              ],
+                                            ),
+                                          );
+                                        });
+                                  } else {
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                },
+                              ),
+                              Center(
+                                child: Text(
+                                  "15،000،000،000 ریال",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              Center(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                    top: screenheight / height_figma * 25,
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: screenwidth / width_figma * 328,
+                                      height: screenheight / height_figma * 48,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: LightBlue,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "پرداخت از کیف پول",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14,
+                                              color: lightwhite),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: screenheight / height_figma * 29,
                               ),
                             ],
                           ),

@@ -17,7 +17,7 @@ const nobatdehicolor = Color(0xFF444444);
 
 const floatingActionColor = Color(0xFF5B89E0);
 
-const grayColorHome = Color(0xFF777777);
+  const grayColorHome = Color(0xFF777777);
 
 const processColor = Color(0xFFFF9211);
 

@@ -101,6 +101,7 @@ flutter:
     - lib/features/technicians/NobatDehyJadid/images/
     - lib/features/technicians/NobatDehyJadid/domain/finance.json
     - lib/features/technicians/NobatDehyJadid/domain/tech.json
+    - lib/features/client/Technicians/presentation/domain/missions_data.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
