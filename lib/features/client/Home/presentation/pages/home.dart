@@ -302,14 +302,13 @@ class _HomeState extends State<Home> {
                       );
                     }
                     return ListView.builder(
-                      // physics: const AlwaysScrollableScrollPhysics(),
                       physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: items == null
                           ? 0
                           : items
-                              .length, // fjdkfjdfkgdfgdfk;jgkgjdfklfdjk;jb;dfkfjd;fmd;klg
+                              .length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {

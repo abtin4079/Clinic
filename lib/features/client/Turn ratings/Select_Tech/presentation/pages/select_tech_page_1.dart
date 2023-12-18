@@ -1,3 +1,4 @@
+import 'package:clinic/features/client/Home/presentation/pages/home.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/client/Technicians/Controller/search_tech_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
@@ -63,7 +64,7 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(ClientPage());
+                            Get.to(Home());
                           },
                           child: Image.asset(
                               "lib/features/client/Turn ratings/Images/zab_dar.png"),

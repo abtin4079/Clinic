@@ -1,6 +1,8 @@
 import 'package:clinic/features/auth/controller/refresh_token_controller.dart';
 import 'package:clinic/features/auth/controller/shared_preference.dart';
 import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
+import 'package:clinic/features/client/Home/presentation/pages/home.dart';
+import 'package:clinic/features/client/Home/presentation/pages/master_page.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../client/NavigationBar/navigation_bar.dart';
@@ -39,7 +41,7 @@ void initialCheck() {
              getStringValuesSF("user").then((user) {
                print(user);
                if(user == 'Supervisor'){
-                 Get.off(ClientPage());
+                 Get.off(Home());
                } else {
                  Get.off(Techpages());
                }
@@ -51,7 +53,7 @@ void initialCheck() {
           getStringValuesSF("user").then((user) {
             print(user);
             if(user == 'Supervisor'){
-              Get.off(ClientPage());
+              Get.off(Home());
             } else {
               Get.off(Techpages());
             }

@@ -1,4 +1,3 @@
-import 'package:clinic/features/technicians/NobatDehyJadid/presentation/pages/tech_finance.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 

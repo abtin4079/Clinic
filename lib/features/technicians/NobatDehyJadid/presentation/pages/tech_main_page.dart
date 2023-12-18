@@ -24,6 +24,8 @@ class _TechMainPageState extends State<TechMainPage> {
       child: Scaffold(
         drawer: NavBar(),
         appBar: AppBar(
+          iconTheme: IconThemeData(color: phonecolor),
+          automaticallyImplyLeading: true,
           elevation: 0,
           backgroundColor: LightBlue,
         ),

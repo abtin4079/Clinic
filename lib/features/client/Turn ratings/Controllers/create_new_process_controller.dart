@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:clinic/features/client/Home/presentation/pages/home.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -103,7 +104,7 @@ class CreateNewProcessController extends GetxController {
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
-        Get.off(() => const ClientPage());
+        Get.off(() => const Home());
       }
       if (response.statusCode == 400) {
         print(response.body);
@@ -181,7 +182,7 @@ class CreateNewProcessController extends GetxController {
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
-        Get.off(ClientPage());
+        Get.off(Home());
       }
       if (response == 400) {
         print(response.body);

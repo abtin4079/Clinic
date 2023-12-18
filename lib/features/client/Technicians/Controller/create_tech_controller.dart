@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'package:clinic/features/client/Home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../../Home/presentation/pages/master_page.dart';
 import '../../NavigationBar/navigation_bar.dart';
 import '../presentation/pages/tech1.dart';
 
@@ -41,7 +43,7 @@ class CreateTechController extends GetxController {
       print(response.statusCode);
       if(response.statusCode == 200){
         print(response.body);
-        Get.off(ClientPage());
+        Get.off(Home());
         return null;
       }
       if (response.statusCode == 400){

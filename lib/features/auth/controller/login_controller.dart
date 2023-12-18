@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../client/Home/presentation/pages/master_page.dart';
 import '../utils/api_endpoint.dart';
 import 'package:http/http.dart' as http;
 
@@ -42,7 +43,7 @@ class LoginController extends GetxController {
         print(response.body);
         print(user);
         if (user == 'Supervisor') {
-          Get.off(ClientPage());
+          Get.off(MasterPage());
         } else {
           Get.off(Techpages());
         }
