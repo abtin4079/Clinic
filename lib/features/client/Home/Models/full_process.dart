@@ -31,14 +31,8 @@ class FullProcess {
 
   factory FullProcess.fromJson(Map<String, dynamic> json) {
     return FullProcess(
-      afterProcessImages: (json['after_operation'] != null)
-          ? List<ProcessedImage>.from(json['after_operation']
-              .map((image) => ProcessedImage.fromJson(image)))
-          : [],
-      beforeProcessImages: (json['before_operation'] != null)
-          ? List<ProcessedImage>.from(json['before_operation']
-              .map((image) => ProcessedImage.fromJson(image)))
-          : [],
+      afterProcessImages: (json['after_operation'] != null) ? List<ProcessedImage>.from(json['after_operation'].map((image) => ProcessedImage.fromJson(image))) : [],
+      beforeProcessImages: (json['before_operation'] != null) ? List<ProcessedImage>.from(json['before_operation'].map((image) => ProcessedImage.fromJson(image))) : [],
       description: json['description'],
       id: json['id'],
       end_date: json['end_date'],

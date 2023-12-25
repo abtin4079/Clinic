@@ -47,10 +47,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
           ),
         ),
       ),
-      body:
-          // SingleChildScrollView(
-          // child:
-          FutureBuilder(
+      body: FutureBuilder(
         future: listOfAppointmentController.getTechAppointments(),
         builder: (context, data) {
           if (data.hasError) {
@@ -65,7 +62,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
               return ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: items == null ? 0 : items.length,
+                itemCount: items == [] ? 0 : items.length,
                 itemBuilder: (context, index) {
                   NobatTech nobat = items[index];
                   return GestureDetector(
@@ -227,11 +224,7 @@ class _NobatDehyPage1State extends State<NobatDehyPage1> {
                                               context: context,
                                               builder: (BuildContext context) {
                                                 return FutureBuilder<bool>(
-                                                    future: eachAppointment
-                                                        .acceptOrRejectProcess(
-                                                            true,
-                                                            nobat.id
-                                                                .toString()),
+                                                    future: eachAppointment.acceptOrRejectProcess(true, nobat.id.toString()),
                                                     builder: (context, data) {
                                                       if (data.connectionState ==
                                                           ConnectionState

@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../../themes/colors.dart';
+import '../../../../Home/presentation/pages/master_page.dart';
 import '../../../../NavigationBar/Icons/navigation_bar_icons.dart';
 
 class SelectTechPage1 extends StatefulWidget {
@@ -64,7 +65,7 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(Home());
+                            Get.to(MasterPage());
                           },
                           child: Image.asset(
                               "lib/features/client/Turn ratings/Images/zab_dar.png"),

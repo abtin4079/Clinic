@@ -9,8 +9,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../themes/colors.dart';
-
 class SendOTPController extends GetxController {
   TextEditingController phonenumberController = TextEditingController();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -26,7 +24,8 @@ class SendOTPController extends GetxController {
         'phone_number': phonenumberController.text,
       };
 
-      var response = await http.post(uri, body: jsonEncode(body), headers: headers);
+      var response =
+      await http.post(uri, body: jsonEncode(body), headers: headers);
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
@@ -45,18 +44,10 @@ class SendOTPController extends GetxController {
       showDialog(
           context: Get.context!,
           builder: (context) {
-            return Directionality(
-              textDirection: TextDirection.rtl,
-              child: SimpleDialog(
-                title: Center(child: Text('خطا')),
-                contentPadding: EdgeInsets.all(20),
-                children: [
-                  Center(child: Text("شماره ی وارد شده موجود نمی باشد", style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.red
-                  ),))
-                ],
-              ),
+            return SimpleDialog(
+              title: Text('Error'),
+              contentPadding: EdgeInsets.all(20),
+              children: [Text(e.toString())],
             );
           });
     }

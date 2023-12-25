@@ -23,7 +23,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
     _counter = 10;
     _timer = Timer.periodic(
       Duration(seconds: 1),
-      (timer) {
+          (timer) {
         if (_counter > 0) {
           setState(() {
             _counter--;
@@ -93,7 +93,7 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                       height: screenheight / height_figma * 683,
                       decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(100)),
+                        BorderRadius.only(topLeft: Radius.circular(100)),
                         color: Colors.white,
                       ),
                     ),
@@ -201,61 +201,61 @@ class _LoginSecondPageState extends State<LoginSecondPage> {
                           ),
                           ispressed
                               ? TextButton(
-                                  //  style: TextButton.styleFrom(
-                                  //    padding: EdgeInsets.zero,
-                                  // ),
-                                  onPressed: () {
-                                    startTimer();
-                                    setState(() {
-                                      ispressed = !ispressed;
-                                    });
-                                  },
-                                  child: Row(
-                                    // mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "! ارسال مجدد کد تایید",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                          color: SendagainColorblue,
-                                        ),
+                            //  style: TextButton.styleFrom(
+                            //    padding: EdgeInsets.zero,
+                            // ),
+                              onPressed: () {
+                                startTimer();
+                                setState(() {
+                                  ispressed = !ispressed;
+                                });
+                              },
+                              child: Row(
+                                // mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "! ارسال مجدد کد تایید",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: SendagainColorblue,
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 15,
+                                    height: 15,
+                                    child: ClipRRect(
+                                      child: Image.asset(
+                                        "lib/features/auth/presentation/images/refresh-blue.png",
+                                        fit: BoxFit.fill,
                                       ),
-                                      Container(
-                                        width: 15,
-                                        height: 15,
-                                        child: ClipRRect(
-                                          child: Image.asset(
-                                            "lib/features/auth/presentation/images/refresh-blue.png",
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ))
+                                    ),
+                                  ),
+                                ],
+                              ))
                               : Row(
-                                  // mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "! ارسال مجدد کد تایید",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w700,
-                                        color: SendagainColorwhite,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 15,
-                                      height: 15,
-                                      child: ClipRRect(
-                                        child: Image.asset(
-                                          "lib/features/auth/presentation/images/refresh-white.png",
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                            // mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "! ارسال مجدد کد تایید",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: SendagainColorwhite,
                                 ),
+                              ),
+                              Container(
+                                width: 15,
+                                height: 15,
+                                child: ClipRRect(
+                                  child: Image.asset(
+                                    "lib/features/auth/presentation/images/refresh-white.png",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),

@@ -21,8 +21,7 @@ class ZibajoPage1 extends StatefulWidget {
 }
 
 class _ZibajoPage1State extends State<ZibajoPage1> {
-  ZibajoyanManFirstPage zibajoyanManFirstPage =
-      Get.put(ZibajoyanManFirstPage());
+  ZibajoyanManFirstPage zibajoyanManFirstPage = Get.put(ZibajoyanManFirstPage());
   TextEditingController searchController = TextEditingController();
   String search = '';
 

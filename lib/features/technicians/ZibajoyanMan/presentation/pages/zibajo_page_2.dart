@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 import '../../../../../themes/colors.dart';
 import '../../../../client/NavigationBar/Icons/navigation_bar_icons.dart';
 import '../../../Home/presentation/pages/home_for_tech.dart';
@@ -25,8 +24,7 @@ class ZibajoPage2 extends StatefulWidget {
 }
 
 class _ZibajoPage2State extends State<ZibajoPage2> {
-  ZibajoyanManSecondPage zibajoyanManSecondPage =
-      Get.put(ZibajoyanManSecondPage());
+  ZibajoyanManSecondPage zibajoyanManSecondPage = Get.put(ZibajoyanManSecondPage());
   int currenttab = 2;
   List<Widget> screens = [
     HomeForTech(),
@@ -44,8 +42,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
     final screenwidth = MediaQuery.of(context).size.width;
     final width_figma = 428;
 
-    EachApprovedAppointments approvedAppointment =
-        Get.arguments as EachApprovedAppointments;
+    EachApprovedAppointments approvedAppointment = Get.arguments as EachApprovedAppointments;
 
     return Scaffold(
       backgroundColor: backgroundHome,
@@ -381,8 +378,7 @@ class _ZibajoPage2State extends State<ZibajoPage2> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        zibajoyanManSecondPage
-                            .startTheProcess(approvedAppointment);
+                        zibajoyanManSecondPage.startTheProcess(approvedAppointment);
                       },
                       child: Container(
                         width: screenwidth / width_figma * 364,

@@ -41,7 +41,7 @@ void initialCheck() {
              getStringValuesSF("user").then((user) {
                print(user);
                if(user == 'Supervisor'){
-                 Get.off(Home());
+                 Get.off(MasterPage());
                } else {
                  Get.off(Techpages());
                }
@@ -53,7 +53,7 @@ void initialCheck() {
           getStringValuesSF("user").then((user) {
             print(user);
             if(user == 'Supervisor'){
-              Get.off(Home());
+              Get.off(MasterPage());
             } else {
               Get.off(Techpages());
             }

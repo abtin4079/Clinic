@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:clinic/features/auth/controller/send_otp_controller.dart';
 import 'package:clinic/features/client/Home/Controller/remote_service.dart';
+import 'package:clinic/features/client/Home/presentation/pages/master_page.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/technicians/NavigationBar/navigation_bar_for_tech.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../client/Home/presentation/pages/master_page.dart';
 import '../utils/api_endpoint.dart';
 import 'package:http/http.dart' as http;
 
@@ -33,7 +33,7 @@ class LoginController extends GetxController {
       };
 
       var response =
-          await http.post(uri, body: jsonEncode(body), headers: headers);
+      await http.post(uri, body: jsonEncode(body), headers: headers);
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);

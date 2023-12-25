@@ -15,8 +15,7 @@ class MiddleZibajoPage extends StatefulWidget {
 }
 
 class _MiddleZibajoPage extends State<MiddleZibajoPage> {
-  ZibajoyanManMiddlePageController zibajoyanManMiddlePageController =
-      Get.put(ZibajoyanManMiddlePageController());
+  ZibajoyanManMiddlePageController zibajoyanManMiddlePageController = Get.put(ZibajoyanManMiddlePageController());
 
   @override
   void initState() {

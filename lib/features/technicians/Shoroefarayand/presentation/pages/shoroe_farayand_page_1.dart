@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 import '../../../../../themes/colors.dart';
 import '../../../../client/NavigationBar/Icons/navigation_bar_icons.dart';
 import '../../../Home/presentation/pages/home_for_tech.dart';
@@ -28,8 +27,7 @@ class ShoroyeFarayandPage1 extends StatefulWidget {
 }
 
 class _ShoroyeFarayandPage1State extends State<ShoroyeFarayandPage1> {
-  ShoroFarayandFirstPageController shoroefarayandfirstPageController =
-      Get.put(ShoroFarayandFirstPageController());
+  ShoroFarayandFirstPageController shoroefarayandfirstPageController = Get.put(ShoroFarayandFirstPageController());
   int currenttab = 2;
   List<Widget> screens = [
     HomeForTech(),
@@ -39,8 +37,7 @@ class _ShoroyeFarayandPage1State extends State<ShoroyeFarayandPage1> {
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentscreen = ShoroyeFarayandPage1();
-  EachApprovedAppointments approvedAppointment =
-      Get.arguments as EachApprovedAppointments;
+  EachApprovedAppointments approvedAppointment = Get.arguments as EachApprovedAppointments;
 
   Future<void> _pickImage({required bool isBeforeProcess}) async {
     if (approvedAppointment.beforeProcessImages.length < 3) {

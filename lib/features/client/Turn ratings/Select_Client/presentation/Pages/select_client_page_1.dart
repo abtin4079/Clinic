@@ -12,6 +12,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../../../Home/presentation/pages/master_page.dart';
 import '../../../../NavigationBar/Icons/search_icons.dart';
 import '../../../Controllers/select_patient_controller.dart';
 
@@ -63,7 +64,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(Home());
+                          Get.to(MasterPage());
                         },
                         child: Image.asset(
                             "lib/features/client/Turn ratings/Images/zab_dar.png"),
@@ -302,11 +303,11 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
             ),
             SizedBox(
-              height:  550,
+              height:  screenheight / height_figma * 500,
             ),
             Padding(
               padding:  EdgeInsets.only(
-                right: screenwidth / width_figma * 212 ,
+                right: screenwidth / width_figma * 200 ,
               ),
               child: GestureDetector(
                 onTap: (){

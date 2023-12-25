@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../../themes/colors.dart';
+import '../../../../Home/presentation/pages/master_page.dart';
 
 class NewClientPage1 extends StatefulWidget {
   const NewClientPage1({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(Home());
+                            Get.to(MasterPage());
                           },
                           child: Image.asset(
                               "lib/features/client/Turn ratings/Images/zab_dar.png"),
@@ -474,7 +475,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: 155,
+                  top: screenheight / height_figma * 90,
                   right: screenwidth / width_figma * 212,
                 ),
                 child: GestureDetector(

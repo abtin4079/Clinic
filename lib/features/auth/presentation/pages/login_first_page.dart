@@ -15,7 +15,7 @@ class LoginFirstPage extends StatefulWidget {
 
 class _LoginFirstPageState extends State<LoginFirstPage> {
 
-final SendOTPController sendOTPController = Get.put(SendOTPController());
+  final SendOTPController sendOTPController = Get.put(SendOTPController());
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                       height: screenheight / height_figma * 683,
                       decoration:const BoxDecoration(
                         borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(100)),
+                        BorderRadius.only(topLeft: Radius.circular(100)),
                         color: Colors.white,
                       ),
                     ),
@@ -131,7 +131,7 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: outlineborder, width: 2),
+                              BorderSide(color: outlineborder, width: 2),
                               borderRadius: BorderRadius.circular(48),
                             ),
                             border: OutlineInputBorder(),
@@ -140,10 +140,11 @@ final SendOTPController sendOTPController = Get.put(SendOTPController());
                         )),
                     GestureDetector(
                       onTap: () {
-                        userNumber = sendOTPController.phonenumberController.text;
-                        print(userNumber);
-                        sendOTPController.registerwithphone();
-
+                        setState(() {
+                          userNumber = sendOTPController.phonenumberController.text;
+                          print(userNumber);
+                          sendOTPController.registerwithphone();
+                        });
                       },
                       child: Container(
                         margin: EdgeInsets.only(

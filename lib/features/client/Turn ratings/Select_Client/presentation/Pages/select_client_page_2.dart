@@ -8,6 +8,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../../../../../themes/colors.dart';
+import '../../../../Home/presentation/pages/master_page.dart';
 import '../../../../NavigationBar/Icons/navigation_bar_icons.dart';
 import '../../../Select_Tech/presentation/pages/select_tech_page_1.dart';
 
@@ -55,7 +56,7 @@ class _SelectClientPage2State extends State<SelectClientPage2> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(Home());
+                          Get.to(MasterPage());
                         },
                         child: Image.asset(
                             "lib/features/client/Turn ratings/Images/zab_dar.png"),

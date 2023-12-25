@@ -43,7 +43,7 @@ class CreateTechController extends GetxController {
       print(response.statusCode);
       if(response.statusCode == 200){
         print(response.body);
-        Get.off(Home());
+        Get.off(MasterPage());
         return null;
       }
       if (response.statusCode == 400){

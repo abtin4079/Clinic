@@ -1,10 +1,12 @@
 // import 'dart:ffi';
 import 'dart:ui';
 
+import 'package:clinic/features/client/Home/Controller/first_page_client_processes_controller.dart';
 import 'package:clinic/features/client/Home/Controller/home_page_search_controller.dart';
 import 'package:clinic/features/client/Home/Controller/remote_service.dart';
 import 'package:clinic/features/client/Home/Models/home_page_search_model.dart';
 import 'package:clinic/features/client/Home/domain/entity.dart';
+import 'package:clinic/features/client/Home/presentation/pages/master_page.dart';
 import 'package:clinic/features/client/Home/presentation/pages/plant_info.dart';
 import 'package:clinic/themes/colors.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +79,10 @@ class _HomeState extends State<Home> {
   final HomePageSearchController homePageSearchController =
       Get.put(HomePageSearchController());
   final GetStorage storage = GetStorage();
+
+  FirstPageClientProcessesController firstPageClientProcessesController = Get.put(FirstPageClientProcessesController());
+
+
   TextEditingController searchController = TextEditingController();
   bool _initialized = false;
   String today = '';
@@ -277,7 +283,9 @@ class _HomeState extends State<Home> {
                       //   right: screenwidth / width_figma * 16,
                       // ),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                         // firstPageClientProcessesController.getProcess();
+                        },
                         child: Image.asset(
                             "lib/features/client/Home/presentation/images/copy.png"),
                       ),
@@ -305,15 +313,15 @@ class _HomeState extends State<Home> {
                       physics: NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
-                      itemCount: items == null
+                      itemCount: items == []
                           ? 0
                           : items
-                              .length,
+                          .length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
                             Get.to(
-                              PlantInfo(),
+                              MasterPage(),
                               arguments: items[index],
                             );
                           },
@@ -350,7 +358,7 @@ class _HomeState extends State<Home> {
                                         width: screenwidth / width_figma * 110,
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               items[index].operation!,
@@ -429,7 +437,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           SizedBox(
                                             height:
-                                                screenheight / height_figma * 3,
+                                            screenheight / height_figma * 3,
                                           ),
                                           Text(
                                             items[index].hairCount!,
@@ -440,7 +448,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           SizedBox(
                                             height:
-                                                screenheight / height_figma * 6,
+                                            screenheight / height_figma * 6,
                                           ),
                                           Text(
                                             "وضعیت:",
@@ -451,55 +459,55 @@ class _HomeState extends State<Home> {
                                           ),
                                           SizedBox(
                                             height:
-                                                screenheight / height_figma * 3,
+                                            screenheight / height_figma * 3,
                                           ),
                                           Container(
                                             width:
-                                                screenwidth / width_figma * 97,
+                                            screenwidth / width_figma * 97,
                                             height: 24,
                                             decoration: BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(16),
+                                                BorderRadius.circular(16),
                                                 color: (items[index].status! ==
-                                                        "created")
+                                                    "created")
                                                     ? graycoloranjamnashode
                                                     : (items[index].status! ==
-                                                            "started")
-                                                        ? rediligal
-                                                        : (items[index]
-                                                                    .status! ==
-                                                                "ended")
-                                                            ? rediligal
-                                                            : (items[index]
-                                                                        .status! ==
-                                                                    "saved")
-                                                                ? processColor
-                                                                : SendagainColorblue),
+                                                    "started")
+                                                    ? rediligal
+                                                    : (items[index]
+                                                    .status! ==
+                                                    "ended")
+                                                    ? rediligal
+                                                    : (items[index]
+                                                    .status! ==
+                                                    "saved")
+                                                    ? processColor
+                                                    : SendagainColorblue),
                                             child: Center(
                                               child: Text(
                                                 (items[index].status! ==
-                                                        "created")
+                                                    "created")
                                                     ? "انجام نشده"
                                                     : (items[index].status! ==
-                                                            "started")
-                                                        ? "در حال انجام"
-                                                        : (items[index]
-                                                                    .status! ==
-                                                                "ended")
-                                                            ? "در حال انجام"
-                                                            : (items[index]
-                                                                        .status! ==
-                                                                    "saved")
-                                                                ? "در انتظار تایید"
-                                                                : "تایید شده",
+                                                    "started")
+                                                    ? "در حال انجام"
+                                                    : (items[index]
+                                                    .status! ==
+                                                    "ended")
+                                                    ? "در حال انجام"
+                                                    : (items[index]
+                                                    .status! ==
+                                                    "saved")
+                                                    ? "در انتظار تایید"
+                                                    : "تایید شده",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w800,
                                                     fontSize: 14,
                                                     color:
-                                                        (items[index].status! ==
-                                                                "created")
-                                                            ? blackwhite
-                                                            : Colors.white),
+                                                    (items[index].status! ==
+                                                        "created")
+                                                        ? blackwhite
+                                                        : Colors.white),
                                               ),
                                             ),
                                           )

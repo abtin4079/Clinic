@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:clinic/features/technicians/NobatDehyJadid/controller/first_page_tech_processes_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,8 @@ import '../../../../auth/controller/shared_preference.dart';
 import '../../../../auth/presentation/pages/login_first_page.dart';
 import 'package:clinic/features/technicians/Profile/controller/profile_controller.dart';
 import 'package:clinic/features/technicians/Profile/models/profile.dart';
+
+import '../../../NobatDehyJadid/presentation/pages/tech_main_page.dart';
 
 class ProfileForTech extends StatefulWidget {
   const ProfileForTech({Key? key}) : super(key: key);
@@ -40,6 +43,8 @@ class _ProfileForTechState extends State<ProfileForTech> {
       });
     }
   }
+  FirstPageTechProcessesController firstPageTechProcessesController = Get.put(FirstPageTechProcessesController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -265,108 +270,118 @@ class _ProfileForTechState extends State<ProfileForTech> {
                   ),
                   child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
-                        ),
-                        child: Container(
-                          // width: screenwidth / width_figma * 356,
-                          // height: screenheight / height_figma * 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: backgroundHome),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Image.asset(
-                                      "lib/features/technicians/Profile/presentation/Images/acount_info.png"),
-                                  SizedBox(
-                                    width: screenwidth / width_figma * 6,
-                                  ),
-                                  Container(
-                                    // width: screenwidth / width_figma * 110,
-                                    child: Text(
-                                      "اطلاعات حساب",
-                                      style: TextStyle(
-                                          fontSize: 14 * CoefficientHeight,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black),
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(() => TechMainPage());
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 16,
+                          ),
+                          child: Container(
+                            // width: screenwidth / width_figma * 356,
+                            // height: screenheight / height_figma * 80,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: backgroundHome),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                        "lib/features/technicians/Profile/presentation/Images/acount_info.png"),
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 6,
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    Container(
+                                      // width: screenwidth / width_figma * 110,
+                                      child: Text(
+                                        "اطلاعات حساب",
+                                        style: TextStyle(
+                                            fontSize: 14 * CoefficientHeight,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  ],
+                                ),
 
-                              // SizedBox(
-                              //   width: screenwidth / width_figma * 220,
-                              // ),
-                              Directionality(
-                                textDirection: TextDirection.ltr,
-                                child: FittedBox(
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.arrow_back_ios_rounded,
-                                      size: 12,
-                                      color: phonecolor,
+                                // SizedBox(
+                                //   width: screenwidth / width_figma * 220,
+                                // ),
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: FittedBox(
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        size: 12,
+                                        color: phonecolor,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: screenheight / height_figma * 16,
-                        ),
-                        child: Container(
-                          // width: screenwidth / width_figma * 356,
-                          // height: screenheight / height_figma * 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: backgroundHome),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Image.asset(
-                                      "lib/features/client/Setting/presentation/Images/transaction.png"),
-                                  SizedBox(
-                                    width: screenwidth / width_figma * 6,
-                                  ),
-                                  Container(
-                                    // width: screenwidth / width_figma * 110,
-                                    child: Text(
-                                      "تاریخچه تراکنش ها",
-                                      style: TextStyle(
-                                          fontSize: 14 * CoefficientHeight,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black,
-                                          fontFeatures: [
-                                            FontFeature('ss01', 1),
-                                          ]),
+                      GestureDetector(
+                        onTap: (){
+                          firstPageTechProcessesController.getTechProcess();
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: screenheight / height_figma * 16,
+                          ),
+                          child: Container(
+                            // width: screenwidth / width_figma * 356,
+                            // height: screenheight / height_figma * 80,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: backgroundHome),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                        "lib/features/client/Setting/presentation/Images/transaction.png"),
+                                    SizedBox(
+                                      width: screenwidth / width_figma * 6,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Directionality(
-                                textDirection: TextDirection.ltr,
-                                child: FittedBox(
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.arrow_back_ios_rounded,
-                                      size: 12,
-                                      color: phonecolor,
+                                    Container(
+                                      // width: screenwidth / width_figma * 110,
+                                      child: Text(
+                                        "تاریخچه تراکنش ها",
+                                        style: TextStyle(
+                                            fontSize: 14 * CoefficientHeight,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black,
+                                            fontFeatures: [
+                                              FontFeature('ss01', 1),
+                                            ]),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Directionality(
+                                  textDirection: TextDirection.ltr,
+                                  child: FittedBox(
+                                    child: IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        size: 12,
+                                        color: phonecolor,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
 import 'package:clinic/features/client/Home/presentation/pages/client_finance.dart';
 import 'package:clinic/features/technicians/NobatDehyJadid/presentation/pages/tech_finance.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class NavBarClient extends StatelessWidget {
     final width_figma = 428;
 
     return Drawer(
+      //surfaceTintColor: Colors.green,
+      //shadowColor: Colors.black,
+      //backgroundColor: Colors.red,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -263,7 +267,9 @@ class NavBarClient extends StatelessWidget {
                               width: screenwidth / width_figma * 8,
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Get.off(() => LoginFirstPage());
+                              },
                               child: Container(
                                 height: screenheight /
                                     height_figma *

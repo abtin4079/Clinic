@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../../Home/presentation/pages/master_page.dart';
 import '../Models/process_module.dart';
 
 class CreateNewProcessController extends GetxController {
@@ -104,7 +105,7 @@ class CreateNewProcessController extends GetxController {
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
-        Get.off(() => const Home());
+        Get.off(() => const MasterPage());
       }
       if (response.statusCode == 400) {
         print(response.body);
@@ -182,7 +183,7 @@ class CreateNewProcessController extends GetxController {
       print(response.statusCode);
       if (response.statusCode == 200) {
         print(response.body);
-        Get.off(Home());
+        Get.off(MasterPage());
       }
       if (response == 400) {
         print(response.body);
