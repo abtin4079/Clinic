@@ -21,7 +21,7 @@ class FirstPageTechProcessesController extends GetxController {
     update();
   }
 
-  Future<MainTechModel?> getTechProcess() async {
+  Future<List<MainTechModel>?> getTechProcess() async {
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return tokenCheckBeforeRequest().then((value) async {
@@ -46,7 +46,7 @@ class FirstPageTechProcessesController extends GetxController {
         if (response.statusCode == 200) {
           var jsonString = json.decode(response.body);
           final process = MainTechModel.fromJson(jsonString);
-          return process;
+          return [process];
         } else {
           print(response.body);
           return null;

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:clinic/features/auth/presentation/pages/login_first_page.dart';
 import 'package:clinic/features/technicians/NobatDehyJadid/presentation/pages/tech_finance.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -229,7 +230,9 @@ class NavBar extends StatelessWidget {
                               width: screenwidth / width_figma * 8,
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Get.to(() => LoginFirstPage());
+                              },
                               child: Container(
                                 height: screenheight /
                                     height_figma *

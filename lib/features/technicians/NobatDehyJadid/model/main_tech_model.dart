@@ -1,3 +1,5 @@
+import '../../ZibajoyanMan/models/each_approved_appointment.dart';
+
 class MainTechModel {
   Approved approved;
   Pending pending;
@@ -15,14 +17,14 @@ class MainTechModel {
 }
 
 class Approved {
-  List<ApprovedItem> items;
+  List<EachApprovedAppointments> items;
 
   Approved({
     required this.items,
   });
 
   factory Approved.fromJson(Map<String, dynamic> json) => Approved(
-    items: List<ApprovedItem>.from(json["items"].map((x) => ApprovedItem.fromJson(x))),
+    items: List<EachApprovedAppointments>.from(json["items"].map((x) => EachApprovedAppointments.fromJson(x))),
   );
 
 }
@@ -33,8 +35,8 @@ class ApprovedItem {
   String hairCount;
   int id;
   String operation;
-  String pationtName;
-  String pationtPhoneNumber;
+  String patientName;
+  String patientPhoneNumber;
   String status;
   String visitDate;
 
@@ -44,8 +46,8 @@ class ApprovedItem {
     required this.hairCount,
     required this.id,
     required this.operation,
-    required this.pationtName,
-    required this.pationtPhoneNumber,
+    required this.patientName,
+    required this.patientPhoneNumber,
     required this.status,
     required this.visitDate,
   });
@@ -56,8 +58,8 @@ class ApprovedItem {
     hairCount: json["hair_count"],
     id: json["id"],
     operation: json["operation"],
-    pationtName: json["pationt_name"],
-    pationtPhoneNumber: json["pationt_phone_number"],
+    patientName: json["pationt_name"],
+    patientPhoneNumber: json["pationt_phone_number"],
     status: json["status"],
     visitDate: json["visit_date"],
   );

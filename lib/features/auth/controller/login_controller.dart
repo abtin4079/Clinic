@@ -4,6 +4,7 @@ import 'package:clinic/features/client/Home/Controller/remote_service.dart';
 import 'package:clinic/features/client/Home/presentation/pages/master_page.dart';
 import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/technicians/NavigationBar/navigation_bar_for_tech.dart';
+import 'package:clinic/features/technicians/NobatDehyJadid/presentation/pages/tech_main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -45,7 +46,7 @@ class LoginController extends GetxController {
         if (user == 'Supervisor') {
           Get.off(MasterPage());
         } else {
-          Get.off(Techpages());
+          Get.off(TechMainPage());
         }
 
         final SharedPreferences? prefs = await _prefs;
