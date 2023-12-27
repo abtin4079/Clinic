@@ -3,14 +3,18 @@ import 'package:clinic/features/client/NavigationBar/navigation_bar.dart';
 import 'package:clinic/features/client/Turn%20ratings/Controllers/new_patient_controller.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Client/presentation/Pages/select_client_page_1.dart';
 import 'package:clinic/features/client/Turn%20ratings/Select_Tech/presentation/pages/select_tech_page_1.dart';
+import 'package:clinic/features/client/Turn%20ratings/Controllers/create_new_process_controller.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import '../../../../../../themes/colors.dart';
 import '../../../../Home/presentation/pages/master_page.dart';
+import '../../../Controllers/select_patient_controller.dart';
+import '../../../../NavigationBar/Icons/search_icons.dart';
 
 class NewClientPage1 extends StatefulWidget {
   const NewClientPage1({Key? key}) : super(key: key);
@@ -20,10 +24,15 @@ class NewClientPage1 extends StatefulWidget {
 }
 
 class _NewClientPage1State extends State<NewClientPage1> {
-
-  final NewPatientController newPatientController = Get.put(NewPatientController());
+  final CreateNewProcessController createNewProcessController =
+      Get.put(CreateNewProcessController());
+  final SelectPatientController selectPatientController =
+      Get.put(SelectPatientController());
+  final NewPatientController newPatientController =
+      Get.put(NewPatientController());
 
   bool status = true;
+  bool status_of_page = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +42,16 @@ class _NewClientPage1State extends State<NewClientPage1> {
     final width_figma = 428;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: darkBlue,
+        iconTheme: IconThemeData(color: phonecolor),
+        automaticallyImplyLeading: true,
+        elevation: 0,
+        centerTitle: true,
+        title: Text("ثبت نوبت"),
+
+        // backgroundColor: backgroundHome,
+      ),
       body: SingleChildScrollView(
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -41,7 +60,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 159,
+                height: 100,
                 width: screenwidth / width_figma * 428,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -58,32 +77,6 @@ class _NewClientPage1State extends State<NewClientPage1> {
                       Padding(
                         padding: EdgeInsets.only(
                           top: 10,
-                          right: screenwidth / width_figma * 25,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(MasterPage());
-                          },
-                          child: Image.asset(
-                              "lib/features/client/Turn ratings/Images/zab_dar.png"),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 25,
-                          right: screenwidth / width_figma * 175,
-                        ),
-                        child: Text(
-                          "ثبت نوبت",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              color: graycoloranjamnashode),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 75,
                           right: screenwidth / width_figma * 80,
                         ),
                         child: Row(
@@ -144,8 +137,8 @@ class _NewClientPage1State extends State<NewClientPage1> {
                         ),
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(
-                          top: 120,
+                        padding: EdgeInsets.only(
+                          top: 55,
                           right: screenwidth / width_figma * 49,
                         ),
                         child: Text(
@@ -158,8 +151,8 @@ class _NewClientPage1State extends State<NewClientPage1> {
                         ),
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(
-                          top: 120,
+                        padding: EdgeInsets.only(
+                          top: 55,
                           right: screenwidth / width_figma * 290,
                         ),
                         child: Text(
@@ -195,7 +188,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                       ),
                     ),
                     SizedBox(
-                      width: screenwidth / width_figma * 186,
+                      width: screenwidth / width_figma * 100,
                     ),
                     Text(
                       "ثبت زیبا جوی جدید ",
@@ -208,9 +201,9 @@ class _NewClientPage1State extends State<NewClientPage1> {
                       width: screenwidth / width_figma * 5,
                     ),
                     FlutterSwitch(
-                      width: 32,
-                      height: 15,
-                      toggleSize: 10,
+                      width: 60,
+                      height: 28,
+                      toggleSize: 18,
                       showOnOff: false,
                       inactiveColor: toggleColor,
                       activeColor: LightBlue,
@@ -219,7 +212,7 @@ class _NewClientPage1State extends State<NewClientPage1> {
                         setState(() {
                           status = value;
                         });
-                        Get.to(SelectClientPage1());
+                        // Get.to(SelectClientPage1());
                       },
                     ),
                   ],
@@ -228,251 +221,273 @@ class _NewClientPage1State extends State<NewClientPage1> {
               SizedBox(
                 height: 26,
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: Text(
-                  "نام کامل",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: fontcolor),
-                ),
-              ),
-              SizedBox(
-                height: 9,
-              ),
-              Container(
-                width: screenwidth / width_figma * 396,
-                height: 48,
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: TextField(
-                  controller: newPatientController.nameController,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: "نام کامل زیباجو را وارد کنید",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: phonecolor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide: BorderSide(
-                        color: SendagainColorwhite,
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: outlineborder, width: 2),
-                      borderRadius: BorderRadius.circular(48),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: Text(
-                  "کد ملی",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: fontcolor),
-                ),
-              ),
-              SizedBox(
-                height: 9,
-              ),
-              Container(
-                width: screenwidth / width_figma * 396,
-                height: 48,
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: TextField(
-                  controller: newPatientController.idController,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: "کد ملی زیباجو را وارد کنید",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: phonecolor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide: BorderSide(
-                        color: SendagainColorwhite,
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: outlineborder, width: 2),
-                      borderRadius: BorderRadius.circular(48),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: Text(
-                  "شماه تماس",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: fontcolor),
-                ),
-              ),
-              SizedBox(
-                height: 9,
-              ),
-              Container(
-                width: screenwidth / width_figma * 396,
-                height: 48,
-                margin: EdgeInsets.only(
-                  left: screenwidth / width_figma * 15,
-                  right: screenwidth / width_figma * 15,
-                ),
-                child: TextField(
-                  controller: newPatientController.phoneNumberController,
-                  textAlign: TextAlign.right,
-                  decoration: InputDecoration(
-                    hintText: "شماره تماس معتبر زیباجو را وارد کنید",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: phonecolor,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      borderSide: BorderSide(
-                        color: SendagainColorwhite,
-                        width: 2,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: outlineborder, width: 2),
-                      borderRadius: BorderRadius.circular(48),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        right: screenwidth / width_figma * 23,
-                      ),
+              status
+                  ? Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "عکس های زیبا جو",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 15,
-                                color: meshki),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: Text(
+                              "نام کامل",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: fontcolor),
+                            ),
                           ),
                           SizedBox(
-                            height: 11,
+                            height: 9,
                           ),
-                          Text(
-                            "اضافه کردن عکس در این قسمت اختیاری میباشد",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: meshki.withOpacity(0.9)),
+                          Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 48,
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: TextField(
+                              controller: newPatientController.nameController,
+                              textAlign: TextAlign.right,
+                              decoration: InputDecoration(
+                                hintText: "نام کامل زیباجو را وارد کنید",
+                                hintStyle: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: phonecolor,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                  borderSide: BorderSide(
+                                    color: SendagainColorwhite,
+                                    width: 2,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: outlineborder, width: 2),
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: Text(
+                              "کد ملی",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: fontcolor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 9,
+                          ),
+                          Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 48,
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: TextField(
+                              controller: newPatientController.idController,
+                              textAlign: TextAlign.right,
+                              decoration: InputDecoration(
+                                hintText: "کد ملی زیباجو را وارد کنید",
+                                hintStyle: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: phonecolor,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                  borderSide: BorderSide(
+                                    color: SendagainColorwhite,
+                                    width: 2,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: outlineborder, width: 2),
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: Text(
+                              "شماه تماس",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: fontcolor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 9,
+                          ),
+                          Container(
+                            width: screenwidth / width_figma * 396,
+                            height: 48,
+                            margin: EdgeInsets.only(
+                              left: screenwidth / width_figma * 15,
+                              right: screenwidth / width_figma * 15,
+                            ),
+                            child: TextField(
+                              controller:
+                                  newPatientController.phoneNumberController,
+                              textAlign: TextAlign.right,
+                              decoration: InputDecoration(
+                                hintText:
+                                    "شماره تماس معتبر زیباجو را وارد کنید",
+                                hintStyle: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: phonecolor,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                  borderSide: BorderSide(
+                                    color: SendagainColorwhite,
+                                    width: 2,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: outlineborder, width: 2),
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 26,
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: screenwidth / width_figma * 256,
-                    height: 33,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4), color: LightBlue),
-                    child: Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "اضافه کردن عکس",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Icon(
-                            Icons.add,
-                            size: 18,
-                            color: Colors.white,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 11,
-              ),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                        "lib/features/client/Turn ratings/Images/punk.png"),
-                    SizedBox(
-                      width: 6,
-                    ),
-                    Text(
-                      "شما عکسی اضافه نکردید",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10,
-                          color: meshki.withOpacity(0.6)),
                     )
-                  ],
-                ),
+                  : Container(
+                      width: screenwidth / width_figma * 396,
+                      height: 48,
+                      margin: EdgeInsets.only(
+                        left: screenwidth / width_figma * 15,
+                        right: screenwidth / width_figma * 15,
+                      ),
+                      child: TypeAheadField(
+                        textFieldConfiguration: TextFieldConfiguration(
+                          controller: selectPatientController.searchController,
+                          onChanged: (value) {
+                            if (selectPatientController.searchController.text !=
+                                '') {
+                              selectPatientController.fetchPatient();
+                            }
+                          },
+                          textAlign: TextAlign.right,
+                          decoration: InputDecoration(
+                            suffixIcon: Icon(
+                              Search.search,
+                              color: phonecolor,
+                              size: 20,
+                            ),
+                            hintText: "جستجو در بین زیباجویان",
+                            hintStyle: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: phonecolor,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32),
+                              borderSide: BorderSide(
+                                color: SendagainColorwhite,
+                                width: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                        suggestionsCallback: (pattern) async {
+                          return selectPatientController.items;
+                        },
+                        itemBuilder: (context, data) {
+                          return Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: ListTile(
+                              leading: Icon(
+                                Search.search,
+                                color: phonecolor,
+                                size: 20,
+                              ),
+                              title: selectPatientController.items != []
+                                  ? Text(data.fullName.toString())
+                                  : Text("زیباوجویی یافت نشد!"),
+                            ),
+                          );
+                        },
+                        onSuggestionSelected: (data) async {
+                          createNewProcessController.fetchPatiantIdAndName(
+                              data.fullName.toString(), data.id.toString());
+                          setState(() {
+                            status_of_page = true;
+                            print(status_of_page);
+                          });
+                        },
+                        errorBuilder: (context, error) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Error fetching suggestions: $error',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+              SizedBox(
+                height: 30,
               ),
+              !status
+                  ? status_of_page
+                      ? Padding(
+                          padding: EdgeInsets.only(
+                            top: 37,
+                            right: screenwidth / width_figma * 31,
+                          ),
+                          child: Container(
+                            width: screenwidth / width_figma * 116,
+                            height: 32,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: LightBlue),
+                            child: Center(
+                              child: Text(
+                                createNewProcessController.full_name_pat
+                                    .toString(),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container()
+                  : Container(),
               Padding(
                 padding: EdgeInsets.only(
                   top: screenheight / height_figma * 90,
@@ -480,13 +495,27 @@ class _NewClientPage1State extends State<NewClientPage1> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    newPatientController.registerNewPatient();
+                    status
+                        ? newPatientController.registerNewPatient()
+                        : status_of_page
+                            ? Get.to(SelectTechPage1())
+                            : showDialog(
+                                context: Get.context!,
+                                builder: (context) {
+                                  return SimpleDialog(
+                                    title: Center(
+                                        child: Text(
+                                            'زیبا جو را ابتدا انتخاب کنید')),
+                                    contentPadding: EdgeInsets.all(20),
+                                  );
+                                });
                   },
                   child: Container(
                     width: screenwidth / width_figma * 187,
-                    height:  44,
+                    height: 44,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4), color: LightBlue),
+                        borderRadius: BorderRadius.circular(4),
+                        color: LightBlue),
                     child: Center(
                       child: Text(
                         "مرحله بعدی",
@@ -499,7 +528,10 @@ class _NewClientPage1State extends State<NewClientPage1> {
                     ),
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),

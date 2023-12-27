@@ -47,257 +47,308 @@ class _Tech1State extends State<Tech1> {
     return Scaffold(
       backgroundColor: backgroundHome,
       appBar: AppBar(
+        // Add your page title here
         backgroundColor: backgroundHome,
+        iconTheme: IconThemeData(color: Color(0xff999999)),
+        automaticallyImplyLeading: true,
         elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "تکنسین ها",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: fontcolor,
-          ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Handle back navigation here
+          },
         ),
       ),
       body: SingleChildScrollView(
         reverse: false,
         scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Container(
-              width: screenwidth / width_figma * 396,
-              height: 48,
-              margin: EdgeInsets.only(
-                left: screenwidth / width_figma * 15,
-                right: screenwidth / width_figma * 15,
-              ),
-              child: TextField(
-                controller: searchTechController.searchController,
-                textAlign: TextAlign.right,
-                onSubmitted: (value) => searchTechController.fetchPatient(),
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      Search.search,
-                      size: 24,
-                      color: phonecolor,
-                    ),
-                    onPressed: () => searchTechController.fetchPatient(),
-                  ),
-                  hintText: "جستجو در بین تکنسین ها",
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: phonecolor,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(32),
-                    borderSide: BorderSide(
-                      color: SendagainColorwhite,
-                      width: 2,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: outlineborder, width: 2),
-                    borderRadius: BorderRadius.circular(48),
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // SizedBox(
+              //   height: screenheight / height_figma * 62,
+              // ),
+              Padding(
+                padding: EdgeInsets.only(
+                  right: screenwidth / width_figma * 13,
+                ),
+                child: Text(
+                  "تکنسین ها",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: fontcolor,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: screenheight / height_figma * 30,
-            ),
-            _isloading == false
-                ? FutureBuilder(
-              future: getTechController.fetchTech(),
-              builder: (context, snapshot) {
-                try {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  } else {
-                    return Obx(() {
-                      return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: getTechController.get_tech_list.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Get.to(TechProfile());
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                top: 10,
-                                bottom: 10,
-                                right: screenwidth / width_figma * 19,
-                                left: screenwidth / width_figma * 19,
-                              ),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Container(
-                                  width: screenwidth / width_figma * 396,
-                                  height: 126,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Colors.white,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                      top: screenheight / height_figma * 13,
-                                      bottom: screenheight / height_figma * 13,
-                                      right: screenwidth / width_figma * 16,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          width: 100,
-                                          height: 100,
+              // SizedBox(
+              //   height: screenheight / height_figma * 37,
+              // ),
+              // Container(
+              //   width: screenwidth / width_figma * 396,
+              //   height: 48,
+              //   margin: EdgeInsets.only(
+              //     left: screenwidth / width_figma * 15,
+              //     right: screenwidth / width_figma * 15,
+              //   ),
+              //   child: TextField(
+              //     controller: searchTechController.searchController,
+              //     textAlign: TextAlign.right,
+              //     onSubmitted: (value) => searchTechController.fetchPatient(),
+              //     decoration: InputDecoration(
+              //       suffixIcon: IconButton(
+              //         icon: Icon(
+              //           Search.search,
+              //           size: 24,
+              //           color: phonecolor,
+              //         ),
+              //         onPressed: () => searchTechController.fetchPatient(),
+              //       ),
+              //       hintText: "جستجو در بین تکنسین ها",
+              //       hintStyle: TextStyle(
+              //         fontWeight: FontWeight.w500,
+              //         fontSize: 14,
+              //         color: phonecolor,
+              //       ),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(32),
+              //         borderSide: BorderSide(
+              //           color: SendagainColorwhite,
+              //           width: 2,
+              //         ),
+              //       ),
+              //       enabledBorder: OutlineInputBorder(
+              //         borderSide: BorderSide(color: outlineborder, width: 2),
+              //         borderRadius: BorderRadius.circular(48),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              SizedBox(
+                height: screenheight / height_figma * 30,
+              ),
+              _isloading == false
+                  ? FutureBuilder(
+                      future: getTechController.fetchTech(),
+                      builder: (context, snapshot) {
+                        try {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(child: CircularProgressIndicator());
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
+                          } else {
+                            return Obx(() {
+                              return ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount:
+                                    getTechController.get_tech_list.length,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.to(TechProfile());
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        top: 10,
+                                        bottom: 10,
+                                        right: screenwidth / width_figma * 19,
+                                        left: screenwidth / width_figma * 19,
+                                      ),
+                                      child: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Container(
+                                          width:
+                                              screenwidth / width_figma * 396,
+                                          height: 126,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
-                                            color: Colors.red,
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                            color: Colors.white,
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.only(
+                                              top: screenheight /
+                                                  height_figma *
+                                                  13,
+                                              bottom: screenheight /
+                                                  height_figma *
+                                                  13,
+                                              right: screenwidth /
+                                                  width_figma *
+                                                  16,
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  width: 100,
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            100),
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: screenwidth /
+                                                      width_figma *
+                                                      10,
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      width: 100,
+                                                      child: Text(
+                                                        getTechController
+                                                            .get_tech_list[
+                                                                index]
+                                                            .fullName
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 16,
+                                                    ),
+                                                    Text(
+                                                      "شماره تماس:",
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 16,
+                                                    ),
+                                                    Text(
+                                                      "کد ملی:",
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Directionality(
+                                                  textDirection:
+                                                      TextDirection.ltr,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      SizedBox(
+                                                        height: 35,
+                                                      ),
+                                                      Text(
+                                                        getTechController
+                                                            .get_tech_list[
+                                                                index]
+                                                            .phoneNumber
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor,
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 16,
+                                                      ),
+                                                      Text(
+                                                        getTechController
+                                                            .get_tech_list[
+                                                                index]
+                                                            .nationalCode
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: screenwidth / width_figma * 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 100,
-                                              child: Text(
-                                                getTechController
-                                                    .get_tech_list[index]
-                                                    .fullName
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: fontcolor,
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 16,
-                                            ),
-                                            Text(
-                                              "شماره تماس:",
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 16,
-                                            ),
-                                            Text(
-                                              "کد ملی:",
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: grayColorHome,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Directionality(
-                                          textDirection: TextDirection.ltr,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(
-                                                height: 35,
-                                              ),
-                                              Text(
-                                                getTechController
-                                                    .get_tech_list[index]
-                                                    .phoneNumber
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: fontcolor,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 16,
-                                              ),
-                                              Text(
-                                                getTechController
-                                                    .get_tech_list[index]
-                                                    .nationalCode
-                                                    .toString(),
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: fontcolor,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    });
-                  }
-                } catch (e) {
-                  print("Error in FutureBuilder: $e");
-                  // Handle the error as needed, such as showing a user-friendly message
-                  return Center(child: Text('مشکلی پیش آمده لطفا دوباره تلاش کنید'));
-                }
-              },
-            )
-
-            : const Center(
-                    child: CircularProgressIndicator(
-                      color: LightBlue,
+                                  );
+                                },
+                              );
+                            });
+                          }
+                        } catch (e) {
+                          print("Error in FutureBuilder: $e");
+                          // Handle the error as needed, such as showing a user-friendly message
+                          return Center(
+                              child:
+                                  Text('مشکلی پیش آمده لطفا دوباره تلاش کنید'));
+                        }
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(
+                        color: LightBlue,
+                      ),
                     ),
-                  ),
-            SizedBox(
-              height: screenheight / height_figma * 15,
-            ),
-            GestureDetector(
-              onTap: () {
-                Get.to(AddTech());
-              },
-              child: Center(
-                child: Container(
-                  height: 50,
-                  width: screenwidth / width_figma * 364,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(48),
-                    gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [rediligal, whiteiligal]),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "افزودن تکنسین جدید",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 14,
-                          color: Colors.white),
+              SizedBox(
+                height: screenheight / height_figma * 15,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(AddTech());
+                },
+                child: Center(
+                  child: Container(
+                    height: 50,
+                    width: screenwidth / width_figma * 364,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(48),
+                      gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [rediligal, whiteiligal]),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "افزودن تکنسین جدید",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: screenheight / height_figma * 15,
-            ),
-          ],
+              SizedBox(
+                height: screenheight / height_figma * 15,
+              ),
+            ],
+          ),
         ),
       ),
     );

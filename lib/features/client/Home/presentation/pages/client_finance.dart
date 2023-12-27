@@ -18,6 +18,19 @@ class _ClientFinanceState extends State<ClientFinance> {
     final width_figma = 428;
 
     return Scaffold(
+      appBar: AppBar(
+        // Add your page title here
+        backgroundColor: backgroundHome,
+        iconTheme: IconThemeData(color: Color(0xff999999)),
+        automaticallyImplyLeading: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Handle back navigation here
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -169,7 +182,8 @@ class _ClientFinanceState extends State<ClientFinance> {
                   } else if (data.hasData) {
                     var items = data.data as List<EntityHome>;
                     return ListView.builder(
-                      scrollDirection: Axis.vertical,
+                      physics: NeverScrollableScrollPhysics(),
+                      // scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemCount: items == null ? 0 : items.length,
                       itemBuilder: (context, index) {
@@ -213,11 +227,11 @@ class _ClientFinanceState extends State<ClientFinance> {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                       children: [
                                         Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "از تاریخ:",
@@ -232,7 +246,7 @@ class _ClientFinanceState extends State<ClientFinance> {
                                                   4,
                                             ),
                                             Container(
-                                              width: 100,
+                                              // width: 80,
                                               child: Text(
                                                 "سه شنبه 13 آذر",
                                                 style: TextStyle(
@@ -248,7 +262,7 @@ class _ClientFinanceState extends State<ClientFinance> {
                                         ),
                                         Column(
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               "تا تاریخ:",
@@ -293,42 +307,42 @@ class _ClientFinanceState extends State<ClientFinance> {
                                               height: 24,
                                               decoration: BoxDecoration(
                                                   borderRadius:
-                                                  BorderRadius.circular(16),
+                                                      BorderRadius.circular(16),
                                                   color: LightBlue),
                                               child: items[index].situation ==
-                                                  "completed"
+                                                      "completed"
                                                   ? Center(
-                                                  child: Text(
-                                                    "پرداخت شده",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.w800,
-                                                      fontSize: 14,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ))
+                                                      child: Text(
+                                                      "پرداخت شده",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        fontSize: 14,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ))
                                                   : items[index].situation ==
-                                                  "Expectation"
-                                                  ? Center(
-                                                  child: Text(
-                                                    "پرداخت شده",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                      FontWeight.w800,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ))
-                                                  : Center(
-                                                  child: Text(
-                                                    "پرداخت نشده",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.w800,
-                                                      fontSize: 14,
-                                                      color: Colors.white,
-                                                    ),
-                                                  )),
+                                                          "Expectation"
+                                                      ? Center(
+                                                          child: Text(
+                                                          "پرداخت شده",
+                                                          style: TextStyle(
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ))
+                                                      : Center(
+                                                          child: Text(
+                                                          "پرداخت شده",
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            fontSize: 14,
+                                                            color: Colors.white,
+                                                          ),
+                                                        )),
                                             ),
                                           ],
                                         ),

@@ -12,7 +12,6 @@ class AddTech extends StatefulWidget {
 }
 
 class _AddTechState extends State<AddTech> {
-
   CreateTechController createTechController = Get.put(CreateTechController());
 
   @override
@@ -24,16 +23,16 @@ class _AddTechState extends State<AddTech> {
     return Scaffold(
       backgroundColor: backgroundHome,
       appBar: AppBar(
+        // Add your page title here
         backgroundColor: backgroundHome,
+        iconTheme: IconThemeData(color: Color(0xff999999)),
+        automaticallyImplyLeading: true,
         elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "افزودن تکنسین جدید",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-            color: fontcolor,
-          ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Handle back navigation here
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -43,14 +42,29 @@ class _AddTechState extends State<AddTech> {
           children: [
             Padding(
               padding: EdgeInsets.only(
+                right: screenwidth / width_figma * 13,
+              ),
+              child: Text(
+                "افزودن تکنسین",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: fontcolor,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
                 top: screenheight / height_figma * 62,
                 right: screenwidth / width_figma * 15,
               ),
-              child: Text("نام کامل", style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: fontcolor
-              ),),
+              child: Text(
+                "نام کامل",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: fontcolor),
+              ),
             ),
             SizedBox(
               height: screenheight / height_figma * 9,
@@ -91,11 +105,13 @@ class _AddTechState extends State<AddTech> {
                 top: screenheight / height_figma * 7,
                 right: screenwidth / width_figma * 15,
               ),
-              child: Text("کد ملی", style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: fontcolor
-              ),),
+              child: Text(
+                "کد ملی",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: fontcolor),
+              ),
             ),
             SizedBox(
               height: screenheight / height_figma * 9,
@@ -136,11 +152,13 @@ class _AddTechState extends State<AddTech> {
                 top: screenheight / height_figma * 7,
                 right: screenwidth / width_figma * 15,
               ),
-              child: Text("شماره تماس", style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: fontcolor
-              ),),
+              child: Text(
+                "شماره تماس",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: fontcolor),
+              ),
             ),
             SizedBox(
               height: screenheight / height_figma * 9,
@@ -177,10 +195,10 @@ class _AddTechState extends State<AddTech> {
               ),
             ),
             SizedBox(
-              height: screenheight / height_figma * 474,
+              height: 40,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 createTechController.getNewTech();
               },
               child: Center(
@@ -192,11 +210,13 @@ class _AddTechState extends State<AddTech> {
                     color: LightBlue,
                   ),
                   child: Center(
-                    child: Text("ثبت تکنسین جدید", style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      color: lightwhite
-                    ),),
+                    child: Text(
+                      "ثبت تکنسین جدید",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: lightwhite),
+                    ),
                   ),
                 ),
               ),

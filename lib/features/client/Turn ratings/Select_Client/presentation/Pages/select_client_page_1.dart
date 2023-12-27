@@ -24,12 +24,12 @@ class SelectClientPage1 extends StatefulWidget {
 }
 
 class _SelectClientPage1State extends State<SelectClientPage1> {
-
-  final SelectPatientController selectPatientController = Get.put(SelectPatientController());
-  final CreateNewProcessController createNewProcessController = Get.put(CreateNewProcessController());
+  final SelectPatientController selectPatientController =
+      Get.put(SelectPatientController());
+  final CreateNewProcessController createNewProcessController =
+      Get.put(CreateNewProcessController());
   bool status_of_page = false;
   bool status = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
-                        top:  10,
+                        top: 10,
                         right: screenwidth / width_figma * 25,
                       ),
                       child: GestureDetector(
@@ -72,7 +72,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        top:  25,
+                        top: 25,
                         right: screenwidth / width_figma * 175,
                       ),
                       child: Text(
@@ -85,7 +85,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                        top:  75,
+                        top: 75,
                         right: screenwidth / width_figma * 80,
                       ),
                       child: Row(
@@ -120,7 +120,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                             ),
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(
+                            padding: EdgeInsets.only(
                               left: screenwidth / width_figma * 85,
                               right: screenwidth / width_figma * 5,
                             ),
@@ -146,8 +146,8 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                       ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.only(
-                        top:  120,
+                      padding: EdgeInsets.only(
+                        top: 120,
                         right: screenwidth / width_figma * 49,
                       ),
                       child: Text(
@@ -160,8 +160,8 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                       ),
                     ),
                     Padding(
-                      padding:  EdgeInsets.only(
-                        top:  120,
+                      padding: EdgeInsets.only(
+                        top: 120,
                         right: screenwidth / width_figma * 290,
                       ),
                       child: Text(
@@ -178,7 +178,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
             ),
             SizedBox(
-              height:  50,
+              height: 50,
             ),
             Directionality(
               textDirection: TextDirection.rtl,
@@ -228,7 +228,7 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
             ),
             SizedBox(
-              height:  26,
+              height: 26,
             ),
             Container(
               width: screenwidth / width_figma * 396,
@@ -279,14 +279,15 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                         color: phonecolor,
                         size: 20,
                       ),
-                      title: selectPatientController.items != [] ? Text(data.fullName.toString()) : Text("زیباوجویی یافت نشد!"),
+                      title: selectPatientController.items != []
+                          ? Text(data.id.toString())
+                          : Text("زیباوجویی یافت نشد!"),
                     ),
                   );
                 },
-
-
                 onSuggestionSelected: (data) {
-                  createNewProcessController.fetchPatiantIdAndName(data.fullName.toString(), data.id.toString());
+                  createNewProcessController.fetchPatiantIdAndName(
+                      data.fullName.toString(), data.id.toString());
                   setState(() {
                     status_of_page = true;
                   });
@@ -303,14 +304,14 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
               ),
             ),
             SizedBox(
-              height:  screenheight / height_figma * 500,
+              height: screenheight / height_figma * 500,
             ),
             Padding(
-              padding:  EdgeInsets.only(
-                right: screenwidth / width_figma * 200 ,
+              padding: EdgeInsets.only(
+                right: screenwidth / width_figma * 200,
               ),
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   setState(() {
                     if (status_of_page == true) {
                       Get.to(SelectClientPage2());
@@ -320,18 +321,17 @@ class _SelectClientPage1State extends State<SelectClientPage1> {
                 },
                 child: Container(
                   width: screenwidth / width_figma * 187,
-                  height:  44,
+                  height: 44,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: LightBlue
-                  ),
+                      borderRadius: BorderRadius.circular(4), color: LightBlue),
                   child: Center(
                     child: Text(
-                      "مرحله بعدی", style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: lightwhite,
-                    ),
+                      "مرحله بعدی",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: lightwhite,
+                      ),
                     ),
                   ),
                 ),

@@ -53,7 +53,7 @@ class CreateNewProcessController extends GetxController {
     update();
   }
 
-  Future<void> registerNewProcess1( String? operation) async {
+  Future<void> registerNewProcess1(String? operation) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       String? accessToken = prefs.getString('access_token');
@@ -90,8 +90,7 @@ class CreateNewProcessController extends GetxController {
 
       var host = dotenv.env['HOST'];
       // creating out url
-      var uri =
-          Uri.http(host! , '/clinic/new_process/create_new_process');
+      var uri = Uri.http(host!, '/clinic/new_process/create_new_process');
       print(3);
       var response =
           await http.post(uri, body: jsonEncode(databody), headers: headers);
@@ -116,6 +115,7 @@ class CreateNewProcessController extends GetxController {
         return null;
       }
       if (response.statusCode == 500) {
+        print("hello");
         print(response.body);
         return null;
       }
@@ -134,7 +134,8 @@ class CreateNewProcessController extends GetxController {
     }
   }
 
-  Future<void> registerNewProcess2( String? operation1, String? operation2) async {
+  Future<void> registerNewProcess2(
+      String? operation1, String? operation2) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
       String? accessToken = prefs.getString('access_token');
@@ -165,13 +166,12 @@ class CreateNewProcessController extends GetxController {
         ]
       };
 
-
       // creating out url
       var uri =
-      Uri.http('185.221.237.51', '/clinic/new_process/create_new_process');
+          Uri.http('185.221.237.51', '/clinic/new_process/create_new_process');
       print(3);
       var response =
-      await http.post(uri, body: jsonEncode(databody), headers: headers);
+          await http.post(uri, body: jsonEncode(databody), headers: headers);
       print(4);
       print('pationt_id is : ${patiant_id}');
       print('tech_id is : ${tech_id}');
