@@ -292,8 +292,8 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
               status_of_page
                   ? Center(
                       child: Container(
-                        height: 526,
-                        width: screenwidth / width_figma * 396,
+                        // height: 526,
+                        // width: screenwidth / width_figma * 396,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(32),
                           color: Colors.white,
@@ -384,6 +384,27 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                                             ),
                                             Text(
                                               "ساعت نوبت",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: fontcolor),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 48,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Image.asset(
+                                                "lib/features/client/Turn ratings/Images/punk.png"),
+                                            SizedBox(
+                                              width: screenwidth /
+                                                  width_figma *
+                                                  11,
+                                            ),
+                                            Text(
+                                              "عملیات مورد نیاز",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w700,
@@ -607,6 +628,50 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                                                   BorderRadius.circular(10),
                                               color: backgroundHome,
                                             ),
+                                            child: TextField(
+                                              textAlign: TextAlign.center,
+                                              textAlignVertical:
+                                                  TextAlignVertical(y: 0.5),
+                                              decoration: InputDecoration(
+                                                hintText: 'نام کلینیک',
+                                                hintStyle: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: phonecolor,
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.black),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: outlineborder,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                border: OutlineInputBorder(),
+                                              ),
+                                              keyboardType: TextInputType.text,
+                                            )),
+                                        SizedBox(
+                                          height: 33,
+                                        ),
+                                        Container(
+                                            width:
+                                                screenwidth / width_figma * 170,
+                                            height: screenheight /
+                                                height_figma *
+                                                38,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: backgroundHome,
+                                            ),
                                             child: Center(
                                               child: TextField(
                                                 controller:
@@ -662,8 +727,8 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
               status_of_page_2
                   ? Center(
                       child: Container(
-                        height: 526,
-                        width: screenwidth / width_figma * 396,
+                        // height: 526,
+                        // width: screenwidth / width_figma * 396,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(32),
                           color: Colors.white,
@@ -775,6 +840,27 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                                             ),
                                             Text(
                                               "عملیات مورد نیاز",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: fontcolor),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 48,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Image.asset(
+                                                "lib/features/client/Turn ratings/Images/punk.png"),
+                                            SizedBox(
+                                              width: screenwidth /
+                                                  width_figma *
+                                                  11,
+                                            ),
+                                            Text(
+                                              "کلینیک",
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w700,
@@ -975,6 +1061,50 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                                               color: backgroundHome,
                                             ),
                                             child: TextField(
+                                              textAlign: TextAlign.center,
+                                              textAlignVertical:
+                                                  TextAlignVertical(y: 0.5),
+                                              decoration: InputDecoration(
+                                                hintText: 'نام کلینیک',
+                                                hintStyle: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  color: phonecolor,
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.black),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: outlineborder,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                border: OutlineInputBorder(),
+                                              ),
+                                              keyboardType: TextInputType.text,
+                                            )),
+                                        SizedBox(
+                                          height: 33,
+                                        ),
+                                        Container(
+                                            width:
+                                                screenwidth / width_figma * 170,
+                                            height: screenheight /
+                                                height_figma *
+                                                38,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: backgroundHome,
+                                            ),
+                                            child: TextField(
                                               controller:
                                                   createNewProcessController
                                                       .tarmo2Controller,
@@ -1040,10 +1170,15 @@ class _SelectTechPage1State extends State<SelectTechPage1> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        if (status_of_page) {
-                          Get.to(SelectTechPage2());
-                          searchTechController.searchController.clear();
-                        }
+                        if (status_of_page && status_of_page_2) {
+                          createNewProcessController.registerNewProcess2(
+                              value, value2);
+                        } else if (status_of_page && !status_of_page_2) {
+                          createNewProcessController.registerNewProcess1(value);
+                        } else if (!status_of_page && status_of_page_2) {
+                          createNewProcessController
+                              .registerNewProcess1(value2);
+                        } else {}
                       });
                     },
                     child: Container(

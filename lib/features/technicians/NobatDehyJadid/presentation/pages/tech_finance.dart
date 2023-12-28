@@ -20,6 +20,19 @@ class _TechFinanceState extends State<TechFinance> {
     final width_figma = 428;
 
     return Scaffold(
+      appBar: AppBar(
+        // Add your page title here
+        backgroundColor: backgroundHome,
+        iconTheme: IconThemeData(color: Color(0xff999999)),
+        automaticallyImplyLeading: true,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Handle back navigation here
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -129,7 +142,7 @@ class _TechFinanceState extends State<TechFinance> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "افزایش اعتبار کیف پول",
+                                  "درخواست برداشت",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14,
@@ -183,8 +196,8 @@ class _TechFinanceState extends State<TechFinance> {
                                 padding: EdgeInsets.all(
                                     screenwidth / width_figma * 10),
                                 child: Container(
-                                  height: screenheight / height_figma * 230,
-                                  width: screenwidth / width_figma * 416,
+                                  // height: screenheight / height_figma * 230,
+                                  // width: screenwidth / width_figma * 416,
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(16),
@@ -283,16 +296,17 @@ class _TechFinanceState extends State<TechFinance> {
                                       ),
                                       Center(
                                         child: Container(
-                                          width: screenwidth / width_figma * 231,
+                                          width:
+                                              screenwidth / width_figma * 231,
                                           height:
                                               screenheight / height_figma * 30,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(16),
-                                            color:
-                                                items[index].state == "تایید شده"
-                                                    ? LightBlue
-                                                    : processColor,
+                                            color: items[index].state ==
+                                                    "تایید شده"
+                                                ? LightBlue
+                                                : processColor,
                                           ),
                                           child: Center(
                                             child: Text(
@@ -308,15 +322,17 @@ class _TechFinanceState extends State<TechFinance> {
                                       ),
                                       SizedBox(
                                         height:
-                                        screenheight / height_figma * 11,
+                                            screenheight / height_figma * 11,
                                       ),
                                       Center(
                                         child: Container(
-                                          width: screenwidth / width_figma * 364,
+                                          width:
+                                              screenwidth / width_figma * 364,
                                           height:
-                                          screenheight / height_figma * 40,
+                                              screenheight / height_figma * 40,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(36),
+                                            borderRadius:
+                                                BorderRadius.circular(36),
                                             gradient: LinearGradient(
                                                 begin: Alignment.topCenter,
                                                 end: Alignment.bottomCenter,
@@ -332,7 +348,7 @@ class _TechFinanceState extends State<TechFinance> {
                                                 fontWeight: FontWeight.w800,
                                                 fontSize: 14,
                                               ),
-                                                colors: [LightBlue, LightBlue],
+                                              colors: [LightBlue, LightBlue],
                                             ),
                                           ),
                                         ),

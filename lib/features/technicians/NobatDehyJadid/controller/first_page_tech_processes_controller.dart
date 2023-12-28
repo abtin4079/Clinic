@@ -9,7 +9,6 @@ import '../../utils/token_check.dart';
 import '../model/main_tech_model.dart';
 
 class FirstPageTechProcessesController extends GetxController {
-
   RxList<MainTechModel> process_tech_info = <MainTechModel>[].obs;
 
   void fetchTechInformation() async {
@@ -17,12 +16,11 @@ class FirstPageTechProcessesController extends GetxController {
 
     var castedTechList = process_page_client_item as List<MainTechModel>;
 
-    process_tech_info.value = castedTechList ;
+    process_tech_info.value = castedTechList;
     update();
   }
 
-  Future<List<MainTechModel>?> getTechProcess() async {
-
+  Future<dynamic> getTechProcess() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return tokenCheckBeforeRequest().then((value) async {
       try {
@@ -36,8 +34,7 @@ class FirstPageTechProcessesController extends GetxController {
         };
         var host = dotenv.env['HOST'];
         // creating out url
-        var uri = Uri.http(host!,
-            '/clinic/technecian_home_page');
+        var uri = Uri.http(host!, '/clinic/technecian_home_page');
 
         var response = await http.get(uri, headers: headers);
         print(412);
@@ -46,7 +43,7 @@ class FirstPageTechProcessesController extends GetxController {
         if (response.statusCode == 200) {
           var jsonString = json.decode(response.body);
           final process = MainTechModel.fromJson(jsonString);
-          return [process];
+          return process;
         } else {
           print(response.body);
           return null;
@@ -66,5 +63,4 @@ class FirstPageTechProcessesController extends GetxController {
       }
     });
   }
-
 }

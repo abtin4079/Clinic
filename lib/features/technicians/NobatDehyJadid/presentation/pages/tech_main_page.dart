@@ -22,7 +22,6 @@ import '../../../ZibajoyanMan/models/each_approved_appointment.dart';
 import '../../model/main_tech_model.dart';
 import 'dart:io';
 
-
 class TechMainPage extends StatefulWidget {
   const TechMainPage({Key? key}) : super(key: key);
 
@@ -31,15 +30,22 @@ class TechMainPage extends StatefulWidget {
 }
 
 class _TechMainPageState extends State<TechMainPage> {
-  NobatDehiMainController listOfAppointmentController = Get.put(NobatDehiMainController());
-  NobatDehiSecondPageController eachAppointment = Get.put(NobatDehiSecondPageController());
-  FirstPageTechProcessesController firstPageTechProcessesController = Get.put(FirstPageTechProcessesController());
-  ZibajoyanManSecondPage zibajoyanManSecondPage = Get.put(ZibajoyanManSecondPage());
-  ShoroFarayandFirstPageController shoroefarayandfirstPageController = Get.put(ShoroFarayandFirstPageController());
-  ShoroFarayandSecondPageController shoroefarayandsecondPageController = Get.put(ShoroFarayandSecondPageController());
+  NobatDehiMainController listOfAppointmentController =
+      Get.put(NobatDehiMainController());
+  NobatDehiSecondPageController eachAppointment =
+      Get.put(NobatDehiSecondPageController());
+  FirstPageTechProcessesController firstPageTechProcessesController =
+      Get.put(FirstPageTechProcessesController());
+  ZibajoyanManSecondPage zibajoyanManSecondPage =
+      Get.put(ZibajoyanManSecondPage());
+  ShoroFarayandFirstPageController shoroefarayandfirstPageController =
+      Get.put(ShoroFarayandFirstPageController());
+  ShoroFarayandSecondPageController shoroefarayandsecondPageController =
+      Get.put(ShoroFarayandSecondPageController());
 
-
-  Future<void> _pickImage({required bool isBeforeProcess, required EachApprovedAppointments approvedAppointment}) async {
+  Future<void> _pickImage(
+      {required bool isBeforeProcess,
+      required EachApprovedAppointments approvedAppointment}) async {
     if (approvedAppointment.beforeProcessImages.length < 3) {
       final ImagePicker picker = ImagePicker();
       final XFile? pickedFile = await showModalBottomSheet<XFile?>(
@@ -88,7 +94,9 @@ class _TechMainPageState extends State<TechMainPage> {
     }
   }
 
-  Future<void> _pickImage_after({required bool isBeforeProcess, required EachApprovedAppointments approvedAppointment}) async {
+  Future<void> _pickImage_after(
+      {required bool isBeforeProcess,
+      required EachApprovedAppointments approvedAppointment}) async {
     if (approvedAppointment.afterProcessImages.length < 3) {
       final ImagePicker picker = ImagePicker();
       final XFile? pickedFile = await showModalBottomSheet<XFile?>(
@@ -128,7 +136,8 @@ class _TechMainPageState extends State<TechMainPage> {
     }
   }
 
-  void _showImagePreview(int index , EachApprovedAppointments approvedAppointment) {
+  void _showImagePreview(
+      int index, EachApprovedAppointments approvedAppointment) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -142,7 +151,8 @@ class _TechMainPageState extends State<TechMainPage> {
                     Container(
                       width: double.infinity,
                       height: double.infinity,
-                      child: _buildImageWidget(galleryIndex, approvedAppointment),
+                      child:
+                          _buildImageWidget(galleryIndex, approvedAppointment),
                     ),
                     Positioned(
                       top: 16,
@@ -170,7 +180,8 @@ class _TechMainPageState extends State<TechMainPage> {
     );
   }
 
-  void _showImagePreview_after(int index, EachApprovedAppointments approvedAppointment) {
+  void _showImagePreview_after(
+      int index, EachApprovedAppointments approvedAppointment) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -184,7 +195,8 @@ class _TechMainPageState extends State<TechMainPage> {
                     Container(
                       width: double.infinity,
                       height: double.infinity,
-                      child: _buildImageWidget_after(galleryIndex, approvedAppointment),
+                      child: _buildImageWidget_after(
+                          galleryIndex, approvedAppointment),
                     ),
                     Positioned(
                       top: 16,
@@ -212,7 +224,8 @@ class _TechMainPageState extends State<TechMainPage> {
     );
   }
 
-  Widget _buildImageWidget(int index, EachApprovedAppointments approvedAppointment) {
+  Widget _buildImageWidget(
+      int index, EachApprovedAppointments approvedAppointment) {
     if (approvedAppointment.beforeProcessImages.isNotEmpty &&
         index < approvedAppointment.beforeProcessImages.length) {
       if (approvedAppointment.beforeProcessImages[index] != null) {
@@ -220,7 +233,7 @@ class _TechMainPageState extends State<TechMainPage> {
         if (approvedAppointment.beforeProcessImages.length > index) {
           return CachedNetworkImage(
             imageUrl:
-            'http://185.221.237.51/clinic/images/${approvedAppointment.beforeProcessImages[index].filename}',
+                'http://185.221.237.51/clinic/images/${approvedAppointment.beforeProcessImages[index].filename}',
             placeholder: (context, url) => _buildPlaceholder(),
             errorWidget: (context, url, error) => _buildPlaceholder(),
           );
@@ -236,7 +249,8 @@ class _TechMainPageState extends State<TechMainPage> {
     }
   }
 
-  Widget _buildImageWidget_after(int index, EachApprovedAppointments approvedAppointment) {
+  Widget _buildImageWidget_after(
+      int index, EachApprovedAppointments approvedAppointment) {
     if (approvedAppointment.afterProcessImages.isNotEmpty &&
         index < approvedAppointment.afterProcessImages.length) {
       if (approvedAppointment.afterProcessImages[index] != []) {
@@ -244,7 +258,7 @@ class _TechMainPageState extends State<TechMainPage> {
         if (approvedAppointment.afterProcessImages.length > index) {
           return CachedNetworkImage(
             imageUrl:
-            'http://185.221.237.51/clinic/images/${approvedAppointment.afterProcessImages[index].filename}',
+                'http://185.221.237.51/clinic/images/${approvedAppointment.afterProcessImages[index].filename}',
             placeholder: (context, url) => _buildPlaceholder(),
             errorWidget: (context, url, error) => _buildPlaceholder(),
           );
@@ -273,15 +287,13 @@ class _TechMainPageState extends State<TechMainPage> {
   void initState() {
     // Call super.initState() first.
 
-    Future.delayed(const Duration(seconds: 4), () {
-    });
+    Future.delayed(const Duration(seconds: 4), () {});
 
     super.initState();
     firstPageTechProcessesController.fetchTechInformation();
     // Your one-time initialization code for the root widget goes here.
     // This code will run when the app is first launched.
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +310,7 @@ class _TechMainPageState extends State<TechMainPage> {
           iconTheme: IconThemeData(color: phonecolor),
           automaticallyImplyLeading: true,
           elevation: 0,
-          backgroundColor: LightBlue,
+          backgroundColor: backgroundHome,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -338,7 +350,7 @@ class _TechMainPageState extends State<TechMainPage> {
               Padding(
                 padding: EdgeInsets.only(right: screenwidth / width_figma * 13),
                 child: Container(
-                  height: screenheight / height_figma * 260,
+                  height: screenheight / height_figma * 300,
                   child: FutureBuilder(
                       future: listOfAppointmentController.getTechAppointments(),
                       builder: (context, data) {
@@ -360,15 +372,13 @@ class _TechMainPageState extends State<TechMainPage> {
                                     padding: const EdgeInsets.all(10),
                                     child: Container(
                                       width: screenwidth / width_figma * 190,
-                                      height: screenheight / height_figma * 200,
+                                      // height: screenheight / height_figma * 200,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(16),
                                         color: Colors.white,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.only(
-                                            right:
-                                                screenwidth / width_figma * 7),
+                                        padding: EdgeInsets.all(5),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -444,7 +454,7 @@ class _TechMainPageState extends State<TechMainPage> {
                                                   4,
                                             ),
                                             Text(
-                                              items[index].operation.toString(),
+                                              "کلینیک شماره 1",
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
@@ -465,10 +475,20 @@ class _TechMainPageState extends State<TechMainPage> {
                                                           context: context,
                                                           builder: (BuildContext
                                                               context) {
-                                                            return FutureBuilder<bool>(
-                                                                future: eachAppointment.acceptOrRejectProcess(true, items[index].id.toString()),
-                                                                builder: (context, data) {
-                                                                  if (data.connectionState == ConnectionState.waiting) {
+                                                            return FutureBuilder<
+                                                                    bool>(
+                                                                future: eachAppointment
+                                                                    .acceptOrRejectProcess(
+                                                                        true,
+                                                                        items[index]
+                                                                            .id
+                                                                            .toString()),
+                                                                builder:
+                                                                    (context,
+                                                                        data) {
+                                                                  if (data.connectionState ==
+                                                                      ConnectionState
+                                                                          .waiting) {
                                                                     // Display a loading indicator while waiting for the future to complete
                                                                     return Center(
                                                                       child:
@@ -498,8 +518,11 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                       return Dialog(
                                                                         child:
                                                                             Container(
-                                                                          width: screenwidth / width_figma * 356,
-                                                                          height: 232,
+                                                                          width: screenwidth /
+                                                                              width_figma *
+                                                                              356,
+                                                                          height:
+                                                                              232,
                                                                           decoration:
                                                                               BoxDecoration(
                                                                             borderRadius:
@@ -509,8 +532,10 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                           ),
                                                                           child:
                                                                               Column(
-                                                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.center,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
                                                                             children: [
                                                                               SizedBox(
                                                                                 height: 40,
@@ -621,19 +646,23 @@ class _TechMainPageState extends State<TechMainPage> {
                                                     onTap: () {
                                                       showDialog(
                                                         context: context,
-                                                        builder: (context) => Dialog(
+                                                        builder: (context) =>
+                                                            Dialog(
                                                           child: Container(
                                                             width: screenwidth /
                                                                 width_figma *
                                                                 356,
                                                             height: 170,
-                                                            decoration: BoxDecoration(
+                                                            decoration:
+                                                                BoxDecoration(
                                                               borderRadius:
 
-
                                                                   //ghorboonet :))
-                                                              BorderRadius.circular(28),
-                                                              color: Colors.white,
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          28),
+                                                              color:
+                                                                  Colors.white,
                                                             ),
                                                             child: Column(
                                                               children: [
@@ -642,19 +671,21 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                 ),
                                                                 Directionality(
                                                                   textDirection:
-                                                                  TextDirection.rtl,
+                                                                      TextDirection
+                                                                          .rtl,
                                                                   child: Center(
                                                                     child: Text(
                                                                       "آیا از رد نوبت  مطمعن هستید؟",
                                                                       style: TextStyle(
-                                                                          color: fontcolor,
-                                                                          fontSize: 16,
+                                                                          color:
+                                                                              fontcolor,
+                                                                          fontSize:
+                                                                              16,
                                                                           fontWeight:
-                                                                          FontWeight
-                                                                              .w700,
+                                                                              FontWeight.w700,
                                                                           fontFeatures: [
-                                                                            FontFeature(
-                                                                                'ss01', 1),
+                                                                            FontFeature('ss01',
+                                                                                1),
                                                                           ]),
                                                                     ),
                                                                   ),
@@ -664,47 +695,37 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                 ),
                                                                 Row(
                                                                   mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
+                                                                      MainAxisAlignment
+                                                                          .center,
                                                                   children: [
                                                                     GestureDetector(
-                                                                      onTap: () {
+                                                                      onTap:
+                                                                          () {
                                                                         Get.back(
-                                                                            result: false);
+                                                                            result:
+                                                                                false);
                                                                         showDialog(
                                                                             context:
-                                                                            context,
+                                                                                context,
                                                                             builder:
-                                                                                (BuildContext
-                                                                            context) {
-                                                                              return FutureBuilder<
-                                                                                  bool>(
+                                                                                (BuildContext context) {
+                                                                              return FutureBuilder<bool>(
                                                                                   future: eachAppointment.acceptOrRejectProcess(false, items[index].id.toString()),
-                                                                                  builder:
-                                                                                      (context,
-                                                                                      data) {
-                                                                                    if (data.connectionState ==
-                                                                                        ConnectionState
-                                                                                            .waiting) {
+                                                                                  builder: (context, data) {
+                                                                                    if (data.connectionState == ConnectionState.waiting) {
                                                                                       // Display a loading indicator while waiting for the future to complete
                                                                                       return Center(
-                                                                                        child:
-                                                                                        CircularProgressIndicator(),
+                                                                                        child: CircularProgressIndicator(),
                                                                                       );
-                                                                                    } else if (data
-                                                                                        .hasError) {
+                                                                                    } else if (data.hasError) {
                                                                                       // Handle any errors that might occur during the asynchronous call
                                                                                       return Dialog(
-                                                                                        child:
-                                                                                        Text("مشکلی به وجود آمد: ${data.error}"),
+                                                                                        child: Text("مشکلی به وجود آمد: ${data.error}"),
                                                                                       );
                                                                                     } else {
                                                                                       // Future has completed, check the result
-                                                                                      bool
-                                                                                      result =
-                                                                                      data.data!;
-                                                                                      if (result ==
-                                                                                          false) {
+                                                                                      bool result = data.data!;
+                                                                                      if (result == false) {
                                                                                         // Show the dialog if there is an issue
                                                                                         return Dialog(
                                                                                           child: Text("مشکلی به وجود آمد"),
@@ -741,9 +762,7 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                                                           color: fontcolor,
                                                                                                           fontSize: 16,
                                                                                                           fontWeight: FontWeight.w500,
-                                                                                                          fontFeatures: [
-                                                                                                            FontFeature('ss01', 1)
-                                                                                                          ],
+                                                                                                          fontFeatures: [FontFeature('ss01', 1)],
                                                                                                         ),
                                                                                                         maxLines: null,
                                                                                                         textAlign: TextAlign.center,
@@ -793,35 +812,31 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                                   });
                                                                             });
                                                                       },
-                                                                      child: Container(
-                                                                        height: 36,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            36,
                                                                         width: screenwidth /
                                                                             width_figma *
                                                                             100,
                                                                         decoration: BoxDecoration(
-                                                                            borderRadius:
-                                                                            BorderRadius
-                                                                                .circular(
+                                                                            borderRadius: BorderRadius.circular(
                                                                                 48),
-                                                                            gradient: LinearGradient(
-                                                                                begin: Alignment
-                                                                                    .topRight,
-                                                                                end: Alignment.bottomLeft,
-                                                                                colors: [
-                                                                                  rediligal,
-                                                                                  whiteiligal
-                                                                                ])),
-                                                                        child: Center(
-                                                                          child: Text(
+                                                                            gradient:
+                                                                                LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                              rediligal,
+                                                                              whiteiligal
+                                                                            ])),
+                                                                        child:
+                                                                            Center(
+                                                                          child:
+                                                                              Text(
                                                                             "رد نوبت",
                                                                             style:
-                                                                            TextStyle(
-                                                                              fontWeight:
-                                                                              FontWeight
-                                                                                  .w700,
+                                                                                TextStyle(
+                                                                              fontWeight: FontWeight.w700,
                                                                               fontSize: 14,
-                                                                              color: Colors
-                                                                                  .white,
+                                                                              color: Colors.white,
                                                                             ),
                                                                           ),
                                                                         ),
@@ -833,39 +848,37 @@ class _TechMainPageState extends State<TechMainPage> {
                                                                           8,
                                                                     ),
                                                                     GestureDetector(
-                                                                      onTap: () {
+                                                                      onTap:
+                                                                          () {
                                                                         Get.back(
-                                                                            result: true);
+                                                                            result:
+                                                                                true);
                                                                       },
-                                                                      child: Container(
-                                                                        height: 36,
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            36,
                                                                         width: screenwidth /
                                                                             width_figma *
                                                                             100,
                                                                         decoration: BoxDecoration(
-                                                                            borderRadius:
-                                                                            BorderRadius
-                                                                                .circular(
+                                                                            borderRadius: BorderRadius.circular(
                                                                                 48),
-                                                                            gradient: LinearGradient(
-                                                                                begin: Alignment
-                                                                                    .topRight,
-                                                                                end: Alignment.bottomLeft,
-                                                                                colors: [
-                                                                                  LightBlue,
-                                                                                  White
-                                                                                ])),
-                                                                        child: Center(
-                                                                          child: Text(
+                                                                            gradient:
+                                                                                LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                              LightBlue,
+                                                                              White
+                                                                            ])),
+                                                                        child:
+                                                                            Center(
+                                                                          child:
+                                                                              Text(
                                                                             "انصراف",
                                                                             style:
-                                                                            TextStyle(
-                                                                              fontWeight:
-                                                                              FontWeight
-                                                                                  .w700,
+                                                                                TextStyle(
+                                                                              fontWeight: FontWeight.w700,
                                                                               fontSize: 14,
-                                                                              color: Colors
-                                                                                  .white,
+                                                                              color: Colors.white,
                                                                             ),
                                                                           ),
                                                                         ),
@@ -928,954 +941,1268 @@ class _TechMainPageState extends State<TechMainPage> {
               ),
               FutureBuilder(
                   future: firstPageTechProcessesController.getTechProcess(),
-                  builder: (context, data){
+                  builder: (context, data) {
                     if (data.hasError) {
                       return Center(child: Text("${data.error}"));
                     } else if (data.hasData) {
-                      List<MainTechModel> TechItems = data.data! ;
-                      print(1234);
-                      print(TechItems);
+                      var TechItems2 = data.data! as MainTechModel;
+                      // print(1236);
+                      // print(TechItems);
+                      // print(TechItems);
+                      var TechItems = TechItems2.approved.items;
                       if (TechItems.length == 0) {
                         return Center(
                           child: Text("نوبتی در حال حاضر وجود ندارد"),
                         );
                       } else {
-                        return Container(
-                          height: screenheight / height_figma * 550,
+                        // return Container(
+                        // height: screenheight / height_figma * 550,
                         //  width: 396,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: TechItems.length,
-                              itemBuilder: (context, index){
-                                EachApprovedAppointments approvedAppointment = TechItems[index].approved.items[index] ;
-                                return Padding(
-                                  padding: EdgeInsets.only(
-                                    right: screenwidth / width_figma * 42,
-                                    left: screenwidth / width_figma * 42,
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: TechItems.length,
+                            itemBuilder: (context, index) {
+                              EachApprovedAppointments approvedAppointment =
+                                  TechItems[index];
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  right: screenwidth / width_figma * 42,
+                                  left: screenwidth / width_figma * 42,
+                                  top: 15,
+                                  bottom: 15,
+                                ),
+                                child: Container(
+                                  width: screenwidth / width_figma * 343,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(16),
                                   ),
-                                  child: Container(
-                                    width: screenwidth / width_figma * 343,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: TechItems[index].approved.items[index].status == 'created' ? Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        Center(
-                                          child: Image.asset(
-                                              "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Center(
-                                          child: Text(TechItems[index].approved.items[index].operation,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [
-                                                  FontFeature('ss01', 1),
-                                                ]),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Container(
-                                          width: screenwidth / width_figma * 364,
-                                          height: 36,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(36),
-                                            gradient: LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  LightBlue.withOpacity(0.1),
-                                                  White.withOpacity(0.1)
-                                                ]),
-                                          ),
-                                          child: Center(
-                                            child: GradientText(
-                                              TechItems[index].approved.items[index].visitDate,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w700, fontSize: 14),
-                                              colors: [LightBlue, LightBlue],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 32,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                  child: TechItems[index].status == 'created'
+                                      ? Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Image.asset(
-                                                        "lib/features/technicians/ZibajoyanMan/Images/info.png"),
-                                                    SizedBox(
-                                                      width: screenwidth / width_figma * 5.5,
-                                                    ),
-                                                    Text(
-                                                      "اطللاعات زیباجو",
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.w700,
-                                                          color: phonecolor),
-                                                    ),
+                                            SizedBox(
+                                              height: 16,
+                                            ),
+                                            Center(
+                                              child: Image.asset(
+                                                  "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
+                                            ),
+                                            SizedBox(
+                                              height: 8,
+                                            ),
+                                            Center(
+                                              child: Text(
+                                                TechItems[index].operation,
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w700,
+                                                    color: fontcolor,
+                                                    fontFeatures: [
+                                                      FontFeature('ss01', 1),
+                                                    ]),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 8,
+                                            ),
+                                            Container(
+                                              width: screenwidth /
+                                                  width_figma *
+                                                  364,
+                                              height: 36,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(36),
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                    colors: [
+                                                      LightBlue.withOpacity(
+                                                          0.1),
+                                                      White.withOpacity(0.1)
+                                                    ]),
+                                              ),
+                                              child: Center(
+                                                child: GradientText(
+                                                  TechItems[index].visitDate,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 14),
+                                                  colors: [
+                                                    LightBlue,
+                                                    LightBlue
                                                   ],
                                                 ),
-                                                SizedBox(
-                                                  height: 16,
-                                                ),
-                                                Text(
-                                                  "زیباجو:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 4,
-                                                ),
-                                                Text(
-                                                  TechItems[index].approved.items[index].patientName,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: fontcolor,
-                                                      fontFeatures: [
-                                                        FontFeature('ss01', 1),
-                                                      ]),
-                                                ),
-                                                SizedBox(
-                                                  height: 32,
-                                                ),
-                                                Row(
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 32,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Image.asset(
-                                                        "lib/features/technicians/ZibajoyanMan/Images/info.png"),
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                            "lib/features/technicians/ZibajoyanMan/Images/info.png"),
+                                                        SizedBox(
+                                                          width: screenwidth /
+                                                              width_figma *
+                                                              5.5,
+                                                        ),
+                                                        Text(
+                                                          "اطللاعات زیباجو",
+                                                          style: TextStyle(
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color:
+                                                                  phonecolor),
+                                                        ),
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      width: screenwidth / width_figma * 5.5,
+                                                      height: 16,
                                                     ),
                                                     Text(
-                                                      "اطللاعات کاشت",
+                                                      "زیباجو:",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 4,
+                                                    ),
+                                                    Text(
+                                                      TechItems[index]
+                                                          .patientName,
                                                       style: TextStyle(
                                                           fontSize: 14,
-                                                          fontWeight: FontWeight.w700,
-                                                          color: phonecolor,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor,
                                                           fontFeatures: [
-                                                            FontFeature('ss01', 1),
+                                                            FontFeature(
+                                                                'ss01', 1),
+                                                          ]),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 32,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Image.asset(
+                                                            "lib/features/technicians/ZibajoyanMan/Images/info.png"),
+                                                        SizedBox(
+                                                          width: screenwidth /
+                                                              width_figma *
+                                                              5.5,
+                                                        ),
+                                                        Text(
+                                                          "اطللاعات کاشت",
+                                                          style: TextStyle(
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: phonecolor,
+                                                              fontFeatures: [
+                                                                FontFeature(
+                                                                    'ss01', 1),
+                                                              ]),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 16,
+                                                    ),
+                                                    Text(
+                                                      "عملیات مورد نیاز:",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 4,
+                                                    ),
+                                                    Text(
+                                                      TechItems[index]
+                                                          .operation,
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor,
+                                                          fontFeatures: [
+                                                            FontFeature(
+                                                                'ss01', 1),
                                                           ]),
                                                     ),
                                                   ],
                                                 ),
                                                 SizedBox(
-                                                  height: 16,
+                                                  width: screenwidth /
+                                                      width_figma *
+                                                      113,
                                                 ),
-                                                Text(
-                                                  "عملیات مورد نیاز:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 34,
+                                                    ),
+                                                    Text(
+                                                      "شماره تماس:",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 4,
+                                                    ),
+                                                    Text(
+                                                      TechItems[index]
+                                                          .patientPhoneNumber,
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 72,
+                                                    ),
+                                                    Text(
+                                                      "تعداد تار مو:",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 14,
+                                                        color: grayColorHome,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 4,
+                                                    ),
+                                                    Text(
+                                                      TechItems[index]
+                                                              .hairCount +
+                                                          "تار مو ",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: fontcolor),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 16,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 32,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                // zibajoyanManSecondPage
+                                                //     .startTheProcess(
+                                                //         approvedAppointment);
+                                              },
+                                              child: Container(
+                                                width: screenwidth /
+                                                    width_figma *
+                                                    364,
+                                                height: 36,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(48),
+                                                  gradient: LinearGradient(
+                                                      begin: Alignment.topRight,
+                                                      end: Alignment.bottomLeft,
+                                                      colors: [
+                                                        rediligal,
+                                                        whiteiligal
+                                                      ]),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    "شروع فرایند کاشت",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        fontSize: 14,
+                                                        color: Colors.white,
+                                                        fontFeatures: [
+                                                          FontFeature(
+                                                              'ss01', 1),
+                                                        ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : TechItems[index].status == 'started'
+                                          ? Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      16,
+                                                ),
+                                                Center(
+                                                  child: Image.asset(
+                                                      "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      8,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    approvedAppointment
+                                                        .operation,
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: fontcolor,
+                                                        fontFeatures: [
+                                                          FontFeature(
+                                                              'ss01', 1),
+                                                        ]),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 4,
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      8,
+                                                ),
+                                                Container(
+                                                  width: screenwidth /
+                                                      width_figma *
+                                                      364,
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      36,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            36),
+                                                    gradient: LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment
+                                                            .bottomCenter,
+                                                        colors: [
+                                                          LightBlue.withOpacity(
+                                                              0.1),
+                                                          White.withOpacity(0.1)
+                                                        ]),
+                                                  ),
+                                                  child: Center(
+                                                    child: GradientText(
+                                                      approvedAppointment
+                                                          .visitDate,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          fontSize: 14),
+                                                      colors: [
+                                                        LightBlue,
+                                                        LightBlue
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      32,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "تار موی مورد نیاز برای کاشت:" +
+                                                        approvedAppointment
+                                                            .hairCount +
+                                                        " تار مو",
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: fontcolor,
+                                                        fontFeatures: [
+                                                          FontFeature(
+                                                              'ss01', 1),
+                                                        ]),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      48,
                                                 ),
                                                 Text(
-                                                  TechItems[index].approved.items[index].operation,
+                                                  "افزودن تصویر قبل از کاشت:",
                                                   style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
                                                       fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.black,
+                                                      fontFeatures: [
+                                                        FontFeature('ss01', 1),
+                                                      ]),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      10,
+                                                ),
+
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10, right: 10),
+                                                  height: 120,
+                                                  child: GridView.builder(
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: false,
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 3,
+                                                      crossAxisSpacing: 3.0,
+                                                      mainAxisSpacing: 3.0,
+                                                    ),
+                                                    itemCount: approvedAppointment
+                                                            .beforeProcessImages
+                                                            .length +
+                                                        (approvedAppointment
+                                                                    .beforeProcessImages
+                                                                    .length <
+                                                                3
+                                                            ? 1
+                                                            : 0),
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      if (index ==
+                                                          approvedAppointment
+                                                              .beforeProcessImages
+                                                              .length) {
+                                                        return DottedBorder(
+                                                          padding:
+                                                              EdgeInsets.all(5),
+                                                          borderType:
+                                                              BorderType.RRect,
+                                                          radius:
+                                                              Radius.circular(
+                                                                  20),
+                                                          dashPattern: [10, 10],
+                                                          color:
+                                                              Color(0xffDDDDDD),
+                                                          strokeWidth: 2,
+                                                          child: Center(
+                                                            child:
+                                                                ElevatedButton(
+                                                              onPressed: () => _pickImage(
+                                                                  isBeforeProcess:
+                                                                      true,
+                                                                  approvedAppointment:
+                                                                      approvedAppointment),
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                elevation: 0,
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0xffEEEEEE),
+                                                              ),
+                                                              child: Text(
+                                                                "آپلود+",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            128,
+                                                                            114,
+                                                                            114)),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      return Stack(
+                                                        children: [
+                                                          GestureDetector(
+                                                            onTap: () =>
+                                                                _showImagePreview(
+                                                                    index,
+                                                                    approvedAppointment),
+                                                            child: _buildImageWidget(
+                                                                index,
+                                                                approvedAppointment),
+                                                          ),
+                                                          if (approvedAppointment
+                                                                      .beforeProcessImages[
+                                                                  index] !=
+                                                              [])
+                                                            Positioned(
+                                                              top: 0,
+                                                              right: 0,
+                                                              child: IconButton(
+                                                                icon: Icon(Icons
+                                                                    .close),
+                                                                onPressed:
+                                                                    () async {
+                                                                  bool result =
+                                                                      await shoroefarayandfirstPageController
+                                                                          .deleteImage(
+                                                                    approvedAppointment
+                                                                        .beforeProcessImages[
+                                                                            index]
+                                                                        .filename,
+                                                                    true,
+                                                                    approvedAppointment
+                                                                        .id
+                                                                        .toString(),
+                                                                  );
+
+                                                                  if (result ==
+                                                                      true) {
+                                                                    setState(
+                                                                        () {
+                                                                      approvedAppointment
+                                                                          .beforeProcessImages
+                                                                          .removeAt(
+                                                                              index);
+                                                                    });
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                // Inja bayad Imgage picker bezari
+                                                Text(
+                                                  "افزودن تصویر بعد از کاشت:",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 14,
+                                                      color: Colors.black,
+                                                      fontFeatures: [
+                                                        FontFeature('ss01', 1),
+                                                      ]),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      10,
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10, right: 10),
+                                                  height: 120,
+                                                  child: GridView.builder(
+                                                    physics:
+                                                        NeverScrollableScrollPhysics(),
+                                                    shrinkWrap: false,
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 3,
+                                                      crossAxisSpacing: 4.0,
+                                                      mainAxisSpacing: 4.0,
+                                                    ),
+                                                    itemCount: approvedAppointment
+                                                            .afterProcessImages
+                                                            .length +
+                                                        (approvedAppointment
+                                                                    .afterProcessImages
+                                                                    .length <
+                                                                3
+                                                            ? 1
+                                                            : 0),
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      if (index ==
+                                                          approvedAppointment
+                                                              .afterProcessImages
+                                                              .length) {
+                                                        return DottedBorder(
+                                                          padding:
+                                                              EdgeInsets.all(5),
+                                                          borderType:
+                                                              BorderType.RRect,
+                                                          radius:
+                                                              Radius.circular(
+                                                                  20),
+                                                          dashPattern: [10, 10],
+                                                          color:
+                                                              Color(0xffDDDDDD),
+                                                          strokeWidth: 2,
+                                                          child: Center(
+                                                            child:
+                                                                ElevatedButton(
+                                                              onPressed: () =>
+                                                                  _pickImage_after(
+                                                                      isBeforeProcess:
+                                                                          false,
+                                                                      approvedAppointment:
+                                                                          approvedAppointment),
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                elevation: 0,
+                                                                backgroundColor:
+                                                                    Color(
+                                                                        0xffEEEEEE),
+                                                              ),
+                                                              child: Text(
+                                                                "آپلود+",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: Color
+                                                                        .fromARGB(
+                                                                            255,
+                                                                            128,
+                                                                            114,
+                                                                            114)),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      return Stack(
+                                                        children: [
+                                                          GestureDetector(
+                                                            onTap: () =>
+                                                                _showImagePreview_after(
+                                                                    index,
+                                                                    approvedAppointment),
+                                                            child: _buildImageWidget_after(
+                                                                index,
+                                                                approvedAppointment),
+                                                          ),
+                                                          if (approvedAppointment
+                                                                      .afterProcessImages[
+                                                                  index] !=
+                                                              [])
+                                                            Positioned(
+                                                              top: 0,
+                                                              right: 0,
+                                                              child: IconButton(
+                                                                icon: Icon(Icons
+                                                                    .close),
+                                                                onPressed:
+                                                                    () async {
+                                                                  bool result =
+                                                                      await shoroefarayandfirstPageController
+                                                                          .deleteImage(
+                                                                    approvedAppointment
+                                                                        .afterProcessImages[
+                                                                            index]
+                                                                        .filename,
+                                                                    false,
+                                                                    approvedAppointment
+                                                                        .id
+                                                                        .toString(),
+                                                                  );
+
+                                                                  if (result ==
+                                                                      true) {
+                                                                    setState(
+                                                                        () {
+                                                                      approvedAppointment
+                                                                          .afterProcessImages
+                                                                          .removeAt(
+                                                                              index);
+                                                                    });
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      10,
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    // shoroefarayandfirstPageController
+                                                    //     .endProcess(
+                                                    //         approvedAppointment);
+                                                  },
+                                                  child: Container(
+                                                    width: screenwidth /
+                                                        width_figma *
+                                                        364,
+                                                    height: screenheight /
+                                                        height_figma *
+                                                        36,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              48),
+                                                      gradient: LinearGradient(
+                                                          begin: Alignment
+                                                              .topRight,
+                                                          end: Alignment
+                                                              .bottomLeft,
+                                                          colors: [
+                                                            rediligal,
+                                                            whiteiligal
+                                                          ]),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "پایان فرایند کاشت",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            fontSize: 14,
+                                                            color: Colors.white,
+                                                            fontFeatures: [
+                                                              FontFeature(
+                                                                  'ss01', 1),
+                                                            ]),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      16,
+                                                ),
+                                                Center(
+                                                  child: Image.asset(
+                                                      "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      8,
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    "کاشت مو",
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: fontcolor,
+                                                        fontFeatures: [
+                                                          FontFeature(
+                                                              'ss01', 1),
+                                                        ]),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      32,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      // right: screenwidth / width_figma * 62,
+                                                      // left: screenwidth / width_figma * 62,
+                                                      ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "قبل از کاشت مو:",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: fontcolor,
+                                                            fontFeatures: [
+                                                              FontFeature(
+                                                                  'ss01', 1),
+                                                            ]),
+                                                      ),
+                                                      SizedBox(
+                                                        height: screenheight /
+                                                            height_figma *
+                                                            16,
+                                                      ),
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 10,
+                                                                right: 10),
+                                                        height: 120,
+                                                        child: approvedAppointment
+                                                                .beforeProcessImages
+                                                                .isNotEmpty
+                                                            ? GridView.builder(
+                                                                physics:
+                                                                    NeverScrollableScrollPhysics(),
+                                                                shrinkWrap:
+                                                                    false,
+                                                                gridDelegate:
+                                                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  crossAxisCount:
+                                                                      approvedAppointment
+                                                                          .beforeProcessImages
+                                                                          .length,
+                                                                  crossAxisSpacing:
+                                                                      3.0,
+                                                                  mainAxisSpacing:
+                                                                      3.0,
+                                                                ),
+                                                                itemCount: approvedAppointment
+                                                                        .beforeProcessImages
+                                                                        .length +
+                                                                    (approvedAppointment.beforeProcessImages.length <
+                                                                            3
+                                                                        ? 1
+                                                                        : 0),
+                                                                itemBuilder:
+                                                                    (context,
+                                                                        index) {
+                                                                  return Stack(
+                                                                    children: [
+                                                                      GestureDetector(
+                                                                        onTap: () => _showImagePreview(
+                                                                            index,
+                                                                            approvedAppointment),
+                                                                        child: _buildImageWidget(
+                                                                            index,
+                                                                            approvedAppointment),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              )
+                                                            : Container(),
+                                                      ),
+                                                      SizedBox(
+                                                        height: screenheight /
+                                                            height_figma *
+                                                            24,
+                                                      ),
+                                                      Text(
+                                                        "بعد از کاشت مو:",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 14,
+                                                            color: fontcolor,
+                                                            fontFeatures: [
+                                                              FontFeature(
+                                                                  'ss01', 1),
+                                                            ]),
+                                                      ),
+                                                      SizedBox(
+                                                        height: screenheight /
+                                                            height_figma *
+                                                            16,
+                                                      ),
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 10,
+                                                                right: 10),
+                                                        height: 120,
+                                                        child: approvedAppointment
+                                                                .afterProcessImages
+                                                                .isNotEmpty
+                                                            ? GridView.builder(
+                                                                physics:
+                                                                    NeverScrollableScrollPhysics(),
+                                                                shrinkWrap:
+                                                                    false,
+                                                                gridDelegate:
+                                                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  crossAxisCount:
+                                                                      approvedAppointment
+                                                                          .afterProcessImages
+                                                                          .length,
+                                                                  crossAxisSpacing:
+                                                                      3.0,
+                                                                  mainAxisSpacing:
+                                                                      3.0,
+                                                                ),
+                                                                itemCount: approvedAppointment
+                                                                        .afterProcessImages
+                                                                        .length +
+                                                                    (approvedAppointment.afterProcessImages.length <
+                                                                            3
+                                                                        ? 1
+                                                                        : 0),
+                                                                itemBuilder:
+                                                                    (context,
+                                                                        index) {
+                                                                  return Stack(
+                                                                    children: [
+                                                                      GestureDetector(
+                                                                        onTap: () => _showImagePreview_after(
+                                                                            index,
+                                                                            approvedAppointment),
+                                                                        child: _buildImageWidget_after(
+                                                                            index,
+                                                                            approvedAppointment),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              )
+                                                            : Container(),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      32,
+                                                ),
+
+                                                Text(
+                                                  "آیا در فرایند کاشت مو به مشکل خوردید",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w700,
                                                       color: fontcolor,
                                                       fontFeatures: [
                                                         FontFeature('ss01', 1),
                                                       ]),
                                                 ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      16,
+                                                ),
+                                                Text(
+                                                  "توضیحات خود را وارد کنید",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: fontcolor,
+                                                      fontFeatures: [
+                                                        FontFeature('ss01', 1),
+                                                      ]),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      4,
+                                                ),
+                                                Container(
+                                                  // width: screenwidth / width_figma * 380,
+                                                  // height: screenheight / height_figma * 111,
+                                                  // padding: EdgeInsets.symmetric(
+                                                  //     vertical: screenheight / height_figma * 111),
+
+                                                  child: TextField(
+                                                    textAlign: TextAlign.right,
+                                                    textAlignVertical:
+                                                        TextAlignVertical.top,
+                                                    decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical:
+                                                                  screenheight /
+                                                                      height_figma *
+                                                                      111),
+                                                      hintText: "    توضیحات",
+                                                      hintStyle: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize: 14,
+                                                          color: phonecolor,
+                                                          fontFeatures: [
+                                                            FontFeature(
+                                                                'ss01', 1),
+                                                          ]),
+                                                      alignLabelWithHint: true,
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              SendagainColorwhite,
+                                                          width: 2,
+                                                        ),
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color:
+                                                                outlineborder,
+                                                            width: 2),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(16),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                // Inja bayad Imgage picker bezari
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      34,
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    // shoroefarayandsecondPageController
+                                                    //     .saveProcess(
+                                                    //         approvedAppointment)
+                                                    //     .then((value) {
+                                                    //   if (value == true) {
+                                                    //     showDialog(
+                                                    //       context: context,
+                                                    //       builder: (context) =>
+                                                    //           Dialog(
+                                                    //         child: Container(
+                                                    //           width: screenwidth /
+                                                    //               width_figma *
+                                                    //               356,
+                                                    //           height: 200,
+                                                    //           decoration:
+                                                    //               BoxDecoration(
+                                                    //             borderRadius:
+                                                    //                 BorderRadius
+                                                    //                     .circular(
+                                                    //                         32),
+                                                    //             color: Colors
+                                                    //                 .white,
+                                                    //           ),
+                                                    //           child: Column(
+                                                    //             children: [
+                                                    //               SizedBox(
+                                                    //                 height: screenheight /
+                                                    //                     height_figma *
+                                                    //                     40,
+                                                    //               ),
+                                                    //               Image.asset(
+                                                    //                   "lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                                    //               SizedBox(
+                                                    //                 height: screenheight /
+                                                    //                     height_figma *
+                                                    //                     8,
+                                                    //               ),
+                                                    //               Directionality(
+                                                    //                 textDirection:
+                                                    //                     TextDirection
+                                                    //                         .rtl,
+                                                    //                 child:
+                                                    //                     Center(
+                                                    //                   child:
+                                                    //                       Text(
+                                                    //                     "کاشت موی شما با موفقیت ثبت شد",
+                                                    //                     style: TextStyle(
+                                                    //                         color:
+                                                    //                             fontcolor,
+                                                    //                         fontSize:
+                                                    //                             16,
+                                                    //                         fontWeight:
+                                                    //                             FontWeight.w500,
+                                                    //                         fontFeatures: [
+                                                    //                           FontFeature('ss01', 1),
+                                                    //                         ]),
+                                                    //                   ),
+                                                    //                 ),
+                                                    //               ),
+                                                    //               SizedBox(
+                                                    //                 height: screenheight /
+                                                    //                     height_figma *
+                                                    //                     46,
+                                                    //               ),
+                                                    //               Center(
+                                                    //                 child: Row(
+                                                    //                   mainAxisAlignment:
+                                                    //                       MainAxisAlignment
+                                                    //                           .center,
+                                                    //                   children: [
+                                                    //                     GestureDetector(
+                                                    //                       onTap:
+                                                    //                           () {
+                                                    //                         // Get.back(result: false);
+                                                    //                       },
+                                                    //                       child:
+                                                    //                           Container(
+                                                    //                         height: screenheight /
+                                                    //                             height_figma *
+                                                    //                             36,
+                                                    //                         width: screenwidth /
+                                                    //                             width_figma *
+                                                    //                             142,
+                                                    //                         decoration: BoxDecoration(
+                                                    //                             borderRadius: BorderRadius.circular(
+                                                    //                                 48),
+                                                    //                             gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                    //                               rediligal,
+                                                    //                               whiteiligal
+                                                    //                             ])),
+                                                    //                         child:
+                                                    //                             Center(
+                                                    //                           child: Text(
+                                                    //                             "سوابق",
+                                                    //                             style: TextStyle(
+                                                    //                               fontWeight: FontWeight.w700,
+                                                    //                               fontSize: 14,
+                                                    //                               color: Colors.white,
+                                                    //                             ),
+                                                    //                           ),
+                                                    //                         ),
+                                                    //                       ),
+                                                    //                     ),
+                                                    //                     SizedBox(
+                                                    //                       width: screenwidth /
+                                                    //                           width_figma *
+                                                    //                           8,
+                                                    //                     ),
+                                                    //                     GestureDetector(
+                                                    //                       onTap:
+                                                    //                           () {},
+                                                    //                       child:
+                                                    //                           Container(
+                                                    //                         height: screenheight /
+                                                    //                             height_figma *
+                                                    //                             36,
+                                                    //                         width: screenwidth /
+                                                    //                             width_figma *
+                                                    //                             152,
+                                                    //                         decoration: BoxDecoration(
+                                                    //                             borderRadius: BorderRadius.circular(
+                                                    //                                 48),
+                                                    //                             gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                    //                               LightBlue,
+                                                    //                               White
+                                                    //                             ])),
+                                                    //                         child:
+                                                    //                             Center(
+                                                    //                           child: Text(
+                                                    //                             "!متوجه شدم",
+                                                    //                             style: TextStyle(
+                                                    //                               fontWeight: FontWeight.w700,
+                                                    //                               fontSize: 14,
+                                                    //                               color: Colors.white,
+                                                    //                             ),
+                                                    //                           ),
+                                                    //                         ),
+                                                    //                       ),
+                                                    //                     ),
+                                                    //                   ],
+                                                    //                 ),
+                                                    //               ),
+                                                    //             ],
+                                                    //           ),
+                                                    //         ),
+                                                    //       ),
+                                                    //     );
+                                                    //   }
+                                                    // });
+                                                  },
+                                                  child: Container(
+                                                    // width: screenwidth / width_figma * 364,
+                                                    height: screenheight /
+                                                        height_figma *
+                                                        36,
+
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              48),
+                                                      gradient: LinearGradient(
+                                                          begin: Alignment
+                                                              .topRight,
+                                                          end: Alignment
+                                                              .bottomLeft,
+                                                          colors: [
+                                                            rediligal,
+                                                            whiteiligal
+                                                          ]),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "ثبت نهایی",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w800,
+                                                            fontSize: 14,
+                                                            color: Colors.white,
+                                                            fontFeatures: [
+                                                              FontFeature(
+                                                                  'ss01', 1),
+                                                            ]),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: screenheight /
+                                                      height_figma *
+                                                      34,
+                                                ),
                                               ],
                                             ),
-                                            SizedBox(
-                                              width: screenwidth / width_figma * 113,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  height: 34,
-                                                ),
-                                                Text(
-                                                  "شماره تماس:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 4,
-                                                ),
-                                                Text(
-                                                  TechItems[index].approved.items[index].patientPhoneNumber,
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: fontcolor),
-                                                ),
-                                                SizedBox(
-                                                  height: 72,
-                                                ),
-                                                Text(
-                                                  "تعداد تار مو:",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: grayColorHome,
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 4,
-                                                ),
-                                                Text(
-                                                  TechItems[index].approved.items[index].hairCount + "تار مو ",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: fontcolor),
-                                                ),
-                                                SizedBox(
-                                                  height: 16,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 32,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            zibajoyanManSecondPage.startTheProcess(approvedAppointment);
-                                          },
-                                          child: Container(
-                                            width: screenwidth / width_figma * 364,
-                                            height: 36,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(48),
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.topRight,
-                                                  end: Alignment.bottomLeft,
-                                                  colors: [rediligal, whiteiligal]),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "شروع فرایند کاشت",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 14,
-                                                    color: Colors.white,
-                                                    fontFeatures: [
-                                                      FontFeature('ss01', 1),
-                                                    ]),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ) : TechItems[index].approved.items[index].status == 'started' ?
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: screenheight / height_figma * 16,
-                                        ),
-                                        Center(
-                                          child: Image.asset(
-                                              "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 8,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            approvedAppointment.operation,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [
-                                                  FontFeature('ss01', 1),
-                                                ]),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 8,
-                                        ),
-                                        Container(
-                                          width: screenwidth / width_figma * 364,
-                                          height: screenheight / height_figma * 36,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(36),
-                                            gradient: LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  LightBlue.withOpacity(0.1),
-                                                  White.withOpacity(0.1)
-                                                ]),
-                                          ),
-                                          child: Center(
-                                            child: GradientText(
-                                              approvedAppointment.visitDate,
-                                              style:
-                                              TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-                                              colors: [LightBlue, LightBlue],
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 32,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            "تار موی مورد نیاز برای کاشت:" +
-                                                approvedAppointment.hairCount +
-                                                " تار مو",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [
-                                                  FontFeature('ss01', 1),
-                                                ]),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 48,
-                                        ),
-                                        Text(
-                                          "افزودن تصویر قبل از کاشت:",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 14,
-                                              color: Colors.black,
-                                              fontFeatures: [
-                                                FontFeature('ss01', 1),
-                                              ]),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 10,
-                                        ),
-
-                                        Container(
-                                          padding: EdgeInsets.only(left: 10, right: 10),
-                                          height: 120,
-                                          child: GridView.builder(
-                                            physics: NeverScrollableScrollPhysics(),
-                                            shrinkWrap: false,
-                                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 3.0,
-                                              mainAxisSpacing: 3.0,
-                                            ),
-                                            itemCount: approvedAppointment.beforeProcessImages.length +
-                                                (approvedAppointment.beforeProcessImages.length < 3
-                                                    ? 1
-                                                    : 0),
-                                            itemBuilder: (context, index) {
-                                              if (index ==
-                                                  approvedAppointment.beforeProcessImages.length) {
-                                                return DottedBorder(
-                                                  padding: EdgeInsets.all(5),
-                                                  borderType: BorderType.RRect,
-                                                  radius: Radius.circular(20),
-                                                  dashPattern: [10, 10],
-                                                  color: Color(0xffDDDDDD),
-                                                  strokeWidth: 2,
-                                                  child: Center(
-                                                    child: ElevatedButton(
-                                                      onPressed: () =>
-                                                          _pickImage(isBeforeProcess: true, approvedAppointment: approvedAppointment),
-                                                      style: ElevatedButton.styleFrom(
-                                                        elevation: 0,
-                                                        backgroundColor: Color(0xffEEEEEE),
-                                                      ),
-                                                      child: Text(
-                                                        "آپلود+",
-                                                        style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Color.fromARGB(255, 128, 114, 114)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              return Stack(
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () => _showImagePreview(index, approvedAppointment),
-                                                    child: _buildImageWidget(index, approvedAppointment),
-                                                  ),
-                                                  if (approvedAppointment.beforeProcessImages[index] !=
-                                                      [])
-                                                    Positioned(
-                                                      top: 0,
-                                                      right: 0,
-                                                      child: IconButton(
-                                                        icon: Icon(Icons.close),
-                                                        onPressed: () async {
-                                                          bool result =
-                                                          await shoroefarayandfirstPageController
-                                                              .deleteImage(
-                                                            approvedAppointment
-                                                                .beforeProcessImages[index].filename,
-                                                            true,
-                                                            approvedAppointment.id.toString(),
-                                                          );
-
-                                                          if (result == true) {
-                                                            setState(() {
-                                                              approvedAppointment.beforeProcessImages
-                                                                  .removeAt(index);
-                                                            });
-                                                          }
-                                                        },
-                                                      ),
-                                                    ),
-                                                ],
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        // Inja bayad Imgage picker bezari
-                                        Text(
-                                          "افزودن تصویر بعد از کاشت:",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 14,
-                                              color: Colors.black,
-                                              fontFeatures: [
-                                                FontFeature('ss01', 1),
-                                              ]),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 10,
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.only(left: 10, right: 10),
-                                          height: 120,
-                                          child: GridView.builder(
-                                            physics: NeverScrollableScrollPhysics(),
-                                            shrinkWrap: false,
-                                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 3,
-                                              crossAxisSpacing: 4.0,
-                                              mainAxisSpacing: 4.0,
-                                            ),
-                                            itemCount: approvedAppointment.afterProcessImages.length +
-                                                (approvedAppointment.afterProcessImages.length < 3
-                                                    ? 1
-                                                    : 0),
-                                            itemBuilder: (context, index) {
-                                              if (index ==
-                                                  approvedAppointment.afterProcessImages.length) {
-                                                return DottedBorder(
-                                                  padding: EdgeInsets.all(5),
-                                                  borderType: BorderType.RRect,
-                                                  radius: Radius.circular(20),
-                                                  dashPattern: [10, 10],
-                                                  color: Color(0xffDDDDDD),
-                                                  strokeWidth: 2,
-                                                  child: Center(
-                                                    child: ElevatedButton(
-                                                      onPressed: () =>
-                                                          _pickImage_after(isBeforeProcess: false, approvedAppointment: approvedAppointment),
-                                                      style: ElevatedButton.styleFrom(
-                                                        elevation: 0,
-                                                        backgroundColor: Color(0xffEEEEEE),
-                                                      ),
-                                                      child: Text(
-                                                        "آپلود+",
-                                                        style: TextStyle(
-                                                            fontSize: 10,
-                                                            color: Color.fromARGB(255, 128, 114, 114)),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              return Stack(
-                                                children: [
-                                                  GestureDetector(
-                                                    onTap: () => _showImagePreview_after(index, approvedAppointment),
-                                                    child: _buildImageWidget_after(index, approvedAppointment),
-                                                  ),
-                                                  if (approvedAppointment.afterProcessImages[index] !=
-                                                      [])
-                                                    Positioned(
-                                                      top: 0,
-                                                      right: 0,
-                                                      child: IconButton(
-                                                        icon: Icon(Icons.close),
-                                                        onPressed: () async {
-                                                          bool result =
-                                                          await shoroefarayandfirstPageController
-                                                              .deleteImage(
-                                                            approvedAppointment
-                                                                .afterProcessImages[index].filename,
-                                                            false,
-                                                            approvedAppointment.id.toString(),
-                                                          );
-
-                                                          if (result == true) {
-                                                            setState(() {
-                                                              approvedAppointment.afterProcessImages
-                                                                  .removeAt(index);
-                                                            });
-                                                          }
-                                                        },
-                                                      ),
-                                                    ),
-                                                ],
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 10,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            shoroefarayandfirstPageController
-                                                .endProcess(approvedAppointment);
-                                          },
-                                          child: Container(
-                                            width: screenwidth / width_figma * 364,
-                                            height: screenheight / height_figma * 36,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(48),
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.topRight,
-                                                  end: Alignment.bottomLeft,
-                                                  colors: [rediligal, whiteiligal]),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "پایان فرایند کاشت",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 14,
-                                                    color: Colors.white,
-                                                    fontFeatures: [
-                                                      FontFeature('ss01', 1),
-                                                    ]),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ) : Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: screenheight / height_figma * 16,
-                                        ),
-                                        Center(
-                                          child: Image.asset(
-                                              "lib/features/technicians/ZibajoyanMan/Images/gol.png"),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 8,
-                                        ),
-                                        Center(
-                                          child: Text(
-                                            "کاشت مو",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                                color: fontcolor,
-                                                fontFeatures: [
-                                                  FontFeature('ss01', 1),
-                                                ]),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 32,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            // right: screenwidth / width_figma * 62,
-                                            // left: screenwidth / width_figma * 62,
-                                          ),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "قبل از کاشت مو:",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: fontcolor,
-                                                    fontFeatures: [
-                                                      FontFeature('ss01', 1),
-                                                    ]),
-                                              ),
-                                              SizedBox(
-                                                height: screenheight / height_figma * 16,
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.only(left: 10, right: 10),
-                                                height: 120,
-                                                child: approvedAppointment
-                                                    .beforeProcessImages.isNotEmpty
-                                                    ? GridView.builder(
-                                                  physics: NeverScrollableScrollPhysics(),
-                                                  shrinkWrap: false,
-                                                  gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: approvedAppointment
-                                                        .beforeProcessImages.length,
-                                                    crossAxisSpacing: 3.0,
-                                                    mainAxisSpacing: 3.0,
-                                                  ),
-                                                  itemCount: approvedAppointment
-                                                      .beforeProcessImages.length +
-                                                      (approvedAppointment.beforeProcessImages
-                                                          .length <
-                                                          3
-                                                          ? 1
-                                                          : 0),
-                                                  itemBuilder: (context, index) {
-                                                    return Stack(
-                                                      children: [
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              _showImagePreview(index, approvedAppointment),
-                                                          child: _buildImageWidget(index, approvedAppointment),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                )
-                                                    : Container(),
-                                              ),
-                                              SizedBox(
-                                                height: screenheight / height_figma * 24,
-                                              ),
-                                              Text(
-                                                "بعد از کاشت مو:",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    color: fontcolor,
-                                                    fontFeatures: [
-                                                      FontFeature('ss01', 1),
-                                                    ]),
-                                              ),
-                                              SizedBox(
-                                                height: screenheight / height_figma * 16,
-                                              ),
-                                              Container(
-                                                padding: EdgeInsets.only(left: 10, right: 10),
-                                                height: 120,
-                                                child: approvedAppointment
-                                                    .afterProcessImages.isNotEmpty
-                                                    ? GridView.builder(
-                                                  physics: NeverScrollableScrollPhysics(),
-                                                  shrinkWrap: false,
-                                                  gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: approvedAppointment
-                                                        .afterProcessImages.length,
-                                                    crossAxisSpacing: 3.0,
-                                                    mainAxisSpacing: 3.0,
-                                                  ),
-                                                  itemCount: approvedAppointment
-                                                      .afterProcessImages.length +
-                                                      (approvedAppointment
-                                                          .afterProcessImages.length <
-                                                          3
-                                                          ? 1
-                                                          : 0),
-                                                  itemBuilder: (context, index) {
-                                                    return Stack(
-                                                      children: [
-                                                        GestureDetector(
-                                                          onTap: () =>
-                                                              _showImagePreview_after(index, approvedAppointment),
-                                                          child:
-                                                          _buildImageWidget_after(index, approvedAppointment),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                )
-                                                    : Container(),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-
-                                        SizedBox(
-                                          height: screenheight / height_figma * 32,
-                                        ),
-
-                                        Text(
-                                          "آیا در فرایند کاشت مو به مشکل خوردید",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700,
-                                              color: fontcolor,
-                                              fontFeatures: [
-                                                FontFeature('ss01', 1),
-                                              ]),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 16,
-                                        ),
-                                        Text(
-                                          "توضیحات خود را وارد کنید",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              color: fontcolor,
-                                              fontFeatures: [
-                                                FontFeature('ss01', 1),
-                                              ]),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 4,
-                                        ),
-                                        Container(
-                                          // width: screenwidth / width_figma * 380,
-                                          // height: screenheight / height_figma * 111,
-                                          // padding: EdgeInsets.symmetric(
-                                          //     vertical: screenheight / height_figma * 111),
-
-                                          child: TextField(
-                                            textAlign: TextAlign.right,
-                                            textAlignVertical: TextAlignVertical.top,
-                                            decoration: InputDecoration(
-                                              contentPadding: EdgeInsets.symmetric(
-                                                  vertical: screenheight / height_figma * 111),
-                                              hintText: "    توضیحات",
-                                              hintStyle: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 14,
-                                                  color: phonecolor,
-                                                  fontFeatures: [
-                                                    FontFeature('ss01', 1),
-                                                  ]),
-                                              alignLabelWithHint: true,
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(16),
-                                                borderSide: BorderSide(
-                                                  color: SendagainColorwhite,
-                                                  width: 2,
-                                                ),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide:
-                                                BorderSide(color: outlineborder, width: 2),
-                                                borderRadius: BorderRadius.circular(16),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        // Inja bayad Imgage picker bezari
-                                        SizedBox(
-                                          height: screenheight / height_figma * 34,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () async {
-                                            shoroefarayandsecondPageController.saveProcess(approvedAppointment).then((value) {
-                                              if (value == true) {
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (context) => Dialog(
-                                                    child: Container(
-                                                      width: screenwidth / width_figma * 356,
-                                                      height: 200,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(32),
-                                                        color: Colors.white,
-                                                      ),
-                                                      child: Column(
-                                                        children: [
-                                                          SizedBox(
-                                                            height:
-                                                            screenheight / height_figma * 40,
-                                                          ),
-                                                          Image.asset(
-                                                              "lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
-                                                          SizedBox(
-                                                            height: screenheight / height_figma * 8,
-                                                          ),
-                                                          Directionality(
-                                                            textDirection: TextDirection.rtl,
-                                                            child: Center(
-                                                              child: Text(
-                                                                "کاشت موی شما با موفقیت ثبت شد",
-                                                                style: TextStyle(
-                                                                    color: fontcolor,
-                                                                    fontSize: 16,
-                                                                    fontWeight: FontWeight.w500,
-                                                                    fontFeatures: [
-                                                                      FontFeature('ss01', 1),
-                                                                    ]),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height:
-                                                            screenheight / height_figma * 46,
-                                                          ),
-                                                          Center(
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                              MainAxisAlignment.center,
-                                                              children: [
-                                                                GestureDetector(
-                                                                  onTap: () {
-                                                                    // Get.back(result: false);
-                                                                  },
-                                                                  child: Container(
-                                                                    height: screenheight /
-                                                                        height_figma *
-                                                                        36,
-                                                                    width: screenwidth /
-                                                                        width_figma *
-                                                                        142,
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            48),
-                                                                        gradient: LinearGradient(
-                                                                            begin:
-                                                                            Alignment.topRight,
-                                                                            end: Alignment
-                                                                                .bottomLeft,
-                                                                            colors: [
-                                                                              rediligal,
-                                                                              whiteiligal
-                                                                            ])),
-                                                                    child: Center(
-                                                                      child: Text(
-                                                                        "سوابق",
-                                                                        style: TextStyle(
-                                                                          fontWeight:
-                                                                          FontWeight.w700,
-                                                                          fontSize: 14,
-                                                                          color: Colors.white,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width:
-                                                                  screenwidth / width_figma * 8,
-                                                                ),
-                                                                GestureDetector(
-                                                                  onTap: () {
-                                                                  },
-                                                                  child: Container(
-                                                                    height: screenheight /
-                                                                        height_figma *
-                                                                        36,
-                                                                    width: screenwidth /
-                                                                        width_figma *
-                                                                        152,
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            48),
-                                                                        gradient: LinearGradient(
-                                                                            begin:
-                                                                            Alignment.topRight,
-                                                                            end: Alignment
-                                                                                .bottomLeft,
-                                                                            colors: [
-                                                                              LightBlue,
-                                                                              White
-                                                                            ])),
-                                                                    child: Center(
-                                                                      child: Text(
-                                                                        "!متوجه شدم",
-                                                                        style: TextStyle(
-                                                                          fontWeight:
-                                                                          FontWeight.w700,
-                                                                          fontSize: 14,
-                                                                          color: Colors.white,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                            });
-                                          },
-                                          child: Container(
-                                            // width: screenwidth / width_figma * 364,
-                                            height: screenheight / height_figma * 36,
-
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(48),
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.topRight,
-                                                  end: Alignment.bottomLeft,
-                                                  colors: [rediligal, whiteiligal]),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                "ثبت نهایی",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w800,
-                                                    fontSize: 14,
-                                                    color: Colors.white,
-                                                    fontFeatures: [
-                                                      FontFeature('ss01', 1),
-                                                    ]),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: screenheight / height_figma * 34,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                          }),
-                        );
+                                ),
+                              );
+                            });
+                        // );
                       }
                     } else {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
                     }
-              })
+                  })
             ],
           ),
         ),
