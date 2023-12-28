@@ -33,7 +33,7 @@ class ShoroFarayandSecondPageController extends GetxController {
         headers: headers,
       );
       if (response.statusCode == 200) {
-        Get.to(ShoroyeFarayandPage2(), arguments: approvedAppointment);
+        // Get.to(ShoroyeFarayandPage2(), arguments: approvedAppointment);
         return true;
       } else {
         showDialog(

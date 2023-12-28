@@ -36,7 +36,7 @@ class ZibajoyanManSecondPage extends GetxController {
       );
       if (response.statusCode == 200) {
         print(response.body);
-        Get.to(ShoroyeFarayandPage1(), arguments: approvedAppointment);
+        // Get.to(ShoroyeFarayandPage1(), arguments: approvedAppointment);
       } else {
         showDialog(
             context: Get.context!,

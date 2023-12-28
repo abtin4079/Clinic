@@ -1229,9 +1229,10 @@ class _TechMainPageState extends State<TechMainPage> {
                                             ),
                                             GestureDetector(
                                               onTap: () {
-                                                // zibajoyanManSecondPage
-                                                //     .startTheProcess(
-                                                //         approvedAppointment);
+                                                 zibajoyanManSecondPage.startTheProcess(approvedAppointment);
+                                                 setState(() {
+                                                   firstPageTechProcessesController.fetchTechInformation();
+                                                 });
                                               },
                                               child: Container(
                                                 width: screenwidth /
@@ -1666,9 +1667,10 @@ class _TechMainPageState extends State<TechMainPage> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
-                                                    // shoroefarayandfirstPageController
-                                                    //     .endProcess(
-                                                    //         approvedAppointment);
+                                                     shoroefarayandfirstPageController.endProcess(approvedAppointment);
+                                                     setState(() {
+                                                       firstPageTechProcessesController.fetchTechInformation();
+                                                     });
                                                   },
                                                   child: Container(
                                                     width: screenwidth /
@@ -1999,155 +2001,157 @@ class _TechMainPageState extends State<TechMainPage> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () async {
-                                                    // shoroefarayandsecondPageController
-                                                    //     .saveProcess(
-                                                    //         approvedAppointment)
-                                                    //     .then((value) {
-                                                    //   if (value == true) {
-                                                    //     showDialog(
-                                                    //       context: context,
-                                                    //       builder: (context) =>
-                                                    //           Dialog(
-                                                    //         child: Container(
-                                                    //           width: screenwidth /
-                                                    //               width_figma *
-                                                    //               356,
-                                                    //           height: 200,
-                                                    //           decoration:
-                                                    //               BoxDecoration(
-                                                    //             borderRadius:
-                                                    //                 BorderRadius
-                                                    //                     .circular(
-                                                    //                         32),
-                                                    //             color: Colors
-                                                    //                 .white,
-                                                    //           ),
-                                                    //           child: Column(
-                                                    //             children: [
-                                                    //               SizedBox(
-                                                    //                 height: screenheight /
-                                                    //                     height_figma *
-                                                    //                     40,
-                                                    //               ),
-                                                    //               Image.asset(
-                                                    //                   "lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
-                                                    //               SizedBox(
-                                                    //                 height: screenheight /
-                                                    //                     height_figma *
-                                                    //                     8,
-                                                    //               ),
-                                                    //               Directionality(
-                                                    //                 textDirection:
-                                                    //                     TextDirection
-                                                    //                         .rtl,
-                                                    //                 child:
-                                                    //                     Center(
-                                                    //                   child:
-                                                    //                       Text(
-                                                    //                     "کاشت موی شما با موفقیت ثبت شد",
-                                                    //                     style: TextStyle(
-                                                    //                         color:
-                                                    //                             fontcolor,
-                                                    //                         fontSize:
-                                                    //                             16,
-                                                    //                         fontWeight:
-                                                    //                             FontWeight.w500,
-                                                    //                         fontFeatures: [
-                                                    //                           FontFeature('ss01', 1),
-                                                    //                         ]),
-                                                    //                   ),
-                                                    //                 ),
-                                                    //               ),
-                                                    //               SizedBox(
-                                                    //                 height: screenheight /
-                                                    //                     height_figma *
-                                                    //                     46,
-                                                    //               ),
-                                                    //               Center(
-                                                    //                 child: Row(
-                                                    //                   mainAxisAlignment:
-                                                    //                       MainAxisAlignment
-                                                    //                           .center,
-                                                    //                   children: [
-                                                    //                     GestureDetector(
-                                                    //                       onTap:
-                                                    //                           () {
-                                                    //                         // Get.back(result: false);
-                                                    //                       },
-                                                    //                       child:
-                                                    //                           Container(
-                                                    //                         height: screenheight /
-                                                    //                             height_figma *
-                                                    //                             36,
-                                                    //                         width: screenwidth /
-                                                    //                             width_figma *
-                                                    //                             142,
-                                                    //                         decoration: BoxDecoration(
-                                                    //                             borderRadius: BorderRadius.circular(
-                                                    //                                 48),
-                                                    //                             gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-                                                    //                               rediligal,
-                                                    //                               whiteiligal
-                                                    //                             ])),
-                                                    //                         child:
-                                                    //                             Center(
-                                                    //                           child: Text(
-                                                    //                             "سوابق",
-                                                    //                             style: TextStyle(
-                                                    //                               fontWeight: FontWeight.w700,
-                                                    //                               fontSize: 14,
-                                                    //                               color: Colors.white,
-                                                    //                             ),
-                                                    //                           ),
-                                                    //                         ),
-                                                    //                       ),
-                                                    //                     ),
-                                                    //                     SizedBox(
-                                                    //                       width: screenwidth /
-                                                    //                           width_figma *
-                                                    //                           8,
-                                                    //                     ),
-                                                    //                     GestureDetector(
-                                                    //                       onTap:
-                                                    //                           () {},
-                                                    //                       child:
-                                                    //                           Container(
-                                                    //                         height: screenheight /
-                                                    //                             height_figma *
-                                                    //                             36,
-                                                    //                         width: screenwidth /
-                                                    //                             width_figma *
-                                                    //                             152,
-                                                    //                         decoration: BoxDecoration(
-                                                    //                             borderRadius: BorderRadius.circular(
-                                                    //                                 48),
-                                                    //                             gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
-                                                    //                               LightBlue,
-                                                    //                               White
-                                                    //                             ])),
-                                                    //                         child:
-                                                    //                             Center(
-                                                    //                           child: Text(
-                                                    //                             "!متوجه شدم",
-                                                    //                             style: TextStyle(
-                                                    //                               fontWeight: FontWeight.w700,
-                                                    //                               fontSize: 14,
-                                                    //                               color: Colors.white,
-                                                    //                             ),
-                                                    //                           ),
-                                                    //                         ),
-                                                    //                       ),
-                                                    //                     ),
-                                                    //                   ],
-                                                    //                 ),
-                                                    //               ),
-                                                    //             ],
-                                                    //           ),
-                                                    //         ),
-                                                    //       ),
-                                                    //     );
-                                                    //   }
-                                                    // });
+                                                    shoroefarayandsecondPageController.saveProcess(approvedAppointment).then((value) {
+                                                      if (value == true) {
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (context) =>
+                                                              Dialog(
+                                                            child: Container(
+                                                              width: screenwidth /
+                                                                  width_figma *
+                                                                  356,
+                                                              height: 200,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            32),
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              child: Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    height: screenheight /
+                                                                        height_figma *
+                                                                        40,
+                                                                  ),
+                                                                  Image.asset(
+                                                                      "lib/features/technicians/ZibajoyanMan/Images/popped_up.png"),
+                                                                  SizedBox(
+                                                                    height: screenheight /
+                                                                        height_figma *
+                                                                        8,
+                                                                  ),
+                                                                  Directionality(
+                                                                    textDirection:
+                                                                        TextDirection
+                                                                            .rtl,
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Text(
+                                                                        "کاشت موی شما با موفقیت ثبت شد",
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                fontcolor,
+                                                                            fontSize:
+                                                                                16,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                            fontFeatures: [
+                                                                              FontFeature('ss01', 1),
+                                                                            ]),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: screenheight /
+                                                                        height_figma *
+                                                                        46,
+                                                                  ),
+                                                                  Center(
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            // Get.back(result: false);
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            height: screenheight /
+                                                                                height_figma *
+                                                                                36,
+                                                                            width: screenwidth /
+                                                                                width_figma *
+                                                                                142,
+                                                                            decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(
+                                                                                    48),
+                                                                                gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                                  rediligal,
+                                                                                  whiteiligal
+                                                                                ])),
+                                                                            child:
+                                                                                Center(
+                                                                              child: Text(
+                                                                                "سوابق",
+                                                                                style: TextStyle(
+                                                                                  fontWeight: FontWeight.w700,
+                                                                                  fontSize: 14,
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                          width: screenwidth /
+                                                                              width_figma *
+                                                                              8,
+                                                                        ),
+                                                                        GestureDetector(
+                                                                          onTap:
+                                                                              () {
+
+                                                                              },
+                                                                          child:
+                                                                              Container(
+                                                                            height: screenheight /
+                                                                                height_figma *
+                                                                                36,
+                                                                            width: screenwidth /
+                                                                                width_figma *
+                                                                                152,
+                                                                            decoration: BoxDecoration(
+                                                                                borderRadius: BorderRadius.circular(
+                                                                                    48),
+                                                                                gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: [
+                                                                                  LightBlue,
+                                                                                  White
+                                                                                ])),
+                                                                            child:
+                                                                                Center(
+                                                                              child: Text(
+                                                                                "!متوجه شدم",
+                                                                                style: TextStyle(
+                                                                                  fontWeight: FontWeight.w700,
+                                                                                  fontSize: 14,
+                                                                                  color: Colors.white,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                    });
+                                                    setState(() {
+                                                      firstPageTechProcessesController.fetchTechInformation();
+                                                    });
                                                   },
                                                   child: Container(
                                                     // width: screenwidth / width_figma * 364,
