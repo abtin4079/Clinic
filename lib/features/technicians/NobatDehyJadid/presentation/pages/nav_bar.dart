@@ -6,9 +6,37 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../../../../../themes/colors.dart';
+import 'package:clinic/features/technicians/Profile/controller/profile_controller.dart';
+import 'package:clinic/features/technicians/Profile/models/profile.dart';
 
-class NavBar extends StatelessWidget {
+class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
+
+  @override
+  State<NavBar> createState() => _NavBar();
+}
+
+class _NavBar extends State<NavBar> {
+  ProfileController profileController = Get.put(ProfileController());
+  bool dataNotLoaded = true;
+  TechProfile? data = null;
+
+  @override
+  initState() {
+    // TODO: implement initState
+    super.initState();
+    get_data();
+  }
+
+  Future<void> get_data() async {
+    var result = await profileController.getTechnecianProfile();
+    if (result != null) {
+      setState(() {
+        data = result;
+        dataNotLoaded = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +54,43 @@ class NavBar extends StatelessWidget {
           ),
           CircleAvatar(
             radius: 48,
-            child: ClipOval(
-              child: Image.asset(
-                "lib/features/technicians/NobatDehyJadid/images/frame40.png",
-                fit: BoxFit.cover,
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.red,
               ),
             ),
           ),
           SizedBox(
             height: screenheight / height_figma * 8,
           ),
-          Center(
-            child: Text(
-              "کیمیا کریمی",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-                color: fontcolor,
-                  fontFeatures: [
-                    FontFeature('ss01', 1),
-                  ]
-              ),
-            ),
-          ),
+          dataNotLoaded
+              ? Center(
+                  child: Text(
+                    "",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: fontcolor,
+                        fontFeatures: [
+                          FontFeature('ss01', 1),
+                        ]),
+                  ),
+                )
+              : Center(
+                  child: Text(
+                    data!.name!,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        color: fontcolor,
+                        fontFeatures: [
+                          FontFeature('ss01', 1),
+                        ]),
+                  ),
+                ),
           SizedBox(
             height: screenheight / height_figma * 8,
           ),
@@ -56,13 +98,12 @@ class NavBar extends StatelessWidget {
             child: Text(
               "تکنسین کاشت مو و ابرو",
               style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: fontcolor,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: fontcolor,
                   fontFeatures: [
                     FontFeature('ss01', 1),
-                  ]
-              ),
+                  ]),
             ),
           ),
           SizedBox(
@@ -91,9 +132,10 @@ class NavBar extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: fontcolor, fontFeatures: [
-                        FontFeature('ss01', 1),
-                      ]),
+                          color: fontcolor,
+                          fontFeatures: [
+                            FontFeature('ss01', 1),
+                          ]),
                     ),
                   ],
                 ),
@@ -102,23 +144,39 @@ class NavBar extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "09152451258",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: grayColorHome),
-                      ),
+                      dataNotLoaded
+                          ? Text(
+                              "",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: grayColorHome),
+                            )
+                          : Text(
+                              data!.phone!,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: grayColorHome),
+                            ),
                       SizedBox(
                         height: screenheight / height_figma * 19,
                       ),
-                      Text(
-                        "0021548695",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: grayColorHome),
-                      ),
+                      dataNotLoaded
+                          ? Text(
+                              "",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: grayColorHome),
+                            )
+                          : Text(
+                              data!.nationalCode!,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: grayColorHome),
+                            )
                     ],
                   ),
                 ),
@@ -136,7 +194,7 @@ class NavBar extends StatelessWidget {
             height: screenheight / height_figma * 27,
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Get.to(TechFinance());
             },
             child: Row(
@@ -145,15 +203,18 @@ class NavBar extends StatelessWidget {
                 SizedBox(
                   width: screenwidth / width_figma * 7,
                 ),
-                Image.asset("lib/features/technicians/NobatDehyJadid/images/Frame49.png"),
+                Image.asset(
+                    "lib/features/technicians/NobatDehyJadid/images/Frame49.png"),
                 SizedBox(
                   width: screenwidth / width_figma * 7,
                 ),
-                Text("اطلاعات حساب و مالی", style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: Colors.black
-                ),)
+                Text(
+                  "اطلاعات حساب و مالی",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Colors.black),
+                )
               ],
             ),
           ),
@@ -165,7 +226,7 @@ class NavBar extends StatelessWidget {
             height: screenheight / height_figma * 18,
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               showDialog(
                 context: context,
                 builder: (context) => Dialog(
@@ -193,27 +254,19 @@ class NavBar extends StatelessWidget {
                           height: screenheight / height_figma * 39,
                         ),
                         Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
                               onTap: () {},
                               child: Container(
-                                height: screenheight /
-                                    height_figma *
-                                    36,
-                                width:
-                                screenwidth / width_figma * 100,
+                                height: screenheight / height_figma * 36,
+                                width: screenwidth / width_figma * 100,
                                 decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(48),
+                                    borderRadius: BorderRadius.circular(48),
                                     gradient: LinearGradient(
                                         begin: Alignment.topRight,
                                         end: Alignment.bottomLeft,
-                                        colors: [
-                                          rediligal,
-                                          whiteiligal
-                                        ])),
+                                        colors: [rediligal, whiteiligal])),
                                 child: Center(
                                   child: Text(
                                     "انصراف",
@@ -234,21 +287,14 @@ class NavBar extends StatelessWidget {
                                 Get.to(() => LoginFirstPage());
                               },
                               child: Container(
-                                height: screenheight /
-                                    height_figma *
-                                    36,
-                                width:
-                                screenwidth / width_figma * 100,
+                                height: screenheight / height_figma * 36,
+                                width: screenwidth / width_figma * 100,
                                 decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(48),
+                                    borderRadius: BorderRadius.circular(48),
                                     gradient: LinearGradient(
                                         begin: Alignment.topRight,
                                         end: Alignment.bottomLeft,
-                                        colors: [
-                                          LightBlue,
-                                          White
-                                        ])),
+                                        colors: [LightBlue, White])),
                                 child: Center(
                                   child: Text(
                                     "تایید",
@@ -275,15 +321,18 @@ class NavBar extends StatelessWidget {
                 SizedBox(
                   width: screenwidth / width_figma * 7,
                 ),
-                Image.asset("lib/features/technicians/NobatDehyJadid/images/Frame47.png"),
+                Image.asset(
+                    "lib/features/technicians/NobatDehyJadid/images/Frame47.png"),
                 SizedBox(
                   width: screenwidth / width_figma * 7,
                 ),
-                Text("خروج از حساب", style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.black
-                ),)
+                Text(
+                  "خروج از حساب",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Colors.black),
+                )
               ],
             ),
           ),
